@@ -1,0 +1,33 @@
+using System.Text.Json.Serialization;
+using ThePlaidApi.Core.Models;
+
+namespace ThePlaidApi.Models;
+
+/// <summary>
+/// Request input to autofill an Identity Verification
+/// </summary>
+public record IdentityVerificationAutofillCreateRequest
+{
+    /// <summary>
+    /// ID of the associated Identity Verification attempt.
+    /// </summary>
+    [JsonPropertyName("identity_verification_id")]
+    public required string IdentityVerificationId { get; init; }
+
+    /// <summary>
+    /// Your Plaid API <c>client_id</c>. The <c>client_id</c> is required and may be provided either in the <c>PLAID-CLIENT-ID</c> header or as part of a request body.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonPropertyName("client_id")]
+    public string? ClientId { get; init; }
+
+    /// <summary>
+    /// Your Plaid API <c>secret</c>. The <c>secret</c> is required and may be provided either in the <c>PLAID-SECRET</c> header or as part of a request body.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonPropertyName("secret")]
+    public string? Secret { get; init; }
+
+    [JsonExtensionData]
+    public AdditionalProperties AdditionalProperties { get; init; } = [];
+}

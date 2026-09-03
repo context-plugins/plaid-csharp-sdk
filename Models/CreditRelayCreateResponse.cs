@@ -1,0 +1,25 @@
+using System.Text.Json.Serialization;
+using ThePlaidApi.Core.Models;
+
+namespace ThePlaidApi.Models;
+
+/// <summary>
+/// CreditRelayCreateResponse defines the response schema for <c>/credit/relay/create</c>
+/// </summary>
+public record CreditRelayCreateResponse
+{
+    /// <summary>
+    /// A token that can be shared with a third party to allow them to access the Asset Report. This token should be stored securely.
+    /// </summary>
+    [JsonPropertyName("relay_token")]
+    public required string RelayToken { get; init; }
+
+    /// <summary>
+    /// A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.
+    /// </summary>
+    [JsonPropertyName("request_id")]
+    public required string RequestId { get; init; }
+
+    [JsonExtensionData]
+    public AdditionalProperties AdditionalProperties { get; init; } = [];
+}

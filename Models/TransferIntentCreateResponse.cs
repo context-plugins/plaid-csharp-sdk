@@ -1,0 +1,25 @@
+using System.Text.Json.Serialization;
+using ThePlaidApi.Core.Models;
+
+namespace ThePlaidApi.Models;
+
+/// <summary>
+/// Defines the response schema for <c>/transfer/intent/create</c>
+/// </summary>
+public record TransferIntentCreateResponse
+{
+    /// <summary>
+    /// Represents a transfer intent within Transfer UI.
+    /// </summary>
+    [JsonPropertyName("transfer_intent")]
+    public required TransferIntentCreate TransferIntent { get; init; }
+
+    /// <summary>
+    /// A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.
+    /// </summary>
+    [JsonPropertyName("request_id")]
+    public required string RequestId { get; init; }
+
+    [JsonExtensionData]
+    public AdditionalProperties AdditionalProperties { get; init; } = [];
+}
