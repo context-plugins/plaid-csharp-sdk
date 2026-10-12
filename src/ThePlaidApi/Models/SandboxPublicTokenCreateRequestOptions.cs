@@ -1,0 +1,55 @@
+using System.Text.Json.Serialization;
+using ThePlaidApi.Core.Models;
+
+namespace ThePlaidApi.Models;
+
+/// <summary>
+/// An optional set of options to be used when configuring the Item. If specified, must not be <c>null</c>.
+/// </summary>
+public record SandboxPublicTokenCreateRequestOptions
+{
+    /// <summary>
+    /// Specify a webhook to associate with the new Item.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonPropertyName("webhook")]
+    public string? Webhook { get; init; }
+
+    /// <summary>
+    /// Test username to use for the creation of the Sandbox Item. Default value is <c>user_good</c>. You can also use a custom test user — either set this to the username of a custom user configured in the Dashboard, or set it to <c>user_custom</c> and pass the JSON-stringified custom user configuration object as <c>override_password</c> to define one entirely via API. See <see href="https://plaid.com/docs/sandbox/user-custom">Sandbox Custom Users</see> for more details.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonPropertyName("override_username")]
+    public string? OverrideUsername { get; init; } = "user_good";
+
+    /// <summary>
+    /// Test password to use for the creation of the Sandbox Item. Default value is <c>pass_good</c>. You can also use a custom test user — reference one configured in the Dashboard via <c>override_username</c>, or set <c>override_username</c> to <c>user_custom</c> and pass the JSON-stringified custom user configuration object as this field to define one entirely via API. See <see href="https://plaid.com/docs/sandbox/user-custom">Sandbox Custom Users</see> for more details.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonPropertyName("override_password")]
+    public string? OverridePassword { get; init; } = "pass_good";
+
+    /// <summary>
+    /// An optional set of parameters corresponding to transactions options.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonPropertyName("transactions")]
+    public SandboxPublicTokenCreateRequestOptionsTransactions? Transactions { get; init; }
+
+    /// <summary>
+    /// An optional set of parameters corresponding to statements options.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonPropertyName("statements")]
+    public SandboxPublicTokenCreateRequestOptionsStatements? Statements { get; init; }
+
+    /// <summary>
+    /// A set of parameters for income verification options. This field is required if <c>income_verification</c> is included in the <c>initial_products</c> array.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonPropertyName("income_verification")]
+    public SandboxPublicTokenCreateRequestOptionsIncomeVerification? IncomeVerification { get; init; }
+
+    [JsonExtensionData]
+    public AdditionalProperties AdditionalProperties { get; init; } = [];
+}

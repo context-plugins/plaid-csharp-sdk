@@ -2,4020 +2,4681 @@
 
 # ThePlaidApiClient — operations
 
-Accessor: `client` · Source: `ThePlaidApiClient.cs` · 335 operations
+Accessor: `client` · Source: `src/ThePlaidApi/ThePlaidApiClient.cs` · 335 operations
 
 **Type sources**: the file declaring each type an operation names (`RawError` excluded — see sdk-map.md).
 
 ### AccountsBalanceGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `AccountsBalanceGet(AccountsBalanceGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `AccountsBalanceGet(AccountsBalanceGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `AccountsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `AccountsBalanceGetRequest` | `Models/AccountsBalanceGetRequest.cs` |
-| `AccountsGetResponse` | `Models/AccountsGetResponse.cs` |
+| `AccountsBalanceGetOperationRequest` | `src/ThePlaidApi/Requests/AccountsBalanceGetOperationRequest.cs` |
+| `AccountsBalanceGetRequest` | `src/ThePlaidApi/Models/AccountsBalanceGetRequest.cs` |
+| `AccountsGetResponse` | `src/ThePlaidApi/Models/AccountsGetResponse.cs` |
 
 ### AccountsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `AccountsGet(AccountsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `AccountsGet(AccountsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `AccountsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `AccountsGetRequest` | `Models/AccountsGetRequest.cs` |
-| `AccountsGetResponse` | `Models/AccountsGetResponse.cs` |
+| `AccountsGetOperationRequest` | `src/ThePlaidApi/Requests/AccountsGetOperationRequest.cs` |
+| `AccountsGetRequest` | `src/ThePlaidApi/Models/AccountsGetRequest.cs` |
+| `AccountsGetResponse` | `src/ThePlaidApi/Models/AccountsGetResponse.cs` |
 
 ### ApplicationGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ApplicationGet(ApplicationGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ApplicationGet(ApplicationGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ApplicationGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ApplicationGetRequest` | `Models/ApplicationGetRequest.cs` |
-| `ApplicationGetResponse` | `Models/ApplicationGetResponse.cs` |
+| `ApplicationGetOperationRequest` | `src/ThePlaidApi/Requests/ApplicationGetOperationRequest.cs` |
+| `ApplicationGetRequest` | `src/ThePlaidApi/Models/ApplicationGetRequest.cs` |
+| `ApplicationGetResponse` | `src/ThePlaidApi/Models/ApplicationGetResponse.cs` |
 
 ### AssetReportAuditCopyCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `AssetReportAuditCopyCreate(AssetReportAuditCopyCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `AssetReportAuditCopyCreate(AssetReportAuditCopyCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `AssetReportAuditCopyCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `AssetReportAuditCopyCreateRequest` | `Models/AssetReportAuditCopyCreateRequest.cs` |
-| `AssetReportAuditCopyCreateResponse` | `Models/AssetReportAuditCopyCreateResponse.cs` |
+| `AssetReportAuditCopyCreateOperationRequest` | `src/ThePlaidApi/Requests/AssetReportAuditCopyCreateOperationRequest.cs` |
+| `AssetReportAuditCopyCreateRequest` | `src/ThePlaidApi/Models/AssetReportAuditCopyCreateRequest.cs` |
+| `AssetReportAuditCopyCreateResponse` | `src/ThePlaidApi/Models/AssetReportAuditCopyCreateResponse.cs` |
 
 ### AssetReportAuditCopyGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `AssetReportAuditCopyGet(AssetReportAuditCopyGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `AssetReportAuditCopyGet(AssetReportAuditCopyGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `AssetReportGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `AssetReportAuditCopyGetRequest` | `Models/AssetReportAuditCopyGetRequest.cs` |
-| `AssetReportGetResponse` | `Models/AssetReportGetResponse.cs` |
+| `AssetReportAuditCopyGetOperationRequest` | `src/ThePlaidApi/Requests/AssetReportAuditCopyGetOperationRequest.cs` |
+| `AssetReportAuditCopyGetRequest` | `src/ThePlaidApi/Models/AssetReportAuditCopyGetRequest.cs` |
+| `AssetReportGetResponse` | `src/ThePlaidApi/Models/AssetReportGetResponse.cs` |
 
 ### AssetReportAuditCopyPdfGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `AssetReportAuditCopyPdfGet(AssetReportAuditCopyPdfGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `AssetReportAuditCopyPdfGet(AssetReportAuditCopyPdfGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `void` (Task)
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `AssetReportAuditCopyPdfGetRequest` | `Models/AssetReportAuditCopyPdfGetRequest.cs` |
+| `AssetReportAuditCopyPdfGetOperationRequest` | `src/ThePlaidApi/Requests/AssetReportAuditCopyPdfGetOperationRequest.cs` |
+| `AssetReportAuditCopyPdfGetRequest` | `src/ThePlaidApi/Models/AssetReportAuditCopyPdfGetRequest.cs` |
 
 ### AssetReportAuditCopyRemove
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `AssetReportAuditCopyRemove(AssetReportAuditCopyRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `AssetReportAuditCopyRemove(AssetReportAuditCopyRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `AssetReportAuditCopyRemoveResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `AssetReportAuditCopyRemoveRequest` | `Models/AssetReportAuditCopyRemoveRequest.cs` |
-| `AssetReportAuditCopyRemoveResponse` | `Models/AssetReportAuditCopyRemoveResponse.cs` |
+| `AssetReportAuditCopyRemoveOperationRequest` | `src/ThePlaidApi/Requests/AssetReportAuditCopyRemoveOperationRequest.cs` |
+| `AssetReportAuditCopyRemoveRequest` | `src/ThePlaidApi/Models/AssetReportAuditCopyRemoveRequest.cs` |
+| `AssetReportAuditCopyRemoveResponse` | `src/ThePlaidApi/Models/AssetReportAuditCopyRemoveResponse.cs` |
 
 ### AssetReportCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `AssetReportCreate(AssetReportCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `AssetReportCreate(AssetReportCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `AssetReportCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `AssetReportCreateRequest` | `Models/AssetReportCreateRequest.cs` |
-| `AssetReportCreateResponse` | `Models/AssetReportCreateResponse.cs` |
+| `AssetReportCreateOperationRequest` | `src/ThePlaidApi/Requests/AssetReportCreateOperationRequest.cs` |
+| `AssetReportCreateRequest` | `src/ThePlaidApi/Models/AssetReportCreateRequest.cs` |
+| `AssetReportCreateResponse` | `src/ThePlaidApi/Models/AssetReportCreateResponse.cs` |
 
 ### AssetReportFilter
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `AssetReportFilter(AssetReportFilterRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `AssetReportFilter(AssetReportFilterOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `AssetReportFilterResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `AssetReportFilterRequest` | `Models/AssetReportFilterRequest.cs` |
-| `AssetReportFilterResponse` | `Models/AssetReportFilterResponse.cs` |
+| `AssetReportFilterOperationRequest` | `src/ThePlaidApi/Requests/AssetReportFilterOperationRequest.cs` |
+| `AssetReportFilterRequest` | `src/ThePlaidApi/Models/AssetReportFilterRequest.cs` |
+| `AssetReportFilterResponse` | `src/ThePlaidApi/Models/AssetReportFilterResponse.cs` |
 
 ### AssetReportGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `AssetReportGet(AssetReportGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `AssetReportGet(AssetReportGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `AssetReportGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `AssetReportGetRequest` | `Models/AssetReportGetRequest.cs` |
-| `AssetReportGetResponse` | `Models/AssetReportGetResponse.cs` |
+| `AssetReportGetOperationRequest` | `src/ThePlaidApi/Requests/AssetReportGetOperationRequest.cs` |
+| `AssetReportGetRequest` | `src/ThePlaidApi/Models/AssetReportGetRequest.cs` |
+| `AssetReportGetResponse` | `src/ThePlaidApi/Models/AssetReportGetResponse.cs` |
 
 ### AssetReportPdfGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `AssetReportPdfGet(AssetReportPdfGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `AssetReportPdfGet(AssetReportPdfGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `void` (Task)
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `AssetReportPdfGetRequest` | `Models/AssetReportPdfGetRequest.cs` |
+| `AssetReportPdfGetOperationRequest` | `src/ThePlaidApi/Requests/AssetReportPdfGetOperationRequest.cs` |
+| `AssetReportPdfGetRequest` | `src/ThePlaidApi/Models/AssetReportPdfGetRequest.cs` |
 
 ### AssetReportRefresh
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `AssetReportRefresh(AssetReportRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `AssetReportRefresh(AssetReportRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `AssetReportRefreshResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `AssetReportRefreshRequest` | `Models/AssetReportRefreshRequest.cs` |
-| `AssetReportRefreshResponse` | `Models/AssetReportRefreshResponse.cs` |
+| `AssetReportRefreshOperationRequest` | `src/ThePlaidApi/Requests/AssetReportRefreshOperationRequest.cs` |
+| `AssetReportRefreshRequest` | `src/ThePlaidApi/Models/AssetReportRefreshRequest.cs` |
+| `AssetReportRefreshResponse` | `src/ThePlaidApi/Models/AssetReportRefreshResponse.cs` |
 
 ### AssetReportRemove
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `AssetReportRemove(AssetReportRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `AssetReportRemove(AssetReportRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `AssetReportRemoveResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `AssetReportRemoveRequest` | `Models/AssetReportRemoveRequest.cs` |
-| `AssetReportRemoveResponse` | `Models/AssetReportRemoveResponse.cs` |
+| `AssetReportRemoveOperationRequest` | `src/ThePlaidApi/Requests/AssetReportRemoveOperationRequest.cs` |
+| `AssetReportRemoveRequest` | `src/ThePlaidApi/Models/AssetReportRemoveRequest.cs` |
+| `AssetReportRemoveResponse` | `src/ThePlaidApi/Models/AssetReportRemoveResponse.cs` |
 
 ### AuthGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `AuthGet(AuthGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `AuthGet(AuthGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `AuthGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `AuthGetRequest` | `Models/AuthGetRequest.cs` |
-| `AuthGetResponse` | `Models/AuthGetResponse.cs` |
+| `AuthGetOperationRequest` | `src/ThePlaidApi/Requests/AuthGetOperationRequest.cs` |
+| `AuthGetRequest` | `src/ThePlaidApi/Models/AuthGetRequest.cs` |
+| `AuthGetResponse` | `src/ThePlaidApi/Models/AuthGetResponse.cs` |
 
 ### AuthVerify
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `AuthVerify(AuthVerifyRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `AuthVerify(AuthVerifyOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `AuthVerifyResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `AuthVerifyRequest` | `Models/AuthVerifyRequest.cs` |
-| `AuthVerifyResponse` | `Models/AuthVerifyResponse.cs` |
+| `AuthVerifyOperationRequest` | `src/ThePlaidApi/Requests/AuthVerifyOperationRequest.cs` |
+| `AuthVerifyRequest` | `src/ThePlaidApi/Models/AuthVerifyRequest.cs` |
+| `AuthVerifyResponse` | `src/ThePlaidApi/Models/AuthVerifyResponse.cs` |
 
 ### BankTransferBalanceGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BankTransferBalanceGet(BankTransferBalanceGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BankTransferBalanceGet(BankTransferBalanceGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BankTransferBalanceGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BankTransferBalanceGetRequest` | `Models/BankTransferBalanceGetRequest.cs` |
-| `BankTransferBalanceGetResponse` | `Models/BankTransferBalanceGetResponse.cs` |
+| `BankTransferBalanceGetOperationRequest` | `src/ThePlaidApi/Requests/BankTransferBalanceGetOperationRequest.cs` |
+| `BankTransferBalanceGetRequest` | `src/ThePlaidApi/Models/BankTransferBalanceGetRequest.cs` |
+| `BankTransferBalanceGetResponse` | `src/ThePlaidApi/Models/BankTransferBalanceGetResponse.cs` |
 
 ### BankTransferCancel
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BankTransferCancel(BankTransferCancelRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BankTransferCancel(BankTransferCancelOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BankTransferCancelResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BankTransferCancelRequest` | `Models/BankTransferCancelRequest.cs` |
-| `BankTransferCancelResponse` | `Models/BankTransferCancelResponse.cs` |
+| `BankTransferCancelOperationRequest` | `src/ThePlaidApi/Requests/BankTransferCancelOperationRequest.cs` |
+| `BankTransferCancelRequest` | `src/ThePlaidApi/Models/BankTransferCancelRequest.cs` |
+| `BankTransferCancelResponse` | `src/ThePlaidApi/Models/BankTransferCancelResponse.cs` |
 
 ### BankTransferCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BankTransferCreate(BankTransferCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BankTransferCreate(BankTransferCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BankTransferCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BankTransferCreateRequest` | `Models/BankTransferCreateRequest.cs` |
-| `BankTransferCreateResponse` | `Models/BankTransferCreateResponse.cs` |
+| `BankTransferCreateOperationRequest` | `src/ThePlaidApi/Requests/BankTransferCreateOperationRequest.cs` |
+| `BankTransferCreateRequest` | `src/ThePlaidApi/Models/BankTransferCreateRequest.cs` |
+| `BankTransferCreateResponse` | `src/ThePlaidApi/Models/BankTransferCreateResponse.cs` |
 
 ### BankTransferEventList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BankTransferEventList(BankTransferEventListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BankTransferEventList(BankTransferEventListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BankTransferEventListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BankTransferEventListRequest` | `Models/BankTransferEventListRequest.cs` |
-| `BankTransferEventListResponse` | `Models/BankTransferEventListResponse.cs` |
+| `BankTransferEventListOperationRequest` | `src/ThePlaidApi/Requests/BankTransferEventListOperationRequest.cs` |
+| `BankTransferEventListRequest` | `src/ThePlaidApi/Models/BankTransferEventListRequest.cs` |
+| `BankTransferEventListResponse` | `src/ThePlaidApi/Models/BankTransferEventListResponse.cs` |
 
 ### BankTransferEventSync
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BankTransferEventSync(BankTransferEventSyncRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BankTransferEventSync(BankTransferEventSyncOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BankTransferEventSyncResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BankTransferEventSyncRequest` | `Models/BankTransferEventSyncRequest.cs` |
-| `BankTransferEventSyncResponse` | `Models/BankTransferEventSyncResponse.cs` |
+| `BankTransferEventSyncOperationRequest` | `src/ThePlaidApi/Requests/BankTransferEventSyncOperationRequest.cs` |
+| `BankTransferEventSyncRequest` | `src/ThePlaidApi/Models/BankTransferEventSyncRequest.cs` |
+| `BankTransferEventSyncResponse` | `src/ThePlaidApi/Models/BankTransferEventSyncResponse.cs` |
 
 ### BankTransferGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BankTransferGet(BankTransferGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BankTransferGet(BankTransferGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BankTransferGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BankTransferGetRequest` | `Models/BankTransferGetRequest.cs` |
-| `BankTransferGetResponse` | `Models/BankTransferGetResponse.cs` |
+| `BankTransferGetOperationRequest` | `src/ThePlaidApi/Requests/BankTransferGetOperationRequest.cs` |
+| `BankTransferGetRequest` | `src/ThePlaidApi/Models/BankTransferGetRequest.cs` |
+| `BankTransferGetResponse` | `src/ThePlaidApi/Models/BankTransferGetResponse.cs` |
 
 ### BankTransferList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BankTransferList(BankTransferListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BankTransferList(BankTransferListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BankTransferListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BankTransferListRequest` | `Models/BankTransferListRequest.cs` |
-| `BankTransferListResponse` | `Models/BankTransferListResponse.cs` |
+| `BankTransferListOperationRequest` | `src/ThePlaidApi/Requests/BankTransferListOperationRequest.cs` |
+| `BankTransferListRequest` | `src/ThePlaidApi/Models/BankTransferListRequest.cs` |
+| `BankTransferListResponse` | `src/ThePlaidApi/Models/BankTransferListResponse.cs` |
 
 ### BankTransferMigrateAccount
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BankTransferMigrateAccount(BankTransferMigrateAccountRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BankTransferMigrateAccount(BankTransferMigrateAccountOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BankTransferMigrateAccountResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BankTransferMigrateAccountRequest` | `Models/BankTransferMigrateAccountRequest.cs` |
-| `BankTransferMigrateAccountResponse` | `Models/BankTransferMigrateAccountResponse.cs` |
+| `BankTransferMigrateAccountOperationRequest` | `src/ThePlaidApi/Requests/BankTransferMigrateAccountOperationRequest.cs` |
+| `BankTransferMigrateAccountRequest` | `src/ThePlaidApi/Models/BankTransferMigrateAccountRequest.cs` |
+| `BankTransferMigrateAccountResponse` | `src/ThePlaidApi/Models/BankTransferMigrateAccountResponse.cs` |
 
 ### BankTransferSweepGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BankTransferSweepGet(BankTransferSweepGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BankTransferSweepGet(BankTransferSweepGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BankTransferSweepGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BankTransferSweepGetRequest` | `Models/BankTransferSweepGetRequest.cs` |
-| `BankTransferSweepGetResponse` | `Models/BankTransferSweepGetResponse.cs` |
+| `BankTransferSweepGetOperationRequest` | `src/ThePlaidApi/Requests/BankTransferSweepGetOperationRequest.cs` |
+| `BankTransferSweepGetRequest` | `src/ThePlaidApi/Models/BankTransferSweepGetRequest.cs` |
+| `BankTransferSweepGetResponse` | `src/ThePlaidApi/Models/BankTransferSweepGetResponse.cs` |
 
 ### BankTransferSweepList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BankTransferSweepList(BankTransferSweepListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BankTransferSweepList(BankTransferSweepListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BankTransferSweepListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BankTransferSweepListRequest` | `Models/BankTransferSweepListRequest.cs` |
-| `BankTransferSweepListResponse` | `Models/BankTransferSweepListResponse.cs` |
+| `BankTransferSweepListOperationRequest` | `src/ThePlaidApi/Requests/BankTransferSweepListOperationRequest.cs` |
+| `BankTransferSweepListRequest` | `src/ThePlaidApi/Models/BankTransferSweepListRequest.cs` |
+| `BankTransferSweepListResponse` | `src/ThePlaidApi/Models/BankTransferSweepListResponse.cs` |
 
 ### BeaconAccountRiskEvaluate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BeaconAccountRiskEvaluate(BeaconAccountRiskEvaluateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BeaconAccountRiskEvaluate(BeaconAccountRiskEvaluateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BeaconAccountRiskEvaluateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BeaconAccountRiskEvaluateRequest` | `Models/BeaconAccountRiskEvaluateRequest.cs` |
-| `BeaconAccountRiskEvaluateResponse` | `Models/BeaconAccountRiskEvaluateResponse.cs` |
+| `BeaconAccountRiskEvaluateOperationRequest` | `src/ThePlaidApi/Requests/BeaconAccountRiskEvaluateOperationRequest.cs` |
+| `BeaconAccountRiskEvaluateRequest` | `src/ThePlaidApi/Models/BeaconAccountRiskEvaluateRequest.cs` |
+| `BeaconAccountRiskEvaluateResponse` | `src/ThePlaidApi/Models/BeaconAccountRiskEvaluateResponse.cs` |
 
 ### BeaconDuplicateGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BeaconDuplicateGet(BeaconDuplicateGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BeaconDuplicateGet(BeaconDuplicateGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BeaconDuplicateGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BeaconDuplicateGetRequest` | `Models/BeaconDuplicateGetRequest.cs` |
-| `BeaconDuplicateGetResponse` | `Models/BeaconDuplicateGetResponse.cs` |
+| `BeaconDuplicateGetOperationRequest` | `src/ThePlaidApi/Requests/BeaconDuplicateGetOperationRequest.cs` |
+| `BeaconDuplicateGetRequest` | `src/ThePlaidApi/Models/BeaconDuplicateGetRequest.cs` |
+| `BeaconDuplicateGetResponse` | `src/ThePlaidApi/Models/BeaconDuplicateGetResponse.cs` |
 
 ### BeaconReportCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BeaconReportCreate(BeaconReportCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BeaconReportCreate(BeaconReportCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BeaconReportCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BeaconReportCreateRequest` | `Models/BeaconReportCreateRequest.cs` |
-| `BeaconReportCreateResponse` | `Models/BeaconReportCreateResponse.cs` |
+| `BeaconReportCreateOperationRequest` | `src/ThePlaidApi/Requests/BeaconReportCreateOperationRequest.cs` |
+| `BeaconReportCreateRequest` | `src/ThePlaidApi/Models/BeaconReportCreateRequest.cs` |
+| `BeaconReportCreateResponse` | `src/ThePlaidApi/Models/BeaconReportCreateResponse.cs` |
 
 ### BeaconReportGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BeaconReportGet(BeaconReportGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BeaconReportGet(BeaconReportGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BeaconReportGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BeaconReportGetRequest` | `Models/BeaconReportGetRequest.cs` |
-| `BeaconReportGetResponse` | `Models/BeaconReportGetResponse.cs` |
+| `BeaconReportGetOperationRequest` | `src/ThePlaidApi/Requests/BeaconReportGetOperationRequest.cs` |
+| `BeaconReportGetRequest` | `src/ThePlaidApi/Models/BeaconReportGetRequest.cs` |
+| `BeaconReportGetResponse` | `src/ThePlaidApi/Models/BeaconReportGetResponse.cs` |
 
 ### BeaconReportList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BeaconReportList(BeaconReportListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BeaconReportList(BeaconReportListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BeaconReportListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BeaconReportListRequest` | `Models/BeaconReportListRequest.cs` |
-| `BeaconReportListResponse` | `Models/BeaconReportListResponse.cs` |
+| `BeaconReportListOperationRequest` | `src/ThePlaidApi/Requests/BeaconReportListOperationRequest.cs` |
+| `BeaconReportListRequest` | `src/ThePlaidApi/Models/BeaconReportListRequest.cs` |
+| `BeaconReportListResponse` | `src/ThePlaidApi/Models/BeaconReportListResponse.cs` |
 
 ### BeaconReportSyndicationGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BeaconReportSyndicationGet(BeaconReportSyndicationGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BeaconReportSyndicationGet(BeaconReportSyndicationGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BeaconReportSyndicationGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BeaconReportSyndicationGetRequest` | `Models/BeaconReportSyndicationGetRequest.cs` |
-| `BeaconReportSyndicationGetResponse` | `Models/BeaconReportSyndicationGetResponse.cs` |
+| `BeaconReportSyndicationGetOperationRequest` | `src/ThePlaidApi/Requests/BeaconReportSyndicationGetOperationRequest.cs` |
+| `BeaconReportSyndicationGetRequest` | `src/ThePlaidApi/Models/BeaconReportSyndicationGetRequest.cs` |
+| `BeaconReportSyndicationGetResponse` | `src/ThePlaidApi/Models/BeaconReportSyndicationGetResponse.cs` |
 
 ### BeaconReportSyndicationList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BeaconReportSyndicationList(BeaconReportSyndicationListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BeaconReportSyndicationList(BeaconReportSyndicationListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BeaconReportSyndicationListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BeaconReportSyndicationListRequest` | `Models/BeaconReportSyndicationListRequest.cs` |
-| `BeaconReportSyndicationListResponse` | `Models/BeaconReportSyndicationListResponse.cs` |
+| `BeaconReportSyndicationListOperationRequest` | `src/ThePlaidApi/Requests/BeaconReportSyndicationListOperationRequest.cs` |
+| `BeaconReportSyndicationListRequest` | `src/ThePlaidApi/Models/BeaconReportSyndicationListRequest.cs` |
+| `BeaconReportSyndicationListResponse` | `src/ThePlaidApi/Models/BeaconReportSyndicationListResponse.cs` |
 
 ### BeaconUserAccountInsightsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BeaconUserAccountInsightsGet(BeaconUserAccountInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BeaconUserAccountInsightsGet(BeaconUserAccountInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BeaconUserAccountInsightsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BeaconUserAccountInsightsGetRequest` | `Models/BeaconUserAccountInsightsGetRequest.cs` |
-| `BeaconUserAccountInsightsGetResponse` | `Models/BeaconUserAccountInsightsGetResponse.cs` |
+| `BeaconUserAccountInsightsGetOperationRequest` | `src/ThePlaidApi/Requests/BeaconUserAccountInsightsGetOperationRequest.cs` |
+| `BeaconUserAccountInsightsGetRequest` | `src/ThePlaidApi/Models/BeaconUserAccountInsightsGetRequest.cs` |
+| `BeaconUserAccountInsightsGetResponse` | `src/ThePlaidApi/Models/BeaconUserAccountInsightsGetResponse.cs` |
 
 ### BeaconUserCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BeaconUserCreate(BeaconUserCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BeaconUserCreate(BeaconUserCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BeaconUserCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BeaconUserCreateRequest` | `Models/BeaconUserCreateRequest.cs` |
-| `BeaconUserCreateResponse` | `Models/BeaconUserCreateResponse.cs` |
+| `BeaconUserCreateOperationRequest` | `src/ThePlaidApi/Requests/BeaconUserCreateOperationRequest.cs` |
+| `BeaconUserCreateRequest` | `src/ThePlaidApi/Models/BeaconUserCreateRequest.cs` |
+| `BeaconUserCreateResponse` | `src/ThePlaidApi/Models/BeaconUserCreateResponse.cs` |
 
 ### BeaconUserGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BeaconUserGet(BeaconUserGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BeaconUserGet(BeaconUserGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BeaconUserGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BeaconUserGetRequest` | `Models/BeaconUserGetRequest.cs` |
-| `BeaconUserGetResponse` | `Models/BeaconUserGetResponse.cs` |
+| `BeaconUserGetOperationRequest` | `src/ThePlaidApi/Requests/BeaconUserGetOperationRequest.cs` |
+| `BeaconUserGetRequest` | `src/ThePlaidApi/Models/BeaconUserGetRequest.cs` |
+| `BeaconUserGetResponse` | `src/ThePlaidApi/Models/BeaconUserGetResponse.cs` |
 
 ### BeaconUserHistoryList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BeaconUserHistoryList(BeaconUserHistoryListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BeaconUserHistoryList(BeaconUserHistoryListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BeaconUserHistoryListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BeaconUserHistoryListRequest` | `Models/BeaconUserHistoryListRequest.cs` |
-| `BeaconUserHistoryListResponse` | `Models/BeaconUserHistoryListResponse.cs` |
+| `BeaconUserHistoryListOperationRequest` | `src/ThePlaidApi/Requests/BeaconUserHistoryListOperationRequest.cs` |
+| `BeaconUserHistoryListRequest` | `src/ThePlaidApi/Models/BeaconUserHistoryListRequest.cs` |
+| `BeaconUserHistoryListResponse` | `src/ThePlaidApi/Models/BeaconUserHistoryListResponse.cs` |
 
 ### BeaconUserReview
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BeaconUserReview(BeaconUserReviewRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BeaconUserReview(BeaconUserReviewOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BeaconUserGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BeaconUserReviewRequest` | `Models/BeaconUserReviewRequest.cs` |
-| `BeaconUserGetResponse` | `Models/BeaconUserGetResponse.cs` |
+| `BeaconUserReviewOperationRequest` | `src/ThePlaidApi/Requests/BeaconUserReviewOperationRequest.cs` |
+| `BeaconUserReviewRequest` | `src/ThePlaidApi/Models/BeaconUserReviewRequest.cs` |
+| `BeaconUserGetResponse` | `src/ThePlaidApi/Models/BeaconUserGetResponse.cs` |
 
 ### BeaconUserUpdate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BeaconUserUpdate(BeaconUserUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BeaconUserUpdate(BeaconUserUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BeaconUserUpdateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BeaconUserUpdateRequest` | `Models/BeaconUserUpdateRequest.cs` |
-| `BeaconUserUpdateResponse` | `Models/BeaconUserUpdateResponse.cs` |
+| `BeaconUserUpdateOperationRequest` | `src/ThePlaidApi/Requests/BeaconUserUpdateOperationRequest.cs` |
+| `BeaconUserUpdateRequest` | `src/ThePlaidApi/Models/BeaconUserUpdateRequest.cs` |
+| `BeaconUserUpdateResponse` | `src/ThePlaidApi/Models/BeaconUserUpdateResponse.cs` |
 
 ### BetaEwaReportV1Get
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BetaEwaReportV1Get(BetaEwaReportV1GetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BetaEwaReportV1Get(BetaEwaReportV1GetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BetaEwaReportV1GetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BetaEwaReportV1GetRequest` | `Models/BetaEwaReportV1GetRequest.cs` |
-| `BetaEwaReportV1GetResponse` | `Models/BetaEwaReportV1GetResponse.cs` |
+| `BetaEwaReportV1GetOperationRequest` | `src/ThePlaidApi/Requests/BetaEwaReportV1GetOperationRequest.cs` |
+| `BetaEwaReportV1GetRequest` | `src/ThePlaidApi/Models/BetaEwaReportV1GetRequest.cs` |
+| `BetaEwaReportV1GetResponse` | `src/ThePlaidApi/Models/BetaEwaReportV1GetResponse.cs` |
 
 ### BetaPartnerCustomerV1Create
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BetaPartnerCustomerV1Create(BetaPartnerCustomerV1CreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BetaPartnerCustomerV1Create(BetaPartnerCustomerV1CreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BetaPartnerCustomerV1CreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BetaPartnerCustomerV1CreateRequest` | `Models/BetaPartnerCustomerV1CreateRequest.cs` |
-| `BetaPartnerCustomerV1CreateResponse` | `Models/BetaPartnerCustomerV1CreateResponse.cs` |
+| `BetaPartnerCustomerV1CreateOperationRequest` | `src/ThePlaidApi/Requests/BetaPartnerCustomerV1CreateOperationRequest.cs` |
+| `BetaPartnerCustomerV1CreateRequest` | `src/ThePlaidApi/Models/BetaPartnerCustomerV1CreateRequest.cs` |
+| `BetaPartnerCustomerV1CreateResponse` | `src/ThePlaidApi/Models/BetaPartnerCustomerV1CreateResponse.cs` |
 
 ### BetaPartnerCustomerV1Enable
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BetaPartnerCustomerV1Enable(BetaPartnerCustomerV1EnableRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BetaPartnerCustomerV1Enable(BetaPartnerCustomerV1EnableOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BetaPartnerCustomerV1EnableResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BetaPartnerCustomerV1EnableRequest` | `Models/BetaPartnerCustomerV1EnableRequest.cs` |
-| `BetaPartnerCustomerV1EnableResponse` | `Models/BetaPartnerCustomerV1EnableResponse.cs` |
+| `BetaPartnerCustomerV1EnableOperationRequest` | `src/ThePlaidApi/Requests/BetaPartnerCustomerV1EnableOperationRequest.cs` |
+| `BetaPartnerCustomerV1EnableRequest` | `src/ThePlaidApi/Models/BetaPartnerCustomerV1EnableRequest.cs` |
+| `BetaPartnerCustomerV1EnableResponse` | `src/ThePlaidApi/Models/BetaPartnerCustomerV1EnableResponse.cs` |
 
 ### BetaPartnerCustomerV1Get
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BetaPartnerCustomerV1Get(BetaPartnerCustomerV1GetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BetaPartnerCustomerV1Get(BetaPartnerCustomerV1GetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BetaPartnerCustomerV1GetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BetaPartnerCustomerV1GetRequest` | `Models/BetaPartnerCustomerV1GetRequest.cs` |
-| `BetaPartnerCustomerV1GetResponse` | `Models/BetaPartnerCustomerV1GetResponse.cs` |
+| `BetaPartnerCustomerV1GetOperationRequest` | `src/ThePlaidApi/Requests/BetaPartnerCustomerV1GetOperationRequest.cs` |
+| `BetaPartnerCustomerV1GetRequest` | `src/ThePlaidApi/Models/BetaPartnerCustomerV1GetRequest.cs` |
+| `BetaPartnerCustomerV1GetResponse` | `src/ThePlaidApi/Models/BetaPartnerCustomerV1GetResponse.cs` |
 
 ### BetaPartnerCustomerV1Update
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BetaPartnerCustomerV1Update(BetaPartnerCustomerV1UpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BetaPartnerCustomerV1Update(BetaPartnerCustomerV1UpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BetaPartnerCustomerV1UpdateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BetaPartnerCustomerV1UpdateRequest` | `Models/BetaPartnerCustomerV1UpdateRequest.cs` |
-| `BetaPartnerCustomerV1UpdateResponse` | `Models/BetaPartnerCustomerV1UpdateResponse.cs` |
+| `BetaPartnerCustomerV1UpdateOperationRequest` | `src/ThePlaidApi/Requests/BetaPartnerCustomerV1UpdateOperationRequest.cs` |
+| `BetaPartnerCustomerV1UpdateRequest` | `src/ThePlaidApi/Models/BetaPartnerCustomerV1UpdateRequest.cs` |
+| `BetaPartnerCustomerV1UpdateResponse` | `src/ThePlaidApi/Models/BetaPartnerCustomerV1UpdateResponse.cs` |
 
 ### BusinessVerificationCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BusinessVerificationCreate(BusinessVerificationCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BusinessVerificationCreate(BusinessVerificationCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BusinessVerificationCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BusinessVerificationCreateRequest` | `Models/BusinessVerificationCreateRequest.cs` |
-| `BusinessVerificationCreateResponse` | `Models/BusinessVerificationCreateResponse.cs` |
+| `BusinessVerificationCreateOperationRequest` | `src/ThePlaidApi/Requests/BusinessVerificationCreateOperationRequest.cs` |
+| `BusinessVerificationCreateRequest` | `src/ThePlaidApi/Models/BusinessVerificationCreateRequest.cs` |
+| `BusinessVerificationCreateResponse` | `src/ThePlaidApi/Models/BusinessVerificationCreateResponse.cs` |
 
 ### BusinessVerificationGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `BusinessVerificationGet(BusinessVerificationGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `BusinessVerificationGet(BusinessVerificationGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `BusinessVerificationGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `BusinessVerificationGetRequest` | `Models/BusinessVerificationGetRequest.cs` |
-| `BusinessVerificationGetResponse` | `Models/BusinessVerificationGetResponse.cs` |
+| `BusinessVerificationGetOperationRequest` | `src/ThePlaidApi/Requests/BusinessVerificationGetOperationRequest.cs` |
+| `BusinessVerificationGetRequest` | `src/ThePlaidApi/Models/BusinessVerificationGetRequest.cs` |
+| `BusinessVerificationGetResponse` | `src/ThePlaidApi/Models/BusinessVerificationGetResponse.cs` |
 
 ### CashflowReportGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CashflowReportGet(CashflowReportGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CashflowReportGet(CashflowReportGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CashflowReportGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CashflowReportGetRequest` | `Models/CashflowReportGetRequest.cs` |
-| `CashflowReportGetResponse` | `Models/CashflowReportGetResponse.cs` |
+| `CashflowReportGetOperationRequest` | `src/ThePlaidApi/Requests/CashflowReportGetOperationRequest.cs` |
+| `CashflowReportGetRequest` | `src/ThePlaidApi/Models/CashflowReportGetRequest.cs` |
+| `CashflowReportGetResponse` | `src/ThePlaidApi/Models/CashflowReportGetResponse.cs` |
 
 ### CashflowReportInsightsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CashflowReportInsightsGet(CashflowReportInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CashflowReportInsightsGet(CashflowReportInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CashflowReportInsightsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CashflowReportInsightsGetRequest` | `Models/CashflowReportInsightsGetRequest.cs` |
-| `CashflowReportInsightsGetResponse` | `Models/CashflowReportInsightsGetResponse.cs` |
+| `CashflowReportInsightsGetOperationRequest` | `src/ThePlaidApi/Requests/CashflowReportInsightsGetOperationRequest.cs` |
+| `CashflowReportInsightsGetRequest` | `src/ThePlaidApi/Models/CashflowReportInsightsGetRequest.cs` |
+| `CashflowReportInsightsGetResponse` | `src/ThePlaidApi/Models/CashflowReportInsightsGetResponse.cs` |
 
 ### CashflowReportRefresh
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CashflowReportRefresh(CashflowReportRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CashflowReportRefresh(CashflowReportRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CashflowReportRefreshResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CashflowReportRefreshRequest` | `Models/CashflowReportRefreshRequest.cs` |
-| `CashflowReportRefreshResponse` | `Models/CashflowReportRefreshResponse.cs` |
+| `CashflowReportRefreshOperationRequest` | `src/ThePlaidApi/Requests/CashflowReportRefreshOperationRequest.cs` |
+| `CashflowReportRefreshRequest` | `src/ThePlaidApi/Models/CashflowReportRefreshRequest.cs` |
+| `CashflowReportRefreshResponse` | `src/ThePlaidApi/Models/CashflowReportRefreshResponse.cs` |
 
 ### CashflowReportTransactionsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CashflowReportTransactionsGet(CashflowReportTransactionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CashflowReportTransactionsGet(CashflowReportTransactionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CashflowReportTransactionsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CashflowReportTransactionsGetRequest` | `Models/CashflowReportTransactionsGetRequest.cs` |
-| `CashflowReportTransactionsGetResponse` | `Models/CashflowReportTransactionsGetResponse.cs` |
+| `CashflowReportTransactionsGetOperationRequest` | `src/ThePlaidApi/Requests/CashflowReportTransactionsGetOperationRequest.cs` |
+| `CashflowReportTransactionsGetRequest` | `src/ThePlaidApi/Models/CashflowReportTransactionsGetRequest.cs` |
+| `CashflowReportTransactionsGetResponse` | `src/ThePlaidApi/Models/CashflowReportTransactionsGetResponse.cs` |
 
 ### CategoriesGet
 
-- **Signature**: `CategoriesGet(object body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CategoriesGet(CategoriesGetRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CategoriesGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CategoriesGetResponse` | `Models/CategoriesGetResponse.cs` |
+| `CategoriesGetRequest` | `src/ThePlaidApi/Requests/CategoriesGetRequest.cs` |
+| `CategoriesGetResponse` | `src/ThePlaidApi/Models/CategoriesGetResponse.cs` |
 
 ### ConsentEventsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ConsentEventsGet(ConsentEventsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ConsentEventsGet(ConsentEventsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ConsentEventsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ConsentEventsGetRequest` | `Models/ConsentEventsGetRequest.cs` |
-| `ConsentEventsGetResponse` | `Models/ConsentEventsGetResponse.cs` |
+| `ConsentEventsGetOperationRequest` | `src/ThePlaidApi/Requests/ConsentEventsGetOperationRequest.cs` |
+| `ConsentEventsGetRequest` | `src/ThePlaidApi/Models/ConsentEventsGetRequest.cs` |
+| `ConsentEventsGetResponse` | `src/ThePlaidApi/Models/ConsentEventsGetResponse.cs` |
 
 ### ConsumerReportPdfGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ConsumerReportPdfGet(ConsumerReportPdfGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ConsumerReportPdfGet(ConsumerReportPdfGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `void` (Task)
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ConsumerReportPdfGetRequest` | `Models/ConsumerReportPdfGetRequest.cs` |
+| `ConsumerReportPdfGetOperationRequest` | `src/ThePlaidApi/Requests/ConsumerReportPdfGetOperationRequest.cs` |
+| `ConsumerReportPdfGetRequest` | `src/ThePlaidApi/Models/ConsumerReportPdfGetRequest.cs` |
 
 ### CraCheckReportBaseReportGet
 
 - **Auth**: (`options.ClientId` AND `options.Secret` AND `options.PlaidVersion`) OR `options.Oauth2`
-- **Signature**: `CraCheckReportBaseReportGet(CraCheckReportBaseReportGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraCheckReportBaseReportGet(CraCheckReportBaseReportGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraCheckReportBaseReportGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraCheckReportBaseReportGetRequest` | `Models/CraCheckReportBaseReportGetRequest.cs` |
-| `CraCheckReportBaseReportGetResponse` | `Models/CraCheckReportBaseReportGetResponse.cs` |
+| `CraCheckReportBaseReportGetOperationRequest` | `src/ThePlaidApi/Requests/CraCheckReportBaseReportGetOperationRequest.cs` |
+| `CraCheckReportBaseReportGetRequest` | `src/ThePlaidApi/Models/CraCheckReportBaseReportGetRequest.cs` |
+| `CraCheckReportBaseReportGetResponse` | `src/ThePlaidApi/Models/CraCheckReportBaseReportGetResponse.cs` |
 
 ### CraCheckReportCashflowInsightsGet
 
 - **Auth**: (`options.ClientId` AND `options.Secret` AND `options.PlaidVersion`) OR `options.Oauth2`
-- **Signature**: `CraCheckReportCashflowInsightsGet(CraCheckReportCashflowInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraCheckReportCashflowInsightsGet(CraCheckReportCashflowInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraCheckReportCashflowInsightsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraCheckReportCashflowInsightsGetRequest` | `Models/CraCheckReportCashflowInsightsGetRequest.cs` |
-| `CraCheckReportCashflowInsightsGetResponse` | `Models/CraCheckReportCashflowInsightsGetResponse.cs` |
+| `CraCheckReportCashflowInsightsGetOperationRequest` | `src/ThePlaidApi/Requests/CraCheckReportCashflowInsightsGetOperationRequest.cs` |
+| `CraCheckReportCashflowInsightsGetRequest` | `src/ThePlaidApi/Models/CraCheckReportCashflowInsightsGetRequest.cs` |
+| `CraCheckReportCashflowInsightsGetResponse` | `src/ThePlaidApi/Models/CraCheckReportCashflowInsightsGetResponse.cs` |
 
 ### CraCheckReportCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CraCheckReportCreate(CraCheckReportCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraCheckReportCreate(CraCheckReportCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraCheckReportCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraCheckReportCreateRequest` | `Models/CraCheckReportCreateRequest.cs` |
-| `CraCheckReportCreateResponse` | `Models/CraCheckReportCreateResponse.cs` |
+| `CraCheckReportCreateOperationRequest` | `src/ThePlaidApi/Requests/CraCheckReportCreateOperationRequest.cs` |
+| `CraCheckReportCreateRequest` | `src/ThePlaidApi/Models/CraCheckReportCreateRequest.cs` |
+| `CraCheckReportCreateResponse` | `src/ThePlaidApi/Models/CraCheckReportCreateResponse.cs` |
 
 ### CraCheckReportIncomeInsightsGet
 
 - **Auth**: (`options.ClientId` AND `options.Secret` AND `options.PlaidVersion`) OR `options.Oauth2`
-- **Signature**: `CraCheckReportIncomeInsightsGet(CraCheckReportIncomeInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraCheckReportIncomeInsightsGet(CraCheckReportIncomeInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraCheckReportIncomeInsightsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraCheckReportIncomeInsightsGetRequest` | `Models/CraCheckReportIncomeInsightsGetRequest.cs` |
-| `CraCheckReportIncomeInsightsGetResponse` | `Models/CraCheckReportIncomeInsightsGetResponse.cs` |
+| `CraCheckReportIncomeInsightsGetOperationRequest` | `src/ThePlaidApi/Requests/CraCheckReportIncomeInsightsGetOperationRequest.cs` |
+| `CraCheckReportIncomeInsightsGetRequest` | `src/ThePlaidApi/Models/CraCheckReportIncomeInsightsGetRequest.cs` |
+| `CraCheckReportIncomeInsightsGetResponse` | `src/ThePlaidApi/Models/CraCheckReportIncomeInsightsGetResponse.cs` |
 
 ### CraCheckReportLendScoreGet
 
 - **Auth**: (`options.ClientId` AND `options.Secret` AND `options.PlaidVersion`) OR `options.Oauth2`
-- **Signature**: `CraCheckReportLendScoreGet(CraCheckReportLendScoreGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraCheckReportLendScoreGet(CraCheckReportLendScoreGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraCheckReportLendScoreGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraCheckReportLendScoreGetRequest` | `Models/CraCheckReportLendScoreGetRequest.cs` |
-| `CraCheckReportLendScoreGetResponse` | `Models/CraCheckReportLendScoreGetResponse.cs` |
+| `CraCheckReportLendScoreGetOperationRequest` | `src/ThePlaidApi/Requests/CraCheckReportLendScoreGetOperationRequest.cs` |
+| `CraCheckReportLendScoreGetRequest` | `src/ThePlaidApi/Models/CraCheckReportLendScoreGetRequest.cs` |
+| `CraCheckReportLendScoreGetResponse` | `src/ThePlaidApi/Models/CraCheckReportLendScoreGetResponse.cs` |
 
 ### CraCheckReportNetworkInsightsGet
 
 - **Auth**: (`options.ClientId` AND `options.Secret` AND `options.PlaidVersion`) OR `options.Oauth2`
-- **Signature**: `CraCheckReportNetworkInsightsGet(CraCheckReportNetworkInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraCheckReportNetworkInsightsGet(CraCheckReportNetworkInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraCheckReportNetworkInsightsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraCheckReportNetworkInsightsGetRequest` | `Models/CraCheckReportNetworkInsightsGetRequest.cs` |
-| `CraCheckReportNetworkInsightsGetResponse` | `Models/CraCheckReportNetworkInsightsGetResponse.cs` |
+| `CraCheckReportNetworkInsightsGetOperationRequest` | `src/ThePlaidApi/Requests/CraCheckReportNetworkInsightsGetOperationRequest.cs` |
+| `CraCheckReportNetworkInsightsGetRequest` | `src/ThePlaidApi/Models/CraCheckReportNetworkInsightsGetRequest.cs` |
+| `CraCheckReportNetworkInsightsGetResponse` | `src/ThePlaidApi/Models/CraCheckReportNetworkInsightsGetResponse.cs` |
 
 ### CraCheckReportPartnerInsightsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CraCheckReportPartnerInsightsGet(CraCheckReportPartnerInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraCheckReportPartnerInsightsGet(CraCheckReportPartnerInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraCheckReportPartnerInsightsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraCheckReportPartnerInsightsGetRequest` | `Models/CraCheckReportPartnerInsightsGetRequest.cs` |
-| `CraCheckReportPartnerInsightsGetResponse` | `Models/CraCheckReportPartnerInsightsGetResponse.cs` |
+| `CraCheckReportPartnerInsightsGetOperationRequest` | `src/ThePlaidApi/Requests/CraCheckReportPartnerInsightsGetOperationRequest.cs` |
+| `CraCheckReportPartnerInsightsGetRequest` | `src/ThePlaidApi/Models/CraCheckReportPartnerInsightsGetRequest.cs` |
+| `CraCheckReportPartnerInsightsGetResponse` | `src/ThePlaidApi/Models/CraCheckReportPartnerInsightsGetResponse.cs` |
 
 ### CraCheckReportPdfGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CraCheckReportPdfGet(CraCheckReportPdfGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraCheckReportPdfGet(CraCheckReportPdfGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `void` (Task)
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraCheckReportPdfGetRequest` | `Models/CraCheckReportPdfGetRequest.cs` |
+| `CraCheckReportPdfGetOperationRequest` | `src/ThePlaidApi/Requests/CraCheckReportPdfGetOperationRequest.cs` |
+| `CraCheckReportPdfGetRequest` | `src/ThePlaidApi/Models/CraCheckReportPdfGetRequest.cs` |
 
 ### CraCheckReportVerificationGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CraCheckReportVerificationGet(CraCheckReportVerificationGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraCheckReportVerificationGet(CraCheckReportVerificationGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraCheckReportVerificationGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraCheckReportVerificationGetRequest` | `Models/CraCheckReportVerificationGetRequest.cs` |
-| `CraCheckReportVerificationGetResponse` | `Models/CraCheckReportVerificationGetResponse.cs` |
+| `CraCheckReportVerificationGetOperationRequest` | `src/ThePlaidApi/Requests/CraCheckReportVerificationGetOperationRequest.cs` |
+| `CraCheckReportVerificationGetRequest` | `src/ThePlaidApi/Models/CraCheckReportVerificationGetRequest.cs` |
+| `CraCheckReportVerificationGetResponse` | `src/ThePlaidApi/Models/CraCheckReportVerificationGetResponse.cs` |
 
 ### CraCheckReportVerificationPdfGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CraCheckReportVerificationPdfGet(CraCheckReportVerificationPdfGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraCheckReportVerificationPdfGet(CraCheckReportVerificationPdfGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `void` (Task)
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraCheckReportVerificationPdfGetRequest` | `Models/CraCheckReportVerificationPdfGetRequest.cs` |
+| `CraCheckReportVerificationPdfGetOperationRequest` | `src/ThePlaidApi/Requests/CraCheckReportVerificationPdfGetOperationRequest.cs` |
+| `CraCheckReportVerificationPdfGetRequest` | `src/ThePlaidApi/Models/CraCheckReportVerificationPdfGetRequest.cs` |
 
 ### CraCreditProfileReportGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CraCreditProfileReportGet(CraCreditProfileReportGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraCreditProfileReportGet(CraCreditProfileReportGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraCreditProfileReportGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraCreditProfileReportGetRequest` | `Models/CraCreditProfileReportGetRequest.cs` |
-| `CraCreditProfileReportGetResponse` | `Models/CraCreditProfileReportGetResponse.cs` |
+| `CraCreditProfileReportGetOperationRequest` | `src/ThePlaidApi/Requests/CraCreditProfileReportGetOperationRequest.cs` |
+| `CraCreditProfileReportGetRequest` | `src/ThePlaidApi/Models/CraCreditProfileReportGetRequest.cs` |
+| `CraCreditProfileReportGetResponse` | `src/ThePlaidApi/Models/CraCreditProfileReportGetResponse.cs` |
 
 ### CraLoansApplicationsRegister
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CraLoansApplicationsRegister(CraLoansApplicationsRegisterRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraLoansApplicationsRegister(CraLoansApplicationsRegisterOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraLoansApplicationsRegisterResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraLoansApplicationsRegisterRequest` | `Models/CraLoansApplicationsRegisterRequest.cs` |
-| `CraLoansApplicationsRegisterResponse` | `Models/CraLoansApplicationsRegisterResponse.cs` |
+| `CraLoansApplicationsRegisterOperationRequest` | `src/ThePlaidApi/Requests/CraLoansApplicationsRegisterOperationRequest.cs` |
+| `CraLoansApplicationsRegisterRequest` | `src/ThePlaidApi/Models/CraLoansApplicationsRegisterRequest.cs` |
+| `CraLoansApplicationsRegisterResponse` | `src/ThePlaidApi/Models/CraLoansApplicationsRegisterResponse.cs` |
 
 ### CraLoansRegister
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CraLoansRegister(CraLoansRegisterRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraLoansRegister(CraLoansRegisterOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraLoansRegisterResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraLoansRegisterRequest` | `Models/CraLoansRegisterRequest.cs` |
-| `CraLoansRegisterResponse` | `Models/CraLoansRegisterResponse.cs` |
+| `CraLoansRegisterOperationRequest` | `src/ThePlaidApi/Requests/CraLoansRegisterOperationRequest.cs` |
+| `CraLoansRegisterRequest` | `src/ThePlaidApi/Models/CraLoansRegisterRequest.cs` |
+| `CraLoansRegisterResponse` | `src/ThePlaidApi/Models/CraLoansRegisterResponse.cs` |
 
 ### CraLoansUnregister
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CraLoansUnregister(CraLoansUnregisterRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraLoansUnregister(CraLoansUnregisterOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraLoanUnregisterResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraLoansUnregisterRequest` | `Models/CraLoansUnregisterRequest.cs` |
-| `CraLoanUnregisterResponse` | `Models/CraLoanUnregisterResponse.cs` |
+| `CraLoansUnregisterOperationRequest` | `src/ThePlaidApi/Requests/CraLoansUnregisterOperationRequest.cs` |
+| `CraLoansUnregisterRequest` | `src/ThePlaidApi/Models/CraLoansUnregisterRequest.cs` |
+| `CraLoanUnregisterResponse` | `src/ThePlaidApi/Models/CraLoanUnregisterResponse.cs` |
 
 ### CraLoansUpdate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CraLoansUpdate(CraLoansUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraLoansUpdate(CraLoansUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraLoansUpdateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraLoansUpdateRequest` | `Models/CraLoansUpdateRequest.cs` |
-| `CraLoansUpdateResponse` | `Models/CraLoansUpdateResponse.cs` |
+| `CraLoansUpdateOperationRequest` | `src/ThePlaidApi/Requests/CraLoansUpdateOperationRequest.cs` |
+| `CraLoansUpdateRequest` | `src/ThePlaidApi/Models/CraLoansUpdateRequest.cs` |
+| `CraLoansUpdateResponse` | `src/ThePlaidApi/Models/CraLoansUpdateResponse.cs` |
 
 ### CraMonitoringInsightsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CraMonitoringInsightsGet(CraMonitoringInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraMonitoringInsightsGet(CraMonitoringInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraMonitoringInsightsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraMonitoringInsightsGetRequest` | `Models/CraMonitoringInsightsGetRequest.cs` |
-| `CraMonitoringInsightsGetResponse` | `Models/CraMonitoringInsightsGetResponse.cs` |
+| `CraMonitoringInsightsGetOperationRequest` | `src/ThePlaidApi/Requests/CraMonitoringInsightsGetOperationRequest.cs` |
+| `CraMonitoringInsightsGetRequest` | `src/ThePlaidApi/Models/CraMonitoringInsightsGetRequest.cs` |
+| `CraMonitoringInsightsGetResponse` | `src/ThePlaidApi/Models/CraMonitoringInsightsGetResponse.cs` |
 
 ### CraMonitoringInsightsSubscribe
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CraMonitoringInsightsSubscribe(CraMonitoringInsightsSubscribeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraMonitoringInsightsSubscribe(CraMonitoringInsightsSubscribeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraMonitoringInsightsSubscribeResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraMonitoringInsightsSubscribeRequest` | `Models/CraMonitoringInsightsSubscribeRequest.cs` |
-| `CraMonitoringInsightsSubscribeResponse` | `Models/CraMonitoringInsightsSubscribeResponse.cs` |
+| `CraMonitoringInsightsSubscribeOperationRequest` | `src/ThePlaidApi/Requests/CraMonitoringInsightsSubscribeOperationRequest.cs` |
+| `CraMonitoringInsightsSubscribeRequest` | `src/ThePlaidApi/Models/CraMonitoringInsightsSubscribeRequest.cs` |
+| `CraMonitoringInsightsSubscribeResponse` | `src/ThePlaidApi/Models/CraMonitoringInsightsSubscribeResponse.cs` |
 
 ### CraMonitoringInsightsUnsubscribe
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CraMonitoringInsightsUnsubscribe(CraMonitoringInsightsUnsubscribeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraMonitoringInsightsUnsubscribe(CraMonitoringInsightsUnsubscribeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraMonitoringInsightsUnsubscribeResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraMonitoringInsightsUnsubscribeRequest` | `Models/CraMonitoringInsightsUnsubscribeRequest.cs` |
-| `CraMonitoringInsightsUnsubscribeResponse` | `Models/CraMonitoringInsightsUnsubscribeResponse.cs` |
+| `CraMonitoringInsightsUnsubscribeOperationRequest` | `src/ThePlaidApi/Requests/CraMonitoringInsightsUnsubscribeOperationRequest.cs` |
+| `CraMonitoringInsightsUnsubscribeRequest` | `src/ThePlaidApi/Models/CraMonitoringInsightsUnsubscribeRequest.cs` |
+| `CraMonitoringInsightsUnsubscribeResponse` | `src/ThePlaidApi/Models/CraMonitoringInsightsUnsubscribeResponse.cs` |
 
 ### CraPartnerInsightsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CraPartnerInsightsGet(CraPartnerInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraPartnerInsightsGet(CraPartnerInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraPartnerInsightsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraPartnerInsightsGetRequest` | `Models/CraPartnerInsightsGetRequest.cs` |
-| `CraPartnerInsightsGetResponse` | `Models/CraPartnerInsightsGetResponse.cs` |
+| `CraPartnerInsightsGetOperationRequest` | `src/ThePlaidApi/Requests/CraPartnerInsightsGetOperationRequest.cs` |
+| `CraPartnerInsightsGetRequest` | `src/ThePlaidApi/Models/CraPartnerInsightsGetRequest.cs` |
+| `CraPartnerInsightsGetResponse` | `src/ThePlaidApi/Models/CraPartnerInsightsGetResponse.cs` |
 
 ### CraReportGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CraReportGet(CraReportGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CraReportGet(CraReportGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CraReportGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CraReportGetRequest` | `Models/CraReportGetRequest.cs` |
-| `CraReportGetResponse` | `Models/CraReportGetResponse.cs` |
+| `CraReportGetOperationRequest` | `src/ThePlaidApi/Requests/CraReportGetOperationRequest.cs` |
+| `CraReportGetRequest` | `src/ThePlaidApi/Models/CraReportGetRequest.cs` |
+| `CraReportGetResponse` | `src/ThePlaidApi/Models/CraReportGetResponse.cs` |
 
 ### CreatePaymentToken
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreatePaymentToken(PaymentInitiationPaymentTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreatePaymentToken(CreatePaymentTokenRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PaymentInitiationPaymentTokenCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PaymentInitiationPaymentTokenCreateRequest` | `Models/PaymentInitiationPaymentTokenCreateRequest.cs` |
-| `PaymentInitiationPaymentTokenCreateResponse` | `Models/PaymentInitiationPaymentTokenCreateResponse.cs` |
+| `CreatePaymentTokenRequest` | `src/ThePlaidApi/Requests/CreatePaymentTokenRequest.cs` |
+| `PaymentInitiationPaymentTokenCreateRequest` | `src/ThePlaidApi/Models/PaymentInitiationPaymentTokenCreateRequest.cs` |
+| `PaymentInitiationPaymentTokenCreateResponse` | `src/ThePlaidApi/Models/PaymentInitiationPaymentTokenCreateResponse.cs` |
 
 ### CreditAssetReportFreddieMacGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditAssetReportFreddieMacGet(AssetReportFreddieGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditAssetReportFreddieMacGet(CreditAssetReportFreddieMacGetRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `AssetReportFreddieGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `AssetReportFreddieGetRequest` | `Models/AssetReportFreddieGetRequest.cs` |
-| `AssetReportFreddieGetResponse` | `Models/AssetReportFreddieGetResponse.cs` |
+| `CreditAssetReportFreddieMacGetRequest` | `src/ThePlaidApi/Requests/CreditAssetReportFreddieMacGetRequest.cs` |
+| `AssetReportFreddieGetRequest` | `src/ThePlaidApi/Models/AssetReportFreddieGetRequest.cs` |
+| `AssetReportFreddieGetResponse` | `src/ThePlaidApi/Models/AssetReportFreddieGetResponse.cs` |
 
 ### CreditAuditCopyTokenCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditAuditCopyTokenCreate(CreditAuditCopyTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditAuditCopyTokenCreate(CreditAuditCopyTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditAuditCopyTokenCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditAuditCopyTokenCreateRequest` | `Models/CreditAuditCopyTokenCreateRequest.cs` |
-| `CreditAuditCopyTokenCreateResponse` | `Models/CreditAuditCopyTokenCreateResponse.cs` |
+| `CreditAuditCopyTokenCreateOperationRequest` | `src/ThePlaidApi/Requests/CreditAuditCopyTokenCreateOperationRequest.cs` |
+| `CreditAuditCopyTokenCreateRequest` | `src/ThePlaidApi/Models/CreditAuditCopyTokenCreateRequest.cs` |
+| `CreditAuditCopyTokenCreateResponse` | `src/ThePlaidApi/Models/CreditAuditCopyTokenCreateResponse.cs` |
 
 ### CreditAuditCopyTokenUpdate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditAuditCopyTokenUpdate(CreditAuditCopyTokenUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditAuditCopyTokenUpdate(CreditAuditCopyTokenUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditAuditCopyTokenUpdateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditAuditCopyTokenUpdateRequest` | `Models/CreditAuditCopyTokenUpdateRequest.cs` |
-| `CreditAuditCopyTokenUpdateResponse` | `Models/CreditAuditCopyTokenUpdateResponse.cs` |
+| `CreditAuditCopyTokenUpdateOperationRequest` | `src/ThePlaidApi/Requests/CreditAuditCopyTokenUpdateOperationRequest.cs` |
+| `CreditAuditCopyTokenUpdateRequest` | `src/ThePlaidApi/Models/CreditAuditCopyTokenUpdateRequest.cs` |
+| `CreditAuditCopyTokenUpdateResponse` | `src/ThePlaidApi/Models/CreditAuditCopyTokenUpdateResponse.cs` |
 
 ### CreditBankEmploymentGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditBankEmploymentGet(CreditBankEmploymentGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditBankEmploymentGet(CreditBankEmploymentGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditBankEmploymentGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditBankEmploymentGetRequest` | `Models/CreditBankEmploymentGetRequest.cs` |
-| `CreditBankEmploymentGetResponse` | `Models/CreditBankEmploymentGetResponse.cs` |
+| `CreditBankEmploymentGetOperationRequest` | `src/ThePlaidApi/Requests/CreditBankEmploymentGetOperationRequest.cs` |
+| `CreditBankEmploymentGetRequest` | `src/ThePlaidApi/Models/CreditBankEmploymentGetRequest.cs` |
+| `CreditBankEmploymentGetResponse` | `src/ThePlaidApi/Models/CreditBankEmploymentGetResponse.cs` |
 
 ### CreditBankIncomeGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditBankIncomeGet(CreditBankIncomeGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditBankIncomeGet(CreditBankIncomeGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditBankIncomeGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditBankIncomeGetRequest` | `Models/CreditBankIncomeGetRequest.cs` |
-| `CreditBankIncomeGetResponse` | `Models/CreditBankIncomeGetResponse.cs` |
+| `CreditBankIncomeGetOperationRequest` | `src/ThePlaidApi/Requests/CreditBankIncomeGetOperationRequest.cs` |
+| `CreditBankIncomeGetRequest` | `src/ThePlaidApi/Models/CreditBankIncomeGetRequest.cs` |
+| `CreditBankIncomeGetResponse` | `src/ThePlaidApi/Models/CreditBankIncomeGetResponse.cs` |
 
 ### CreditBankIncomePdfGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditBankIncomePdfGet(CreditBankIncomePdfGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditBankIncomePdfGet(CreditBankIncomePdfGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `void` (Task)
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditBankIncomePdfGetRequest` | `Models/CreditBankIncomePdfGetRequest.cs` |
+| `CreditBankIncomePdfGetOperationRequest` | `src/ThePlaidApi/Requests/CreditBankIncomePdfGetOperationRequest.cs` |
+| `CreditBankIncomePdfGetRequest` | `src/ThePlaidApi/Models/CreditBankIncomePdfGetRequest.cs` |
 
 ### CreditBankIncomeRefresh
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditBankIncomeRefresh(CreditBankIncomeRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditBankIncomeRefresh(CreditBankIncomeRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditBankIncomeRefreshResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditBankIncomeRefreshRequest` | `Models/CreditBankIncomeRefreshRequest.cs` |
-| `CreditBankIncomeRefreshResponse` | `Models/CreditBankIncomeRefreshResponse.cs` |
+| `CreditBankIncomeRefreshOperationRequest` | `src/ThePlaidApi/Requests/CreditBankIncomeRefreshOperationRequest.cs` |
+| `CreditBankIncomeRefreshRequest` | `src/ThePlaidApi/Models/CreditBankIncomeRefreshRequest.cs` |
+| `CreditBankIncomeRefreshResponse` | `src/ThePlaidApi/Models/CreditBankIncomeRefreshResponse.cs` |
 
 ### CreditBankIncomeWebhookUpdate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditBankIncomeWebhookUpdate(CreditBankIncomeWebhookUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditBankIncomeWebhookUpdate(CreditBankIncomeWebhookUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditBankIncomeWebhookUpdateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditBankIncomeWebhookUpdateRequest` | `Models/CreditBankIncomeWebhookUpdateRequest.cs` |
-| `CreditBankIncomeWebhookUpdateResponse` | `Models/CreditBankIncomeWebhookUpdateResponse.cs` |
+| `CreditBankIncomeWebhookUpdateOperationRequest` | `src/ThePlaidApi/Requests/CreditBankIncomeWebhookUpdateOperationRequest.cs` |
+| `CreditBankIncomeWebhookUpdateRequest` | `src/ThePlaidApi/Models/CreditBankIncomeWebhookUpdateRequest.cs` |
+| `CreditBankIncomeWebhookUpdateResponse` | `src/ThePlaidApi/Models/CreditBankIncomeWebhookUpdateResponse.cs` |
 
 ### CreditBankStatementsUploadsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditBankStatementsUploadsGet(CreditBankStatementsUploadsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditBankStatementsUploadsGet(CreditBankStatementsUploadsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditBankStatementsUploadsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditBankStatementsUploadsGetRequest` | `Models/CreditBankStatementsUploadsGetRequest.cs` |
-| `CreditBankStatementsUploadsGetResponse` | `Models/CreditBankStatementsUploadsGetResponse.cs` |
+| `CreditBankStatementsUploadsGetOperationRequest` | `src/ThePlaidApi/Requests/CreditBankStatementsUploadsGetOperationRequest.cs` |
+| `CreditBankStatementsUploadsGetRequest` | `src/ThePlaidApi/Models/CreditBankStatementsUploadsGetRequest.cs` |
+| `CreditBankStatementsUploadsGetResponse` | `src/ThePlaidApi/Models/CreditBankStatementsUploadsGetResponse.cs` |
 
 ### CreditEmploymentGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditEmploymentGet(CreditEmploymentGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditEmploymentGet(CreditEmploymentGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditEmploymentGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditEmploymentGetRequest` | `Models/CreditEmploymentGetRequest.cs` |
-| `CreditEmploymentGetResponse` | `Models/CreditEmploymentGetResponse.cs` |
+| `CreditEmploymentGetOperationRequest` | `src/ThePlaidApi/Requests/CreditEmploymentGetOperationRequest.cs` |
+| `CreditEmploymentGetRequest` | `src/ThePlaidApi/Models/CreditEmploymentGetRequest.cs` |
+| `CreditEmploymentGetResponse` | `src/ThePlaidApi/Models/CreditEmploymentGetResponse.cs` |
 
 ### CreditFreddieMacReportsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditFreddieMacReportsGet(CreditFreddieMacReportsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditFreddieMacReportsGet(CreditFreddieMacReportsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditFreddieMacReportsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditFreddieMacReportsGetRequest` | `Models/CreditFreddieMacReportsGetRequest.cs` |
-| `CreditFreddieMacReportsGetResponse` | `Models/CreditFreddieMacReportsGetResponse.cs` |
+| `CreditFreddieMacReportsGetOperationRequest` | `src/ThePlaidApi/Requests/CreditFreddieMacReportsGetOperationRequest.cs` |
+| `CreditFreddieMacReportsGetRequest` | `src/ThePlaidApi/Models/CreditFreddieMacReportsGetRequest.cs` |
+| `CreditFreddieMacReportsGetResponse` | `src/ThePlaidApi/Models/CreditFreddieMacReportsGetResponse.cs` |
 
 ### CreditPayrollIncomeGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditPayrollIncomeGet(CreditPayrollIncomeGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditPayrollIncomeGet(CreditPayrollIncomeGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditPayrollIncomeGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditPayrollIncomeGetRequest` | `Models/CreditPayrollIncomeGetRequest.cs` |
-| `CreditPayrollIncomeGetResponse` | `Models/CreditPayrollIncomeGetResponse.cs` |
+| `CreditPayrollIncomeGetOperationRequest` | `src/ThePlaidApi/Requests/CreditPayrollIncomeGetOperationRequest.cs` |
+| `CreditPayrollIncomeGetRequest` | `src/ThePlaidApi/Models/CreditPayrollIncomeGetRequest.cs` |
+| `CreditPayrollIncomeGetResponse` | `src/ThePlaidApi/Models/CreditPayrollIncomeGetResponse.cs` |
 
 ### CreditPayrollIncomeParsingConfigUpdate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditPayrollIncomeParsingConfigUpdate(CreditPayrollIncomeParsingConfigUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditPayrollIncomeParsingConfigUpdate(CreditPayrollIncomeParsingConfigUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditPayrollIncomeParsingConfigUpdateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditPayrollIncomeParsingConfigUpdateRequest` | `Models/CreditPayrollIncomeParsingConfigUpdateRequest.cs` |
-| `CreditPayrollIncomeParsingConfigUpdateResponse` | `Models/CreditPayrollIncomeParsingConfigUpdateResponse.cs` |
+| `CreditPayrollIncomeParsingConfigUpdateOperationRequest` | `src/ThePlaidApi/Requests/CreditPayrollIncomeParsingConfigUpdateOperationRequest.cs` |
+| `CreditPayrollIncomeParsingConfigUpdateRequest` | `src/ThePlaidApi/Models/CreditPayrollIncomeParsingConfigUpdateRequest.cs` |
+| `CreditPayrollIncomeParsingConfigUpdateResponse` | `src/ThePlaidApi/Models/CreditPayrollIncomeParsingConfigUpdateResponse.cs` |
 
 ### CreditPayrollIncomePrecheck
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditPayrollIncomePrecheck(CreditPayrollIncomePrecheckRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditPayrollIncomePrecheck(CreditPayrollIncomePrecheckOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditPayrollIncomePrecheckResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditPayrollIncomePrecheckRequest` | `Models/CreditPayrollIncomePrecheckRequest.cs` |
-| `CreditPayrollIncomePrecheckResponse` | `Models/CreditPayrollIncomePrecheckResponse.cs` |
+| `CreditPayrollIncomePrecheckOperationRequest` | `src/ThePlaidApi/Requests/CreditPayrollIncomePrecheckOperationRequest.cs` |
+| `CreditPayrollIncomePrecheckRequest` | `src/ThePlaidApi/Models/CreditPayrollIncomePrecheckRequest.cs` |
+| `CreditPayrollIncomePrecheckResponse` | `src/ThePlaidApi/Models/CreditPayrollIncomePrecheckResponse.cs` |
 
 ### CreditPayrollIncomeRefresh
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditPayrollIncomeRefresh(CreditPayrollIncomeRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditPayrollIncomeRefresh(CreditPayrollIncomeRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditPayrollIncomeRefreshResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditPayrollIncomeRefreshRequest` | `Models/CreditPayrollIncomeRefreshRequest.cs` |
-| `CreditPayrollIncomeRefreshResponse` | `Models/CreditPayrollIncomeRefreshResponse.cs` |
+| `CreditPayrollIncomeRefreshOperationRequest` | `src/ThePlaidApi/Requests/CreditPayrollIncomeRefreshOperationRequest.cs` |
+| `CreditPayrollIncomeRefreshRequest` | `src/ThePlaidApi/Models/CreditPayrollIncomeRefreshRequest.cs` |
+| `CreditPayrollIncomeRefreshResponse` | `src/ThePlaidApi/Models/CreditPayrollIncomeRefreshResponse.cs` |
 
 ### CreditPayrollIncomeRiskSignalsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditPayrollIncomeRiskSignalsGet(CreditPayrollIncomeRiskSignalsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditPayrollIncomeRiskSignalsGet(CreditPayrollIncomeRiskSignalsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditPayrollIncomeRiskSignalsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditPayrollIncomeRiskSignalsGetRequest` | `Models/CreditPayrollIncomeRiskSignalsGetRequest.cs` |
-| `CreditPayrollIncomeRiskSignalsGetResponse` | `Models/CreditPayrollIncomeRiskSignalsGetResponse.cs` |
+| `CreditPayrollIncomeRiskSignalsGetOperationRequest` | `src/ThePlaidApi/Requests/CreditPayrollIncomeRiskSignalsGetOperationRequest.cs` |
+| `CreditPayrollIncomeRiskSignalsGetRequest` | `src/ThePlaidApi/Models/CreditPayrollIncomeRiskSignalsGetRequest.cs` |
+| `CreditPayrollIncomeRiskSignalsGetResponse` | `src/ThePlaidApi/Models/CreditPayrollIncomeRiskSignalsGetResponse.cs` |
 
 ### CreditRelayCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditRelayCreate(CreditRelayCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditRelayCreate(CreditRelayCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditRelayCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditRelayCreateRequest` | `Models/CreditRelayCreateRequest.cs` |
-| `CreditRelayCreateResponse` | `Models/CreditRelayCreateResponse.cs` |
+| `CreditRelayCreateOperationRequest` | `src/ThePlaidApi/Requests/CreditRelayCreateOperationRequest.cs` |
+| `CreditRelayCreateRequest` | `src/ThePlaidApi/Models/CreditRelayCreateRequest.cs` |
+| `CreditRelayCreateResponse` | `src/ThePlaidApi/Models/CreditRelayCreateResponse.cs` |
 
 ### CreditRelayGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditRelayGet(CreditRelayGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditRelayGet(CreditRelayGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `AssetReportGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditRelayGetRequest` | `Models/CreditRelayGetRequest.cs` |
-| `AssetReportGetResponse` | `Models/AssetReportGetResponse.cs` |
+| `CreditRelayGetOperationRequest` | `src/ThePlaidApi/Requests/CreditRelayGetOperationRequest.cs` |
+| `CreditRelayGetRequest` | `src/ThePlaidApi/Models/CreditRelayGetRequest.cs` |
+| `AssetReportGetResponse` | `src/ThePlaidApi/Models/AssetReportGetResponse.cs` |
 
 ### CreditRelayPdfGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditRelayPdfGet(CreditRelayPdfGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditRelayPdfGet(CreditRelayPdfGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `void` (Task)
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditRelayPdfGetRequest` | `Models/CreditRelayPdfGetRequest.cs` |
+| `CreditRelayPdfGetOperationRequest` | `src/ThePlaidApi/Requests/CreditRelayPdfGetOperationRequest.cs` |
+| `CreditRelayPdfGetRequest` | `src/ThePlaidApi/Models/CreditRelayPdfGetRequest.cs` |
 
 ### CreditRelayRefresh
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditRelayRefresh(CreditRelayRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditRelayRefresh(CreditRelayRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditRelayRefreshResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditRelayRefreshRequest` | `Models/CreditRelayRefreshRequest.cs` |
-| `CreditRelayRefreshResponse` | `Models/CreditRelayRefreshResponse.cs` |
+| `CreditRelayRefreshOperationRequest` | `src/ThePlaidApi/Requests/CreditRelayRefreshOperationRequest.cs` |
+| `CreditRelayRefreshRequest` | `src/ThePlaidApi/Models/CreditRelayRefreshRequest.cs` |
+| `CreditRelayRefreshResponse` | `src/ThePlaidApi/Models/CreditRelayRefreshResponse.cs` |
 
 ### CreditRelayRemove
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditRelayRemove(CreditRelayRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditRelayRemove(CreditRelayRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditRelayRemoveResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditRelayRemoveRequest` | `Models/CreditRelayRemoveRequest.cs` |
-| `CreditRelayRemoveResponse` | `Models/CreditRelayRemoveResponse.cs` |
+| `CreditRelayRemoveOperationRequest` | `src/ThePlaidApi/Requests/CreditRelayRemoveOperationRequest.cs` |
+| `CreditRelayRemoveRequest` | `src/ThePlaidApi/Models/CreditRelayRemoveRequest.cs` |
+| `CreditRelayRemoveResponse` | `src/ThePlaidApi/Models/CreditRelayRemoveResponse.cs` |
 
 ### CreditReportAuditCopyRemove
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditReportAuditCopyRemove(CreditAuditCopyTokenRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditReportAuditCopyRemove(CreditReportAuditCopyRemoveRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditAuditCopyTokenRemoveResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditAuditCopyTokenRemoveRequest` | `Models/CreditAuditCopyTokenRemoveRequest.cs` |
-| `CreditAuditCopyTokenRemoveResponse` | `Models/CreditAuditCopyTokenRemoveResponse.cs` |
+| `CreditReportAuditCopyRemoveRequest` | `src/ThePlaidApi/Requests/CreditReportAuditCopyRemoveRequest.cs` |
+| `CreditAuditCopyTokenRemoveRequest` | `src/ThePlaidApi/Models/CreditAuditCopyTokenRemoveRequest.cs` |
+| `CreditAuditCopyTokenRemoveResponse` | `src/ThePlaidApi/Models/CreditAuditCopyTokenRemoveResponse.cs` |
 
 ### CreditSessionsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `CreditSessionsGet(CreditSessionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `CreditSessionsGet(CreditSessionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `CreditSessionsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `CreditSessionsGetRequest` | `Models/CreditSessionsGetRequest.cs` |
-| `CreditSessionsGetResponse` | `Models/CreditSessionsGetResponse.cs` |
+| `CreditSessionsGetOperationRequest` | `src/ThePlaidApi/Requests/CreditSessionsGetOperationRequest.cs` |
+| `CreditSessionsGetRequest` | `src/ThePlaidApi/Models/CreditSessionsGetRequest.cs` |
+| `CreditSessionsGetResponse` | `src/ThePlaidApi/Models/CreditSessionsGetResponse.cs` |
 
 ### DashboardUserGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `DashboardUserGet(DashboardUserGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `DashboardUserGet(DashboardUserGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `DashboardUserGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `DashboardUserGetRequest` | `Models/DashboardUserGetRequest.cs` |
-| `DashboardUserGetResponse` | `Models/DashboardUserGetResponse.cs` |
+| `DashboardUserGetOperationRequest` | `src/ThePlaidApi/Requests/DashboardUserGetOperationRequest.cs` |
+| `DashboardUserGetRequest` | `src/ThePlaidApi/Models/DashboardUserGetRequest.cs` |
+| `DashboardUserGetResponse` | `src/ThePlaidApi/Models/DashboardUserGetResponse.cs` |
 
 ### DashboardUserList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `DashboardUserList(DashboardUserListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `DashboardUserList(DashboardUserListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `DashboardUserListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `DashboardUserListRequest` | `Models/DashboardUserListRequest.cs` |
-| `DashboardUserListResponse` | `Models/DashboardUserListResponse.cs` |
+| `DashboardUserListOperationRequest` | `src/ThePlaidApi/Requests/DashboardUserListOperationRequest.cs` |
+| `DashboardUserListRequest` | `src/ThePlaidApi/Models/DashboardUserListRequest.cs` |
+| `DashboardUserListResponse` | `src/ThePlaidApi/Models/DashboardUserListResponse.cs` |
 
 ### EmployersSearch
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `EmployersSearch(EmployersSearchRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `EmployersSearch(EmployersSearchOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `EmployersSearchResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `EmployersSearchRequest` | `Models/EmployersSearchRequest.cs` |
-| `EmployersSearchResponse` | `Models/EmployersSearchResponse.cs` |
+| `EmployersSearchOperationRequest` | `src/ThePlaidApi/Requests/EmployersSearchOperationRequest.cs` |
+| `EmployersSearchRequest` | `src/ThePlaidApi/Models/EmployersSearchRequest.cs` |
+| `EmployersSearchResponse` | `src/ThePlaidApi/Models/EmployersSearchResponse.cs` |
 
 ### EmploymentVerificationGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `EmploymentVerificationGet(EmploymentVerificationGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `EmploymentVerificationGet(EmploymentVerificationGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `EmploymentVerificationGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `EmploymentVerificationGetRequest` | `Models/EmploymentVerificationGetRequest.cs` |
-| `EmploymentVerificationGetResponse` | `Models/EmploymentVerificationGetResponse.cs` |
+| `EmploymentVerificationGetOperationRequest` | `src/ThePlaidApi/Requests/EmploymentVerificationGetOperationRequest.cs` |
+| `EmploymentVerificationGetRequest` | `src/ThePlaidApi/Models/EmploymentVerificationGetRequest.cs` |
+| `EmploymentVerificationGetResponse` | `src/ThePlaidApi/Models/EmploymentVerificationGetResponse.cs` |
 
 ### FdxConsentsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `FdxConsentsGet(string consentId, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `FdxConsentsGet(FdxConsentsGetRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `ConsentId`
 - **Returns**: `FdxConsentGrant`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `FdxConsentGrant` | `Models/FdxConsentGrant.cs` |
+| `FdxConsentsGetRequest` | `src/ThePlaidApi/Requests/FdxConsentsGetRequest.cs` |
+| `FdxConsentGrant` | `src/ThePlaidApi/Models/FdxConsentGrant.cs` |
 
 ### FdxConsentsList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `FdxConsentsList(string customerId, FdxConsentGrantStatus? status, RequestOptions? requestOptions = null, CancellationToken ct = default)`
-  - `status` — nullable, no default → **must pass explicitly**
-- **Query params (wire ← C#)**: `customerId` ← `customerId`, `status` ← `status`
+- **Signature**: `FdxConsentsList(FdxConsentsListRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `CustomerId`
+- **Query params (wire ← C#)**: `customerId` ← `CustomerId`, `status` ← `Status`
 - **Returns**: `GetConsentsResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `FdxConsentGrantStatus` | `Models/Enums/FdxConsentGrantStatus.cs` |
-| `GetConsentsResponse` | `Models/GetConsentsResponse.cs` |
+| `FdxConsentsListRequest` | `src/ThePlaidApi/Requests/FdxConsentsListRequest.cs` |
+| `FdxConsentGrantStatus` | `src/ThePlaidApi/Models/Enums/FdxConsentGrantStatus.cs` |
+| `GetConsentsResponse` | `src/ThePlaidApi/Models/GetConsentsResponse.cs` |
 
 ### FdxConsentsRevocationGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `FdxConsentsRevocationGet(string consentId, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `FdxConsentsRevocationGet(FdxConsentsRevocationGetRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `ConsentId`
 - **Returns**: `FdxConsentRevocations`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `FdxConsentRevocations` | `Models/FdxConsentRevocations.cs` |
+| `FdxConsentsRevocationGetRequest` | `src/ThePlaidApi/Requests/FdxConsentsRevocationGetRequest.cs` |
+| `FdxConsentRevocations` | `src/ThePlaidApi/Models/FdxConsentRevocations.cs` |
 
 ### FdxConsentsRevoke
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `FdxConsentsRevoke(string consentId, FdxConsentRevocation body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `FdxConsentsRevoke(FdxConsentsRevokeRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `ConsentId`, `Body`
 - **Returns**: `void` (Task)
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `FdxConsentRevocation` | `Models/FdxConsentRevocation.cs` |
+| `FdxConsentsRevokeRequest` | `src/ThePlaidApi/Requests/FdxConsentsRevokeRequest.cs` |
+| `FdxConsentRevocation` | `src/ThePlaidApi/Models/FdxConsentRevocation.cs` |
 
 ### FdxNotifications
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `FdxNotifications(FdxNotificationEntity body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `FdxNotifications(FdxNotificationsRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `void` (Task)
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `FdxNotificationEntity` | `Models/FdxNotificationEntity.cs` |
+| `FdxNotificationsRequest` | `src/ThePlaidApi/Requests/FdxNotificationsRequest.cs` |
+| `FdxNotificationEntity` | `src/ThePlaidApi/Models/FdxNotificationEntity.cs` |
 
 ### GetRecipient
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `GetRecipient(string recipientId, string? oauthStateId, RequestOptions? requestOptions = null, CancellationToken ct = default)`
-  - `oauthStateId` — nullable, no default → **must pass explicitly**
+- **Signature**: `GetRecipient(GetRecipientRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `RecipientId`
 - **Returns**: `FdxRecipientMetadata`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `FdxRecipientMetadata` | `Models/FdxRecipientMetadata.cs` |
+| `GetRecipientRequest` | `src/ThePlaidApi/Requests/GetRecipientRequest.cs` |
+| `FdxRecipientMetadata` | `src/ThePlaidApi/Models/FdxRecipientMetadata.cs` |
 
 ### GetRecipients
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `GetRecipients(RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `GetRecipients(RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
 - **Returns**: `GetRecipientsResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `GetRecipientsResponse` | `Models/GetRecipientsResponse.cs` |
+| `GetRecipientsResponse` | `src/ThePlaidApi/Models/GetRecipientsResponse.cs` |
 
 ### IdentityDocumentsUploadsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IdentityDocumentsUploadsGet(IdentityDocumentsUploadsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IdentityDocumentsUploadsGet(IdentityDocumentsUploadsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IdentityDocumentsUploadsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IdentityDocumentsUploadsGetRequest` | `Models/IdentityDocumentsUploadsGetRequest.cs` |
-| `IdentityDocumentsUploadsGetResponse` | `Models/IdentityDocumentsUploadsGetResponse.cs` |
+| `IdentityDocumentsUploadsGetOperationRequest` | `src/ThePlaidApi/Requests/IdentityDocumentsUploadsGetOperationRequest.cs` |
+| `IdentityDocumentsUploadsGetRequest` | `src/ThePlaidApi/Models/IdentityDocumentsUploadsGetRequest.cs` |
+| `IdentityDocumentsUploadsGetResponse` | `src/ThePlaidApi/Models/IdentityDocumentsUploadsGetResponse.cs` |
 
 ### IdentityGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IdentityGet(IdentityGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IdentityGet(IdentityGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IdentityGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IdentityGetRequest` | `Models/IdentityGetRequest.cs` |
-| `IdentityGetResponse` | `Models/IdentityGetResponse.cs` |
+| `IdentityGetOperationRequest` | `src/ThePlaidApi/Requests/IdentityGetOperationRequest.cs` |
+| `IdentityGetRequest` | `src/ThePlaidApi/Models/IdentityGetRequest.cs` |
+| `IdentityGetResponse` | `src/ThePlaidApi/Models/IdentityGetResponse.cs` |
 
 ### IdentityMatch
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IdentityMatch(IdentityMatchRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IdentityMatch(IdentityMatchOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IdentityMatchResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IdentityMatchRequest` | `Models/IdentityMatchRequest.cs` |
-| `IdentityMatchResponse` | `Models/IdentityMatchResponse.cs` |
+| `IdentityMatchOperationRequest` | `src/ThePlaidApi/Requests/IdentityMatchOperationRequest.cs` |
+| `IdentityMatchRequest` | `src/ThePlaidApi/Models/IdentityMatchRequest.cs` |
+| `IdentityMatchResponse` | `src/ThePlaidApi/Models/IdentityMatchResponse.cs` |
 
 ### IdentityRefresh
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IdentityRefresh(IdentityRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IdentityRefresh(IdentityRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IdentityRefreshResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IdentityRefreshRequest` | `Models/IdentityRefreshRequest.cs` |
-| `IdentityRefreshResponse` | `Models/IdentityRefreshResponse.cs` |
+| `IdentityRefreshOperationRequest` | `src/ThePlaidApi/Requests/IdentityRefreshOperationRequest.cs` |
+| `IdentityRefreshRequest` | `src/ThePlaidApi/Models/IdentityRefreshRequest.cs` |
+| `IdentityRefreshResponse` | `src/ThePlaidApi/Models/IdentityRefreshResponse.cs` |
 
 ### IdentityVerificationAutofillCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IdentityVerificationAutofillCreate(IdentityVerificationAutofillCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IdentityVerificationAutofillCreate(IdentityVerificationAutofillCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IdentityVerificationAutofillCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IdentityVerificationAutofillCreateRequest` | `Models/IdentityVerificationAutofillCreateRequest.cs` |
-| `IdentityVerificationAutofillCreateResponse` | `Models/IdentityVerificationAutofillCreateResponse.cs` |
+| `IdentityVerificationAutofillCreateOperationRequest` | `src/ThePlaidApi/Requests/IdentityVerificationAutofillCreateOperationRequest.cs` |
+| `IdentityVerificationAutofillCreateRequest` | `src/ThePlaidApi/Models/IdentityVerificationAutofillCreateRequest.cs` |
+| `IdentityVerificationAutofillCreateResponse` | `src/ThePlaidApi/Models/IdentityVerificationAutofillCreateResponse.cs` |
 
 ### IdentityVerificationCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IdentityVerificationCreate(IdentityVerificationCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IdentityVerificationCreate(IdentityVerificationCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IdentityVerificationCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IdentityVerificationCreateRequest` | `Models/IdentityVerificationCreateRequest.cs` |
-| `IdentityVerificationCreateResponse` | `Models/IdentityVerificationCreateResponse.cs` |
+| `IdentityVerificationCreateOperationRequest` | `src/ThePlaidApi/Requests/IdentityVerificationCreateOperationRequest.cs` |
+| `IdentityVerificationCreateRequest` | `src/ThePlaidApi/Models/IdentityVerificationCreateRequest.cs` |
+| `IdentityVerificationCreateResponse` | `src/ThePlaidApi/Models/IdentityVerificationCreateResponse.cs` |
 
 ### IdentityVerificationGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IdentityVerificationGet(IdentityVerificationGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IdentityVerificationGet(IdentityVerificationGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IdentityVerificationGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IdentityVerificationGetRequest` | `Models/IdentityVerificationGetRequest.cs` |
-| `IdentityVerificationGetResponse` | `Models/IdentityVerificationGetResponse.cs` |
+| `IdentityVerificationGetOperationRequest` | `src/ThePlaidApi/Requests/IdentityVerificationGetOperationRequest.cs` |
+| `IdentityVerificationGetRequest` | `src/ThePlaidApi/Models/IdentityVerificationGetRequest.cs` |
+| `IdentityVerificationGetResponse` | `src/ThePlaidApi/Models/IdentityVerificationGetResponse.cs` |
 
 ### IdentityVerificationList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IdentityVerificationList(IdentityVerificationListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IdentityVerificationList(IdentityVerificationListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IdentityVerificationListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IdentityVerificationListRequest` | `Models/IdentityVerificationListRequest.cs` |
-| `IdentityVerificationListResponse` | `Models/IdentityVerificationListResponse.cs` |
+| `IdentityVerificationListOperationRequest` | `src/ThePlaidApi/Requests/IdentityVerificationListOperationRequest.cs` |
+| `IdentityVerificationListRequest` | `src/ThePlaidApi/Models/IdentityVerificationListRequest.cs` |
+| `IdentityVerificationListResponse` | `src/ThePlaidApi/Models/IdentityVerificationListResponse.cs` |
 
 ### IdentityVerificationRetry
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IdentityVerificationRetry(IdentityVerificationRetryRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IdentityVerificationRetry(IdentityVerificationRetryOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IdentityVerificationRetryResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IdentityVerificationRetryRequest` | `Models/IdentityVerificationRetryRequest.cs` |
-| `IdentityVerificationRetryResponse` | `Models/IdentityVerificationRetryResponse.cs` |
+| `IdentityVerificationRetryOperationRequest` | `src/ThePlaidApi/Requests/IdentityVerificationRetryOperationRequest.cs` |
+| `IdentityVerificationRetryRequest` | `src/ThePlaidApi/Models/IdentityVerificationRetryRequest.cs` |
+| `IdentityVerificationRetryResponse` | `src/ThePlaidApi/Models/IdentityVerificationRetryResponse.cs` |
 
 ### IncomeVerificationCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IncomeVerificationCreate(IncomeVerificationCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IncomeVerificationCreate(IncomeVerificationCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IncomeVerificationCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IncomeVerificationCreateRequest` | `Models/IncomeVerificationCreateRequest.cs` |
-| `IncomeVerificationCreateResponse` | `Models/IncomeVerificationCreateResponse.cs` |
+| `IncomeVerificationCreateOperationRequest` | `src/ThePlaidApi/Requests/IncomeVerificationCreateOperationRequest.cs` |
+| `IncomeVerificationCreateRequest` | `src/ThePlaidApi/Models/IncomeVerificationCreateRequest.cs` |
+| `IncomeVerificationCreateResponse` | `src/ThePlaidApi/Models/IncomeVerificationCreateResponse.cs` |
 
 ### IncomeVerificationDocumentsDownload
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IncomeVerificationDocumentsDownload(IncomeVerificationDocumentsDownloadRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IncomeVerificationDocumentsDownload(IncomeVerificationDocumentsDownloadOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `void` (Task)
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IncomeVerificationDocumentsDownloadRequest` | `Models/IncomeVerificationDocumentsDownloadRequest.cs` |
+| `IncomeVerificationDocumentsDownloadOperationRequest` | `src/ThePlaidApi/Requests/IncomeVerificationDocumentsDownloadOperationRequest.cs` |
+| `IncomeVerificationDocumentsDownloadRequest` | `src/ThePlaidApi/Models/IncomeVerificationDocumentsDownloadRequest.cs` |
 
 ### IncomeVerificationPaystubsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IncomeVerificationPaystubsGet(IncomeVerificationPaystubsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IncomeVerificationPaystubsGet(IncomeVerificationPaystubsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IncomeVerificationPaystubsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IncomeVerificationPaystubsGetRequest` | `Models/IncomeVerificationPaystubsGetRequest.cs` |
-| `IncomeVerificationPaystubsGetResponse` | `Models/IncomeVerificationPaystubsGetResponse.cs` |
+| `IncomeVerificationPaystubsGetOperationRequest` | `src/ThePlaidApi/Requests/IncomeVerificationPaystubsGetOperationRequest.cs` |
+| `IncomeVerificationPaystubsGetRequest` | `src/ThePlaidApi/Models/IncomeVerificationPaystubsGetRequest.cs` |
+| `IncomeVerificationPaystubsGetResponse` | `src/ThePlaidApi/Models/IncomeVerificationPaystubsGetResponse.cs` |
 
 ### IncomeVerificationPrecheck
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IncomeVerificationPrecheck(IncomeVerificationPrecheckRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IncomeVerificationPrecheck(IncomeVerificationPrecheckOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IncomeVerificationPrecheckResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IncomeVerificationPrecheckRequest` | `Models/IncomeVerificationPrecheckRequest.cs` |
-| `IncomeVerificationPrecheckResponse` | `Models/IncomeVerificationPrecheckResponse.cs` |
+| `IncomeVerificationPrecheckOperationRequest` | `src/ThePlaidApi/Requests/IncomeVerificationPrecheckOperationRequest.cs` |
+| `IncomeVerificationPrecheckRequest` | `src/ThePlaidApi/Models/IncomeVerificationPrecheckRequest.cs` |
+| `IncomeVerificationPrecheckResponse` | `src/ThePlaidApi/Models/IncomeVerificationPrecheckResponse.cs` |
 
 ### IncomeVerificationTaxformsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IncomeVerificationTaxformsGet(IncomeVerificationTaxformsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IncomeVerificationTaxformsGet(IncomeVerificationTaxformsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IncomeVerificationTaxformsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IncomeVerificationTaxformsGetRequest` | `Models/IncomeVerificationTaxformsGetRequest.cs` |
-| `IncomeVerificationTaxformsGetResponse` | `Models/IncomeVerificationTaxformsGetResponse.cs` |
+| `IncomeVerificationTaxformsGetOperationRequest` | `src/ThePlaidApi/Requests/IncomeVerificationTaxformsGetOperationRequest.cs` |
+| `IncomeVerificationTaxformsGetRequest` | `src/ThePlaidApi/Models/IncomeVerificationTaxformsGetRequest.cs` |
+| `IncomeVerificationTaxformsGetResponse` | `src/ThePlaidApi/Models/IncomeVerificationTaxformsGetResponse.cs` |
 
 ### InstitutionsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `InstitutionsGet(InstitutionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `InstitutionsGet(InstitutionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `InstitutionsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `InstitutionsGetRequest` | `Models/InstitutionsGetRequest.cs` |
-| `InstitutionsGetResponse` | `Models/InstitutionsGetResponse.cs` |
+| `InstitutionsGetOperationRequest` | `src/ThePlaidApi/Requests/InstitutionsGetOperationRequest.cs` |
+| `InstitutionsGetRequest` | `src/ThePlaidApi/Models/InstitutionsGetRequest.cs` |
+| `InstitutionsGetResponse` | `src/ThePlaidApi/Models/InstitutionsGetResponse.cs` |
 
 ### InstitutionsGetById
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `InstitutionsGetById(InstitutionsGetByIdRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `InstitutionsGetById(InstitutionsGetByIdOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `InstitutionsGetByIdResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `InstitutionsGetByIdRequest` | `Models/InstitutionsGetByIdRequest.cs` |
-| `InstitutionsGetByIdResponse` | `Models/InstitutionsGetByIdResponse.cs` |
+| `InstitutionsGetByIdOperationRequest` | `src/ThePlaidApi/Requests/InstitutionsGetByIdOperationRequest.cs` |
+| `InstitutionsGetByIdRequest` | `src/ThePlaidApi/Models/InstitutionsGetByIdRequest.cs` |
+| `InstitutionsGetByIdResponse` | `src/ThePlaidApi/Models/InstitutionsGetByIdResponse.cs` |
 
 ### InstitutionsSearch
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `InstitutionsSearch(InstitutionsSearchRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `InstitutionsSearch(InstitutionsSearchOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `InstitutionsSearchResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `InstitutionsSearchRequest` | `Models/InstitutionsSearchRequest.cs` |
-| `InstitutionsSearchResponse` | `Models/InstitutionsSearchResponse.cs` |
+| `InstitutionsSearchOperationRequest` | `src/ThePlaidApi/Requests/InstitutionsSearchOperationRequest.cs` |
+| `InstitutionsSearchRequest` | `src/ThePlaidApi/Models/InstitutionsSearchRequest.cs` |
+| `InstitutionsSearchResponse` | `src/ThePlaidApi/Models/InstitutionsSearchResponse.cs` |
 
 ### InvestmentsAuthGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `InvestmentsAuthGet(InvestmentsAuthGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `InvestmentsAuthGet(InvestmentsAuthGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `InvestmentsAuthGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `InvestmentsAuthGetRequest` | `Models/InvestmentsAuthGetRequest.cs` |
-| `InvestmentsAuthGetResponse` | `Models/InvestmentsAuthGetResponse.cs` |
+| `InvestmentsAuthGetOperationRequest` | `src/ThePlaidApi/Requests/InvestmentsAuthGetOperationRequest.cs` |
+| `InvestmentsAuthGetRequest` | `src/ThePlaidApi/Models/InvestmentsAuthGetRequest.cs` |
+| `InvestmentsAuthGetResponse` | `src/ThePlaidApi/Models/InvestmentsAuthGetResponse.cs` |
 
 ### InvestmentsHoldingsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `InvestmentsHoldingsGet(InvestmentsHoldingsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `InvestmentsHoldingsGet(InvestmentsHoldingsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `InvestmentsHoldingsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `InvestmentsHoldingsGetRequest` | `Models/InvestmentsHoldingsGetRequest.cs` |
-| `InvestmentsHoldingsGetResponse` | `Models/InvestmentsHoldingsGetResponse.cs` |
+| `InvestmentsHoldingsGetOperationRequest` | `src/ThePlaidApi/Requests/InvestmentsHoldingsGetOperationRequest.cs` |
+| `InvestmentsHoldingsGetRequest` | `src/ThePlaidApi/Models/InvestmentsHoldingsGetRequest.cs` |
+| `InvestmentsHoldingsGetResponse` | `src/ThePlaidApi/Models/InvestmentsHoldingsGetResponse.cs` |
 
 ### InvestmentsRefresh
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `InvestmentsRefresh(InvestmentsRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `InvestmentsRefresh(InvestmentsRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `InvestmentsRefreshResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `InvestmentsRefreshRequest` | `Models/InvestmentsRefreshRequest.cs` |
-| `InvestmentsRefreshResponse` | `Models/InvestmentsRefreshResponse.cs` |
+| `InvestmentsRefreshOperationRequest` | `src/ThePlaidApi/Requests/InvestmentsRefreshOperationRequest.cs` |
+| `InvestmentsRefreshRequest` | `src/ThePlaidApi/Models/InvestmentsRefreshRequest.cs` |
+| `InvestmentsRefreshResponse` | `src/ThePlaidApi/Models/InvestmentsRefreshResponse.cs` |
 
 ### InvestmentsTransactionsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `InvestmentsTransactionsGet(InvestmentsTransactionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `InvestmentsTransactionsGet(InvestmentsTransactionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `InvestmentsTransactionsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `InvestmentsTransactionsGetRequest` | `Models/InvestmentsTransactionsGetRequest.cs` |
-| `InvestmentsTransactionsGetResponse` | `Models/InvestmentsTransactionsGetResponse.cs` |
+| `InvestmentsTransactionsGetOperationRequest` | `src/ThePlaidApi/Requests/InvestmentsTransactionsGetOperationRequest.cs` |
+| `InvestmentsTransactionsGetRequest` | `src/ThePlaidApi/Models/InvestmentsTransactionsGetRequest.cs` |
+| `InvestmentsTransactionsGetResponse` | `src/ThePlaidApi/Models/InvestmentsTransactionsGetResponse.cs` |
 
 ### IssuesGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IssuesGet(IssuesGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IssuesGet(IssuesGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IssuesGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IssuesGetRequest` | `Models/IssuesGetRequest.cs` |
-| `IssuesGetResponse` | `Models/IssuesGetResponse.cs` |
+| `IssuesGetOperationRequest` | `src/ThePlaidApi/Requests/IssuesGetOperationRequest.cs` |
+| `IssuesGetRequest` | `src/ThePlaidApi/Models/IssuesGetRequest.cs` |
+| `IssuesGetResponse` | `src/ThePlaidApi/Models/IssuesGetResponse.cs` |
 
 ### IssuesSearch
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IssuesSearch(IssuesSearchRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IssuesSearch(IssuesSearchOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IssuesSearchResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IssuesSearchRequest` | `Models/IssuesSearchRequest.cs` |
-| `IssuesSearchResponse` | `Models/IssuesSearchResponse.cs` |
+| `IssuesSearchOperationRequest` | `src/ThePlaidApi/Requests/IssuesSearchOperationRequest.cs` |
+| `IssuesSearchRequest` | `src/ThePlaidApi/Models/IssuesSearchRequest.cs` |
+| `IssuesSearchResponse` | `src/ThePlaidApi/Models/IssuesSearchResponse.cs` |
 
 ### IssuesSubscribe
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `IssuesSubscribe(IssuesSubscribeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `IssuesSubscribe(IssuesSubscribeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `IssuesSubscribeResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IssuesSubscribeRequest` | `Models/IssuesSubscribeRequest.cs` |
-| `IssuesSubscribeResponse` | `Models/IssuesSubscribeResponse.cs` |
+| `IssuesSubscribeOperationRequest` | `src/ThePlaidApi/Requests/IssuesSubscribeOperationRequest.cs` |
+| `IssuesSubscribeRequest` | `src/ThePlaidApi/Models/IssuesSubscribeRequest.cs` |
+| `IssuesSubscribeResponse` | `src/ThePlaidApi/Models/IssuesSubscribeResponse.cs` |
 
 ### ItemAccessTokenInvalidate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ItemAccessTokenInvalidate(ItemAccessTokenInvalidateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ItemAccessTokenInvalidate(ItemAccessTokenInvalidateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ItemAccessTokenInvalidateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ItemAccessTokenInvalidateRequest` | `Models/ItemAccessTokenInvalidateRequest.cs` |
-| `ItemAccessTokenInvalidateResponse` | `Models/ItemAccessTokenInvalidateResponse.cs` |
+| `ItemAccessTokenInvalidateOperationRequest` | `src/ThePlaidApi/Requests/ItemAccessTokenInvalidateOperationRequest.cs` |
+| `ItemAccessTokenInvalidateRequest` | `src/ThePlaidApi/Models/ItemAccessTokenInvalidateRequest.cs` |
+| `ItemAccessTokenInvalidateResponse` | `src/ThePlaidApi/Models/ItemAccessTokenInvalidateResponse.cs` |
 
 ### ItemActivityList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ItemActivityList(ItemActivityListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ItemActivityList(ItemActivityListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ItemActivityListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ItemActivityListRequest` | `Models/ItemActivityListRequest.cs` |
-| `ItemActivityListResponse` | `Models/ItemActivityListResponse.cs` |
+| `ItemActivityListOperationRequest` | `src/ThePlaidApi/Requests/ItemActivityListOperationRequest.cs` |
+| `ItemActivityListRequest` | `src/ThePlaidApi/Models/ItemActivityListRequest.cs` |
+| `ItemActivityListResponse` | `src/ThePlaidApi/Models/ItemActivityListResponse.cs` |
 
 ### ItemApplicationList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ItemApplicationList(ItemApplicationListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ItemApplicationList(ItemApplicationListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ItemApplicationListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ItemApplicationListRequest` | `Models/ItemApplicationListRequest.cs` |
-| `ItemApplicationListResponse` | `Models/ItemApplicationListResponse.cs` |
+| `ItemApplicationListOperationRequest` | `src/ThePlaidApi/Requests/ItemApplicationListOperationRequest.cs` |
+| `ItemApplicationListRequest` | `src/ThePlaidApi/Models/ItemApplicationListRequest.cs` |
+| `ItemApplicationListResponse` | `src/ThePlaidApi/Models/ItemApplicationListResponse.cs` |
 
 ### ItemApplicationScopesUpdate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ItemApplicationScopesUpdate(ItemApplicationScopesUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ItemApplicationScopesUpdate(ItemApplicationScopesUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ItemApplicationScopesUpdateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ItemApplicationScopesUpdateRequest` | `Models/ItemApplicationScopesUpdateRequest.cs` |
-| `ItemApplicationScopesUpdateResponse` | `Models/ItemApplicationScopesUpdateResponse.cs` |
+| `ItemApplicationScopesUpdateOperationRequest` | `src/ThePlaidApi/Requests/ItemApplicationScopesUpdateOperationRequest.cs` |
+| `ItemApplicationScopesUpdateRequest` | `src/ThePlaidApi/Models/ItemApplicationScopesUpdateRequest.cs` |
+| `ItemApplicationScopesUpdateResponse` | `src/ThePlaidApi/Models/ItemApplicationScopesUpdateResponse.cs` |
 
 ### ItemApplicationUnlink
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ItemApplicationUnlink(ItemApplicationUnlinkRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ItemApplicationUnlink(ItemApplicationUnlinkOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ItemApplicationUnlinkResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ItemApplicationUnlinkRequest` | `Models/ItemApplicationUnlinkRequest.cs` |
-| `ItemApplicationUnlinkResponse` | `Models/ItemApplicationUnlinkResponse.cs` |
+| `ItemApplicationUnlinkOperationRequest` | `src/ThePlaidApi/Requests/ItemApplicationUnlinkOperationRequest.cs` |
+| `ItemApplicationUnlinkRequest` | `src/ThePlaidApi/Models/ItemApplicationUnlinkRequest.cs` |
+| `ItemApplicationUnlinkResponse` | `src/ThePlaidApi/Models/ItemApplicationUnlinkResponse.cs` |
 
 ### ItemCreatePublicToken
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ItemCreatePublicToken(ItemPublicTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ItemCreatePublicToken(ItemCreatePublicTokenRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ItemPublicTokenCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ItemPublicTokenCreateRequest` | `Models/ItemPublicTokenCreateRequest.cs` |
-| `ItemPublicTokenCreateResponse` | `Models/ItemPublicTokenCreateResponse.cs` |
+| `ItemCreatePublicTokenRequest` | `src/ThePlaidApi/Requests/ItemCreatePublicTokenRequest.cs` |
+| `ItemPublicTokenCreateRequest` | `src/ThePlaidApi/Models/ItemPublicTokenCreateRequest.cs` |
+| `ItemPublicTokenCreateResponse` | `src/ThePlaidApi/Models/ItemPublicTokenCreateResponse.cs` |
 
 ### ItemGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ItemGet(ItemGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ItemGet(ItemGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ItemGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ItemGetRequest` | `Models/ItemGetRequest.cs` |
-| `ItemGetResponse` | `Models/ItemGetResponse.cs` |
+| `ItemGetOperationRequest` | `src/ThePlaidApi/Requests/ItemGetOperationRequest.cs` |
+| `ItemGetRequest` | `src/ThePlaidApi/Models/ItemGetRequest.cs` |
+| `ItemGetResponse` | `src/ThePlaidApi/Models/ItemGetResponse.cs` |
 
 ### ItemImport
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ItemImport(ItemImportRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ItemImport(ItemImportOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ItemImportResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ItemImportRequest` | `Models/ItemImportRequest.cs` |
-| `ItemImportResponse` | `Models/ItemImportResponse.cs` |
+| `ItemImportOperationRequest` | `src/ThePlaidApi/Requests/ItemImportOperationRequest.cs` |
+| `ItemImportRequest` | `src/ThePlaidApi/Models/ItemImportRequest.cs` |
+| `ItemImportResponse` | `src/ThePlaidApi/Models/ItemImportResponse.cs` |
 
 ### ItemProductsTerminate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ItemProductsTerminate(ItemProductsTerminateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ItemProductsTerminate(ItemProductsTerminateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ItemProductsTerminateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ItemProductsTerminateRequest` | `Models/ItemProductsTerminateRequest.cs` |
-| `ItemProductsTerminateResponse` | `Models/ItemProductsTerminateResponse.cs` |
+| `ItemProductsTerminateOperationRequest` | `src/ThePlaidApi/Requests/ItemProductsTerminateOperationRequest.cs` |
+| `ItemProductsTerminateRequest` | `src/ThePlaidApi/Models/ItemProductsTerminateRequest.cs` |
+| `ItemProductsTerminateResponse` | `src/ThePlaidApi/Models/ItemProductsTerminateResponse.cs` |
 
 ### ItemPublicTokenExchange
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ItemPublicTokenExchange(ItemPublicTokenExchangeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ItemPublicTokenExchange(ItemPublicTokenExchangeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ItemPublicTokenExchangeResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ItemPublicTokenExchangeRequest` | `Models/ItemPublicTokenExchangeRequest.cs` |
-| `ItemPublicTokenExchangeResponse` | `Models/ItemPublicTokenExchangeResponse.cs` |
+| `ItemPublicTokenExchangeOperationRequest` | `src/ThePlaidApi/Requests/ItemPublicTokenExchangeOperationRequest.cs` |
+| `ItemPublicTokenExchangeRequest` | `src/ThePlaidApi/Models/ItemPublicTokenExchangeRequest.cs` |
+| `ItemPublicTokenExchangeResponse` | `src/ThePlaidApi/Models/ItemPublicTokenExchangeResponse.cs` |
 
 ### ItemRemove
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ItemRemove(ItemRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ItemRemove(ItemRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ItemRemoveResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ItemRemoveRequest` | `Models/ItemRemoveRequest.cs` |
-| `ItemRemoveResponse` | `Models/ItemRemoveResponse.cs` |
+| `ItemRemoveOperationRequest` | `src/ThePlaidApi/Requests/ItemRemoveOperationRequest.cs` |
+| `ItemRemoveRequest` | `src/ThePlaidApi/Models/ItemRemoveRequest.cs` |
+| `ItemRemoveResponse` | `src/ThePlaidApi/Models/ItemRemoveResponse.cs` |
 
 ### ItemWebhookUpdate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ItemWebhookUpdate(ItemWebhookUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ItemWebhookUpdate(ItemWebhookUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ItemWebhookUpdateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ItemWebhookUpdateRequest` | `Models/ItemWebhookUpdateRequest.cs` |
-| `ItemWebhookUpdateResponse` | `Models/ItemWebhookUpdateResponse.cs` |
+| `ItemWebhookUpdateOperationRequest` | `src/ThePlaidApi/Requests/ItemWebhookUpdateOperationRequest.cs` |
+| `ItemWebhookUpdateRequest` | `src/ThePlaidApi/Models/ItemWebhookUpdateRequest.cs` |
+| `ItemWebhookUpdateResponse` | `src/ThePlaidApi/Models/ItemWebhookUpdateResponse.cs` |
 
 ### LiabilitiesGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `LiabilitiesGet(LiabilitiesGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `LiabilitiesGet(LiabilitiesGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `LiabilitiesGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `LiabilitiesGetRequest` | `Models/LiabilitiesGetRequest.cs` |
-| `LiabilitiesGetResponse` | `Models/LiabilitiesGetResponse.cs` |
+| `LiabilitiesGetOperationRequest` | `src/ThePlaidApi/Requests/LiabilitiesGetOperationRequest.cs` |
+| `LiabilitiesGetRequest` | `src/ThePlaidApi/Models/LiabilitiesGetRequest.cs` |
+| `LiabilitiesGetResponse` | `src/ThePlaidApi/Models/LiabilitiesGetResponse.cs` |
 
 ### LinkDeliveryCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `LinkDeliveryCreate(LinkDeliveryCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `LinkDeliveryCreate(LinkDeliveryCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `LinkDeliveryCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `LinkDeliveryCreateRequest` | `Models/LinkDeliveryCreateRequest.cs` |
-| `LinkDeliveryCreateResponse` | `Models/LinkDeliveryCreateResponse.cs` |
+| `LinkDeliveryCreateOperationRequest` | `src/ThePlaidApi/Requests/LinkDeliveryCreateOperationRequest.cs` |
+| `LinkDeliveryCreateRequest` | `src/ThePlaidApi/Models/LinkDeliveryCreateRequest.cs` |
+| `LinkDeliveryCreateResponse` | `src/ThePlaidApi/Models/LinkDeliveryCreateResponse.cs` |
 
 ### LinkDeliveryGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `LinkDeliveryGet(LinkDeliveryGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `LinkDeliveryGet(LinkDeliveryGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `LinkDeliveryGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `LinkDeliveryGetRequest` | `Models/LinkDeliveryGetRequest.cs` |
-| `LinkDeliveryGetResponse` | `Models/LinkDeliveryGetResponse.cs` |
+| `LinkDeliveryGetOperationRequest` | `src/ThePlaidApi/Requests/LinkDeliveryGetOperationRequest.cs` |
+| `LinkDeliveryGetRequest` | `src/ThePlaidApi/Models/LinkDeliveryGetRequest.cs` |
+| `LinkDeliveryGetResponse` | `src/ThePlaidApi/Models/LinkDeliveryGetResponse.cs` |
 
 ### LinkOauthCorrelationIdExchange
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `LinkOauthCorrelationIdExchange(LinkOAuthCorrelationIdExchangeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `LinkOauthCorrelationIdExchange(LinkOauthCorrelationIdExchangeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `LinkOAuthCorrelationIdExchangeResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `LinkOAuthCorrelationIdExchangeRequest` | `Models/LinkOAuthCorrelationIdExchangeRequest.cs` |
-| `LinkOAuthCorrelationIdExchangeResponse` | `Models/LinkOAuthCorrelationIdExchangeResponse.cs` |
+| `LinkOauthCorrelationIdExchangeOperationRequest` | `src/ThePlaidApi/Requests/LinkOauthCorrelationIdExchangeOperationRequest.cs` |
+| `LinkOAuthCorrelationIdExchangeRequest` | `src/ThePlaidApi/Models/LinkOAuthCorrelationIdExchangeRequest.cs` |
+| `LinkOAuthCorrelationIdExchangeResponse` | `src/ThePlaidApi/Models/LinkOAuthCorrelationIdExchangeResponse.cs` |
 
 ### LinkTokenCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `LinkTokenCreate(LinkTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `LinkTokenCreate(LinkTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `LinkTokenCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `LinkTokenCreateRequest` | `Models/LinkTokenCreateRequest.cs` |
-| `LinkTokenCreateResponse` | `Models/LinkTokenCreateResponse.cs` |
+| `LinkTokenCreateOperationRequest` | `src/ThePlaidApi/Requests/LinkTokenCreateOperationRequest.cs` |
+| `LinkTokenCreateRequest` | `src/ThePlaidApi/Models/LinkTokenCreateRequest.cs` |
+| `LinkTokenCreateResponse` | `src/ThePlaidApi/Models/LinkTokenCreateResponse.cs` |
 
 ### LinkTokenGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `LinkTokenGet(LinkTokenGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `LinkTokenGet(LinkTokenGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `LinkTokenGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `LinkTokenGetRequest` | `Models/LinkTokenGetRequest.cs` |
-| `LinkTokenGetResponse` | `Models/LinkTokenGetResponse.cs` |
+| `LinkTokenGetOperationRequest` | `src/ThePlaidApi/Requests/LinkTokenGetOperationRequest.cs` |
+| `LinkTokenGetRequest` | `src/ThePlaidApi/Models/LinkTokenGetRequest.cs` |
+| `LinkTokenGetResponse` | `src/ThePlaidApi/Models/LinkTokenGetResponse.cs` |
 
 ### NetworkStatusGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `NetworkStatusGet(NetworkStatusGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `NetworkStatusGet(NetworkStatusGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `NetworkStatusGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `NetworkStatusGetRequest` | `Models/NetworkStatusGetRequest.cs` |
-| `NetworkStatusGetResponse` | `Models/NetworkStatusGetResponse.cs` |
+| `NetworkStatusGetOperationRequest` | `src/ThePlaidApi/Requests/NetworkStatusGetOperationRequest.cs` |
+| `NetworkStatusGetRequest` | `src/ThePlaidApi/Models/NetworkStatusGetRequest.cs` |
+| `NetworkStatusGetResponse` | `src/ThePlaidApi/Models/NetworkStatusGetResponse.cs` |
 
 ### OauthIntrospect
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `OauthIntrospect(OAuthIntrospectRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `OauthIntrospect(OauthIntrospectOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `OAuthIntrospectResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `OAuthIntrospectRequest` | `Models/OAuthIntrospectRequest.cs` |
-| `OAuthIntrospectResponse` | `Models/OAuthIntrospectResponse.cs` |
+| `OauthIntrospectOperationRequest` | `src/ThePlaidApi/Requests/OauthIntrospectOperationRequest.cs` |
+| `OAuthIntrospectRequest` | `src/ThePlaidApi/Models/OAuthIntrospectRequest.cs` |
+| `OAuthIntrospectResponse` | `src/ThePlaidApi/Models/OAuthIntrospectResponse.cs` |
 
 ### OauthRevoke
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `OauthRevoke(OAuthRevokeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `OauthRevoke(OauthRevokeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `OAuthRevokeResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `OAuthRevokeRequest` | `Models/OAuthRevokeRequest.cs` |
-| `OAuthRevokeResponse` | `Models/OAuthRevokeResponse.cs` |
+| `OauthRevokeOperationRequest` | `src/ThePlaidApi/Requests/OauthRevokeOperationRequest.cs` |
+| `OAuthRevokeRequest` | `src/ThePlaidApi/Models/OAuthRevokeRequest.cs` |
+| `OAuthRevokeResponse` | `src/ThePlaidApi/Models/OAuthRevokeResponse.cs` |
 
 ### OauthToken
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `OauthToken(OAuthTokenRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `OauthToken(OauthTokenOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `OAuthTokenResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `OAuthTokenRequest` | `Models/OAuthTokenRequest.cs` |
-| `OAuthTokenResponse` | `Models/OAuthTokenResponse.cs` |
+| `OauthTokenOperationRequest` | `src/ThePlaidApi/Requests/OauthTokenOperationRequest.cs` |
+| `OAuthTokenRequest` | `src/ThePlaidApi/Models/OAuthTokenRequest.cs` |
+| `OAuthTokenResponse` | `src/ThePlaidApi/Models/OAuthTokenResponse.cs` |
 
 ### PartnerCustomerCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PartnerCustomerCreate(PartnerCustomerCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PartnerCustomerCreate(PartnerCustomerCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PartnerCustomerCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PartnerCustomerCreateRequest` | `Models/PartnerCustomerCreateRequest.cs` |
-| `PartnerCustomerCreateResponse` | `Models/PartnerCustomerCreateResponse.cs` |
+| `PartnerCustomerCreateOperationRequest` | `src/ThePlaidApi/Requests/PartnerCustomerCreateOperationRequest.cs` |
+| `PartnerCustomerCreateRequest` | `src/ThePlaidApi/Models/PartnerCustomerCreateRequest.cs` |
+| `PartnerCustomerCreateResponse` | `src/ThePlaidApi/Models/PartnerCustomerCreateResponse.cs` |
 
 ### PartnerCustomerEnable
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PartnerCustomerEnable(PartnerCustomerEnableRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PartnerCustomerEnable(PartnerCustomerEnableOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PartnerCustomerEnableResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PartnerCustomerEnableRequest` | `Models/PartnerCustomerEnableRequest.cs` |
-| `PartnerCustomerEnableResponse` | `Models/PartnerCustomerEnableResponse.cs` |
+| `PartnerCustomerEnableOperationRequest` | `src/ThePlaidApi/Requests/PartnerCustomerEnableOperationRequest.cs` |
+| `PartnerCustomerEnableRequest` | `src/ThePlaidApi/Models/PartnerCustomerEnableRequest.cs` |
+| `PartnerCustomerEnableResponse` | `src/ThePlaidApi/Models/PartnerCustomerEnableResponse.cs` |
 
 ### PartnerCustomerGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PartnerCustomerGet(PartnerCustomerGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PartnerCustomerGet(PartnerCustomerGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PartnerCustomerGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PartnerCustomerGetRequest` | `Models/PartnerCustomerGetRequest.cs` |
-| `PartnerCustomerGetResponse` | `Models/PartnerCustomerGetResponse.cs` |
+| `PartnerCustomerGetOperationRequest` | `src/ThePlaidApi/Requests/PartnerCustomerGetOperationRequest.cs` |
+| `PartnerCustomerGetRequest` | `src/ThePlaidApi/Models/PartnerCustomerGetRequest.cs` |
+| `PartnerCustomerGetResponse` | `src/ThePlaidApi/Models/PartnerCustomerGetResponse.cs` |
 
 ### PartnerCustomerOauthInstitutionsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PartnerCustomerOauthInstitutionsGet(PartnerCustomerOAuthInstitutionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PartnerCustomerOauthInstitutionsGet(PartnerCustomerOauthInstitutionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PartnerCustomerOAuthInstitutionsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PartnerCustomerOAuthInstitutionsGetRequest` | `Models/PartnerCustomerOAuthInstitutionsGetRequest.cs` |
-| `PartnerCustomerOAuthInstitutionsGetResponse` | `Models/PartnerCustomerOAuthInstitutionsGetResponse.cs` |
+| `PartnerCustomerOauthInstitutionsGetOperationRequest` | `src/ThePlaidApi/Requests/PartnerCustomerOauthInstitutionsGetOperationRequest.cs` |
+| `PartnerCustomerOAuthInstitutionsGetRequest` | `src/ThePlaidApi/Models/PartnerCustomerOAuthInstitutionsGetRequest.cs` |
+| `PartnerCustomerOAuthInstitutionsGetResponse` | `src/ThePlaidApi/Models/PartnerCustomerOAuthInstitutionsGetResponse.cs` |
 
 ### PartnerCustomerRemove
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PartnerCustomerRemove(PartnerCustomerRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PartnerCustomerRemove(PartnerCustomerRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PartnerCustomerRemoveResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PartnerCustomerRemoveRequest` | `Models/PartnerCustomerRemoveRequest.cs` |
-| `PartnerCustomerRemoveResponse` | `Models/PartnerCustomerRemoveResponse.cs` |
+| `PartnerCustomerRemoveOperationRequest` | `src/ThePlaidApi/Requests/PartnerCustomerRemoveOperationRequest.cs` |
+| `PartnerCustomerRemoveRequest` | `src/ThePlaidApi/Models/PartnerCustomerRemoveRequest.cs` |
+| `PartnerCustomerRemoveResponse` | `src/ThePlaidApi/Models/PartnerCustomerRemoveResponse.cs` |
 
 ### PaymentInitiationConsentCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PaymentInitiationConsentCreate(PaymentInitiationConsentCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PaymentInitiationConsentCreate(PaymentInitiationConsentCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PaymentInitiationConsentCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PaymentInitiationConsentCreateRequest` | `Models/PaymentInitiationConsentCreateRequest.cs` |
-| `PaymentInitiationConsentCreateResponse` | `Models/PaymentInitiationConsentCreateResponse.cs` |
+| `PaymentInitiationConsentCreateOperationRequest` | `src/ThePlaidApi/Requests/PaymentInitiationConsentCreateOperationRequest.cs` |
+| `PaymentInitiationConsentCreateRequest` | `src/ThePlaidApi/Models/PaymentInitiationConsentCreateRequest.cs` |
+| `PaymentInitiationConsentCreateResponse` | `src/ThePlaidApi/Models/PaymentInitiationConsentCreateResponse.cs` |
 
 ### PaymentInitiationConsentGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PaymentInitiationConsentGet(PaymentInitiationConsentGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PaymentInitiationConsentGet(PaymentInitiationConsentGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PaymentInitiationConsentGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PaymentInitiationConsentGetRequest` | `Models/PaymentInitiationConsentGetRequest.cs` |
-| `PaymentInitiationConsentGetResponse` | `Models/PaymentInitiationConsentGetResponse.cs` |
+| `PaymentInitiationConsentGetOperationRequest` | `src/ThePlaidApi/Requests/PaymentInitiationConsentGetOperationRequest.cs` |
+| `PaymentInitiationConsentGetRequest` | `src/ThePlaidApi/Models/PaymentInitiationConsentGetRequest.cs` |
+| `PaymentInitiationConsentGetResponse` | `src/ThePlaidApi/Models/PaymentInitiationConsentGetResponse.cs` |
 
 ### PaymentInitiationConsentPaymentExecute
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PaymentInitiationConsentPaymentExecute(PaymentInitiationConsentPaymentExecuteRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PaymentInitiationConsentPaymentExecute(PaymentInitiationConsentPaymentExecuteOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PaymentInitiationConsentPaymentExecuteResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PaymentInitiationConsentPaymentExecuteRequest` | `Models/PaymentInitiationConsentPaymentExecuteRequest.cs` |
-| `PaymentInitiationConsentPaymentExecuteResponse` | `Models/PaymentInitiationConsentPaymentExecuteResponse.cs` |
+| `PaymentInitiationConsentPaymentExecuteOperationRequest` | `src/ThePlaidApi/Requests/PaymentInitiationConsentPaymentExecuteOperationRequest.cs` |
+| `PaymentInitiationConsentPaymentExecuteRequest` | `src/ThePlaidApi/Models/PaymentInitiationConsentPaymentExecuteRequest.cs` |
+| `PaymentInitiationConsentPaymentExecuteResponse` | `src/ThePlaidApi/Models/PaymentInitiationConsentPaymentExecuteResponse.cs` |
 
 ### PaymentInitiationConsentRevoke
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PaymentInitiationConsentRevoke(PaymentInitiationConsentRevokeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PaymentInitiationConsentRevoke(PaymentInitiationConsentRevokeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PaymentInitiationConsentRevokeResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PaymentInitiationConsentRevokeRequest` | `Models/PaymentInitiationConsentRevokeRequest.cs` |
-| `PaymentInitiationConsentRevokeResponse` | `Models/PaymentInitiationConsentRevokeResponse.cs` |
+| `PaymentInitiationConsentRevokeOperationRequest` | `src/ThePlaidApi/Requests/PaymentInitiationConsentRevokeOperationRequest.cs` |
+| `PaymentInitiationConsentRevokeRequest` | `src/ThePlaidApi/Models/PaymentInitiationConsentRevokeRequest.cs` |
+| `PaymentInitiationConsentRevokeResponse` | `src/ThePlaidApi/Models/PaymentInitiationConsentRevokeResponse.cs` |
 
 ### PaymentInitiationPaymentCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PaymentInitiationPaymentCreate(PaymentInitiationPaymentCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PaymentInitiationPaymentCreate(PaymentInitiationPaymentCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PaymentInitiationPaymentCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PaymentInitiationPaymentCreateRequest` | `Models/PaymentInitiationPaymentCreateRequest.cs` |
-| `PaymentInitiationPaymentCreateResponse` | `Models/PaymentInitiationPaymentCreateResponse.cs` |
+| `PaymentInitiationPaymentCreateOperationRequest` | `src/ThePlaidApi/Requests/PaymentInitiationPaymentCreateOperationRequest.cs` |
+| `PaymentInitiationPaymentCreateRequest` | `src/ThePlaidApi/Models/PaymentInitiationPaymentCreateRequest.cs` |
+| `PaymentInitiationPaymentCreateResponse` | `src/ThePlaidApi/Models/PaymentInitiationPaymentCreateResponse.cs` |
 
 ### PaymentInitiationPaymentGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PaymentInitiationPaymentGet(PaymentInitiationPaymentGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PaymentInitiationPaymentGet(PaymentInitiationPaymentGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PaymentInitiationPaymentGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PaymentInitiationPaymentGetRequest` | `Models/PaymentInitiationPaymentGetRequest.cs` |
-| `PaymentInitiationPaymentGetResponse` | `Models/PaymentInitiationPaymentGetResponse.cs` |
+| `PaymentInitiationPaymentGetOperationRequest` | `src/ThePlaidApi/Requests/PaymentInitiationPaymentGetOperationRequest.cs` |
+| `PaymentInitiationPaymentGetRequest` | `src/ThePlaidApi/Models/PaymentInitiationPaymentGetRequest.cs` |
+| `PaymentInitiationPaymentGetResponse` | `src/ThePlaidApi/Models/PaymentInitiationPaymentGetResponse.cs` |
 
 ### PaymentInitiationPaymentList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PaymentInitiationPaymentList(PaymentInitiationPaymentListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PaymentInitiationPaymentList(PaymentInitiationPaymentListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PaymentInitiationPaymentListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PaymentInitiationPaymentListRequest` | `Models/PaymentInitiationPaymentListRequest.cs` |
-| `PaymentInitiationPaymentListResponse` | `Models/PaymentInitiationPaymentListResponse.cs` |
+| `PaymentInitiationPaymentListOperationRequest` | `src/ThePlaidApi/Requests/PaymentInitiationPaymentListOperationRequest.cs` |
+| `PaymentInitiationPaymentListRequest` | `src/ThePlaidApi/Models/PaymentInitiationPaymentListRequest.cs` |
+| `PaymentInitiationPaymentListResponse` | `src/ThePlaidApi/Models/PaymentInitiationPaymentListResponse.cs` |
 
 ### PaymentInitiationPaymentReverse
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PaymentInitiationPaymentReverse(PaymentInitiationPaymentReverseRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PaymentInitiationPaymentReverse(PaymentInitiationPaymentReverseOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PaymentInitiationPaymentReverseResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PaymentInitiationPaymentReverseRequest` | `Models/PaymentInitiationPaymentReverseRequest.cs` |
-| `PaymentInitiationPaymentReverseResponse` | `Models/PaymentInitiationPaymentReverseResponse.cs` |
+| `PaymentInitiationPaymentReverseOperationRequest` | `src/ThePlaidApi/Requests/PaymentInitiationPaymentReverseOperationRequest.cs` |
+| `PaymentInitiationPaymentReverseRequest` | `src/ThePlaidApi/Models/PaymentInitiationPaymentReverseRequest.cs` |
+| `PaymentInitiationPaymentReverseResponse` | `src/ThePlaidApi/Models/PaymentInitiationPaymentReverseResponse.cs` |
 
 ### PaymentInitiationRecipientCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PaymentInitiationRecipientCreate(PaymentInitiationRecipientCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PaymentInitiationRecipientCreate(PaymentInitiationRecipientCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PaymentInitiationRecipientCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PaymentInitiationRecipientCreateRequest` | `Models/PaymentInitiationRecipientCreateRequest.cs` |
-| `PaymentInitiationRecipientCreateResponse` | `Models/PaymentInitiationRecipientCreateResponse.cs` |
+| `PaymentInitiationRecipientCreateOperationRequest` | `src/ThePlaidApi/Requests/PaymentInitiationRecipientCreateOperationRequest.cs` |
+| `PaymentInitiationRecipientCreateRequest` | `src/ThePlaidApi/Models/PaymentInitiationRecipientCreateRequest.cs` |
+| `PaymentInitiationRecipientCreateResponse` | `src/ThePlaidApi/Models/PaymentInitiationRecipientCreateResponse.cs` |
 
 ### PaymentInitiationRecipientGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PaymentInitiationRecipientGet(PaymentInitiationRecipientGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PaymentInitiationRecipientGet(PaymentInitiationRecipientGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PaymentInitiationRecipientGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PaymentInitiationRecipientGetRequest` | `Models/PaymentInitiationRecipientGetRequest.cs` |
-| `PaymentInitiationRecipientGetResponse` | `Models/PaymentInitiationRecipientGetResponse.cs` |
+| `PaymentInitiationRecipientGetOperationRequest` | `src/ThePlaidApi/Requests/PaymentInitiationRecipientGetOperationRequest.cs` |
+| `PaymentInitiationRecipientGetRequest` | `src/ThePlaidApi/Models/PaymentInitiationRecipientGetRequest.cs` |
+| `PaymentInitiationRecipientGetResponse` | `src/ThePlaidApi/Models/PaymentInitiationRecipientGetResponse.cs` |
 
 ### PaymentInitiationRecipientList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PaymentInitiationRecipientList(PaymentInitiationRecipientListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PaymentInitiationRecipientList(PaymentInitiationRecipientListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PaymentInitiationRecipientListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PaymentInitiationRecipientListRequest` | `Models/PaymentInitiationRecipientListRequest.cs` |
-| `PaymentInitiationRecipientListResponse` | `Models/PaymentInitiationRecipientListResponse.cs` |
+| `PaymentInitiationRecipientListOperationRequest` | `src/ThePlaidApi/Requests/PaymentInitiationRecipientListOperationRequest.cs` |
+| `PaymentInitiationRecipientListRequest` | `src/ThePlaidApi/Models/PaymentInitiationRecipientListRequest.cs` |
+| `PaymentInitiationRecipientListResponse` | `src/ThePlaidApi/Models/PaymentInitiationRecipientListResponse.cs` |
 
 ### PaymentProfileCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PaymentProfileCreate(PaymentProfileCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PaymentProfileCreate(PaymentProfileCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PaymentProfileCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PaymentProfileCreateRequest` | `Models/PaymentProfileCreateRequest.cs` |
-| `PaymentProfileCreateResponse` | `Models/PaymentProfileCreateResponse.cs` |
+| `PaymentProfileCreateOperationRequest` | `src/ThePlaidApi/Requests/PaymentProfileCreateOperationRequest.cs` |
+| `PaymentProfileCreateRequest` | `src/ThePlaidApi/Models/PaymentProfileCreateRequest.cs` |
+| `PaymentProfileCreateResponse` | `src/ThePlaidApi/Models/PaymentProfileCreateResponse.cs` |
 
 ### PaymentProfileGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PaymentProfileGet(PaymentProfileGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PaymentProfileGet(PaymentProfileGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PaymentProfileGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PaymentProfileGetRequest` | `Models/PaymentProfileGetRequest.cs` |
-| `PaymentProfileGetResponse` | `Models/PaymentProfileGetResponse.cs` |
+| `PaymentProfileGetOperationRequest` | `src/ThePlaidApi/Requests/PaymentProfileGetOperationRequest.cs` |
+| `PaymentProfileGetRequest` | `src/ThePlaidApi/Models/PaymentProfileGetRequest.cs` |
+| `PaymentProfileGetResponse` | `src/ThePlaidApi/Models/PaymentProfileGetResponse.cs` |
 
 ### PaymentProfileRemove
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `PaymentProfileRemove(PaymentProfileRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `PaymentProfileRemove(PaymentProfileRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `PaymentProfileRemoveResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `PaymentProfileRemoveRequest` | `Models/PaymentProfileRemoveRequest.cs` |
-| `PaymentProfileRemoveResponse` | `Models/PaymentProfileRemoveResponse.cs` |
+| `PaymentProfileRemoveOperationRequest` | `src/ThePlaidApi/Requests/PaymentProfileRemoveOperationRequest.cs` |
+| `PaymentProfileRemoveRequest` | `src/ThePlaidApi/Models/PaymentProfileRemoveRequest.cs` |
+| `PaymentProfileRemoveResponse` | `src/ThePlaidApi/Models/PaymentProfileRemoveResponse.cs` |
 
 ### ProcessorAccountGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorAccountGet(ProcessorAccountGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorAccountGet(ProcessorAccountGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorAccountGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorAccountGetRequest` | `Models/ProcessorAccountGetRequest.cs` |
-| `ProcessorAccountGetResponse` | `Models/ProcessorAccountGetResponse.cs` |
+| `ProcessorAccountGetOperationRequest` | `src/ThePlaidApi/Requests/ProcessorAccountGetOperationRequest.cs` |
+| `ProcessorAccountGetRequest` | `src/ThePlaidApi/Models/ProcessorAccountGetRequest.cs` |
+| `ProcessorAccountGetResponse` | `src/ThePlaidApi/Models/ProcessorAccountGetResponse.cs` |
 
 ### ProcessorApexProcessorTokenCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorApexProcessorTokenCreate(ProcessorApexProcessorTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorApexProcessorTokenCreate(ProcessorApexProcessorTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorTokenCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorApexProcessorTokenCreateRequest` | `Models/ProcessorApexProcessorTokenCreateRequest.cs` |
-| `ProcessorTokenCreateResponse` | `Models/ProcessorTokenCreateResponse.cs` |
+| `ProcessorApexProcessorTokenCreateOperationRequest` | `src/ThePlaidApi/Requests/ProcessorApexProcessorTokenCreateOperationRequest.cs` |
+| `ProcessorApexProcessorTokenCreateRequest` | `src/ThePlaidApi/Models/ProcessorApexProcessorTokenCreateRequest.cs` |
+| `ProcessorTokenCreateResponse` | `src/ThePlaidApi/Models/ProcessorTokenCreateResponse.cs` |
 
 ### ProcessorAuthGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorAuthGet(ProcessorAuthGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorAuthGet(ProcessorAuthGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorAuthGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorAuthGetRequest` | `Models/ProcessorAuthGetRequest.cs` |
-| `ProcessorAuthGetResponse` | `Models/ProcessorAuthGetResponse.cs` |
+| `ProcessorAuthGetOperationRequest` | `src/ThePlaidApi/Requests/ProcessorAuthGetOperationRequest.cs` |
+| `ProcessorAuthGetRequest` | `src/ThePlaidApi/Models/ProcessorAuthGetRequest.cs` |
+| `ProcessorAuthGetResponse` | `src/ThePlaidApi/Models/ProcessorAuthGetResponse.cs` |
 
 ### ProcessorBalanceGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorBalanceGet(ProcessorBalanceGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorBalanceGet(ProcessorBalanceGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorBalanceGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorBalanceGetRequest` | `Models/ProcessorBalanceGetRequest.cs` |
-| `ProcessorBalanceGetResponse` | `Models/ProcessorBalanceGetResponse.cs` |
+| `ProcessorBalanceGetOperationRequest` | `src/ThePlaidApi/Requests/ProcessorBalanceGetOperationRequest.cs` |
+| `ProcessorBalanceGetRequest` | `src/ThePlaidApi/Models/ProcessorBalanceGetRequest.cs` |
+| `ProcessorBalanceGetResponse` | `src/ThePlaidApi/Models/ProcessorBalanceGetResponse.cs` |
 
 ### ProcessorBankTransferCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorBankTransferCreate(ProcessorBankTransferCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorBankTransferCreate(ProcessorBankTransferCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorBankTransferCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorBankTransferCreateRequest` | `Models/ProcessorBankTransferCreateRequest.cs` |
-| `ProcessorBankTransferCreateResponse` | `Models/ProcessorBankTransferCreateResponse.cs` |
+| `ProcessorBankTransferCreateOperationRequest` | `src/ThePlaidApi/Requests/ProcessorBankTransferCreateOperationRequest.cs` |
+| `ProcessorBankTransferCreateRequest` | `src/ThePlaidApi/Models/ProcessorBankTransferCreateRequest.cs` |
+| `ProcessorBankTransferCreateResponse` | `src/ThePlaidApi/Models/ProcessorBankTransferCreateResponse.cs` |
 
 ### ProcessorIdentityGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorIdentityGet(ProcessorIdentityGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorIdentityGet(ProcessorIdentityGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorIdentityGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorIdentityGetRequest` | `Models/ProcessorIdentityGetRequest.cs` |
-| `ProcessorIdentityGetResponse` | `Models/ProcessorIdentityGetResponse.cs` |
+| `ProcessorIdentityGetOperationRequest` | `src/ThePlaidApi/Requests/ProcessorIdentityGetOperationRequest.cs` |
+| `ProcessorIdentityGetRequest` | `src/ThePlaidApi/Models/ProcessorIdentityGetRequest.cs` |
+| `ProcessorIdentityGetResponse` | `src/ThePlaidApi/Models/ProcessorIdentityGetResponse.cs` |
 
 ### ProcessorIdentityMatch
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorIdentityMatch(ProcessorIdentityMatchRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorIdentityMatch(ProcessorIdentityMatchOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorIdentityMatchResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorIdentityMatchRequest` | `Models/ProcessorIdentityMatchRequest.cs` |
-| `ProcessorIdentityMatchResponse` | `Models/ProcessorIdentityMatchResponse.cs` |
+| `ProcessorIdentityMatchOperationRequest` | `src/ThePlaidApi/Requests/ProcessorIdentityMatchOperationRequest.cs` |
+| `ProcessorIdentityMatchRequest` | `src/ThePlaidApi/Models/ProcessorIdentityMatchRequest.cs` |
+| `ProcessorIdentityMatchResponse` | `src/ThePlaidApi/Models/ProcessorIdentityMatchResponse.cs` |
 
 ### ProcessorInvestmentsAuthGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorInvestmentsAuthGet(ProcessorInvestmentsAuthGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorInvestmentsAuthGet(ProcessorInvestmentsAuthGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorInvestmentsAuthGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorInvestmentsAuthGetRequest` | `Models/ProcessorInvestmentsAuthGetRequest.cs` |
-| `ProcessorInvestmentsAuthGetResponse` | `Models/ProcessorInvestmentsAuthGetResponse.cs` |
+| `ProcessorInvestmentsAuthGetOperationRequest` | `src/ThePlaidApi/Requests/ProcessorInvestmentsAuthGetOperationRequest.cs` |
+| `ProcessorInvestmentsAuthGetRequest` | `src/ThePlaidApi/Models/ProcessorInvestmentsAuthGetRequest.cs` |
+| `ProcessorInvestmentsAuthGetResponse` | `src/ThePlaidApi/Models/ProcessorInvestmentsAuthGetResponse.cs` |
 
 ### ProcessorInvestmentsHoldingsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorInvestmentsHoldingsGet(ProcessorInvestmentsHoldingsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorInvestmentsHoldingsGet(ProcessorInvestmentsHoldingsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorInvestmentsHoldingsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorInvestmentsHoldingsGetRequest` | `Models/ProcessorInvestmentsHoldingsGetRequest.cs` |
-| `ProcessorInvestmentsHoldingsGetResponse` | `Models/ProcessorInvestmentsHoldingsGetResponse.cs` |
+| `ProcessorInvestmentsHoldingsGetOperationRequest` | `src/ThePlaidApi/Requests/ProcessorInvestmentsHoldingsGetOperationRequest.cs` |
+| `ProcessorInvestmentsHoldingsGetRequest` | `src/ThePlaidApi/Models/ProcessorInvestmentsHoldingsGetRequest.cs` |
+| `ProcessorInvestmentsHoldingsGetResponse` | `src/ThePlaidApi/Models/ProcessorInvestmentsHoldingsGetResponse.cs` |
 
 ### ProcessorInvestmentsTransactionsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorInvestmentsTransactionsGet(ProcessorInvestmentsTransactionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorInvestmentsTransactionsGet(ProcessorInvestmentsTransactionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorInvestmentsTransactionsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorInvestmentsTransactionsGetRequest` | `Models/ProcessorInvestmentsTransactionsGetRequest.cs` |
-| `ProcessorInvestmentsTransactionsGetResponse` | `Models/ProcessorInvestmentsTransactionsGetResponse.cs` |
+| `ProcessorInvestmentsTransactionsGetOperationRequest` | `src/ThePlaidApi/Requests/ProcessorInvestmentsTransactionsGetOperationRequest.cs` |
+| `ProcessorInvestmentsTransactionsGetRequest` | `src/ThePlaidApi/Models/ProcessorInvestmentsTransactionsGetRequest.cs` |
+| `ProcessorInvestmentsTransactionsGetResponse` | `src/ThePlaidApi/Models/ProcessorInvestmentsTransactionsGetResponse.cs` |
 
 ### ProcessorLiabilitiesGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorLiabilitiesGet(ProcessorLiabilitiesGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorLiabilitiesGet(ProcessorLiabilitiesGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorLiabilitiesGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorLiabilitiesGetRequest` | `Models/ProcessorLiabilitiesGetRequest.cs` |
-| `ProcessorLiabilitiesGetResponse` | `Models/ProcessorLiabilitiesGetResponse.cs` |
+| `ProcessorLiabilitiesGetOperationRequest` | `src/ThePlaidApi/Requests/ProcessorLiabilitiesGetOperationRequest.cs` |
+| `ProcessorLiabilitiesGetRequest` | `src/ThePlaidApi/Models/ProcessorLiabilitiesGetRequest.cs` |
+| `ProcessorLiabilitiesGetResponse` | `src/ThePlaidApi/Models/ProcessorLiabilitiesGetResponse.cs` |
 
 ### ProcessorSignalDecisionReport
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorSignalDecisionReport(ProcessorSignalDecisionReportRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorSignalDecisionReport(ProcessorSignalDecisionReportOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorSignalDecisionReportResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorSignalDecisionReportRequest` | `Models/ProcessorSignalDecisionReportRequest.cs` |
-| `ProcessorSignalDecisionReportResponse` | `Models/ProcessorSignalDecisionReportResponse.cs` |
+| `ProcessorSignalDecisionReportOperationRequest` | `src/ThePlaidApi/Requests/ProcessorSignalDecisionReportOperationRequest.cs` |
+| `ProcessorSignalDecisionReportRequest` | `src/ThePlaidApi/Models/ProcessorSignalDecisionReportRequest.cs` |
+| `ProcessorSignalDecisionReportResponse` | `src/ThePlaidApi/Models/ProcessorSignalDecisionReportResponse.cs` |
 
 ### ProcessorSignalEvaluate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorSignalEvaluate(ProcessorSignalEvaluateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorSignalEvaluate(ProcessorSignalEvaluateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorSignalEvaluateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorSignalEvaluateRequest` | `Models/ProcessorSignalEvaluateRequest.cs` |
-| `ProcessorSignalEvaluateResponse` | `Models/ProcessorSignalEvaluateResponse.cs` |
+| `ProcessorSignalEvaluateOperationRequest` | `src/ThePlaidApi/Requests/ProcessorSignalEvaluateOperationRequest.cs` |
+| `ProcessorSignalEvaluateRequest` | `src/ThePlaidApi/Models/ProcessorSignalEvaluateRequest.cs` |
+| `ProcessorSignalEvaluateResponse` | `src/ThePlaidApi/Models/ProcessorSignalEvaluateResponse.cs` |
 
 ### ProcessorSignalPrepare
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorSignalPrepare(ProcessorSignalPrepareRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorSignalPrepare(ProcessorSignalPrepareOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorSignalPrepareResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorSignalPrepareRequest` | `Models/ProcessorSignalPrepareRequest.cs` |
-| `ProcessorSignalPrepareResponse` | `Models/ProcessorSignalPrepareResponse.cs` |
+| `ProcessorSignalPrepareOperationRequest` | `src/ThePlaidApi/Requests/ProcessorSignalPrepareOperationRequest.cs` |
+| `ProcessorSignalPrepareRequest` | `src/ThePlaidApi/Models/ProcessorSignalPrepareRequest.cs` |
+| `ProcessorSignalPrepareResponse` | `src/ThePlaidApi/Models/ProcessorSignalPrepareResponse.cs` |
 
 ### ProcessorSignalReturnReport
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorSignalReturnReport(ProcessorSignalReturnReportRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorSignalReturnReport(ProcessorSignalReturnReportOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorSignalReturnReportResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorSignalReturnReportRequest` | `Models/ProcessorSignalReturnReportRequest.cs` |
-| `ProcessorSignalReturnReportResponse` | `Models/ProcessorSignalReturnReportResponse.cs` |
+| `ProcessorSignalReturnReportOperationRequest` | `src/ThePlaidApi/Requests/ProcessorSignalReturnReportOperationRequest.cs` |
+| `ProcessorSignalReturnReportRequest` | `src/ThePlaidApi/Models/ProcessorSignalReturnReportRequest.cs` |
+| `ProcessorSignalReturnReportResponse` | `src/ThePlaidApi/Models/ProcessorSignalReturnReportResponse.cs` |
 
 ### ProcessorStripeBankAccountTokenCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorStripeBankAccountTokenCreate(ProcessorStripeBankAccountTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorStripeBankAccountTokenCreate(ProcessorStripeBankAccountTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorStripeBankAccountTokenCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorStripeBankAccountTokenCreateRequest` | `Models/ProcessorStripeBankAccountTokenCreateRequest.cs` |
-| `ProcessorStripeBankAccountTokenCreateResponse` | `Models/ProcessorStripeBankAccountTokenCreateResponse.cs` |
+| `ProcessorStripeBankAccountTokenCreateOperationRequest` | `src/ThePlaidApi/Requests/ProcessorStripeBankAccountTokenCreateOperationRequest.cs` |
+| `ProcessorStripeBankAccountTokenCreateRequest` | `src/ThePlaidApi/Models/ProcessorStripeBankAccountTokenCreateRequest.cs` |
+| `ProcessorStripeBankAccountTokenCreateResponse` | `src/ThePlaidApi/Models/ProcessorStripeBankAccountTokenCreateResponse.cs` |
 
 ### ProcessorTokenCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorTokenCreate(ProcessorTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorTokenCreate(ProcessorTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorTokenCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorTokenCreateRequest` | `Models/ProcessorTokenCreateRequest.cs` |
-| `ProcessorTokenCreateResponse` | `Models/ProcessorTokenCreateResponse.cs` |
+| `ProcessorTokenCreateOperationRequest` | `src/ThePlaidApi/Requests/ProcessorTokenCreateOperationRequest.cs` |
+| `ProcessorTokenCreateRequest` | `src/ThePlaidApi/Models/ProcessorTokenCreateRequest.cs` |
+| `ProcessorTokenCreateResponse` | `src/ThePlaidApi/Models/ProcessorTokenCreateResponse.cs` |
 
 ### ProcessorTokenPermissionsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorTokenPermissionsGet(ProcessorTokenPermissionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorTokenPermissionsGet(ProcessorTokenPermissionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorTokenPermissionsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorTokenPermissionsGetRequest` | `Models/ProcessorTokenPermissionsGetRequest.cs` |
-| `ProcessorTokenPermissionsGetResponse` | `Models/ProcessorTokenPermissionsGetResponse.cs` |
+| `ProcessorTokenPermissionsGetOperationRequest` | `src/ThePlaidApi/Requests/ProcessorTokenPermissionsGetOperationRequest.cs` |
+| `ProcessorTokenPermissionsGetRequest` | `src/ThePlaidApi/Models/ProcessorTokenPermissionsGetRequest.cs` |
+| `ProcessorTokenPermissionsGetResponse` | `src/ThePlaidApi/Models/ProcessorTokenPermissionsGetResponse.cs` |
 
 ### ProcessorTokenPermissionsSet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorTokenPermissionsSet(ProcessorTokenPermissionsSetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorTokenPermissionsSet(ProcessorTokenPermissionsSetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorTokenPermissionsSetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorTokenPermissionsSetRequest` | `Models/ProcessorTokenPermissionsSetRequest.cs` |
-| `ProcessorTokenPermissionsSetResponse` | `Models/ProcessorTokenPermissionsSetResponse.cs` |
+| `ProcessorTokenPermissionsSetOperationRequest` | `src/ThePlaidApi/Requests/ProcessorTokenPermissionsSetOperationRequest.cs` |
+| `ProcessorTokenPermissionsSetRequest` | `src/ThePlaidApi/Models/ProcessorTokenPermissionsSetRequest.cs` |
+| `ProcessorTokenPermissionsSetResponse` | `src/ThePlaidApi/Models/ProcessorTokenPermissionsSetResponse.cs` |
 
 ### ProcessorTokenWebhookUpdate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorTokenWebhookUpdate(ProcessorTokenWebhookUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorTokenWebhookUpdate(ProcessorTokenWebhookUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorTokenWebhookUpdateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorTokenWebhookUpdateRequest` | `Models/ProcessorTokenWebhookUpdateRequest.cs` |
-| `ProcessorTokenWebhookUpdateResponse` | `Models/ProcessorTokenWebhookUpdateResponse.cs` |
+| `ProcessorTokenWebhookUpdateOperationRequest` | `src/ThePlaidApi/Requests/ProcessorTokenWebhookUpdateOperationRequest.cs` |
+| `ProcessorTokenWebhookUpdateRequest` | `src/ThePlaidApi/Models/ProcessorTokenWebhookUpdateRequest.cs` |
+| `ProcessorTokenWebhookUpdateResponse` | `src/ThePlaidApi/Models/ProcessorTokenWebhookUpdateResponse.cs` |
 
 ### ProcessorTransactionsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorTransactionsGet(ProcessorTransactionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorTransactionsGet(ProcessorTransactionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorTransactionsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorTransactionsGetRequest` | `Models/ProcessorTransactionsGetRequest.cs` |
-| `ProcessorTransactionsGetResponse` | `Models/ProcessorTransactionsGetResponse.cs` |
+| `ProcessorTransactionsGetOperationRequest` | `src/ThePlaidApi/Requests/ProcessorTransactionsGetOperationRequest.cs` |
+| `ProcessorTransactionsGetRequest` | `src/ThePlaidApi/Models/ProcessorTransactionsGetRequest.cs` |
+| `ProcessorTransactionsGetResponse` | `src/ThePlaidApi/Models/ProcessorTransactionsGetResponse.cs` |
 
 ### ProcessorTransactionsRecurringGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorTransactionsRecurringGet(ProcessorTransactionsRecurringGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorTransactionsRecurringGet(ProcessorTransactionsRecurringGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorTransactionsRecurringGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorTransactionsRecurringGetRequest` | `Models/ProcessorTransactionsRecurringGetRequest.cs` |
-| `ProcessorTransactionsRecurringGetResponse` | `Models/ProcessorTransactionsRecurringGetResponse.cs` |
+| `ProcessorTransactionsRecurringGetOperationRequest` | `src/ThePlaidApi/Requests/ProcessorTransactionsRecurringGetOperationRequest.cs` |
+| `ProcessorTransactionsRecurringGetRequest` | `src/ThePlaidApi/Models/ProcessorTransactionsRecurringGetRequest.cs` |
+| `ProcessorTransactionsRecurringGetResponse` | `src/ThePlaidApi/Models/ProcessorTransactionsRecurringGetResponse.cs` |
 
 ### ProcessorTransactionsRefresh
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorTransactionsRefresh(ProcessorTransactionsRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorTransactionsRefresh(ProcessorTransactionsRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorTransactionsRefreshResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorTransactionsRefreshRequest` | `Models/ProcessorTransactionsRefreshRequest.cs` |
-| `ProcessorTransactionsRefreshResponse` | `Models/ProcessorTransactionsRefreshResponse.cs` |
+| `ProcessorTransactionsRefreshOperationRequest` | `src/ThePlaidApi/Requests/ProcessorTransactionsRefreshOperationRequest.cs` |
+| `ProcessorTransactionsRefreshRequest` | `src/ThePlaidApi/Models/ProcessorTransactionsRefreshRequest.cs` |
+| `ProcessorTransactionsRefreshResponse` | `src/ThePlaidApi/Models/ProcessorTransactionsRefreshResponse.cs` |
 
 ### ProcessorTransactionsSync
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProcessorTransactionsSync(ProcessorTransactionsSyncRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProcessorTransactionsSync(ProcessorTransactionsSyncOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProcessorTransactionsSyncResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProcessorTransactionsSyncRequest` | `Models/ProcessorTransactionsSyncRequest.cs` |
-| `ProcessorTransactionsSyncResponse` | `Models/ProcessorTransactionsSyncResponse.cs` |
+| `ProcessorTransactionsSyncOperationRequest` | `src/ThePlaidApi/Requests/ProcessorTransactionsSyncOperationRequest.cs` |
+| `ProcessorTransactionsSyncRequest` | `src/ThePlaidApi/Models/ProcessorTransactionsSyncRequest.cs` |
+| `ProcessorTransactionsSyncResponse` | `src/ThePlaidApi/Models/ProcessorTransactionsSyncResponse.cs` |
 
 ### ProfileNetworkStatusGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProfileNetworkStatusGet(ProfileNetworkStatusGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProfileNetworkStatusGet(ProfileNetworkStatusGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProfileNetworkStatusGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProfileNetworkStatusGetRequest` | `Models/ProfileNetworkStatusGetRequest.cs` |
-| `ProfileNetworkStatusGetResponse` | `Models/ProfileNetworkStatusGetResponse.cs` |
+| `ProfileNetworkStatusGetOperationRequest` | `src/ThePlaidApi/Requests/ProfileNetworkStatusGetOperationRequest.cs` |
+| `ProfileNetworkStatusGetRequest` | `src/ThePlaidApi/Models/ProfileNetworkStatusGetRequest.cs` |
+| `ProfileNetworkStatusGetResponse` | `src/ThePlaidApi/Models/ProfileNetworkStatusGetResponse.cs` |
 
 ### ProtectCompute
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProtectCompute(ProtectComputeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProtectCompute(ProtectComputeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProtectComputeResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProtectComputeRequest` | `Models/ProtectComputeRequest.cs` |
-| `ProtectComputeResponse` | `Models/ProtectComputeResponse.cs` |
+| `ProtectComputeOperationRequest` | `src/ThePlaidApi/Requests/ProtectComputeOperationRequest.cs` |
+| `ProtectComputeRequest` | `src/ThePlaidApi/Models/ProtectComputeRequest.cs` |
+| `ProtectComputeResponse` | `src/ThePlaidApi/Models/ProtectComputeResponse.cs` |
 
 ### ProtectEventGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProtectEventGet(ProtectEventGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProtectEventGet(ProtectEventGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProtectEventGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProtectEventGetRequest` | `Models/ProtectEventGetRequest.cs` |
-| `ProtectEventGetResponse` | `Models/ProtectEventGetResponse.cs` |
+| `ProtectEventGetOperationRequest` | `src/ThePlaidApi/Requests/ProtectEventGetOperationRequest.cs` |
+| `ProtectEventGetRequest` | `src/ThePlaidApi/Models/ProtectEventGetRequest.cs` |
+| `ProtectEventGetResponse` | `src/ThePlaidApi/Models/ProtectEventGetResponse.cs` |
 
 ### ProtectEventSend
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProtectEventSend(ProtectEventSendRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProtectEventSend(ProtectEventSendOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProtectEventSendResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProtectEventSendRequest` | `Models/ProtectEventSendRequest.cs` |
-| `ProtectEventSendResponse` | `Models/ProtectEventSendResponse.cs` |
+| `ProtectEventSendOperationRequest` | `src/ThePlaidApi/Requests/ProtectEventSendOperationRequest.cs` |
+| `ProtectEventSendRequest` | `src/ThePlaidApi/Models/ProtectEventSendRequest.cs` |
+| `ProtectEventSendResponse` | `src/ThePlaidApi/Models/ProtectEventSendResponse.cs` |
 
 ### ProtectReportCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProtectReportCreate(ProtectReportCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProtectReportCreate(ProtectReportCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProtectReportCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProtectReportCreateRequest` | `Models/ProtectReportCreateRequest.cs` |
-| `ProtectReportCreateResponse` | `Models/ProtectReportCreateResponse.cs` |
+| `ProtectReportCreateOperationRequest` | `src/ThePlaidApi/Requests/ProtectReportCreateOperationRequest.cs` |
+| `ProtectReportCreateRequest` | `src/ThePlaidApi/Models/ProtectReportCreateRequest.cs` |
+| `ProtectReportCreateResponse` | `src/ThePlaidApi/Models/ProtectReportCreateResponse.cs` |
 
 ### ProtectUserInsightsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `ProtectUserInsightsGet(ProtectUserInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `ProtectUserInsightsGet(ProtectUserInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `ProtectUserInsightsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `ProtectUserInsightsGetRequest` | `Models/ProtectUserInsightsGetRequest.cs` |
-| `ProtectUserInsightsGetResponse` | `Models/ProtectUserInsightsGetResponse.cs` |
+| `ProtectUserInsightsGetOperationRequest` | `src/ThePlaidApi/Requests/ProtectUserInsightsGetOperationRequest.cs` |
+| `ProtectUserInsightsGetRequest` | `src/ThePlaidApi/Models/ProtectUserInsightsGetRequest.cs` |
+| `ProtectUserInsightsGetResponse` | `src/ThePlaidApi/Models/ProtectUserInsightsGetResponse.cs` |
 
 ### SandboxBankIncomeFireWebhook
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxBankIncomeFireWebhook(SandboxBankIncomeFireWebhookRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxBankIncomeFireWebhook(SandboxBankIncomeFireWebhookOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxBankIncomeFireWebhookResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxBankIncomeFireWebhookRequest` | `Models/SandboxBankIncomeFireWebhookRequest.cs` |
-| `SandboxBankIncomeFireWebhookResponse` | `Models/SandboxBankIncomeFireWebhookResponse.cs` |
+| `SandboxBankIncomeFireWebhookOperationRequest` | `src/ThePlaidApi/Requests/SandboxBankIncomeFireWebhookOperationRequest.cs` |
+| `SandboxBankIncomeFireWebhookRequest` | `src/ThePlaidApi/Models/SandboxBankIncomeFireWebhookRequest.cs` |
+| `SandboxBankIncomeFireWebhookResponse` | `src/ThePlaidApi/Models/SandboxBankIncomeFireWebhookResponse.cs` |
 
 ### SandboxBankTransferFireWebhook
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxBankTransferFireWebhook(SandboxBankTransferFireWebhookRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxBankTransferFireWebhook(SandboxBankTransferFireWebhookOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxBankTransferFireWebhookResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxBankTransferFireWebhookRequest` | `Models/SandboxBankTransferFireWebhookRequest.cs` |
-| `SandboxBankTransferFireWebhookResponse` | `Models/SandboxBankTransferFireWebhookResponse.cs` |
+| `SandboxBankTransferFireWebhookOperationRequest` | `src/ThePlaidApi/Requests/SandboxBankTransferFireWebhookOperationRequest.cs` |
+| `SandboxBankTransferFireWebhookRequest` | `src/ThePlaidApi/Models/SandboxBankTransferFireWebhookRequest.cs` |
+| `SandboxBankTransferFireWebhookResponse` | `src/ThePlaidApi/Models/SandboxBankTransferFireWebhookResponse.cs` |
 
 ### SandboxBankTransferSimulate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxBankTransferSimulate(SandboxBankTransferSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxBankTransferSimulate(SandboxBankTransferSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxBankTransferSimulateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxBankTransferSimulateRequest` | `Models/SandboxBankTransferSimulateRequest.cs` |
-| `SandboxBankTransferSimulateResponse` | `Models/SandboxBankTransferSimulateResponse.cs` |
+| `SandboxBankTransferSimulateOperationRequest` | `src/ThePlaidApi/Requests/SandboxBankTransferSimulateOperationRequest.cs` |
+| `SandboxBankTransferSimulateRequest` | `src/ThePlaidApi/Models/SandboxBankTransferSimulateRequest.cs` |
+| `SandboxBankTransferSimulateResponse` | `src/ThePlaidApi/Models/SandboxBankTransferSimulateResponse.cs` |
 
 ### SandboxCraCashflowUpdatesUpdate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxCraCashflowUpdatesUpdate(SandboxCraCashflowUpdatesUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxCraCashflowUpdatesUpdate(SandboxCraCashflowUpdatesUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxCraCashflowUpdatesUpdateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxCraCashflowUpdatesUpdateRequest` | `Models/SandboxCraCashflowUpdatesUpdateRequest.cs` |
-| `SandboxCraCashflowUpdatesUpdateResponse` | `Models/SandboxCraCashflowUpdatesUpdateResponse.cs` |
+| `SandboxCraCashflowUpdatesUpdateOperationRequest` | `src/ThePlaidApi/Requests/SandboxCraCashflowUpdatesUpdateOperationRequest.cs` |
+| `SandboxCraCashflowUpdatesUpdateRequest` | `src/ThePlaidApi/Models/SandboxCraCashflowUpdatesUpdateRequest.cs` |
+| `SandboxCraCashflowUpdatesUpdateResponse` | `src/ThePlaidApi/Models/SandboxCraCashflowUpdatesUpdateResponse.cs` |
 
 ### SandboxFdxConsentSeed
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxFdxConsentSeed(SandboxFdxConsentSeedRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxFdxConsentSeed(SandboxFdxConsentSeedOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxFdxConsentSeedResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxFdxConsentSeedRequest` | `Models/SandboxFdxConsentSeedRequest.cs` |
-| `SandboxFdxConsentSeedResponse` | `Models/SandboxFdxConsentSeedResponse.cs` |
+| `SandboxFdxConsentSeedOperationRequest` | `src/ThePlaidApi/Requests/SandboxFdxConsentSeedOperationRequest.cs` |
+| `SandboxFdxConsentSeedRequest` | `src/ThePlaidApi/Models/SandboxFdxConsentSeedRequest.cs` |
+| `SandboxFdxConsentSeedResponse` | `src/ThePlaidApi/Models/SandboxFdxConsentSeedResponse.cs` |
 
 ### SandboxIncomeFireWebhook
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxIncomeFireWebhook(SandboxIncomeFireWebhookRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxIncomeFireWebhook(SandboxIncomeFireWebhookOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxIncomeFireWebhookResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxIncomeFireWebhookRequest` | `Models/SandboxIncomeFireWebhookRequest.cs` |
-| `SandboxIncomeFireWebhookResponse` | `Models/SandboxIncomeFireWebhookResponse.cs` |
+| `SandboxIncomeFireWebhookOperationRequest` | `src/ThePlaidApi/Requests/SandboxIncomeFireWebhookOperationRequest.cs` |
+| `SandboxIncomeFireWebhookRequest` | `src/ThePlaidApi/Models/SandboxIncomeFireWebhookRequest.cs` |
+| `SandboxIncomeFireWebhookResponse` | `src/ThePlaidApi/Models/SandboxIncomeFireWebhookResponse.cs` |
 
 ### SandboxItemApplicationSeed
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxItemApplicationSeed(SandboxItemApplicationSeedRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxItemApplicationSeed(SandboxItemApplicationSeedOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxItemApplicationSeedResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxItemApplicationSeedRequest` | `Models/SandboxItemApplicationSeedRequest.cs` |
-| `SandboxItemApplicationSeedResponse` | `Models/SandboxItemApplicationSeedResponse.cs` |
+| `SandboxItemApplicationSeedOperationRequest` | `src/ThePlaidApi/Requests/SandboxItemApplicationSeedOperationRequest.cs` |
+| `SandboxItemApplicationSeedRequest` | `src/ThePlaidApi/Models/SandboxItemApplicationSeedRequest.cs` |
+| `SandboxItemApplicationSeedResponse` | `src/ThePlaidApi/Models/SandboxItemApplicationSeedResponse.cs` |
 
 ### SandboxItemFireWebhook
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxItemFireWebhook(SandboxItemFireWebhookRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxItemFireWebhook(SandboxItemFireWebhookOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxItemFireWebhookResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxItemFireWebhookRequest` | `Models/SandboxItemFireWebhookRequest.cs` |
-| `SandboxItemFireWebhookResponse` | `Models/SandboxItemFireWebhookResponse.cs` |
+| `SandboxItemFireWebhookOperationRequest` | `src/ThePlaidApi/Requests/SandboxItemFireWebhookOperationRequest.cs` |
+| `SandboxItemFireWebhookRequest` | `src/ThePlaidApi/Models/SandboxItemFireWebhookRequest.cs` |
+| `SandboxItemFireWebhookResponse` | `src/ThePlaidApi/Models/SandboxItemFireWebhookResponse.cs` |
 
 ### SandboxItemResetLogin
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxItemResetLogin(SandboxItemResetLoginRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxItemResetLogin(SandboxItemResetLoginOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxItemResetLoginResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxItemResetLoginRequest` | `Models/SandboxItemResetLoginRequest.cs` |
-| `SandboxItemResetLoginResponse` | `Models/SandboxItemResetLoginResponse.cs` |
+| `SandboxItemResetLoginOperationRequest` | `src/ThePlaidApi/Requests/SandboxItemResetLoginOperationRequest.cs` |
+| `SandboxItemResetLoginRequest` | `src/ThePlaidApi/Models/SandboxItemResetLoginRequest.cs` |
+| `SandboxItemResetLoginResponse` | `src/ThePlaidApi/Models/SandboxItemResetLoginResponse.cs` |
 
 ### SandboxItemSetVerificationStatus
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxItemSetVerificationStatus(SandboxItemSetVerificationStatusRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxItemSetVerificationStatus(SandboxItemSetVerificationStatusOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxItemSetVerificationStatusResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxItemSetVerificationStatusRequest` | `Models/SandboxItemSetVerificationStatusRequest.cs` |
-| `SandboxItemSetVerificationStatusResponse` | `Models/SandboxItemSetVerificationStatusResponse.cs` |
+| `SandboxItemSetVerificationStatusOperationRequest` | `src/ThePlaidApi/Requests/SandboxItemSetVerificationStatusOperationRequest.cs` |
+| `SandboxItemSetVerificationStatusRequest` | `src/ThePlaidApi/Models/SandboxItemSetVerificationStatusRequest.cs` |
+| `SandboxItemSetVerificationStatusResponse` | `src/ThePlaidApi/Models/SandboxItemSetVerificationStatusResponse.cs` |
 
 ### SandboxOauthSelectAccounts
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxOauthSelectAccounts(SandboxOauthSelectAccountsRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxOauthSelectAccounts(SandboxOauthSelectAccountsOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `object`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxOauthSelectAccountsRequest` | `Models/SandboxOauthSelectAccountsRequest.cs` |
+| `SandboxOauthSelectAccountsOperationRequest` | `src/ThePlaidApi/Requests/SandboxOauthSelectAccountsOperationRequest.cs` |
+| `SandboxOauthSelectAccountsRequest` | `src/ThePlaidApi/Models/SandboxOauthSelectAccountsRequest.cs` |
 
 ### SandboxPaymentProfileResetLogin
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxPaymentProfileResetLogin(SandboxPaymentProfileResetLoginRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxPaymentProfileResetLogin(SandboxPaymentProfileResetLoginOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxPaymentProfileResetLoginResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxPaymentProfileResetLoginRequest` | `Models/SandboxPaymentProfileResetLoginRequest.cs` |
-| `SandboxPaymentProfileResetLoginResponse` | `Models/SandboxPaymentProfileResetLoginResponse.cs` |
+| `SandboxPaymentProfileResetLoginOperationRequest` | `src/ThePlaidApi/Requests/SandboxPaymentProfileResetLoginOperationRequest.cs` |
+| `SandboxPaymentProfileResetLoginRequest` | `src/ThePlaidApi/Models/SandboxPaymentProfileResetLoginRequest.cs` |
+| `SandboxPaymentProfileResetLoginResponse` | `src/ThePlaidApi/Models/SandboxPaymentProfileResetLoginResponse.cs` |
 
 ### SandboxPaymentSimulate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxPaymentSimulate(SandboxPaymentSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxPaymentSimulate(SandboxPaymentSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxPaymentSimulateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxPaymentSimulateRequest` | `Models/SandboxPaymentSimulateRequest.cs` |
-| `SandboxPaymentSimulateResponse` | `Models/SandboxPaymentSimulateResponse.cs` |
+| `SandboxPaymentSimulateOperationRequest` | `src/ThePlaidApi/Requests/SandboxPaymentSimulateOperationRequest.cs` |
+| `SandboxPaymentSimulateRequest` | `src/ThePlaidApi/Models/SandboxPaymentSimulateRequest.cs` |
+| `SandboxPaymentSimulateResponse` | `src/ThePlaidApi/Models/SandboxPaymentSimulateResponse.cs` |
 
 ### SandboxProcessorTokenCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxProcessorTokenCreate(SandboxProcessorTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxProcessorTokenCreate(SandboxProcessorTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxProcessorTokenCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxProcessorTokenCreateRequest` | `Models/SandboxProcessorTokenCreateRequest.cs` |
-| `SandboxProcessorTokenCreateResponse` | `Models/SandboxProcessorTokenCreateResponse.cs` |
+| `SandboxProcessorTokenCreateOperationRequest` | `src/ThePlaidApi/Requests/SandboxProcessorTokenCreateOperationRequest.cs` |
+| `SandboxProcessorTokenCreateRequest` | `src/ThePlaidApi/Models/SandboxProcessorTokenCreateRequest.cs` |
+| `SandboxProcessorTokenCreateResponse` | `src/ThePlaidApi/Models/SandboxProcessorTokenCreateResponse.cs` |
 
 ### SandboxPublicTokenCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxPublicTokenCreate(SandboxPublicTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxPublicTokenCreate(SandboxPublicTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxPublicTokenCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxPublicTokenCreateRequest` | `Models/SandboxPublicTokenCreateRequest.cs` |
-| `SandboxPublicTokenCreateResponse` | `Models/SandboxPublicTokenCreateResponse.cs` |
+| `SandboxPublicTokenCreateOperationRequest` | `src/ThePlaidApi/Requests/SandboxPublicTokenCreateOperationRequest.cs` |
+| `SandboxPublicTokenCreateRequest` | `src/ThePlaidApi/Models/SandboxPublicTokenCreateRequest.cs` |
+| `SandboxPublicTokenCreateResponse` | `src/ThePlaidApi/Models/SandboxPublicTokenCreateResponse.cs` |
 
 ### SandboxTransactionsCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxTransactionsCreate(SandboxTransactionsCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxTransactionsCreate(SandboxTransactionsCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxTransactionsCreateResponse`
-- **Error**: `SdkException<SandboxTransactionsCreateError>` — **Case A (typed)**
+- **Error**: `ApiException<SandboxTransactionsCreateError>` — **Case A (typed)**
 - **Error accessors**: `TryGetError(out Error?)` [400] · `TryGetRawError(out RawError)` [fallback]
 
 | Type | Source |
 | --- | --- |
-| `SandboxTransactionsCreateRequest` | `Models/SandboxTransactionsCreateRequest.cs` |
-| `SandboxTransactionsCreateResponse` | `Models/SandboxTransactionsCreateResponse.cs` |
-| `SandboxTransactionsCreateError` | `Errors/SandboxTransactionsCreateError.cs` |
-| `Error` | `Models/Error.cs` |
+| `SandboxTransactionsCreateOperationRequest` | `src/ThePlaidApi/Requests/SandboxTransactionsCreateOperationRequest.cs` |
+| `SandboxTransactionsCreateRequest` | `src/ThePlaidApi/Models/SandboxTransactionsCreateRequest.cs` |
+| `SandboxTransactionsCreateResponse` | `src/ThePlaidApi/Models/SandboxTransactionsCreateResponse.cs` |
+| `SandboxTransactionsCreateError` | `src/ThePlaidApi/Errors/SandboxTransactionsCreateError.cs` |
+| `Error` | `src/ThePlaidApi/Models/Error.cs` |
 
 ### SandboxTransferFireWebhook
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxTransferFireWebhook(SandboxTransferFireWebhookRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxTransferFireWebhook(SandboxTransferFireWebhookOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxTransferFireWebhookResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxTransferFireWebhookRequest` | `Models/SandboxTransferFireWebhookRequest.cs` |
-| `SandboxTransferFireWebhookResponse` | `Models/SandboxTransferFireWebhookResponse.cs` |
+| `SandboxTransferFireWebhookOperationRequest` | `src/ThePlaidApi/Requests/SandboxTransferFireWebhookOperationRequest.cs` |
+| `SandboxTransferFireWebhookRequest` | `src/ThePlaidApi/Models/SandboxTransferFireWebhookRequest.cs` |
+| `SandboxTransferFireWebhookResponse` | `src/ThePlaidApi/Models/SandboxTransferFireWebhookResponse.cs` |
 
 ### SandboxTransferLedgerDepositSimulate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxTransferLedgerDepositSimulate(SandboxTransferLedgerDepositSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxTransferLedgerDepositSimulate(SandboxTransferLedgerDepositSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxTransferLedgerDepositSimulateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxTransferLedgerDepositSimulateRequest` | `Models/SandboxTransferLedgerDepositSimulateRequest.cs` |
-| `SandboxTransferLedgerDepositSimulateResponse` | `Models/SandboxTransferLedgerDepositSimulateResponse.cs` |
+| `SandboxTransferLedgerDepositSimulateOperationRequest` | `src/ThePlaidApi/Requests/SandboxTransferLedgerDepositSimulateOperationRequest.cs` |
+| `SandboxTransferLedgerDepositSimulateRequest` | `src/ThePlaidApi/Models/SandboxTransferLedgerDepositSimulateRequest.cs` |
+| `SandboxTransferLedgerDepositSimulateResponse` | `src/ThePlaidApi/Models/SandboxTransferLedgerDepositSimulateResponse.cs` |
 
 ### SandboxTransferLedgerSimulateAvailable
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxTransferLedgerSimulateAvailable(SandboxTransferLedgerSimulateAvailableRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxTransferLedgerSimulateAvailable(SandboxTransferLedgerSimulateAvailableOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxTransferLedgerSimulateAvailableResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxTransferLedgerSimulateAvailableRequest` | `Models/SandboxTransferLedgerSimulateAvailableRequest.cs` |
-| `SandboxTransferLedgerSimulateAvailableResponse` | `Models/SandboxTransferLedgerSimulateAvailableResponse.cs` |
+| `SandboxTransferLedgerSimulateAvailableOperationRequest` | `src/ThePlaidApi/Requests/SandboxTransferLedgerSimulateAvailableOperationRequest.cs` |
+| `SandboxTransferLedgerSimulateAvailableRequest` | `src/ThePlaidApi/Models/SandboxTransferLedgerSimulateAvailableRequest.cs` |
+| `SandboxTransferLedgerSimulateAvailableResponse` | `src/ThePlaidApi/Models/SandboxTransferLedgerSimulateAvailableResponse.cs` |
 
 ### SandboxTransferLedgerWithdrawSimulate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxTransferLedgerWithdrawSimulate(SandboxTransferLedgerWithdrawSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxTransferLedgerWithdrawSimulate(SandboxTransferLedgerWithdrawSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxTransferLedgerWithdrawSimulateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxTransferLedgerWithdrawSimulateRequest` | `Models/SandboxTransferLedgerWithdrawSimulateRequest.cs` |
-| `SandboxTransferLedgerWithdrawSimulateResponse` | `Models/SandboxTransferLedgerWithdrawSimulateResponse.cs` |
+| `SandboxTransferLedgerWithdrawSimulateOperationRequest` | `src/ThePlaidApi/Requests/SandboxTransferLedgerWithdrawSimulateOperationRequest.cs` |
+| `SandboxTransferLedgerWithdrawSimulateRequest` | `src/ThePlaidApi/Models/SandboxTransferLedgerWithdrawSimulateRequest.cs` |
+| `SandboxTransferLedgerWithdrawSimulateResponse` | `src/ThePlaidApi/Models/SandboxTransferLedgerWithdrawSimulateResponse.cs` |
 
 ### SandboxTransferRefundSimulate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxTransferRefundSimulate(SandboxTransferRefundSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxTransferRefundSimulate(SandboxTransferRefundSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxTransferRefundSimulateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxTransferRefundSimulateRequest` | `Models/SandboxTransferRefundSimulateRequest.cs` |
-| `SandboxTransferRefundSimulateResponse` | `Models/SandboxTransferRefundSimulateResponse.cs` |
+| `SandboxTransferRefundSimulateOperationRequest` | `src/ThePlaidApi/Requests/SandboxTransferRefundSimulateOperationRequest.cs` |
+| `SandboxTransferRefundSimulateRequest` | `src/ThePlaidApi/Models/SandboxTransferRefundSimulateRequest.cs` |
+| `SandboxTransferRefundSimulateResponse` | `src/ThePlaidApi/Models/SandboxTransferRefundSimulateResponse.cs` |
 
 ### SandboxTransferRepaymentSimulate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxTransferRepaymentSimulate(SandboxTransferRepaymentSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxTransferRepaymentSimulate(SandboxTransferRepaymentSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxTransferRepaymentSimulateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxTransferRepaymentSimulateRequest` | `Models/SandboxTransferRepaymentSimulateRequest.cs` |
-| `SandboxTransferRepaymentSimulateResponse` | `Models/SandboxTransferRepaymentSimulateResponse.cs` |
+| `SandboxTransferRepaymentSimulateOperationRequest` | `src/ThePlaidApi/Requests/SandboxTransferRepaymentSimulateOperationRequest.cs` |
+| `SandboxTransferRepaymentSimulateRequest` | `src/ThePlaidApi/Models/SandboxTransferRepaymentSimulateRequest.cs` |
+| `SandboxTransferRepaymentSimulateResponse` | `src/ThePlaidApi/Models/SandboxTransferRepaymentSimulateResponse.cs` |
 
 ### SandboxTransferSimulate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxTransferSimulate(SandboxTransferSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxTransferSimulate(SandboxTransferSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxTransferSimulateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxTransferSimulateRequest` | `Models/SandboxTransferSimulateRequest.cs` |
-| `SandboxTransferSimulateResponse` | `Models/SandboxTransferSimulateResponse.cs` |
+| `SandboxTransferSimulateOperationRequest` | `src/ThePlaidApi/Requests/SandboxTransferSimulateOperationRequest.cs` |
+| `SandboxTransferSimulateRequest` | `src/ThePlaidApi/Models/SandboxTransferSimulateRequest.cs` |
+| `SandboxTransferSimulateResponse` | `src/ThePlaidApi/Models/SandboxTransferSimulateResponse.cs` |
 
 ### SandboxTransferSweepSimulate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxTransferSweepSimulate(SandboxTransferSweepSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxTransferSweepSimulate(SandboxTransferSweepSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxTransferSweepSimulateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxTransferSweepSimulateRequest` | `Models/SandboxTransferSweepSimulateRequest.cs` |
-| `SandboxTransferSweepSimulateResponse` | `Models/SandboxTransferSweepSimulateResponse.cs` |
+| `SandboxTransferSweepSimulateOperationRequest` | `src/ThePlaidApi/Requests/SandboxTransferSweepSimulateOperationRequest.cs` |
+| `SandboxTransferSweepSimulateRequest` | `src/ThePlaidApi/Models/SandboxTransferSweepSimulateRequest.cs` |
+| `SandboxTransferSweepSimulateResponse` | `src/ThePlaidApi/Models/SandboxTransferSweepSimulateResponse.cs` |
 
 ### SandboxTransferTestClockAdvance
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxTransferTestClockAdvance(SandboxTransferTestClockAdvanceRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxTransferTestClockAdvance(SandboxTransferTestClockAdvanceOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxTransferTestClockAdvanceResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxTransferTestClockAdvanceRequest` | `Models/SandboxTransferTestClockAdvanceRequest.cs` |
-| `SandboxTransferTestClockAdvanceResponse` | `Models/SandboxTransferTestClockAdvanceResponse.cs` |
+| `SandboxTransferTestClockAdvanceOperationRequest` | `src/ThePlaidApi/Requests/SandboxTransferTestClockAdvanceOperationRequest.cs` |
+| `SandboxTransferTestClockAdvanceRequest` | `src/ThePlaidApi/Models/SandboxTransferTestClockAdvanceRequest.cs` |
+| `SandboxTransferTestClockAdvanceResponse` | `src/ThePlaidApi/Models/SandboxTransferTestClockAdvanceResponse.cs` |
 
 ### SandboxTransferTestClockCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxTransferTestClockCreate(SandboxTransferTestClockCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxTransferTestClockCreate(SandboxTransferTestClockCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxTransferTestClockCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxTransferTestClockCreateRequest` | `Models/SandboxTransferTestClockCreateRequest.cs` |
-| `SandboxTransferTestClockCreateResponse` | `Models/SandboxTransferTestClockCreateResponse.cs` |
+| `SandboxTransferTestClockCreateOperationRequest` | `src/ThePlaidApi/Requests/SandboxTransferTestClockCreateOperationRequest.cs` |
+| `SandboxTransferTestClockCreateRequest` | `src/ThePlaidApi/Models/SandboxTransferTestClockCreateRequest.cs` |
+| `SandboxTransferTestClockCreateResponse` | `src/ThePlaidApi/Models/SandboxTransferTestClockCreateResponse.cs` |
 
 ### SandboxTransferTestClockGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxTransferTestClockGet(SandboxTransferTestClockGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxTransferTestClockGet(SandboxTransferTestClockGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxTransferTestClockGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxTransferTestClockGetRequest` | `Models/SandboxTransferTestClockGetRequest.cs` |
-| `SandboxTransferTestClockGetResponse` | `Models/SandboxTransferTestClockGetResponse.cs` |
+| `SandboxTransferTestClockGetOperationRequest` | `src/ThePlaidApi/Requests/SandboxTransferTestClockGetOperationRequest.cs` |
+| `SandboxTransferTestClockGetRequest` | `src/ThePlaidApi/Models/SandboxTransferTestClockGetRequest.cs` |
+| `SandboxTransferTestClockGetResponse` | `src/ThePlaidApi/Models/SandboxTransferTestClockGetResponse.cs` |
 
 ### SandboxTransferTestClockList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxTransferTestClockList(SandboxTransferTestClockListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxTransferTestClockList(SandboxTransferTestClockListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxTransferTestClockListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxTransferTestClockListRequest` | `Models/SandboxTransferTestClockListRequest.cs` |
-| `SandboxTransferTestClockListResponse` | `Models/SandboxTransferTestClockListResponse.cs` |
+| `SandboxTransferTestClockListOperationRequest` | `src/ThePlaidApi/Requests/SandboxTransferTestClockListOperationRequest.cs` |
+| `SandboxTransferTestClockListRequest` | `src/ThePlaidApi/Models/SandboxTransferTestClockListRequest.cs` |
+| `SandboxTransferTestClockListResponse` | `src/ThePlaidApi/Models/SandboxTransferTestClockListResponse.cs` |
 
 ### SandboxUserResetLogin
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SandboxUserResetLogin(SandboxUserResetLoginRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SandboxUserResetLogin(SandboxUserResetLoginOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SandboxUserResetLoginResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SandboxUserResetLoginRequest` | `Models/SandboxUserResetLoginRequest.cs` |
-| `SandboxUserResetLoginResponse` | `Models/SandboxUserResetLoginResponse.cs` |
+| `SandboxUserResetLoginOperationRequest` | `src/ThePlaidApi/Requests/SandboxUserResetLoginOperationRequest.cs` |
+| `SandboxUserResetLoginRequest` | `src/ThePlaidApi/Models/SandboxUserResetLoginRequest.cs` |
+| `SandboxUserResetLoginResponse` | `src/ThePlaidApi/Models/SandboxUserResetLoginResponse.cs` |
 
 ### SessionTokenCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SessionTokenCreate(SessionTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SessionTokenCreate(SessionTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SessionTokenCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SessionTokenCreateRequest` | `Models/SessionTokenCreateRequest.cs` |
-| `SessionTokenCreateResponse` | `Models/SessionTokenCreateResponse.cs` |
+| `SessionTokenCreateOperationRequest` | `src/ThePlaidApi/Requests/SessionTokenCreateOperationRequest.cs` |
+| `SessionTokenCreateRequest` | `src/ThePlaidApi/Models/SessionTokenCreateRequest.cs` |
+| `SessionTokenCreateResponse` | `src/ThePlaidApi/Models/SessionTokenCreateResponse.cs` |
 
 ### SignalDecisionReport
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SignalDecisionReport(SignalDecisionReportRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SignalDecisionReport(SignalDecisionReportOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SignalDecisionReportResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SignalDecisionReportRequest` | `Models/SignalDecisionReportRequest.cs` |
-| `SignalDecisionReportResponse` | `Models/SignalDecisionReportResponse.cs` |
+| `SignalDecisionReportOperationRequest` | `src/ThePlaidApi/Requests/SignalDecisionReportOperationRequest.cs` |
+| `SignalDecisionReportRequest` | `src/ThePlaidApi/Models/SignalDecisionReportRequest.cs` |
+| `SignalDecisionReportResponse` | `src/ThePlaidApi/Models/SignalDecisionReportResponse.cs` |
 
 ### SignalEvaluate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SignalEvaluate(SignalEvaluateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SignalEvaluate(SignalEvaluateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SignalEvaluateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SignalEvaluateRequest` | `Models/SignalEvaluateRequest.cs` |
-| `SignalEvaluateResponse` | `Models/SignalEvaluateResponse.cs` |
+| `SignalEvaluateOperationRequest` | `src/ThePlaidApi/Requests/SignalEvaluateOperationRequest.cs` |
+| `SignalEvaluateRequest` | `src/ThePlaidApi/Models/SignalEvaluateRequest.cs` |
+| `SignalEvaluateResponse` | `src/ThePlaidApi/Models/SignalEvaluateResponse.cs` |
 
 ### SignalPrepare
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SignalPrepare(SignalPrepareRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SignalPrepare(SignalPrepareOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SignalPrepareResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SignalPrepareRequest` | `Models/SignalPrepareRequest.cs` |
-| `SignalPrepareResponse` | `Models/SignalPrepareResponse.cs` |
+| `SignalPrepareOperationRequest` | `src/ThePlaidApi/Requests/SignalPrepareOperationRequest.cs` |
+| `SignalPrepareRequest` | `src/ThePlaidApi/Models/SignalPrepareRequest.cs` |
+| `SignalPrepareResponse` | `src/ThePlaidApi/Models/SignalPrepareResponse.cs` |
 
 ### SignalReturnReport
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SignalReturnReport(SignalReturnReportRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SignalReturnReport(SignalReturnReportOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SignalReturnReportResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SignalReturnReportRequest` | `Models/SignalReturnReportRequest.cs` |
-| `SignalReturnReportResponse` | `Models/SignalReturnReportResponse.cs` |
+| `SignalReturnReportOperationRequest` | `src/ThePlaidApi/Requests/SignalReturnReportOperationRequest.cs` |
+| `SignalReturnReportRequest` | `src/ThePlaidApi/Models/SignalReturnReportRequest.cs` |
+| `SignalReturnReportResponse` | `src/ThePlaidApi/Models/SignalReturnReportResponse.cs` |
 
 ### SignalSchedule
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `SignalSchedule(SignalScheduleRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `SignalSchedule(SignalScheduleOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `SignalScheduleResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `SignalScheduleRequest` | `Models/SignalScheduleRequest.cs` |
-| `SignalScheduleResponse` | `Models/SignalScheduleResponse.cs` |
+| `SignalScheduleOperationRequest` | `src/ThePlaidApi/Requests/SignalScheduleOperationRequest.cs` |
+| `SignalScheduleRequest` | `src/ThePlaidApi/Models/SignalScheduleRequest.cs` |
+| `SignalScheduleResponse` | `src/ThePlaidApi/Models/SignalScheduleResponse.cs` |
 
 ### StatementsDownload
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `StatementsDownload(StatementsDownloadRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `StatementsDownload(StatementsDownloadOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `void` (Task)
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `StatementsDownloadRequest` | `Models/StatementsDownloadRequest.cs` |
+| `StatementsDownloadOperationRequest` | `src/ThePlaidApi/Requests/StatementsDownloadOperationRequest.cs` |
+| `StatementsDownloadRequest` | `src/ThePlaidApi/Models/StatementsDownloadRequest.cs` |
 
 ### StatementsList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `StatementsList(StatementsListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `StatementsList(StatementsListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `StatementsListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `StatementsListRequest` | `Models/StatementsListRequest.cs` |
-| `StatementsListResponse` | `Models/StatementsListResponse.cs` |
+| `StatementsListOperationRequest` | `src/ThePlaidApi/Requests/StatementsListOperationRequest.cs` |
+| `StatementsListRequest` | `src/ThePlaidApi/Models/StatementsListRequest.cs` |
+| `StatementsListResponse` | `src/ThePlaidApi/Models/StatementsListResponse.cs` |
 
 ### StatementsRefresh
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `StatementsRefresh(StatementsRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `StatementsRefresh(StatementsRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `StatementsRefreshResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `StatementsRefreshRequest` | `Models/StatementsRefreshRequest.cs` |
-| `StatementsRefreshResponse` | `Models/StatementsRefreshResponse.cs` |
+| `StatementsRefreshOperationRequest` | `src/ThePlaidApi/Requests/StatementsRefreshOperationRequest.cs` |
+| `StatementsRefreshRequest` | `src/ThePlaidApi/Models/StatementsRefreshRequest.cs` |
+| `StatementsRefreshResponse` | `src/ThePlaidApi/Models/StatementsRefreshResponse.cs` |
 
 ### TransactionsEnhance
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransactionsEnhance(TransactionsEnhanceGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransactionsEnhance(TransactionsEnhanceRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransactionsEnhanceGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransactionsEnhanceGetRequest` | `Models/TransactionsEnhanceGetRequest.cs` |
-| `TransactionsEnhanceGetResponse` | `Models/TransactionsEnhanceGetResponse.cs` |
+| `TransactionsEnhanceRequest` | `src/ThePlaidApi/Requests/TransactionsEnhanceRequest.cs` |
+| `TransactionsEnhanceGetRequest` | `src/ThePlaidApi/Models/TransactionsEnhanceGetRequest.cs` |
+| `TransactionsEnhanceGetResponse` | `src/ThePlaidApi/Models/TransactionsEnhanceGetResponse.cs` |
 
 ### TransactionsEnrich
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransactionsEnrich(TransactionsEnrichRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransactionsEnrich(TransactionsEnrichOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransactionsEnrichResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransactionsEnrichRequest` | `Models/TransactionsEnrichRequest.cs` |
-| `TransactionsEnrichResponse` | `Models/TransactionsEnrichResponse.cs` |
+| `TransactionsEnrichOperationRequest` | `src/ThePlaidApi/Requests/TransactionsEnrichOperationRequest.cs` |
+| `TransactionsEnrichRequest` | `src/ThePlaidApi/Models/TransactionsEnrichRequest.cs` |
+| `TransactionsEnrichResponse` | `src/ThePlaidApi/Models/TransactionsEnrichResponse.cs` |
 
 ### TransactionsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransactionsGet(TransactionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransactionsGet(TransactionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransactionsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransactionsGetRequest` | `Models/TransactionsGetRequest.cs` |
-| `TransactionsGetResponse` | `Models/TransactionsGetResponse.cs` |
+| `TransactionsGetOperationRequest` | `src/ThePlaidApi/Requests/TransactionsGetOperationRequest.cs` |
+| `TransactionsGetRequest` | `src/ThePlaidApi/Models/TransactionsGetRequest.cs` |
+| `TransactionsGetResponse` | `src/ThePlaidApi/Models/TransactionsGetResponse.cs` |
 
 ### TransactionsRecurringGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransactionsRecurringGet(TransactionsRecurringGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransactionsRecurringGet(TransactionsRecurringGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransactionsRecurringGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransactionsRecurringGetRequest` | `Models/TransactionsRecurringGetRequest.cs` |
-| `TransactionsRecurringGetResponse` | `Models/TransactionsRecurringGetResponse.cs` |
+| `TransactionsRecurringGetOperationRequest` | `src/ThePlaidApi/Requests/TransactionsRecurringGetOperationRequest.cs` |
+| `TransactionsRecurringGetRequest` | `src/ThePlaidApi/Models/TransactionsRecurringGetRequest.cs` |
+| `TransactionsRecurringGetResponse` | `src/ThePlaidApi/Models/TransactionsRecurringGetResponse.cs` |
 
 ### TransactionsRefresh
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransactionsRefresh(TransactionsRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransactionsRefresh(TransactionsRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransactionsRefreshResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransactionsRefreshRequest` | `Models/TransactionsRefreshRequest.cs` |
-| `TransactionsRefreshResponse` | `Models/TransactionsRefreshResponse.cs` |
+| `TransactionsRefreshOperationRequest` | `src/ThePlaidApi/Requests/TransactionsRefreshOperationRequest.cs` |
+| `TransactionsRefreshRequest` | `src/ThePlaidApi/Models/TransactionsRefreshRequest.cs` |
+| `TransactionsRefreshResponse` | `src/ThePlaidApi/Models/TransactionsRefreshResponse.cs` |
 
 ### TransactionsRulesCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransactionsRulesCreate(TransactionsRulesCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransactionsRulesCreate(TransactionsRulesCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransactionsRulesCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransactionsRulesCreateRequest` | `Models/TransactionsRulesCreateRequest.cs` |
-| `TransactionsRulesCreateResponse` | `Models/TransactionsRulesCreateResponse.cs` |
+| `TransactionsRulesCreateOperationRequest` | `src/ThePlaidApi/Requests/TransactionsRulesCreateOperationRequest.cs` |
+| `TransactionsRulesCreateRequest` | `src/ThePlaidApi/Models/TransactionsRulesCreateRequest.cs` |
+| `TransactionsRulesCreateResponse` | `src/ThePlaidApi/Models/TransactionsRulesCreateResponse.cs` |
 
 ### TransactionsRulesList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransactionsRulesList(TransactionsRulesListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransactionsRulesList(TransactionsRulesListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransactionsRulesListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransactionsRulesListRequest` | `Models/TransactionsRulesListRequest.cs` |
-| `TransactionsRulesListResponse` | `Models/TransactionsRulesListResponse.cs` |
+| `TransactionsRulesListOperationRequest` | `src/ThePlaidApi/Requests/TransactionsRulesListOperationRequest.cs` |
+| `TransactionsRulesListRequest` | `src/ThePlaidApi/Models/TransactionsRulesListRequest.cs` |
+| `TransactionsRulesListResponse` | `src/ThePlaidApi/Models/TransactionsRulesListResponse.cs` |
 
 ### TransactionsRulesRemove
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransactionsRulesRemove(TransactionsRulesRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransactionsRulesRemove(TransactionsRulesRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransactionsRulesRemoveResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransactionsRulesRemoveRequest` | `Models/TransactionsRulesRemoveRequest.cs` |
-| `TransactionsRulesRemoveResponse` | `Models/TransactionsRulesRemoveResponse.cs` |
+| `TransactionsRulesRemoveOperationRequest` | `src/ThePlaidApi/Requests/TransactionsRulesRemoveOperationRequest.cs` |
+| `TransactionsRulesRemoveRequest` | `src/ThePlaidApi/Models/TransactionsRulesRemoveRequest.cs` |
+| `TransactionsRulesRemoveResponse` | `src/ThePlaidApi/Models/TransactionsRulesRemoveResponse.cs` |
 
 ### TransactionsSync
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransactionsSync(TransactionsSyncRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransactionsSync(TransactionsSyncOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransactionsSyncResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransactionsSyncRequest` | `Models/TransactionsSyncRequest.cs` |
-| `TransactionsSyncResponse` | `Models/TransactionsSyncResponse.cs` |
+| `TransactionsSyncOperationRequest` | `src/ThePlaidApi/Requests/TransactionsSyncOperationRequest.cs` |
+| `TransactionsSyncRequest` | `src/ThePlaidApi/Models/TransactionsSyncRequest.cs` |
+| `TransactionsSyncResponse` | `src/ThePlaidApi/Models/TransactionsSyncResponse.cs` |
 
 ### TransactionsUserInsightsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransactionsUserInsightsGet(TransactionsUserInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransactionsUserInsightsGet(TransactionsUserInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransactionsUserInsightsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransactionsUserInsightsGetRequest` | `Models/TransactionsUserInsightsGetRequest.cs` |
-| `TransactionsUserInsightsGetResponse` | `Models/TransactionsUserInsightsGetResponse.cs` |
+| `TransactionsUserInsightsGetOperationRequest` | `src/ThePlaidApi/Requests/TransactionsUserInsightsGetOperationRequest.cs` |
+| `TransactionsUserInsightsGetRequest` | `src/ThePlaidApi/Models/TransactionsUserInsightsGetRequest.cs` |
+| `TransactionsUserInsightsGetResponse` | `src/ThePlaidApi/Models/TransactionsUserInsightsGetResponse.cs` |
 
 ### TransferAuthorizationCancel
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferAuthorizationCancel(TransferAuthorizationCancelRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferAuthorizationCancel(TransferAuthorizationCancelOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferAuthorizationCancelResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferAuthorizationCancelRequest` | `Models/TransferAuthorizationCancelRequest.cs` |
-| `TransferAuthorizationCancelResponse` | `Models/TransferAuthorizationCancelResponse.cs` |
+| `TransferAuthorizationCancelOperationRequest` | `src/ThePlaidApi/Requests/TransferAuthorizationCancelOperationRequest.cs` |
+| `TransferAuthorizationCancelRequest` | `src/ThePlaidApi/Models/TransferAuthorizationCancelRequest.cs` |
+| `TransferAuthorizationCancelResponse` | `src/ThePlaidApi/Models/TransferAuthorizationCancelResponse.cs` |
 
 ### TransferAuthorizationCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferAuthorizationCreate(TransferAuthorizationCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferAuthorizationCreate(TransferAuthorizationCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferAuthorizationCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferAuthorizationCreateRequest` | `Models/TransferAuthorizationCreateRequest.cs` |
-| `TransferAuthorizationCreateResponse` | `Models/TransferAuthorizationCreateResponse.cs` |
+| `TransferAuthorizationCreateOperationRequest` | `src/ThePlaidApi/Requests/TransferAuthorizationCreateOperationRequest.cs` |
+| `TransferAuthorizationCreateRequest` | `src/ThePlaidApi/Models/TransferAuthorizationCreateRequest.cs` |
+| `TransferAuthorizationCreateResponse` | `src/ThePlaidApi/Models/TransferAuthorizationCreateResponse.cs` |
 
 ### TransferBalanceGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferBalanceGet(TransferBalanceGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferBalanceGet(TransferBalanceGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferBalanceGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferBalanceGetRequest` | `Models/TransferBalanceGetRequest.cs` |
-| `TransferBalanceGetResponse` | `Models/TransferBalanceGetResponse.cs` |
+| `TransferBalanceGetOperationRequest` | `src/ThePlaidApi/Requests/TransferBalanceGetOperationRequest.cs` |
+| `TransferBalanceGetRequest` | `src/ThePlaidApi/Models/TransferBalanceGetRequest.cs` |
+| `TransferBalanceGetResponse` | `src/ThePlaidApi/Models/TransferBalanceGetResponse.cs` |
 
 ### TransferCancel
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferCancel(TransferCancelRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferCancel(TransferCancelOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferCancelResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferCancelRequest` | `Models/TransferCancelRequest.cs` |
-| `TransferCancelResponse` | `Models/TransferCancelResponse.cs` |
+| `TransferCancelOperationRequest` | `src/ThePlaidApi/Requests/TransferCancelOperationRequest.cs` |
+| `TransferCancelRequest` | `src/ThePlaidApi/Models/TransferCancelRequest.cs` |
+| `TransferCancelResponse` | `src/ThePlaidApi/Models/TransferCancelResponse.cs` |
 
 ### TransferCapabilitiesGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferCapabilitiesGet(TransferCapabilitiesGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferCapabilitiesGet(TransferCapabilitiesGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferCapabilitiesGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferCapabilitiesGetRequest` | `Models/TransferCapabilitiesGetRequest.cs` |
-| `TransferCapabilitiesGetResponse` | `Models/TransferCapabilitiesGetResponse.cs` |
+| `TransferCapabilitiesGetOperationRequest` | `src/ThePlaidApi/Requests/TransferCapabilitiesGetOperationRequest.cs` |
+| `TransferCapabilitiesGetRequest` | `src/ThePlaidApi/Models/TransferCapabilitiesGetRequest.cs` |
+| `TransferCapabilitiesGetResponse` | `src/ThePlaidApi/Models/TransferCapabilitiesGetResponse.cs` |
 
 ### TransferConfigurationGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferConfigurationGet(TransferConfigurationGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferConfigurationGet(TransferConfigurationGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferConfigurationGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferConfigurationGetRequest` | `Models/TransferConfigurationGetRequest.cs` |
-| `TransferConfigurationGetResponse` | `Models/TransferConfigurationGetResponse.cs` |
+| `TransferConfigurationGetOperationRequest` | `src/ThePlaidApi/Requests/TransferConfigurationGetOperationRequest.cs` |
+| `TransferConfigurationGetRequest` | `src/ThePlaidApi/Models/TransferConfigurationGetRequest.cs` |
+| `TransferConfigurationGetResponse` | `src/ThePlaidApi/Models/TransferConfigurationGetResponse.cs` |
 
 ### TransferCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferCreate(TransferCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferCreate(TransferCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferCreateRequest` | `Models/TransferCreateRequest.cs` |
-| `TransferCreateResponse` | `Models/TransferCreateResponse.cs` |
+| `TransferCreateOperationRequest` | `src/ThePlaidApi/Requests/TransferCreateOperationRequest.cs` |
+| `TransferCreateRequest` | `src/ThePlaidApi/Models/TransferCreateRequest.cs` |
+| `TransferCreateResponse` | `src/ThePlaidApi/Models/TransferCreateResponse.cs` |
 
 ### TransferDiligenceDocumentUpload
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferDiligenceDocumentUpload(TransferDiligenceDocumentUploadRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferDiligenceDocumentUpload(TransferDiligenceDocumentUploadOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferDiligenceDocumentUploadResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferDiligenceDocumentUploadRequest` | `Models/TransferDiligenceDocumentUploadRequest.cs` |
-| `TransferDiligenceDocumentUploadResponse` | `Models/TransferDiligenceDocumentUploadResponse.cs` |
+| `TransferDiligenceDocumentUploadOperationRequest` | `src/ThePlaidApi/Requests/TransferDiligenceDocumentUploadOperationRequest.cs` |
+| `TransferDiligenceDocumentUploadRequest` | `src/ThePlaidApi/Models/TransferDiligenceDocumentUploadRequest.cs` |
+| `TransferDiligenceDocumentUploadResponse` | `src/ThePlaidApi/Models/TransferDiligenceDocumentUploadResponse.cs` |
 
 ### TransferDiligenceSubmit
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferDiligenceSubmit(TransferDiligenceSubmitRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferDiligenceSubmit(TransferDiligenceSubmitOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferDiligenceSubmitResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferDiligenceSubmitRequest` | `Models/TransferDiligenceSubmitRequest.cs` |
-| `TransferDiligenceSubmitResponse` | `Models/TransferDiligenceSubmitResponse.cs` |
+| `TransferDiligenceSubmitOperationRequest` | `src/ThePlaidApi/Requests/TransferDiligenceSubmitOperationRequest.cs` |
+| `TransferDiligenceSubmitRequest` | `src/ThePlaidApi/Models/TransferDiligenceSubmitRequest.cs` |
+| `TransferDiligenceSubmitResponse` | `src/ThePlaidApi/Models/TransferDiligenceSubmitResponse.cs` |
 
 ### TransferEventList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferEventList(TransferEventListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferEventList(TransferEventListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferEventListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferEventListRequest` | `Models/TransferEventListRequest.cs` |
-| `TransferEventListResponse` | `Models/TransferEventListResponse.cs` |
+| `TransferEventListOperationRequest` | `src/ThePlaidApi/Requests/TransferEventListOperationRequest.cs` |
+| `TransferEventListRequest` | `src/ThePlaidApi/Models/TransferEventListRequest.cs` |
+| `TransferEventListResponse` | `src/ThePlaidApi/Models/TransferEventListResponse.cs` |
 
 ### TransferEventSync
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferEventSync(TransferEventSyncRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferEventSync(TransferEventSyncOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferEventSyncResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferEventSyncRequest` | `Models/TransferEventSyncRequest.cs` |
-| `TransferEventSyncResponse` | `Models/TransferEventSyncResponse.cs` |
+| `TransferEventSyncOperationRequest` | `src/ThePlaidApi/Requests/TransferEventSyncOperationRequest.cs` |
+| `TransferEventSyncRequest` | `src/ThePlaidApi/Models/TransferEventSyncRequest.cs` |
+| `TransferEventSyncResponse` | `src/ThePlaidApi/Models/TransferEventSyncResponse.cs` |
 
 ### TransferGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferGet(TransferGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferGet(TransferGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferGetRequest` | `Models/TransferGetRequest.cs` |
-| `TransferGetResponse` | `Models/TransferGetResponse.cs` |
+| `TransferGetOperationRequest` | `src/ThePlaidApi/Requests/TransferGetOperationRequest.cs` |
+| `TransferGetRequest` | `src/ThePlaidApi/Models/TransferGetRequest.cs` |
+| `TransferGetResponse` | `src/ThePlaidApi/Models/TransferGetResponse.cs` |
 
 ### TransferIntentCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferIntentCreate(TransferIntentCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferIntentCreate(TransferIntentCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferIntentCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferIntentCreateRequest` | `Models/TransferIntentCreateRequest.cs` |
-| `TransferIntentCreateResponse` | `Models/TransferIntentCreateResponse.cs` |
+| `TransferIntentCreateOperationRequest` | `src/ThePlaidApi/Requests/TransferIntentCreateOperationRequest.cs` |
+| `TransferIntentCreateRequest` | `src/ThePlaidApi/Models/TransferIntentCreateRequest.cs` |
+| `TransferIntentCreateResponse` | `src/ThePlaidApi/Models/TransferIntentCreateResponse.cs` |
 
 ### TransferIntentGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferIntentGet(TransferIntentGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferIntentGet(TransferIntentGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferIntentGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferIntentGetRequest` | `Models/TransferIntentGetRequest.cs` |
-| `TransferIntentGetResponse` | `Models/TransferIntentGetResponse.cs` |
+| `TransferIntentGetOperationRequest` | `src/ThePlaidApi/Requests/TransferIntentGetOperationRequest.cs` |
+| `TransferIntentGetRequest` | `src/ThePlaidApi/Models/TransferIntentGetRequest.cs` |
+| `TransferIntentGetResponse` | `src/ThePlaidApi/Models/TransferIntentGetResponse.cs` |
 
 ### TransferLedgerDeposit
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferLedgerDeposit(TransferLedgerDepositRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferLedgerDeposit(TransferLedgerDepositOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferLedgerDepositResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferLedgerDepositRequest` | `Models/TransferLedgerDepositRequest.cs` |
-| `TransferLedgerDepositResponse` | `Models/TransferLedgerDepositResponse.cs` |
+| `TransferLedgerDepositOperationRequest` | `src/ThePlaidApi/Requests/TransferLedgerDepositOperationRequest.cs` |
+| `TransferLedgerDepositRequest` | `src/ThePlaidApi/Models/TransferLedgerDepositRequest.cs` |
+| `TransferLedgerDepositResponse` | `src/ThePlaidApi/Models/TransferLedgerDepositResponse.cs` |
 
 ### TransferLedgerDistribute
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferLedgerDistribute(TransferLedgerDistributeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferLedgerDistribute(TransferLedgerDistributeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferLedgerDistributeResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferLedgerDistributeRequest` | `Models/TransferLedgerDistributeRequest.cs` |
-| `TransferLedgerDistributeResponse` | `Models/TransferLedgerDistributeResponse.cs` |
+| `TransferLedgerDistributeOperationRequest` | `src/ThePlaidApi/Requests/TransferLedgerDistributeOperationRequest.cs` |
+| `TransferLedgerDistributeRequest` | `src/ThePlaidApi/Models/TransferLedgerDistributeRequest.cs` |
+| `TransferLedgerDistributeResponse` | `src/ThePlaidApi/Models/TransferLedgerDistributeResponse.cs` |
 
 ### TransferLedgerEventList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferLedgerEventList(TransferLedgerEventListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferLedgerEventList(TransferLedgerEventListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferLedgerEventListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferLedgerEventListRequest` | `Models/TransferLedgerEventListRequest.cs` |
-| `TransferLedgerEventListResponse` | `Models/TransferLedgerEventListResponse.cs` |
+| `TransferLedgerEventListOperationRequest` | `src/ThePlaidApi/Requests/TransferLedgerEventListOperationRequest.cs` |
+| `TransferLedgerEventListRequest` | `src/ThePlaidApi/Models/TransferLedgerEventListRequest.cs` |
+| `TransferLedgerEventListResponse` | `src/ThePlaidApi/Models/TransferLedgerEventListResponse.cs` |
 
 ### TransferLedgerGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferLedgerGet(TransferLedgerGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferLedgerGet(TransferLedgerGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferLedgerGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferLedgerGetRequest` | `Models/TransferLedgerGetRequest.cs` |
-| `TransferLedgerGetResponse` | `Models/TransferLedgerGetResponse.cs` |
+| `TransferLedgerGetOperationRequest` | `src/ThePlaidApi/Requests/TransferLedgerGetOperationRequest.cs` |
+| `TransferLedgerGetRequest` | `src/ThePlaidApi/Models/TransferLedgerGetRequest.cs` |
+| `TransferLedgerGetResponse` | `src/ThePlaidApi/Models/TransferLedgerGetResponse.cs` |
 
 ### TransferLedgerWithdraw
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferLedgerWithdraw(TransferLedgerWithdrawRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferLedgerWithdraw(TransferLedgerWithdrawOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferLedgerWithdrawResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferLedgerWithdrawRequest` | `Models/TransferLedgerWithdrawRequest.cs` |
-| `TransferLedgerWithdrawResponse` | `Models/TransferLedgerWithdrawResponse.cs` |
+| `TransferLedgerWithdrawOperationRequest` | `src/ThePlaidApi/Requests/TransferLedgerWithdrawOperationRequest.cs` |
+| `TransferLedgerWithdrawRequest` | `src/ThePlaidApi/Models/TransferLedgerWithdrawRequest.cs` |
+| `TransferLedgerWithdrawResponse` | `src/ThePlaidApi/Models/TransferLedgerWithdrawResponse.cs` |
 
 ### TransferList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferList(TransferListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferList(TransferListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferListRequest` | `Models/TransferListRequest.cs` |
-| `TransferListResponse` | `Models/TransferListResponse.cs` |
+| `TransferListOperationRequest` | `src/ThePlaidApi/Requests/TransferListOperationRequest.cs` |
+| `TransferListRequest` | `src/ThePlaidApi/Models/TransferListRequest.cs` |
+| `TransferListResponse` | `src/ThePlaidApi/Models/TransferListResponse.cs` |
 
 ### TransferMetricsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferMetricsGet(TransferMetricsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferMetricsGet(TransferMetricsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferMetricsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferMetricsGetRequest` | `Models/TransferMetricsGetRequest.cs` |
-| `TransferMetricsGetResponse` | `Models/TransferMetricsGetResponse.cs` |
+| `TransferMetricsGetOperationRequest` | `src/ThePlaidApi/Requests/TransferMetricsGetOperationRequest.cs` |
+| `TransferMetricsGetRequest` | `src/ThePlaidApi/Models/TransferMetricsGetRequest.cs` |
+| `TransferMetricsGetResponse` | `src/ThePlaidApi/Models/TransferMetricsGetResponse.cs` |
 
 ### TransferMigrateAccount
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferMigrateAccount(TransferMigrateAccountRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferMigrateAccount(TransferMigrateAccountOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferMigrateAccountResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferMigrateAccountRequest` | `Models/TransferMigrateAccountRequest.cs` |
-| `TransferMigrateAccountResponse` | `Models/TransferMigrateAccountResponse.cs` |
+| `TransferMigrateAccountOperationRequest` | `src/ThePlaidApi/Requests/TransferMigrateAccountOperationRequest.cs` |
+| `TransferMigrateAccountRequest` | `src/ThePlaidApi/Models/TransferMigrateAccountRequest.cs` |
+| `TransferMigrateAccountResponse` | `src/ThePlaidApi/Models/TransferMigrateAccountResponse.cs` |
 
 ### TransferOriginatorCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferOriginatorCreate(TransferOriginatorCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferOriginatorCreate(TransferOriginatorCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferOriginatorCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferOriginatorCreateRequest` | `Models/TransferOriginatorCreateRequest.cs` |
-| `TransferOriginatorCreateResponse` | `Models/TransferOriginatorCreateResponse.cs` |
+| `TransferOriginatorCreateOperationRequest` | `src/ThePlaidApi/Requests/TransferOriginatorCreateOperationRequest.cs` |
+| `TransferOriginatorCreateRequest` | `src/ThePlaidApi/Models/TransferOriginatorCreateRequest.cs` |
+| `TransferOriginatorCreateResponse` | `src/ThePlaidApi/Models/TransferOriginatorCreateResponse.cs` |
 
 ### TransferOriginatorFundingAccountCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferOriginatorFundingAccountCreate(TransferOriginatorFundingAccountCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferOriginatorFundingAccountCreate(TransferOriginatorFundingAccountCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferOriginatorFundingAccountCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferOriginatorFundingAccountCreateRequest` | `Models/TransferOriginatorFundingAccountCreateRequest.cs` |
-| `TransferOriginatorFundingAccountCreateResponse` | `Models/TransferOriginatorFundingAccountCreateResponse.cs` |
+| `TransferOriginatorFundingAccountCreateOperationRequest` | `src/ThePlaidApi/Requests/TransferOriginatorFundingAccountCreateOperationRequest.cs` |
+| `TransferOriginatorFundingAccountCreateRequest` | `src/ThePlaidApi/Models/TransferOriginatorFundingAccountCreateRequest.cs` |
+| `TransferOriginatorFundingAccountCreateResponse` | `src/ThePlaidApi/Models/TransferOriginatorFundingAccountCreateResponse.cs` |
 
 ### TransferOriginatorFundingAccountUpdate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferOriginatorFundingAccountUpdate(TransferOriginatorFundingAccountUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferOriginatorFundingAccountUpdate(TransferOriginatorFundingAccountUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferOriginatorFundingAccountUpdateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferOriginatorFundingAccountUpdateRequest` | `Models/TransferOriginatorFundingAccountUpdateRequest.cs` |
-| `TransferOriginatorFundingAccountUpdateResponse` | `Models/TransferOriginatorFundingAccountUpdateResponse.cs` |
+| `TransferOriginatorFundingAccountUpdateOperationRequest` | `src/ThePlaidApi/Requests/TransferOriginatorFundingAccountUpdateOperationRequest.cs` |
+| `TransferOriginatorFundingAccountUpdateRequest` | `src/ThePlaidApi/Models/TransferOriginatorFundingAccountUpdateRequest.cs` |
+| `TransferOriginatorFundingAccountUpdateResponse` | `src/ThePlaidApi/Models/TransferOriginatorFundingAccountUpdateResponse.cs` |
 
 ### TransferOriginatorGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferOriginatorGet(TransferOriginatorGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferOriginatorGet(TransferOriginatorGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferOriginatorGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferOriginatorGetRequest` | `Models/TransferOriginatorGetRequest.cs` |
-| `TransferOriginatorGetResponse` | `Models/TransferOriginatorGetResponse.cs` |
+| `TransferOriginatorGetOperationRequest` | `src/ThePlaidApi/Requests/TransferOriginatorGetOperationRequest.cs` |
+| `TransferOriginatorGetRequest` | `src/ThePlaidApi/Models/TransferOriginatorGetRequest.cs` |
+| `TransferOriginatorGetResponse` | `src/ThePlaidApi/Models/TransferOriginatorGetResponse.cs` |
 
 ### TransferOriginatorList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferOriginatorList(TransferOriginatorListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferOriginatorList(TransferOriginatorListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferOriginatorListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferOriginatorListRequest` | `Models/TransferOriginatorListRequest.cs` |
-| `TransferOriginatorListResponse` | `Models/TransferOriginatorListResponse.cs` |
+| `TransferOriginatorListOperationRequest` | `src/ThePlaidApi/Requests/TransferOriginatorListOperationRequest.cs` |
+| `TransferOriginatorListRequest` | `src/ThePlaidApi/Models/TransferOriginatorListRequest.cs` |
+| `TransferOriginatorListResponse` | `src/ThePlaidApi/Models/TransferOriginatorListResponse.cs` |
 
 ### TransferPlatformOriginatorCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferPlatformOriginatorCreate(TransferPlatformOriginatorCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferPlatformOriginatorCreate(TransferPlatformOriginatorCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferPlatformOriginatorCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferPlatformOriginatorCreateRequest` | `Models/TransferPlatformOriginatorCreateRequest.cs` |
-| `TransferPlatformOriginatorCreateResponse` | `Models/TransferPlatformOriginatorCreateResponse.cs` |
+| `TransferPlatformOriginatorCreateOperationRequest` | `src/ThePlaidApi/Requests/TransferPlatformOriginatorCreateOperationRequest.cs` |
+| `TransferPlatformOriginatorCreateRequest` | `src/ThePlaidApi/Models/TransferPlatformOriginatorCreateRequest.cs` |
+| `TransferPlatformOriginatorCreateResponse` | `src/ThePlaidApi/Models/TransferPlatformOriginatorCreateResponse.cs` |
 
 ### TransferPlatformPersonCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferPlatformPersonCreate(TransferPlatformPersonCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferPlatformPersonCreate(TransferPlatformPersonCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferPlatformPersonCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferPlatformPersonCreateRequest` | `Models/TransferPlatformPersonCreateRequest.cs` |
-| `TransferPlatformPersonCreateResponse` | `Models/TransferPlatformPersonCreateResponse.cs` |
+| `TransferPlatformPersonCreateOperationRequest` | `src/ThePlaidApi/Requests/TransferPlatformPersonCreateOperationRequest.cs` |
+| `TransferPlatformPersonCreateRequest` | `src/ThePlaidApi/Models/TransferPlatformPersonCreateRequest.cs` |
+| `TransferPlatformPersonCreateResponse` | `src/ThePlaidApi/Models/TransferPlatformPersonCreateResponse.cs` |
 
 ### TransferPlatformRequirementSubmit
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferPlatformRequirementSubmit(TransferPlatformRequirementSubmitRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferPlatformRequirementSubmit(TransferPlatformRequirementSubmitOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferPlatformRequirementSubmitResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferPlatformRequirementSubmitRequest` | `Models/TransferPlatformRequirementSubmitRequest.cs` |
-| `TransferPlatformRequirementSubmitResponse` | `Models/TransferPlatformRequirementSubmitResponse.cs` |
+| `TransferPlatformRequirementSubmitOperationRequest` | `src/ThePlaidApi/Requests/TransferPlatformRequirementSubmitOperationRequest.cs` |
+| `TransferPlatformRequirementSubmitRequest` | `src/ThePlaidApi/Models/TransferPlatformRequirementSubmitRequest.cs` |
+| `TransferPlatformRequirementSubmitResponse` | `src/ThePlaidApi/Models/TransferPlatformRequirementSubmitResponse.cs` |
 
 ### TransferQuestionnaireCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferQuestionnaireCreate(TransferQuestionnaireCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferQuestionnaireCreate(TransferQuestionnaireCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferQuestionnaireCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferQuestionnaireCreateRequest` | `Models/TransferQuestionnaireCreateRequest.cs` |
-| `TransferQuestionnaireCreateResponse` | `Models/TransferQuestionnaireCreateResponse.cs` |
+| `TransferQuestionnaireCreateOperationRequest` | `src/ThePlaidApi/Requests/TransferQuestionnaireCreateOperationRequest.cs` |
+| `TransferQuestionnaireCreateRequest` | `src/ThePlaidApi/Models/TransferQuestionnaireCreateRequest.cs` |
+| `TransferQuestionnaireCreateResponse` | `src/ThePlaidApi/Models/TransferQuestionnaireCreateResponse.cs` |
 
 ### TransferRecurringCancel
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferRecurringCancel(TransferRecurringCancelRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferRecurringCancel(TransferRecurringCancelOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferRecurringCancelResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferRecurringCancelRequest` | `Models/TransferRecurringCancelRequest.cs` |
-| `TransferRecurringCancelResponse` | `Models/TransferRecurringCancelResponse.cs` |
+| `TransferRecurringCancelOperationRequest` | `src/ThePlaidApi/Requests/TransferRecurringCancelOperationRequest.cs` |
+| `TransferRecurringCancelRequest` | `src/ThePlaidApi/Models/TransferRecurringCancelRequest.cs` |
+| `TransferRecurringCancelResponse` | `src/ThePlaidApi/Models/TransferRecurringCancelResponse.cs` |
 
 ### TransferRecurringCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferRecurringCreate(TransferRecurringCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferRecurringCreate(TransferRecurringCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferRecurringCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferRecurringCreateRequest` | `Models/TransferRecurringCreateRequest.cs` |
-| `TransferRecurringCreateResponse` | `Models/TransferRecurringCreateResponse.cs` |
+| `TransferRecurringCreateOperationRequest` | `src/ThePlaidApi/Requests/TransferRecurringCreateOperationRequest.cs` |
+| `TransferRecurringCreateRequest` | `src/ThePlaidApi/Models/TransferRecurringCreateRequest.cs` |
+| `TransferRecurringCreateResponse` | `src/ThePlaidApi/Models/TransferRecurringCreateResponse.cs` |
 
 ### TransferRecurringGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferRecurringGet(TransferRecurringGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferRecurringGet(TransferRecurringGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferRecurringGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferRecurringGetRequest` | `Models/TransferRecurringGetRequest.cs` |
-| `TransferRecurringGetResponse` | `Models/TransferRecurringGetResponse.cs` |
+| `TransferRecurringGetOperationRequest` | `src/ThePlaidApi/Requests/TransferRecurringGetOperationRequest.cs` |
+| `TransferRecurringGetRequest` | `src/ThePlaidApi/Models/TransferRecurringGetRequest.cs` |
+| `TransferRecurringGetResponse` | `src/ThePlaidApi/Models/TransferRecurringGetResponse.cs` |
 
 ### TransferRecurringList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferRecurringList(TransferRecurringListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferRecurringList(TransferRecurringListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferRecurringListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferRecurringListRequest` | `Models/TransferRecurringListRequest.cs` |
-| `TransferRecurringListResponse` | `Models/TransferRecurringListResponse.cs` |
+| `TransferRecurringListOperationRequest` | `src/ThePlaidApi/Requests/TransferRecurringListOperationRequest.cs` |
+| `TransferRecurringListRequest` | `src/ThePlaidApi/Models/TransferRecurringListRequest.cs` |
+| `TransferRecurringListResponse` | `src/ThePlaidApi/Models/TransferRecurringListResponse.cs` |
 
 ### TransferRefundCancel
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferRefundCancel(TransferRefundCancelRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferRefundCancel(TransferRefundCancelOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferRefundCancelResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferRefundCancelRequest` | `Models/TransferRefundCancelRequest.cs` |
-| `TransferRefundCancelResponse` | `Models/TransferRefundCancelResponse.cs` |
+| `TransferRefundCancelOperationRequest` | `src/ThePlaidApi/Requests/TransferRefundCancelOperationRequest.cs` |
+| `TransferRefundCancelRequest` | `src/ThePlaidApi/Models/TransferRefundCancelRequest.cs` |
+| `TransferRefundCancelResponse` | `src/ThePlaidApi/Models/TransferRefundCancelResponse.cs` |
 
 ### TransferRefundCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferRefundCreate(TransferRefundCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferRefundCreate(TransferRefundCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferRefundCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferRefundCreateRequest` | `Models/TransferRefundCreateRequest.cs` |
-| `TransferRefundCreateResponse` | `Models/TransferRefundCreateResponse.cs` |
+| `TransferRefundCreateOperationRequest` | `src/ThePlaidApi/Requests/TransferRefundCreateOperationRequest.cs` |
+| `TransferRefundCreateRequest` | `src/ThePlaidApi/Models/TransferRefundCreateRequest.cs` |
+| `TransferRefundCreateResponse` | `src/ThePlaidApi/Models/TransferRefundCreateResponse.cs` |
 
 ### TransferRefundGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferRefundGet(TransferRefundGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferRefundGet(TransferRefundGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferRefundGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferRefundGetRequest` | `Models/TransferRefundGetRequest.cs` |
-| `TransferRefundGetResponse` | `Models/TransferRefundGetResponse.cs` |
+| `TransferRefundGetOperationRequest` | `src/ThePlaidApi/Requests/TransferRefundGetOperationRequest.cs` |
+| `TransferRefundGetRequest` | `src/ThePlaidApi/Models/TransferRefundGetRequest.cs` |
+| `TransferRefundGetResponse` | `src/ThePlaidApi/Models/TransferRefundGetResponse.cs` |
 
 ### TransferRepaymentList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferRepaymentList(TransferRepaymentListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferRepaymentList(TransferRepaymentListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferRepaymentListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferRepaymentListRequest` | `Models/TransferRepaymentListRequest.cs` |
-| `TransferRepaymentListResponse` | `Models/TransferRepaymentListResponse.cs` |
+| `TransferRepaymentListOperationRequest` | `src/ThePlaidApi/Requests/TransferRepaymentListOperationRequest.cs` |
+| `TransferRepaymentListRequest` | `src/ThePlaidApi/Models/TransferRepaymentListRequest.cs` |
+| `TransferRepaymentListResponse` | `src/ThePlaidApi/Models/TransferRepaymentListResponse.cs` |
 
 ### TransferRepaymentReturnList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferRepaymentReturnList(TransferRepaymentReturnListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferRepaymentReturnList(TransferRepaymentReturnListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferRepaymentReturnListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferRepaymentReturnListRequest` | `Models/TransferRepaymentReturnListRequest.cs` |
-| `TransferRepaymentReturnListResponse` | `Models/TransferRepaymentReturnListResponse.cs` |
+| `TransferRepaymentReturnListOperationRequest` | `src/ThePlaidApi/Requests/TransferRepaymentReturnListOperationRequest.cs` |
+| `TransferRepaymentReturnListRequest` | `src/ThePlaidApi/Models/TransferRepaymentReturnListRequest.cs` |
+| `TransferRepaymentReturnListResponse` | `src/ThePlaidApi/Models/TransferRepaymentReturnListResponse.cs` |
 
 ### TransferReturnRecover
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferReturnRecover(TransferReturnRecoverRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferReturnRecover(TransferReturnRecoverOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferReturnRecoverResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferReturnRecoverRequest` | `Models/TransferReturnRecoverRequest.cs` |
-| `TransferReturnRecoverResponse` | `Models/TransferReturnRecoverResponse.cs` |
+| `TransferReturnRecoverOperationRequest` | `src/ThePlaidApi/Requests/TransferReturnRecoverOperationRequest.cs` |
+| `TransferReturnRecoverRequest` | `src/ThePlaidApi/Models/TransferReturnRecoverRequest.cs` |
+| `TransferReturnRecoverResponse` | `src/ThePlaidApi/Models/TransferReturnRecoverResponse.cs` |
 
 ### TransferSweepGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferSweepGet(TransferSweepGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferSweepGet(TransferSweepGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferSweepGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferSweepGetRequest` | `Models/TransferSweepGetRequest.cs` |
-| `TransferSweepGetResponse` | `Models/TransferSweepGetResponse.cs` |
+| `TransferSweepGetOperationRequest` | `src/ThePlaidApi/Requests/TransferSweepGetOperationRequest.cs` |
+| `TransferSweepGetRequest` | `src/ThePlaidApi/Models/TransferSweepGetRequest.cs` |
+| `TransferSweepGetResponse` | `src/ThePlaidApi/Models/TransferSweepGetResponse.cs` |
 
 ### TransferSweepList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `TransferSweepList(TransferSweepListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `TransferSweepList(TransferSweepListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `TransferSweepListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `TransferSweepListRequest` | `Models/TransferSweepListRequest.cs` |
-| `TransferSweepListResponse` | `Models/TransferSweepListResponse.cs` |
+| `TransferSweepListOperationRequest` | `src/ThePlaidApi/Requests/TransferSweepListOperationRequest.cs` |
+| `TransferSweepListRequest` | `src/ThePlaidApi/Models/TransferSweepListRequest.cs` |
+| `TransferSweepListResponse` | `src/ThePlaidApi/Models/TransferSweepListResponse.cs` |
 
 ### UserAccountSessionEventSend
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `UserAccountSessionEventSend(UserAccountSessionEventSendRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `UserAccountSessionEventSend(UserAccountSessionEventSendOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `UserAccountSessionEventSendResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `UserAccountSessionEventSendRequest` | `Models/UserAccountSessionEventSendRequest.cs` |
-| `UserAccountSessionEventSendResponse` | `Models/UserAccountSessionEventSendResponse.cs` |
+| `UserAccountSessionEventSendOperationRequest` | `src/ThePlaidApi/Requests/UserAccountSessionEventSendOperationRequest.cs` |
+| `UserAccountSessionEventSendRequest` | `src/ThePlaidApi/Models/UserAccountSessionEventSendRequest.cs` |
+| `UserAccountSessionEventSendResponse` | `src/ThePlaidApi/Models/UserAccountSessionEventSendResponse.cs` |
 
 ### UserAccountSessionGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `UserAccountSessionGet(UserAccountSessionGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `UserAccountSessionGet(UserAccountSessionGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `UserAccountSessionGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `UserAccountSessionGetRequest` | `Models/UserAccountSessionGetRequest.cs` |
-| `UserAccountSessionGetResponse` | `Models/UserAccountSessionGetResponse.cs` |
+| `UserAccountSessionGetOperationRequest` | `src/ThePlaidApi/Requests/UserAccountSessionGetOperationRequest.cs` |
+| `UserAccountSessionGetRequest` | `src/ThePlaidApi/Models/UserAccountSessionGetRequest.cs` |
+| `UserAccountSessionGetResponse` | `src/ThePlaidApi/Models/UserAccountSessionGetResponse.cs` |
 
 ### UserCreate
 
 - **Auth**: (`options.ClientId` AND `options.Secret` AND `options.PlaidVersion`) OR `options.Oauth2`
-- **Signature**: `UserCreate(UserCreateRequest body, bool? plaidNewUserApiEnabled = false, RequestOptions? requestOptions = null, CancellationToken ct = default)`
-  - defaults: `plaidNewUserApiEnabled` = `false`
+- **Signature**: `UserCreate(UserCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `UserCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `UserCreateRequest` | `Models/UserCreateRequest.cs` |
-| `UserCreateResponse` | `Models/UserCreateResponse.cs` |
+| `UserCreateOperationRequest` | `src/ThePlaidApi/Requests/UserCreateOperationRequest.cs` |
+| `UserCreateRequest` | `src/ThePlaidApi/Models/UserCreateRequest.cs` |
+| `UserCreateResponse` | `src/ThePlaidApi/Models/UserCreateResponse.cs` |
 
 ### UserFinancialDataRefresh
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `UserFinancialDataRefresh(UserFinancialDataRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `UserFinancialDataRefresh(UserFinancialDataRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `UserFinancialDataRefreshResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `UserFinancialDataRefreshRequest` | `Models/UserFinancialDataRefreshRequest.cs` |
-| `UserFinancialDataRefreshResponse` | `Models/UserFinancialDataRefreshResponse.cs` |
+| `UserFinancialDataRefreshOperationRequest` | `src/ThePlaidApi/Requests/UserFinancialDataRefreshOperationRequest.cs` |
+| `UserFinancialDataRefreshRequest` | `src/ThePlaidApi/Models/UserFinancialDataRefreshRequest.cs` |
+| `UserFinancialDataRefreshResponse` | `src/ThePlaidApi/Models/UserFinancialDataRefreshResponse.cs` |
 
 ### UserGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `UserGet(UserGetRequest body, bool? plaidNewUserApiEnabled = false, RequestOptions? requestOptions = null, CancellationToken ct = default)`
-  - defaults: `plaidNewUserApiEnabled` = `false`
+- **Signature**: `UserGet(UserGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `UserGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `UserGetRequest` | `Models/UserGetRequest.cs` |
-| `UserGetResponse` | `Models/UserGetResponse.cs` |
+| `UserGetOperationRequest` | `src/ThePlaidApi/Requests/UserGetOperationRequest.cs` |
+| `UserGetRequest` | `src/ThePlaidApi/Models/UserGetRequest.cs` |
+| `UserGetResponse` | `src/ThePlaidApi/Models/UserGetResponse.cs` |
 
 ### UserIdentityRemove
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `UserIdentityRemove(UserIdentityRemoveRequest body, bool? plaidNewUserApiEnabled = false, RequestOptions? requestOptions = null, CancellationToken ct = default)`
-  - defaults: `plaidNewUserApiEnabled` = `false`
+- **Signature**: `UserIdentityRemove(UserIdentityRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `UserIdentityRemoveResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `UserIdentityRemoveRequest` | `Models/UserIdentityRemoveRequest.cs` |
-| `UserIdentityRemoveResponse` | `Models/UserIdentityRemoveResponse.cs` |
+| `UserIdentityRemoveOperationRequest` | `src/ThePlaidApi/Requests/UserIdentityRemoveOperationRequest.cs` |
+| `UserIdentityRemoveRequest` | `src/ThePlaidApi/Models/UserIdentityRemoveRequest.cs` |
+| `UserIdentityRemoveResponse` | `src/ThePlaidApi/Models/UserIdentityRemoveResponse.cs` |
 
 ### UserItemsAssociate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `UserItemsAssociate(UserItemsAssociateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `UserItemsAssociate(UserItemsAssociateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `UserItemsAssociateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `UserItemsAssociateRequest` | `Models/UserItemsAssociateRequest.cs` |
-| `UserItemsAssociateResponse` | `Models/UserItemsAssociateResponse.cs` |
+| `UserItemsAssociateOperationRequest` | `src/ThePlaidApi/Requests/UserItemsAssociateOperationRequest.cs` |
+| `UserItemsAssociateRequest` | `src/ThePlaidApi/Models/UserItemsAssociateRequest.cs` |
+| `UserItemsAssociateResponse` | `src/ThePlaidApi/Models/UserItemsAssociateResponse.cs` |
 
 ### UserItemsGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `UserItemsGet(UserItemsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `UserItemsGet(UserItemsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `UserItemsGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `UserItemsGetRequest` | `Models/UserItemsGetRequest.cs` |
-| `UserItemsGetResponse` | `Models/UserItemsGetResponse.cs` |
+| `UserItemsGetOperationRequest` | `src/ThePlaidApi/Requests/UserItemsGetOperationRequest.cs` |
+| `UserItemsGetRequest` | `src/ThePlaidApi/Models/UserItemsGetRequest.cs` |
+| `UserItemsGetResponse` | `src/ThePlaidApi/Models/UserItemsGetResponse.cs` |
 
 ### UserItemsRemove
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `UserItemsRemove(UserItemsRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `UserItemsRemove(UserItemsRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `UserItemsRemoveResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `UserItemsRemoveRequest` | `Models/UserItemsRemoveRequest.cs` |
-| `UserItemsRemoveResponse` | `Models/UserItemsRemoveResponse.cs` |
+| `UserItemsRemoveOperationRequest` | `src/ThePlaidApi/Requests/UserItemsRemoveOperationRequest.cs` |
+| `UserItemsRemoveRequest` | `src/ThePlaidApi/Models/UserItemsRemoveRequest.cs` |
+| `UserItemsRemoveResponse` | `src/ThePlaidApi/Models/UserItemsRemoveResponse.cs` |
 
 ### UserProductsTerminate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `UserProductsTerminate(UserProductsTerminateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `UserProductsTerminate(UserProductsTerminateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `UserProductsTerminateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `UserProductsTerminateRequest` | `Models/UserProductsTerminateRequest.cs` |
-| `UserProductsTerminateResponse` | `Models/UserProductsTerminateResponse.cs` |
+| `UserProductsTerminateOperationRequest` | `src/ThePlaidApi/Requests/UserProductsTerminateOperationRequest.cs` |
+| `UserProductsTerminateRequest` | `src/ThePlaidApi/Models/UserProductsTerminateRequest.cs` |
+| `UserProductsTerminateResponse` | `src/ThePlaidApi/Models/UserProductsTerminateResponse.cs` |
 
 ### UserRemove
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `UserRemove(UserRemoveRequest body, bool? plaidNewUserApiEnabled = false, RequestOptions? requestOptions = null, CancellationToken ct = default)`
-  - defaults: `plaidNewUserApiEnabled` = `false`
+- **Signature**: `UserRemove(UserRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `UserRemoveResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `UserRemoveRequest` | `Models/UserRemoveRequest.cs` |
-| `UserRemoveResponse` | `Models/UserRemoveResponse.cs` |
+| `UserRemoveOperationRequest` | `src/ThePlaidApi/Requests/UserRemoveOperationRequest.cs` |
+| `UserRemoveRequest` | `src/ThePlaidApi/Models/UserRemoveRequest.cs` |
+| `UserRemoveResponse` | `src/ThePlaidApi/Models/UserRemoveResponse.cs` |
 
 ### UserThirdPartyTokenCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `UserThirdPartyTokenCreate(UserThirdPartyTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `UserThirdPartyTokenCreate(UserThirdPartyTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `UserThirdPartyTokenCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `UserThirdPartyTokenCreateRequest` | `Models/UserThirdPartyTokenCreateRequest.cs` |
-| `UserThirdPartyTokenCreateResponse` | `Models/UserThirdPartyTokenCreateResponse.cs` |
+| `UserThirdPartyTokenCreateOperationRequest` | `src/ThePlaidApi/Requests/UserThirdPartyTokenCreateOperationRequest.cs` |
+| `UserThirdPartyTokenCreateRequest` | `src/ThePlaidApi/Models/UserThirdPartyTokenCreateRequest.cs` |
+| `UserThirdPartyTokenCreateResponse` | `src/ThePlaidApi/Models/UserThirdPartyTokenCreateResponse.cs` |
 
 ### UserThirdPartyTokenRemove
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `UserThirdPartyTokenRemove(UserThirdPartyTokenRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `UserThirdPartyTokenRemove(UserThirdPartyTokenRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `UserThirdPartyTokenRemoveResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `UserThirdPartyTokenRemoveRequest` | `Models/UserThirdPartyTokenRemoveRequest.cs` |
-| `UserThirdPartyTokenRemoveResponse` | `Models/UserThirdPartyTokenRemoveResponse.cs` |
+| `UserThirdPartyTokenRemoveOperationRequest` | `src/ThePlaidApi/Requests/UserThirdPartyTokenRemoveOperationRequest.cs` |
+| `UserThirdPartyTokenRemoveRequest` | `src/ThePlaidApi/Models/UserThirdPartyTokenRemoveRequest.cs` |
+| `UserThirdPartyTokenRemoveResponse` | `src/ThePlaidApi/Models/UserThirdPartyTokenRemoveResponse.cs` |
 
 ### UserTransactionsRefresh
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `UserTransactionsRefresh(UserTransactionsRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `UserTransactionsRefresh(UserTransactionsRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `UserTransactionsRefreshResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `UserTransactionsRefreshRequest` | `Models/UserTransactionsRefreshRequest.cs` |
-| `UserTransactionsRefreshResponse` | `Models/UserTransactionsRefreshResponse.cs` |
+| `UserTransactionsRefreshOperationRequest` | `src/ThePlaidApi/Requests/UserTransactionsRefreshOperationRequest.cs` |
+| `UserTransactionsRefreshRequest` | `src/ThePlaidApi/Models/UserTransactionsRefreshRequest.cs` |
+| `UserTransactionsRefreshResponse` | `src/ThePlaidApi/Models/UserTransactionsRefreshResponse.cs` |
 
 ### UserUpdate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `UserUpdate(UserUpdateRequest body, bool? plaidNewUserApiEnabled = false, RequestOptions? requestOptions = null, CancellationToken ct = default)`
-  - defaults: `plaidNewUserApiEnabled` = `false`
+- **Signature**: `UserUpdate(UserUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `UserUpdateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `UserUpdateRequest` | `Models/UserUpdateRequest.cs` |
-| `UserUpdateResponse` | `Models/UserUpdateResponse.cs` |
+| `UserUpdateOperationRequest` | `src/ThePlaidApi/Requests/UserUpdateOperationRequest.cs` |
+| `UserUpdateRequest` | `src/ThePlaidApi/Models/UserUpdateRequest.cs` |
+| `UserUpdateResponse` | `src/ThePlaidApi/Models/UserUpdateResponse.cs` |
 
 ### WalletCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WalletCreate(WalletCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WalletCreate(WalletCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WalletCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WalletCreateRequest` | `Models/WalletCreateRequest.cs` |
-| `WalletCreateResponse` | `Models/WalletCreateResponse.cs` |
+| `WalletCreateOperationRequest` | `src/ThePlaidApi/Requests/WalletCreateOperationRequest.cs` |
+| `WalletCreateRequest` | `src/ThePlaidApi/Models/WalletCreateRequest.cs` |
+| `WalletCreateResponse` | `src/ThePlaidApi/Models/WalletCreateResponse.cs` |
 
 ### WalletGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WalletGet(WalletGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WalletGet(WalletGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WalletGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WalletGetRequest` | `Models/WalletGetRequest.cs` |
-| `WalletGetResponse` | `Models/WalletGetResponse.cs` |
+| `WalletGetOperationRequest` | `src/ThePlaidApi/Requests/WalletGetOperationRequest.cs` |
+| `WalletGetRequest` | `src/ThePlaidApi/Models/WalletGetRequest.cs` |
+| `WalletGetResponse` | `src/ThePlaidApi/Models/WalletGetResponse.cs` |
 
 ### WalletList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WalletList(WalletListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WalletList(WalletListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WalletListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WalletListRequest` | `Models/WalletListRequest.cs` |
-| `WalletListResponse` | `Models/WalletListResponse.cs` |
+| `WalletListOperationRequest` | `src/ThePlaidApi/Requests/WalletListOperationRequest.cs` |
+| `WalletListRequest` | `src/ThePlaidApi/Models/WalletListRequest.cs` |
+| `WalletListResponse` | `src/ThePlaidApi/Models/WalletListResponse.cs` |
 
 ### WalletTransactionExecute
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WalletTransactionExecute(WalletTransactionExecuteRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WalletTransactionExecute(WalletTransactionExecuteOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WalletTransactionExecuteResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WalletTransactionExecuteRequest` | `Models/WalletTransactionExecuteRequest.cs` |
-| `WalletTransactionExecuteResponse` | `Models/WalletTransactionExecuteResponse.cs` |
+| `WalletTransactionExecuteOperationRequest` | `src/ThePlaidApi/Requests/WalletTransactionExecuteOperationRequest.cs` |
+| `WalletTransactionExecuteRequest` | `src/ThePlaidApi/Models/WalletTransactionExecuteRequest.cs` |
+| `WalletTransactionExecuteResponse` | `src/ThePlaidApi/Models/WalletTransactionExecuteResponse.cs` |
 
 ### WalletTransactionGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WalletTransactionGet(WalletTransactionGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WalletTransactionGet(WalletTransactionGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WalletTransactionGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WalletTransactionGetRequest` | `Models/WalletTransactionGetRequest.cs` |
-| `WalletTransactionGetResponse` | `Models/WalletTransactionGetResponse.cs` |
+| `WalletTransactionGetOperationRequest` | `src/ThePlaidApi/Requests/WalletTransactionGetOperationRequest.cs` |
+| `WalletTransactionGetRequest` | `src/ThePlaidApi/Models/WalletTransactionGetRequest.cs` |
+| `WalletTransactionGetResponse` | `src/ThePlaidApi/Models/WalletTransactionGetResponse.cs` |
 
 ### WalletTransactionList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WalletTransactionList(WalletTransactionListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WalletTransactionList(WalletTransactionListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WalletTransactionListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WalletTransactionListRequest` | `Models/WalletTransactionListRequest.cs` |
-| `WalletTransactionListResponse` | `Models/WalletTransactionListResponse.cs` |
+| `WalletTransactionListOperationRequest` | `src/ThePlaidApi/Requests/WalletTransactionListOperationRequest.cs` |
+| `WalletTransactionListRequest` | `src/ThePlaidApi/Models/WalletTransactionListRequest.cs` |
+| `WalletTransactionListResponse` | `src/ThePlaidApi/Models/WalletTransactionListResponse.cs` |
 
 ### WatchlistScreeningEntityCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningEntityCreate(WatchlistScreeningEntityCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningEntityCreate(WatchlistScreeningEntityCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningEntityCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningEntityCreateRequest` | `Models/WatchlistScreeningEntityCreateRequest.cs` |
-| `WatchlistScreeningEntityCreateResponse` | `Models/WatchlistScreeningEntityCreateResponse.cs` |
+| `WatchlistScreeningEntityCreateOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningEntityCreateOperationRequest.cs` |
+| `WatchlistScreeningEntityCreateRequest` | `src/ThePlaidApi/Models/WatchlistScreeningEntityCreateRequest.cs` |
+| `WatchlistScreeningEntityCreateResponse` | `src/ThePlaidApi/Models/WatchlistScreeningEntityCreateResponse.cs` |
 
 ### WatchlistScreeningEntityGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningEntityGet(WatchlistScreeningEntityGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningEntityGet(WatchlistScreeningEntityGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningEntityGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningEntityGetRequest` | `Models/WatchlistScreeningEntityGetRequest.cs` |
-| `WatchlistScreeningEntityGetResponse` | `Models/WatchlistScreeningEntityGetResponse.cs` |
+| `WatchlistScreeningEntityGetOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningEntityGetOperationRequest.cs` |
+| `WatchlistScreeningEntityGetRequest` | `src/ThePlaidApi/Models/WatchlistScreeningEntityGetRequest.cs` |
+| `WatchlistScreeningEntityGetResponse` | `src/ThePlaidApi/Models/WatchlistScreeningEntityGetResponse.cs` |
 
 ### WatchlistScreeningEntityHistoryList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningEntityHistoryList(WatchlistScreeningEntityHistoryListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningEntityHistoryList(WatchlistScreeningEntityHistoryListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningEntityHistoryListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningEntityHistoryListRequest` | `Models/WatchlistScreeningEntityHistoryListRequest.cs` |
-| `WatchlistScreeningEntityHistoryListResponse` | `Models/WatchlistScreeningEntityHistoryListResponse.cs` |
+| `WatchlistScreeningEntityHistoryListOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningEntityHistoryListOperationRequest.cs` |
+| `WatchlistScreeningEntityHistoryListRequest` | `src/ThePlaidApi/Models/WatchlistScreeningEntityHistoryListRequest.cs` |
+| `WatchlistScreeningEntityHistoryListResponse` | `src/ThePlaidApi/Models/WatchlistScreeningEntityHistoryListResponse.cs` |
 
 ### WatchlistScreeningEntityHitList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningEntityHitList(WatchlistScreeningEntityHitListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningEntityHitList(WatchlistScreeningEntityHitListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningEntityHitListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningEntityHitListRequest` | `Models/WatchlistScreeningEntityHitListRequest.cs` |
-| `WatchlistScreeningEntityHitListResponse` | `Models/WatchlistScreeningEntityHitListResponse.cs` |
+| `WatchlistScreeningEntityHitListOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningEntityHitListOperationRequest.cs` |
+| `WatchlistScreeningEntityHitListRequest` | `src/ThePlaidApi/Models/WatchlistScreeningEntityHitListRequest.cs` |
+| `WatchlistScreeningEntityHitListResponse` | `src/ThePlaidApi/Models/WatchlistScreeningEntityHitListResponse.cs` |
 
 ### WatchlistScreeningEntityList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningEntityList(WatchlistScreeningEntityListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningEntityList(WatchlistScreeningEntityListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningEntityListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningEntityListRequest` | `Models/WatchlistScreeningEntityListRequest.cs` |
-| `WatchlistScreeningEntityListResponse` | `Models/WatchlistScreeningEntityListResponse.cs` |
+| `WatchlistScreeningEntityListOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningEntityListOperationRequest.cs` |
+| `WatchlistScreeningEntityListRequest` | `src/ThePlaidApi/Models/WatchlistScreeningEntityListRequest.cs` |
+| `WatchlistScreeningEntityListResponse` | `src/ThePlaidApi/Models/WatchlistScreeningEntityListResponse.cs` |
 
 ### WatchlistScreeningEntityProgramGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningEntityProgramGet(WatchlistScreeningEntityProgramGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningEntityProgramGet(WatchlistScreeningEntityProgramGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningEntityProgramGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningEntityProgramGetRequest` | `Models/WatchlistScreeningEntityProgramGetRequest.cs` |
-| `WatchlistScreeningEntityProgramGetResponse` | `Models/WatchlistScreeningEntityProgramGetResponse.cs` |
+| `WatchlistScreeningEntityProgramGetOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningEntityProgramGetOperationRequest.cs` |
+| `WatchlistScreeningEntityProgramGetRequest` | `src/ThePlaidApi/Models/WatchlistScreeningEntityProgramGetRequest.cs` |
+| `WatchlistScreeningEntityProgramGetResponse` | `src/ThePlaidApi/Models/WatchlistScreeningEntityProgramGetResponse.cs` |
 
 ### WatchlistScreeningEntityProgramList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningEntityProgramList(WatchlistScreeningEntityProgramListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningEntityProgramList(WatchlistScreeningEntityProgramListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningEntityProgramListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningEntityProgramListRequest` | `Models/WatchlistScreeningEntityProgramListRequest.cs` |
-| `WatchlistScreeningEntityProgramListResponse` | `Models/WatchlistScreeningEntityProgramListResponse.cs` |
+| `WatchlistScreeningEntityProgramListOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningEntityProgramListOperationRequest.cs` |
+| `WatchlistScreeningEntityProgramListRequest` | `src/ThePlaidApi/Models/WatchlistScreeningEntityProgramListRequest.cs` |
+| `WatchlistScreeningEntityProgramListResponse` | `src/ThePlaidApi/Models/WatchlistScreeningEntityProgramListResponse.cs` |
 
 ### WatchlistScreeningEntityReviewCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningEntityReviewCreate(WatchlistScreeningEntityReviewCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningEntityReviewCreate(WatchlistScreeningEntityReviewCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningEntityReviewCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningEntityReviewCreateRequest` | `Models/WatchlistScreeningEntityReviewCreateRequest.cs` |
-| `WatchlistScreeningEntityReviewCreateResponse` | `Models/WatchlistScreeningEntityReviewCreateResponse.cs` |
+| `WatchlistScreeningEntityReviewCreateOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningEntityReviewCreateOperationRequest.cs` |
+| `WatchlistScreeningEntityReviewCreateRequest` | `src/ThePlaidApi/Models/WatchlistScreeningEntityReviewCreateRequest.cs` |
+| `WatchlistScreeningEntityReviewCreateResponse` | `src/ThePlaidApi/Models/WatchlistScreeningEntityReviewCreateResponse.cs` |
 
 ### WatchlistScreeningEntityReviewList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningEntityReviewList(WatchlistScreeningEntityReviewListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningEntityReviewList(WatchlistScreeningEntityReviewListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningEntityReviewListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningEntityReviewListRequest` | `Models/WatchlistScreeningEntityReviewListRequest.cs` |
-| `WatchlistScreeningEntityReviewListResponse` | `Models/WatchlistScreeningEntityReviewListResponse.cs` |
+| `WatchlistScreeningEntityReviewListOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningEntityReviewListOperationRequest.cs` |
+| `WatchlistScreeningEntityReviewListRequest` | `src/ThePlaidApi/Models/WatchlistScreeningEntityReviewListRequest.cs` |
+| `WatchlistScreeningEntityReviewListResponse` | `src/ThePlaidApi/Models/WatchlistScreeningEntityReviewListResponse.cs` |
 
 ### WatchlistScreeningEntityUpdate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningEntityUpdate(WatchlistScreeningEntityUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningEntityUpdate(WatchlistScreeningEntityUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningEntityUpdateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningEntityUpdateRequest` | `Models/WatchlistScreeningEntityUpdateRequest.cs` |
-| `WatchlistScreeningEntityUpdateResponse` | `Models/WatchlistScreeningEntityUpdateResponse.cs` |
+| `WatchlistScreeningEntityUpdateOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningEntityUpdateOperationRequest.cs` |
+| `WatchlistScreeningEntityUpdateRequest` | `src/ThePlaidApi/Models/WatchlistScreeningEntityUpdateRequest.cs` |
+| `WatchlistScreeningEntityUpdateResponse` | `src/ThePlaidApi/Models/WatchlistScreeningEntityUpdateResponse.cs` |
 
 ### WatchlistScreeningIndividualCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningIndividualCreate(WatchlistScreeningIndividualCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningIndividualCreate(WatchlistScreeningIndividualCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningIndividualCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningIndividualCreateRequest` | `Models/WatchlistScreeningIndividualCreateRequest.cs` |
-| `WatchlistScreeningIndividualCreateResponse` | `Models/WatchlistScreeningIndividualCreateResponse.cs` |
+| `WatchlistScreeningIndividualCreateOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningIndividualCreateOperationRequest.cs` |
+| `WatchlistScreeningIndividualCreateRequest` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualCreateRequest.cs` |
+| `WatchlistScreeningIndividualCreateResponse` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualCreateResponse.cs` |
 
 ### WatchlistScreeningIndividualGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningIndividualGet(WatchlistScreeningIndividualGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningIndividualGet(WatchlistScreeningIndividualGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningIndividualGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningIndividualGetRequest` | `Models/WatchlistScreeningIndividualGetRequest.cs` |
-| `WatchlistScreeningIndividualGetResponse` | `Models/WatchlistScreeningIndividualGetResponse.cs` |
+| `WatchlistScreeningIndividualGetOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningIndividualGetOperationRequest.cs` |
+| `WatchlistScreeningIndividualGetRequest` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualGetRequest.cs` |
+| `WatchlistScreeningIndividualGetResponse` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualGetResponse.cs` |
 
 ### WatchlistScreeningIndividualHistoryList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningIndividualHistoryList(WatchlistScreeningIndividualHistoryListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningIndividualHistoryList(WatchlistScreeningIndividualHistoryListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningIndividualHistoryListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningIndividualHistoryListRequest` | `Models/WatchlistScreeningIndividualHistoryListRequest.cs` |
-| `WatchlistScreeningIndividualHistoryListResponse` | `Models/WatchlistScreeningIndividualHistoryListResponse.cs` |
+| `WatchlistScreeningIndividualHistoryListOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningIndividualHistoryListOperationRequest.cs` |
+| `WatchlistScreeningIndividualHistoryListRequest` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualHistoryListRequest.cs` |
+| `WatchlistScreeningIndividualHistoryListResponse` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualHistoryListResponse.cs` |
 
 ### WatchlistScreeningIndividualHitList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningIndividualHitList(WatchlistScreeningIndividualHitListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningIndividualHitList(WatchlistScreeningIndividualHitListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningIndividualHitListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningIndividualHitListRequest` | `Models/WatchlistScreeningIndividualHitListRequest.cs` |
-| `WatchlistScreeningIndividualHitListResponse` | `Models/WatchlistScreeningIndividualHitListResponse.cs` |
+| `WatchlistScreeningIndividualHitListOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningIndividualHitListOperationRequest.cs` |
+| `WatchlistScreeningIndividualHitListRequest` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualHitListRequest.cs` |
+| `WatchlistScreeningIndividualHitListResponse` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualHitListResponse.cs` |
 
 ### WatchlistScreeningIndividualList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningIndividualList(WatchlistScreeningIndividualListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningIndividualList(WatchlistScreeningIndividualListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningIndividualListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningIndividualListRequest` | `Models/WatchlistScreeningIndividualListRequest.cs` |
-| `WatchlistScreeningIndividualListResponse` | `Models/WatchlistScreeningIndividualListResponse.cs` |
+| `WatchlistScreeningIndividualListOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningIndividualListOperationRequest.cs` |
+| `WatchlistScreeningIndividualListRequest` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualListRequest.cs` |
+| `WatchlistScreeningIndividualListResponse` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualListResponse.cs` |
 
 ### WatchlistScreeningIndividualProgramGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningIndividualProgramGet(WatchlistScreeningIndividualProgramGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningIndividualProgramGet(WatchlistScreeningIndividualProgramGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningIndividualProgramGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningIndividualProgramGetRequest` | `Models/WatchlistScreeningIndividualProgramGetRequest.cs` |
-| `WatchlistScreeningIndividualProgramGetResponse` | `Models/WatchlistScreeningIndividualProgramGetResponse.cs` |
+| `WatchlistScreeningIndividualProgramGetOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningIndividualProgramGetOperationRequest.cs` |
+| `WatchlistScreeningIndividualProgramGetRequest` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualProgramGetRequest.cs` |
+| `WatchlistScreeningIndividualProgramGetResponse` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualProgramGetResponse.cs` |
 
 ### WatchlistScreeningIndividualProgramList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningIndividualProgramList(WatchlistScreeningIndividualProgramListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningIndividualProgramList(WatchlistScreeningIndividualProgramListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningIndividualProgramListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningIndividualProgramListRequest` | `Models/WatchlistScreeningIndividualProgramListRequest.cs` |
-| `WatchlistScreeningIndividualProgramListResponse` | `Models/WatchlistScreeningIndividualProgramListResponse.cs` |
+| `WatchlistScreeningIndividualProgramListOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningIndividualProgramListOperationRequest.cs` |
+| `WatchlistScreeningIndividualProgramListRequest` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualProgramListRequest.cs` |
+| `WatchlistScreeningIndividualProgramListResponse` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualProgramListResponse.cs` |
 
 ### WatchlistScreeningIndividualReviewCreate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningIndividualReviewCreate(WatchlistScreeningIndividualReviewCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningIndividualReviewCreate(WatchlistScreeningIndividualReviewCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningIndividualReviewCreateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningIndividualReviewCreateRequest` | `Models/WatchlistScreeningIndividualReviewCreateRequest.cs` |
-| `WatchlistScreeningIndividualReviewCreateResponse` | `Models/WatchlistScreeningIndividualReviewCreateResponse.cs` |
+| `WatchlistScreeningIndividualReviewCreateOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningIndividualReviewCreateOperationRequest.cs` |
+| `WatchlistScreeningIndividualReviewCreateRequest` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualReviewCreateRequest.cs` |
+| `WatchlistScreeningIndividualReviewCreateResponse` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualReviewCreateResponse.cs` |
 
 ### WatchlistScreeningIndividualReviewList
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningIndividualReviewList(WatchlistScreeningIndividualReviewListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningIndividualReviewList(WatchlistScreeningIndividualReviewListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningIndividualReviewListResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningIndividualReviewListRequest` | `Models/WatchlistScreeningIndividualReviewListRequest.cs` |
-| `WatchlistScreeningIndividualReviewListResponse` | `Models/WatchlistScreeningIndividualReviewListResponse.cs` |
+| `WatchlistScreeningIndividualReviewListOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningIndividualReviewListOperationRequest.cs` |
+| `WatchlistScreeningIndividualReviewListRequest` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualReviewListRequest.cs` |
+| `WatchlistScreeningIndividualReviewListResponse` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualReviewListResponse.cs` |
 
 ### WatchlistScreeningIndividualUpdate
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WatchlistScreeningIndividualUpdate(WatchlistScreeningIndividualUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WatchlistScreeningIndividualUpdate(WatchlistScreeningIndividualUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WatchlistScreeningIndividualUpdateResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WatchlistScreeningIndividualUpdateRequest` | `Models/WatchlistScreeningIndividualUpdateRequest.cs` |
-| `WatchlistScreeningIndividualUpdateResponse` | `Models/WatchlistScreeningIndividualUpdateResponse.cs` |
+| `WatchlistScreeningIndividualUpdateOperationRequest` | `src/ThePlaidApi/Requests/WatchlistScreeningIndividualUpdateOperationRequest.cs` |
+| `WatchlistScreeningIndividualUpdateRequest` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualUpdateRequest.cs` |
+| `WatchlistScreeningIndividualUpdateResponse` | `src/ThePlaidApi/Models/WatchlistScreeningIndividualUpdateResponse.cs` |
 
 ### WebhookVerificationKeyGet
 
 - **Auth**: `options.ClientId` AND `options.Secret` AND `options.PlaidVersion`
-- **Signature**: `WebhookVerificationKeyGet(WebhookVerificationKeyGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default)`
+- **Signature**: `WebhookVerificationKeyGet(WebhookVerificationKeyGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default)`
+  - required: `Body`
 - **Returns**: `WebhookVerificationKeyGetResponse`
-- **Error**: `SdkException<RawError>` — **Case B**
+- **Error**: `ApiException<RawError>` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `WebhookVerificationKeyGetRequest` | `Models/WebhookVerificationKeyGetRequest.cs` |
-| `WebhookVerificationKeyGetResponse` | `Models/WebhookVerificationKeyGetResponse.cs` |
+| `WebhookVerificationKeyGetOperationRequest` | `src/ThePlaidApi/Requests/WebhookVerificationKeyGetOperationRequest.cs` |
+| `WebhookVerificationKeyGetRequest` | `src/ThePlaidApi/Models/WebhookVerificationKeyGetRequest.cs` |
+| `WebhookVerificationKeyGetResponse` | `src/ThePlaidApi/Models/WebhookVerificationKeyGetResponse.cs` |
 

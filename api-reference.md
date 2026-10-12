@@ -1,9 +1,11 @@
 # Reference
 
-> Source: [ThePlaidApiClient](ThePlaidApiClient.cs)
+Every operation below is shown in its throwing form. On an error status it throws `ApiException<TError>` — the status code, headers, content type and the operation's error type, `RawError` (the raw body) when the spec declares none — and where an operation offers an `…AsResult` sibling, that sibling returns `ApiResult<TResponse, TError>` instead. A request that produces no usable response surfaces as `SdkConnectionException` or `SdkTimeoutException`, a body that does not match the documented response type as `ResponseDeserializationException`, and a credential that cannot be applied as `AuthSchemeException`; all of them derive from `SdkException` and name the failed call. See [README → Error Handling](README.md#error-handling).
+
+> Source: [ThePlaidApiClient](src/ThePlaidApi/ThePlaidApiClient.cs)
 
 <details>
-<summary><code>Task&lt;AccountsGetResponse&gt; AccountsBalanceGet(AccountsBalanceGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;AccountsGetResponse&gt; AccountsBalanceGet(AccountsBalanceGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -28,10 +30,19 @@ Note: If you are getting real-time balance for the purpose of assessing the retu
 ```csharp
 try
 {
-    var response = await client.AccountsBalanceGet(body);
+    var response = await client.AccountsBalanceGet(new AccountsBalanceGetOperationRequest
+    {
+        Body = new AccountsBalanceGetRequest
+        {
+            AccessToken = "string",
+            Secret = "string",
+            ClientId = "string",
+            Options = new AccountsBalanceGetRequestOptions { AccountIds = ["string"] },
+        },
+    });
     // TODO: Handle 'response' of type AccountsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -40,14 +51,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[AccountsBalanceGetRequest](Models/AccountsBalanceGetRequest.cs)</code> | - |
+<code>[AccountsBalanceGetOperationRequest](src/ThePlaidApi/Requests/AccountsBalanceGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -57,9 +66,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[AccountsGetResponse](Models/AccountsGetResponse.cs)</code>
+**OnSuccess**: <code>[AccountsGetResponse](src/ThePlaidApi/Models/AccountsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -70,7 +79,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;AccountsGetResponse&gt; AccountsGet(AccountsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;AccountsGetResponse&gt; AccountsGet(AccountsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -98,10 +107,19 @@ For real-time balance information, use the paid endpoints `/accounts/balance/get
 ```csharp
 try
 {
-    var response = await client.AccountsGet(body);
+    var response = await client.AccountsGet(new AccountsGetOperationRequest
+    {
+        Body = new AccountsGetRequest
+        {
+            ClientId = "string",
+            Secret = "string",
+            AccessToken = "string",
+            Options = new AccountsGetRequestOptions { AccountIds = ["string"] },
+        },
+    });
     // TODO: Handle 'response' of type AccountsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -110,14 +128,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[AccountsGetRequest](Models/AccountsGetRequest.cs)</code> | - |
+<code>[AccountsGetOperationRequest](src/ThePlaidApi/Requests/AccountsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -127,9 +143,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[AccountsGetResponse](Models/AccountsGetResponse.cs)</code>
+**OnSuccess**: <code>[AccountsGetResponse](src/ThePlaidApi/Models/AccountsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -140,7 +156,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ApplicationGetResponse&gt; ApplicationGet(ApplicationGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ApplicationGetResponse&gt; ApplicationGet(ApplicationGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -163,10 +179,18 @@ Allows financial institutions to retrieve information about Plaid clients for th
 ```csharp
 try
 {
-    var response = await client.ApplicationGet(body);
+    var response = await client.ApplicationGet(new ApplicationGetOperationRequest
+    {
+        Body = new ApplicationGetRequest
+        {
+            ClientId = "some example string",
+            Secret = "some example string",
+            ApplicationId = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type ApplicationGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -175,14 +199,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ApplicationGetRequest](Models/ApplicationGetRequest.cs)</code> | - |
+<code>[ApplicationGetOperationRequest](src/ThePlaidApi/Requests/ApplicationGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -192,9 +214,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ApplicationGetResponse](Models/ApplicationGetResponse.cs)</code>
+**OnSuccess**: <code>[ApplicationGetResponse](src/ThePlaidApi/Models/ApplicationGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -205,7 +227,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;AssetReportAuditCopyCreateResponse&gt; AssetReportAuditCopyCreate(AssetReportAuditCopyCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;AssetReportAuditCopyCreateResponse&gt; AssetReportAuditCopyCreate(AssetReportAuditCopyCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -230,10 +252,13 @@ To grant access to an Audit Copy, use the `/asset_report/audit_copy/create` endp
 ```csharp
 try
 {
-    var response = await client.AssetReportAuditCopyCreate(body);
+    var response = await client.AssetReportAuditCopyCreate(new AssetReportAuditCopyCreateOperationRequest
+    {
+        Body = new AssetReportAuditCopyCreateRequest { AssetReportToken = "some example string" },
+    });
     // TODO: Handle 'response' of type AssetReportAuditCopyCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -242,14 +267,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[AssetReportAuditCopyCreateRequest](Models/AssetReportAuditCopyCreateRequest.cs)</code> | - |
+<code>[AssetReportAuditCopyCreateOperationRequest](src/ThePlaidApi/Requests/AssetReportAuditCopyCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -259,9 +282,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[AssetReportAuditCopyCreateResponse](Models/AssetReportAuditCopyCreateResponse.cs)</code>
+**OnSuccess**: <code>[AssetReportAuditCopyCreateResponse](src/ThePlaidApi/Models/AssetReportAuditCopyCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -272,7 +295,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;AssetReportGetResponse&gt; AssetReportAuditCopyGet(AssetReportAuditCopyGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;AssetReportGetResponse&gt; AssetReportAuditCopyGet(AssetReportAuditCopyGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -295,10 +318,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.AssetReportAuditCopyGet(body);
+    var response = await client.AssetReportAuditCopyGet(new AssetReportAuditCopyGetOperationRequest
+    {
+        Body = new AssetReportAuditCopyGetRequest { AuditCopyToken = "some example string" },
+    });
     // TODO: Handle 'response' of type AssetReportGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -307,14 +333,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[AssetReportAuditCopyGetRequest](Models/AssetReportAuditCopyGetRequest.cs)</code> | - |
+<code>[AssetReportAuditCopyGetOperationRequest](src/ThePlaidApi/Requests/AssetReportAuditCopyGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -324,9 +348,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[AssetReportGetResponse](Models/AssetReportGetResponse.cs)</code>
+**OnSuccess**: <code>[AssetReportGetResponse](src/ThePlaidApi/Models/AssetReportGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -337,7 +361,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task AssetReportAuditCopyPdfGet(AssetReportAuditCopyPdfGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task AssetReportAuditCopyPdfGet(AssetReportAuditCopyPdfGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -364,9 +388,12 @@ The response to `/asset_report/audit_copy/pdf/get` is the PDF binary data. The `
 ```csharp
 try
 {
-    await client.AssetReportAuditCopyPdfGet(body);
+    await client.AssetReportAuditCopyPdfGet(new AssetReportAuditCopyPdfGetOperationRequest
+    {
+        Body = new AssetReportAuditCopyPdfGetRequest { AuditCopyToken = "some example string" },
+    });
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -375,14 +402,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[AssetReportAuditCopyPdfGetRequest](Models/AssetReportAuditCopyPdfGetRequest.cs)</code> | - |
+<code>[AssetReportAuditCopyPdfGetOperationRequest](src/ThePlaidApi/Requests/AssetReportAuditCopyPdfGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -394,7 +419,7 @@ catch (SdkException<RawError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -405,7 +430,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;AssetReportAuditCopyRemoveResponse&gt; AssetReportAuditCopyRemove(AssetReportAuditCopyRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;AssetReportAuditCopyRemoveResponse&gt; AssetReportAuditCopyRemove(AssetReportAuditCopyRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -428,10 +453,13 @@ The `/asset_report/audit_copy/remove` endpoint allows you to remove an Audit Cop
 ```csharp
 try
 {
-    var response = await client.AssetReportAuditCopyRemove(body);
+    var response = await client.AssetReportAuditCopyRemove(new AssetReportAuditCopyRemoveOperationRequest
+    {
+        Body = new AssetReportAuditCopyRemoveRequest { AuditCopyToken = "some example string" },
+    });
     // TODO: Handle 'response' of type AssetReportAuditCopyRemoveResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -440,14 +468,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[AssetReportAuditCopyRemoveRequest](Models/AssetReportAuditCopyRemoveRequest.cs)</code> | - |
+<code>[AssetReportAuditCopyRemoveOperationRequest](src/ThePlaidApi/Requests/AssetReportAuditCopyRemoveOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -457,9 +483,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[AssetReportAuditCopyRemoveResponse](Models/AssetReportAuditCopyRemoveResponse.cs)</code>
+**OnSuccess**: <code>[AssetReportAuditCopyRemoveResponse](src/ThePlaidApi/Models/AssetReportAuditCopyRemoveResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -470,7 +496,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;AssetReportCreateResponse&gt; AssetReportCreate(AssetReportCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;AssetReportCreateResponse&gt; AssetReportCreate(AssetReportCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -497,10 +523,13 @@ The `/asset_report/create` endpoint creates an Asset Report at a moment in time.
 ```csharp
 try
 {
-    var response = await client.AssetReportCreate(body);
+    var response = await client.AssetReportCreate(new AssetReportCreateOperationRequest
+    {
+        Body = new AssetReportCreateRequest { DaysRequested = 1 },
+    });
     // TODO: Handle 'response' of type AssetReportCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -509,14 +538,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[AssetReportCreateRequest](Models/AssetReportCreateRequest.cs)</code> | - |
+<code>[AssetReportCreateOperationRequest](src/ThePlaidApi/Requests/AssetReportCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -526,9 +553,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[AssetReportCreateResponse](Models/AssetReportCreateResponse.cs)</code>
+**OnSuccess**: <code>[AssetReportCreateResponse](src/ThePlaidApi/Models/AssetReportCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -539,7 +566,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;AssetReportFilterResponse&gt; AssetReportFilter(AssetReportFilterRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;AssetReportFilterResponse&gt; AssetReportFilter(AssetReportFilterOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -568,10 +595,17 @@ Plaid will fire a [`PRODUCT_READY`](https://plaid.com/docs/api/products/assets/#
 ```csharp
 try
 {
-    var response = await client.AssetReportFilter(body);
+    var response = await client.AssetReportFilter(new AssetReportFilterOperationRequest
+    {
+        Body = new AssetReportFilterRequest
+        {
+            AssetReportToken = "some example string",
+            AccountIdsToExclude = ["some example string"],
+        },
+    });
     // TODO: Handle 'response' of type AssetReportFilterResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -580,14 +614,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[AssetReportFilterRequest](Models/AssetReportFilterRequest.cs)</code> | - |
+<code>[AssetReportFilterOperationRequest](src/ThePlaidApi/Requests/AssetReportFilterOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -597,9 +629,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[AssetReportFilterResponse](Models/AssetReportFilterResponse.cs)</code>
+**OnSuccess**: <code>[AssetReportFilterResponse](src/ThePlaidApi/Models/AssetReportFilterResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -610,7 +642,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;AssetReportGetResponse&gt; AssetReportGet(AssetReportGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;AssetReportGetResponse&gt; AssetReportGet(AssetReportGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -637,10 +669,13 @@ For latency-sensitive applications, you can optionally call `/asset_report/creat
 ```csharp
 try
 {
-    var response = await client.AssetReportGet(body);
+    var response = await client.AssetReportGet(new AssetReportGetOperationRequest
+    {
+        Body = new AssetReportGetRequest(),
+    });
     // TODO: Handle 'response' of type AssetReportGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -649,14 +684,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[AssetReportGetRequest](Models/AssetReportGetRequest.cs)</code> | - |
+<code>[AssetReportGetOperationRequest](src/ThePlaidApi/Requests/AssetReportGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -666,9 +699,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[AssetReportGetResponse](Models/AssetReportGetResponse.cs)</code>
+**OnSuccess**: <code>[AssetReportGetResponse](src/ThePlaidApi/Models/AssetReportGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -679,7 +712,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task AssetReportPdfGet(AssetReportPdfGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task AssetReportPdfGet(AssetReportPdfGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -706,9 +739,12 @@ The response to `/asset_report/pdf/get` is the PDF binary data. The `request_id`
 ```csharp
 try
 {
-    await client.AssetReportPdfGet(body);
+    await client.AssetReportPdfGet(new AssetReportPdfGetOperationRequest
+    {
+        Body = new AssetReportPdfGetRequest { AssetReportToken = "some example string" },
+    });
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -717,14 +753,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[AssetReportPdfGetRequest](Models/AssetReportPdfGetRequest.cs)</code> | - |
+<code>[AssetReportPdfGetOperationRequest](src/ThePlaidApi/Requests/AssetReportPdfGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -736,7 +770,7 @@ catch (SdkException<RawError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -747,7 +781,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;AssetReportRefreshResponse&gt; AssetReportRefresh(AssetReportRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;AssetReportRefreshResponse&gt; AssetReportRefresh(AssetReportRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -772,10 +806,13 @@ The new Asset Report will contain the same Items as the original Report, as well
 ```csharp
 try
 {
-    var response = await client.AssetReportRefresh(body);
+    var response = await client.AssetReportRefresh(new AssetReportRefreshOperationRequest
+    {
+        Body = new AssetReportRefreshRequest { AssetReportToken = "some example string" },
+    });
     // TODO: Handle 'response' of type AssetReportRefreshResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -784,14 +821,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[AssetReportRefreshRequest](Models/AssetReportRefreshRequest.cs)</code> | - |
+<code>[AssetReportRefreshOperationRequest](src/ThePlaidApi/Requests/AssetReportRefreshOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -801,9 +836,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[AssetReportRefreshResponse](Models/AssetReportRefreshResponse.cs)</code>
+**OnSuccess**: <code>[AssetReportRefreshResponse](src/ThePlaidApi/Models/AssetReportRefreshResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -814,7 +849,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;AssetReportRemoveResponse&gt; AssetReportRemove(AssetReportRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;AssetReportRemoveResponse&gt; AssetReportRemove(AssetReportRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -839,10 +874,13 @@ The `/asset_report/remove` endpoint allows you to remove access to an Asset Repo
 ```csharp
 try
 {
-    var response = await client.AssetReportRemove(body);
+    var response = await client.AssetReportRemove(new AssetReportRemoveOperationRequest
+    {
+        Body = new AssetReportRemoveRequest { AssetReportToken = "some example string" },
+    });
     // TODO: Handle 'response' of type AssetReportRemoveResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -851,14 +889,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[AssetReportRemoveRequest](Models/AssetReportRemoveRequest.cs)</code> | - |
+<code>[AssetReportRemoveOperationRequest](src/ThePlaidApi/Requests/AssetReportRemoveOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -868,9 +904,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[AssetReportRemoveResponse](Models/AssetReportRemoveResponse.cs)</code>
+**OnSuccess**: <code>[AssetReportRemoveResponse](src/ThePlaidApi/Models/AssetReportRemoveResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -881,7 +917,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;AuthGetResponse&gt; AuthGet(AuthGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;AuthGetResponse&gt; AuthGet(AuthGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -906,10 +942,13 @@ Versioning note: In API version 2017-03-08, the schema of the `numbers` object r
 ```csharp
 try
 {
-    var response = await client.AuthGet(body);
+    var response = await client.AuthGet(new AuthGetOperationRequest
+    {
+        Body = new AuthGetRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type AuthGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -918,14 +957,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[AuthGetRequest](Models/AuthGetRequest.cs)</code> | - |
+<code>[AuthGetOperationRequest](src/ThePlaidApi/Requests/AuthGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -935,9 +972,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[AuthGetResponse](Models/AuthGetResponse.cs)</code>
+**OnSuccess**: <code>[AuthGetResponse](src/ThePlaidApi/Models/AuthGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -948,7 +985,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;AuthVerifyResponse&gt; AuthVerify(AuthVerifyRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;AuthVerifyResponse&gt; AuthVerify(AuthVerifyOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -973,10 +1010,19 @@ This endpoint is currently in Early Availability; contact sales or your Plaid ac
 ```csharp
 try
 {
-    var response = await client.AuthVerify(body);
+    var response = await client.AuthVerify(new AuthVerifyOperationRequest
+    {
+        Body = new AuthVerifyRequest
+        {
+            Numbers = new AuthVerifyRequestNumbers
+            {
+                Ach = new AuthVerifyNumbersAch { Account = "some example string", Routing = "some example string" },
+            },
+        },
+    });
     // TODO: Handle 'response' of type AuthVerifyResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -985,14 +1031,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[AuthVerifyRequest](Models/AuthVerifyRequest.cs)</code> | - |
+<code>[AuthVerifyOperationRequest](src/ThePlaidApi/Requests/AuthVerifyOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1002,9 +1046,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[AuthVerifyResponse](Models/AuthVerifyResponse.cs)</code>
+**OnSuccess**: <code>[AuthVerifyResponse](src/ThePlaidApi/Models/AuthVerifyResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1015,7 +1059,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BankTransferBalanceGetResponse&gt; BankTransferBalanceGet(BankTransferBalanceGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BankTransferBalanceGetResponse&gt; BankTransferBalanceGet(BankTransferBalanceGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -1042,10 +1086,13 @@ Note that this endpoint can only be used with FBO accounts, when using Bank Tran
 ```csharp
 try
 {
-    var response = await client.BankTransferBalanceGet(body);
+    var response = await client.BankTransferBalanceGet(new BankTransferBalanceGetOperationRequest
+    {
+        Body = new BankTransferBalanceGetRequest(),
+    });
     // TODO: Handle 'response' of type BankTransferBalanceGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -1054,14 +1101,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BankTransferBalanceGetRequest](Models/BankTransferBalanceGetRequest.cs)</code> | - |
+<code>[BankTransferBalanceGetOperationRequest](src/ThePlaidApi/Requests/BankTransferBalanceGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1071,9 +1116,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BankTransferBalanceGetResponse](Models/BankTransferBalanceGetResponse.cs)</code>
+**OnSuccess**: <code>[BankTransferBalanceGetResponse](src/ThePlaidApi/Models/BankTransferBalanceGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1084,7 +1129,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BankTransferCancelResponse&gt; BankTransferCancel(BankTransferCancelRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BankTransferCancelResponse&gt; BankTransferCancel(BankTransferCancelOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -1107,10 +1152,13 @@ Use the `/bank_transfer/cancel` endpoint to cancel a bank transfer.  A transfer 
 ```csharp
 try
 {
-    var response = await client.BankTransferCancel(body);
+    var response = await client.BankTransferCancel(new BankTransferCancelOperationRequest
+    {
+        Body = new BankTransferCancelRequest { BankTransferId = "some example string" },
+    });
     // TODO: Handle 'response' of type BankTransferCancelResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -1119,14 +1167,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BankTransferCancelRequest](Models/BankTransferCancelRequest.cs)</code> | - |
+<code>[BankTransferCancelOperationRequest](src/ThePlaidApi/Requests/BankTransferCancelOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1136,9 +1182,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BankTransferCancelResponse](Models/BankTransferCancelResponse.cs)</code>
+**OnSuccess**: <code>[BankTransferCancelResponse](src/ThePlaidApi/Models/BankTransferCancelResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1149,7 +1195,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BankTransferCreateResponse&gt; BankTransferCreate(BankTransferCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BankTransferCreateResponse&gt; BankTransferCreate(BankTransferCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -1172,10 +1218,24 @@ Use the `/bank_transfer/create` endpoint to initiate a new bank transfer.
 ```csharp
 try
 {
-    var response = await client.BankTransferCreate(body);
+    var response = await client.BankTransferCreate(new BankTransferCreateOperationRequest
+    {
+        Body = new BankTransferCreateRequest
+        {
+            IdempotencyKey = "some example string",
+            AccessToken = "some example string",
+            AccountId = "some example string",
+            Type = BankTransferType.Debit,
+            Network = BankTransferNetwork.Ach,
+            Amount = "some example string",
+            IsoCurrencyCode = "some example string",
+            Description = "some example string",
+            User = new BankTransferUser { LegalName = "some example string" },
+        },
+    });
     // TODO: Handle 'response' of type BankTransferCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -1184,14 +1244,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BankTransferCreateRequest](Models/BankTransferCreateRequest.cs)</code> | - |
+<code>[BankTransferCreateOperationRequest](src/ThePlaidApi/Requests/BankTransferCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1201,9 +1259,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BankTransferCreateResponse](Models/BankTransferCreateResponse.cs)</code>
+**OnSuccess**: <code>[BankTransferCreateResponse](src/ThePlaidApi/Models/BankTransferCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1214,7 +1272,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BankTransferEventListResponse&gt; BankTransferEventList(BankTransferEventListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BankTransferEventListResponse&gt; BankTransferEventList(BankTransferEventListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -1237,10 +1295,13 @@ Use the `/bank_transfer/event/list` endpoint to get a list of Plaid-initiated AC
 ```csharp
 try
 {
-    var response = await client.BankTransferEventList(body);
+    var response = await client.BankTransferEventList(new BankTransferEventListOperationRequest
+    {
+        Body = new BankTransferEventListRequest(),
+    });
     // TODO: Handle 'response' of type BankTransferEventListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -1249,14 +1310,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BankTransferEventListRequest](Models/BankTransferEventListRequest.cs)</code> | - |
+<code>[BankTransferEventListOperationRequest](src/ThePlaidApi/Requests/BankTransferEventListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1266,9 +1325,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BankTransferEventListResponse](Models/BankTransferEventListResponse.cs)</code>
+**OnSuccess**: <code>[BankTransferEventListResponse](src/ThePlaidApi/Models/BankTransferEventListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1279,7 +1338,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BankTransferEventSyncResponse&gt; BankTransferEventSync(BankTransferEventSyncRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BankTransferEventSyncResponse&gt; BankTransferEventSync(BankTransferEventSyncOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -1302,10 +1361,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.BankTransferEventSync(body);
+    var response = await client.BankTransferEventSync(new BankTransferEventSyncOperationRequest
+    {
+        Body = new BankTransferEventSyncRequest { AfterId = 1 },
+    });
     // TODO: Handle 'response' of type BankTransferEventSyncResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -1314,14 +1376,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BankTransferEventSyncRequest](Models/BankTransferEventSyncRequest.cs)</code> | - |
+<code>[BankTransferEventSyncOperationRequest](src/ThePlaidApi/Requests/BankTransferEventSyncOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1331,9 +1391,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BankTransferEventSyncResponse](Models/BankTransferEventSyncResponse.cs)</code>
+**OnSuccess**: <code>[BankTransferEventSyncResponse](src/ThePlaidApi/Models/BankTransferEventSyncResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1344,7 +1404,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BankTransferGetResponse&gt; BankTransferGet(BankTransferGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BankTransferGetResponse&gt; BankTransferGet(BankTransferGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -1367,10 +1427,13 @@ The `/bank_transfer/get` fetches information about the bank transfer correspondi
 ```csharp
 try
 {
-    var response = await client.BankTransferGet(body);
+    var response = await client.BankTransferGet(new BankTransferGetOperationRequest
+    {
+        Body = new BankTransferGetRequest { BankTransferId = "some example string" },
+    });
     // TODO: Handle 'response' of type BankTransferGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -1379,14 +1442,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BankTransferGetRequest](Models/BankTransferGetRequest.cs)</code> | - |
+<code>[BankTransferGetOperationRequest](src/ThePlaidApi/Requests/BankTransferGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1396,9 +1457,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BankTransferGetResponse](Models/BankTransferGetResponse.cs)</code>
+**OnSuccess**: <code>[BankTransferGetResponse](src/ThePlaidApi/Models/BankTransferGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1409,7 +1470,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BankTransferListResponse&gt; BankTransferList(BankTransferListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BankTransferListResponse&gt; BankTransferList(BankTransferListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -1420,7 +1481,6 @@ catch (SdkException<RawError> ex)
 <dd>
 
 Use the `/bank_transfer/list` endpoint to see a list of all your bank transfers and their statuses. Results are paginated; use the `count` and `offset` query parameters to retrieve the desired bank transfers.
-
 
 </dd>
 </dl>
@@ -1433,10 +1493,13 @@ Use the `/bank_transfer/list` endpoint to see a list of all your bank transfers 
 ```csharp
 try
 {
-    var response = await client.BankTransferList(body);
+    var response = await client.BankTransferList(new BankTransferListOperationRequest
+    {
+        Body = new BankTransferListRequest(),
+    });
     // TODO: Handle 'response' of type BankTransferListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -1445,14 +1508,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BankTransferListRequest](Models/BankTransferListRequest.cs)</code> | - |
+<code>[BankTransferListOperationRequest](src/ThePlaidApi/Requests/BankTransferListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1462,9 +1523,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BankTransferListResponse](Models/BankTransferListResponse.cs)</code>
+**OnSuccess**: <code>[BankTransferListResponse](src/ThePlaidApi/Models/BankTransferListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1475,7 +1536,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BankTransferMigrateAccountResponse&gt; BankTransferMigrateAccount(BankTransferMigrateAccountRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BankTransferMigrateAccountResponse&gt; BankTransferMigrateAccount(BankTransferMigrateAccountOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -1498,10 +1559,18 @@ As an alternative to adding Items via Link, you can also use the `/bank_transfer
 ```csharp
 try
 {
-    var response = await client.BankTransferMigrateAccount(body);
+    var response = await client.BankTransferMigrateAccount(new BankTransferMigrateAccountOperationRequest
+    {
+        Body = new BankTransferMigrateAccountRequest
+        {
+            AccountNumber = "some example string",
+            RoutingNumber = "some example string",
+            AccountType = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type BankTransferMigrateAccountResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -1510,14 +1579,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BankTransferMigrateAccountRequest](Models/BankTransferMigrateAccountRequest.cs)</code> | - |
+<code>[BankTransferMigrateAccountOperationRequest](src/ThePlaidApi/Requests/BankTransferMigrateAccountOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1527,9 +1594,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BankTransferMigrateAccountResponse](Models/BankTransferMigrateAccountResponse.cs)</code>
+**OnSuccess**: <code>[BankTransferMigrateAccountResponse](src/ThePlaidApi/Models/BankTransferMigrateAccountResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1540,7 +1607,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BankTransferSweepGetResponse&gt; BankTransferSweepGet(BankTransferSweepGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BankTransferSweepGetResponse&gt; BankTransferSweepGet(BankTransferSweepGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -1563,10 +1630,13 @@ The `/bank_transfer/sweep/get` endpoint fetches information about the sweep corr
 ```csharp
 try
 {
-    var response = await client.BankTransferSweepGet(body);
+    var response = await client.BankTransferSweepGet(new BankTransferSweepGetOperationRequest
+    {
+        Body = new BankTransferSweepGetRequest { SweepId = "some example string" },
+    });
     // TODO: Handle 'response' of type BankTransferSweepGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -1575,14 +1645,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BankTransferSweepGetRequest](Models/BankTransferSweepGetRequest.cs)</code> | - |
+<code>[BankTransferSweepGetOperationRequest](src/ThePlaidApi/Requests/BankTransferSweepGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1592,9 +1660,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BankTransferSweepGetResponse](Models/BankTransferSweepGetResponse.cs)</code>
+**OnSuccess**: <code>[BankTransferSweepGetResponse](src/ThePlaidApi/Models/BankTransferSweepGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1605,7 +1673,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BankTransferSweepListResponse&gt; BankTransferSweepList(BankTransferSweepListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BankTransferSweepListResponse&gt; BankTransferSweepList(BankTransferSweepListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -1628,10 +1696,13 @@ The `/bank_transfer/sweep/list` endpoint fetches information about the sweeps ma
 ```csharp
 try
 {
-    var response = await client.BankTransferSweepList(body);
+    var response = await client.BankTransferSweepList(new BankTransferSweepListOperationRequest
+    {
+        Body = new BankTransferSweepListRequest(),
+    });
     // TODO: Handle 'response' of type BankTransferSweepListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -1640,14 +1711,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BankTransferSweepListRequest](Models/BankTransferSweepListRequest.cs)</code> | - |
+<code>[BankTransferSweepListOperationRequest](src/ThePlaidApi/Requests/BankTransferSweepListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1657,9 +1726,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BankTransferSweepListResponse](Models/BankTransferSweepListResponse.cs)</code>
+**OnSuccess**: <code>[BankTransferSweepListResponse](src/ThePlaidApi/Models/BankTransferSweepListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1670,7 +1739,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BeaconAccountRiskEvaluateResponse&gt; BeaconAccountRiskEvaluate(BeaconAccountRiskEvaluateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BeaconAccountRiskEvaluateResponse&gt; BeaconAccountRiskEvaluate(BeaconAccountRiskEvaluateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -1693,10 +1762,13 @@ Use `/beacon/account_risk/v1/evaluate` to get risk insights for a linked account
 ```csharp
 try
 {
-    var response = await client.BeaconAccountRiskEvaluate(body);
+    var response = await client.BeaconAccountRiskEvaluate(new BeaconAccountRiskEvaluateOperationRequest
+    {
+        Body = new BeaconAccountRiskEvaluateRequest(),
+    });
     // TODO: Handle 'response' of type BeaconAccountRiskEvaluateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -1705,14 +1777,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BeaconAccountRiskEvaluateRequest](Models/BeaconAccountRiskEvaluateRequest.cs)</code> | - |
+<code>[BeaconAccountRiskEvaluateOperationRequest](src/ThePlaidApi/Requests/BeaconAccountRiskEvaluateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1722,9 +1792,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BeaconAccountRiskEvaluateResponse](Models/BeaconAccountRiskEvaluateResponse.cs)</code>
+**OnSuccess**: <code>[BeaconAccountRiskEvaluateResponse](src/ThePlaidApi/Models/BeaconAccountRiskEvaluateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1735,7 +1805,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BeaconDuplicateGetResponse&gt; BeaconDuplicateGet(BeaconDuplicateGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BeaconDuplicateGetResponse&gt; BeaconDuplicateGet(BeaconDuplicateGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -1753,7 +1823,6 @@ Two Beacon User revisions are returned for each Duplicate record in either the `
 
 The `analysis` field in the response indicates which fields matched between `beacon_user1` and `beacon_user2`.
 
-
 </dd>
 </dl>
 
@@ -1765,10 +1834,13 @@ The `analysis` field in the response indicates which fields matched between `bea
 ```csharp
 try
 {
-    var response = await client.BeaconDuplicateGet(body);
+    var response = await client.BeaconDuplicateGet(new BeaconDuplicateGetOperationRequest
+    {
+        Body = new BeaconDuplicateGetRequest { BeaconDuplicateId = "some example string" },
+    });
     // TODO: Handle 'response' of type BeaconDuplicateGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -1777,14 +1849,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BeaconDuplicateGetRequest](Models/BeaconDuplicateGetRequest.cs)</code> | - |
+<code>[BeaconDuplicateGetOperationRequest](src/ThePlaidApi/Requests/BeaconDuplicateGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1794,9 +1864,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BeaconDuplicateGetResponse](Models/BeaconDuplicateGetResponse.cs)</code>
+**OnSuccess**: <code>[BeaconDuplicateGetResponse](src/ThePlaidApi/Models/BeaconDuplicateGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1807,7 +1877,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BeaconReportCreateResponse&gt; BeaconReportCreate(BeaconReportCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BeaconReportCreateResponse&gt; BeaconReportCreate(BeaconReportCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -1830,10 +1900,18 @@ Create a fraud report for a given Beacon User.
 ```csharp
 try
 {
-    var response = await client.BeaconReportCreate(body);
+    var response = await client.BeaconReportCreate(new BeaconReportCreateOperationRequest
+    {
+        Body = new BeaconReportCreateRequest
+        {
+            BeaconUserId = "some example string",
+            Type = BeaconReportCreateType.FirstParty,
+            FraudDate = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+        },
+    });
     // TODO: Handle 'response' of type BeaconReportCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -1842,14 +1920,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BeaconReportCreateRequest](Models/BeaconReportCreateRequest.cs)</code> | - |
+<code>[BeaconReportCreateOperationRequest](src/ThePlaidApi/Requests/BeaconReportCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1859,9 +1935,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BeaconReportCreateResponse](Models/BeaconReportCreateResponse.cs)</code>
+**OnSuccess**: <code>[BeaconReportCreateResponse](src/ThePlaidApi/Models/BeaconReportCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1872,7 +1948,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BeaconReportGetResponse&gt; BeaconReportGet(BeaconReportGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BeaconReportGetResponse&gt; BeaconReportGet(BeaconReportGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -1895,10 +1971,13 @@ Returns a Beacon Report for a given Beacon Report ID.
 ```csharp
 try
 {
-    var response = await client.BeaconReportGet(body);
+    var response = await client.BeaconReportGet(new BeaconReportGetOperationRequest
+    {
+        Body = new BeaconReportGetRequest { BeaconReportId = "some example string" },
+    });
     // TODO: Handle 'response' of type BeaconReportGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -1907,14 +1986,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BeaconReportGetRequest](Models/BeaconReportGetRequest.cs)</code> | - |
+<code>[BeaconReportGetOperationRequest](src/ThePlaidApi/Requests/BeaconReportGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1924,9 +2001,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BeaconReportGetResponse](Models/BeaconReportGetResponse.cs)</code>
+**OnSuccess**: <code>[BeaconReportGetResponse](src/ThePlaidApi/Models/BeaconReportGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -1937,7 +2014,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BeaconReportListResponse&gt; BeaconReportList(BeaconReportListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BeaconReportListResponse&gt; BeaconReportList(BeaconReportListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -1960,10 +2037,13 @@ Use the `/beacon/report/list` endpoint to view all Beacon Reports you created fo
 ```csharp
 try
 {
-    var response = await client.BeaconReportList(body);
+    var response = await client.BeaconReportList(new BeaconReportListOperationRequest
+    {
+        Body = new BeaconReportListRequest { BeaconUserId = "some example string" },
+    });
     // TODO: Handle 'response' of type BeaconReportListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -1972,14 +2052,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BeaconReportListRequest](Models/BeaconReportListRequest.cs)</code> | - |
+<code>[BeaconReportListOperationRequest](src/ThePlaidApi/Requests/BeaconReportListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -1989,9 +2067,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BeaconReportListResponse](Models/BeaconReportListResponse.cs)</code>
+**OnSuccess**: <code>[BeaconReportListResponse](src/ThePlaidApi/Models/BeaconReportListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -2002,7 +2080,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BeaconReportSyndicationGetResponse&gt; BeaconReportSyndicationGet(BeaconReportSyndicationGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BeaconReportSyndicationGetResponse&gt; BeaconReportSyndicationGet(BeaconReportSyndicationGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -2025,10 +2103,13 @@ Returns a Beacon Report Syndication for a given Beacon Report Syndication id.
 ```csharp
 try
 {
-    var response = await client.BeaconReportSyndicationGet(body);
+    var response = await client.BeaconReportSyndicationGet(new BeaconReportSyndicationGetOperationRequest
+    {
+        Body = new BeaconReportSyndicationGetRequest { BeaconReportSyndicationId = "some example string" },
+    });
     // TODO: Handle 'response' of type BeaconReportSyndicationGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -2037,14 +2118,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BeaconReportSyndicationGetRequest](Models/BeaconReportSyndicationGetRequest.cs)</code> | - |
+<code>[BeaconReportSyndicationGetOperationRequest](src/ThePlaidApi/Requests/BeaconReportSyndicationGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -2054,9 +2133,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BeaconReportSyndicationGetResponse](Models/BeaconReportSyndicationGetResponse.cs)</code>
+**OnSuccess**: <code>[BeaconReportSyndicationGetResponse](src/ThePlaidApi/Models/BeaconReportSyndicationGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -2067,7 +2146,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BeaconReportSyndicationListResponse&gt; BeaconReportSyndicationList(BeaconReportSyndicationListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BeaconReportSyndicationListResponse&gt; BeaconReportSyndicationList(BeaconReportSyndicationListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -2090,10 +2169,13 @@ Use the `/beacon/report_syndication/list` endpoint to view all Beacon Reports th
 ```csharp
 try
 {
-    var response = await client.BeaconReportSyndicationList(body);
+    var response = await client.BeaconReportSyndicationList(new BeaconReportSyndicationListOperationRequest
+    {
+        Body = new BeaconReportSyndicationListRequest { BeaconUserId = "some example string" },
+    });
     // TODO: Handle 'response' of type BeaconReportSyndicationListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -2102,14 +2184,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BeaconReportSyndicationListRequest](Models/BeaconReportSyndicationListRequest.cs)</code> | - |
+<code>[BeaconReportSyndicationListOperationRequest](src/ThePlaidApi/Requests/BeaconReportSyndicationListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -2119,9 +2199,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BeaconReportSyndicationListResponse](Models/BeaconReportSyndicationListResponse.cs)</code>
+**OnSuccess**: <code>[BeaconReportSyndicationListResponse](src/ThePlaidApi/Models/BeaconReportSyndicationListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -2132,7 +2212,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BeaconUserAccountInsightsGetResponse&gt; BeaconUserAccountInsightsGet(BeaconUserAccountInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BeaconUserAccountInsightsGetResponse&gt; BeaconUserAccountInsightsGet(BeaconUserAccountInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -2155,10 +2235,17 @@ Get Account Insights for all Accounts linked to this Beacon User. The insights f
 ```csharp
 try
 {
-    var response = await client.BeaconUserAccountInsightsGet(body);
+    var response = await client.BeaconUserAccountInsightsGet(new BeaconUserAccountInsightsGetOperationRequest
+    {
+        Body = new BeaconUserAccountInsightsGetRequest
+        {
+            BeaconUserId = "some example string",
+            AccessToken = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type BeaconUserAccountInsightsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -2167,14 +2254,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BeaconUserAccountInsightsGetRequest](Models/BeaconUserAccountInsightsGetRequest.cs)</code> | - |
+<code>[BeaconUserAccountInsightsGetOperationRequest](src/ThePlaidApi/Requests/BeaconUserAccountInsightsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -2184,9 +2269,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BeaconUserAccountInsightsGetResponse](Models/BeaconUserAccountInsightsGetResponse.cs)</code>
+**OnSuccess**: <code>[BeaconUserAccountInsightsGetResponse](src/ThePlaidApi/Models/BeaconUserAccountInsightsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -2197,7 +2282,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BeaconUserCreateResponse&gt; BeaconUserCreate(BeaconUserCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BeaconUserCreateResponse&gt; BeaconUserCreate(BeaconUserCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -2228,10 +2313,21 @@ When you submit a new user to `/beacon/user/create`, several checks are performe
 ```csharp
 try
 {
-    var response = await client.BeaconUserCreate(body);
+    var response = await client.BeaconUserCreate(new BeaconUserCreateOperationRequest
+    {
+        Body = new BeaconUserCreateRequest
+        {
+            ProgramId = "some example string",
+            ClientUserId = "some example string",
+            User = new BeaconUserRequestData
+            {
+                Name = new BeaconUserName { GivenName = "some example string", FamilyName = "some example string" },
+            },
+        },
+    });
     // TODO: Handle 'response' of type BeaconUserCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -2240,14 +2336,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BeaconUserCreateRequest](Models/BeaconUserCreateRequest.cs)</code> | - |
+<code>[BeaconUserCreateOperationRequest](src/ThePlaidApi/Requests/BeaconUserCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -2257,9 +2351,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BeaconUserCreateResponse](Models/BeaconUserCreateResponse.cs)</code>
+**OnSuccess**: <code>[BeaconUserCreateResponse](src/ThePlaidApi/Models/BeaconUserCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -2270,7 +2364,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BeaconUserGetResponse&gt; BeaconUserGet(BeaconUserGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BeaconUserGetResponse&gt; BeaconUserGet(BeaconUserGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -2284,7 +2378,6 @@ Fetch a Beacon User.
 
 The Beacon User is returned with all of their associated information and a `status` based on the Beacon Network duplicate record and fraud checks.
 
-
 </dd>
 </dl>
 
@@ -2296,10 +2389,13 @@ The Beacon User is returned with all of their associated information and a `stat
 ```csharp
 try
 {
-    var response = await client.BeaconUserGet(body);
+    var response = await client.BeaconUserGet(new BeaconUserGetOperationRequest
+    {
+        Body = new BeaconUserGetRequest { BeaconUserId = "some example string" },
+    });
     // TODO: Handle 'response' of type BeaconUserGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -2308,14 +2404,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BeaconUserGetRequest](Models/BeaconUserGetRequest.cs)</code> | - |
+<code>[BeaconUserGetOperationRequest](src/ThePlaidApi/Requests/BeaconUserGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -2325,9 +2419,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BeaconUserGetResponse](Models/BeaconUserGetResponse.cs)</code>
+**OnSuccess**: <code>[BeaconUserGetResponse](src/ThePlaidApi/Models/BeaconUserGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -2338,7 +2432,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BeaconUserHistoryListResponse&gt; BeaconUserHistoryList(BeaconUserHistoryListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BeaconUserHistoryListResponse&gt; BeaconUserHistoryList(BeaconUserHistoryListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -2361,10 +2455,13 @@ List all changes to the Beacon User in reverse-chronological order.
 ```csharp
 try
 {
-    var response = await client.BeaconUserHistoryList(body);
+    var response = await client.BeaconUserHistoryList(new BeaconUserHistoryListOperationRequest
+    {
+        Body = new BeaconUserHistoryListRequest { BeaconUserId = "some example string" },
+    });
     // TODO: Handle 'response' of type BeaconUserHistoryListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -2373,14 +2470,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BeaconUserHistoryListRequest](Models/BeaconUserHistoryListRequest.cs)</code> | - |
+<code>[BeaconUserHistoryListOperationRequest](src/ThePlaidApi/Requests/BeaconUserHistoryListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -2390,9 +2485,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BeaconUserHistoryListResponse](Models/BeaconUserHistoryListResponse.cs)</code>
+**OnSuccess**: <code>[BeaconUserHistoryListResponse](src/ThePlaidApi/Models/BeaconUserHistoryListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -2403,7 +2498,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BeaconUserGetResponse&gt; BeaconUserReview(BeaconUserReviewRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BeaconUserGetResponse&gt; BeaconUserReview(BeaconUserReviewOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -2437,10 +2532,13 @@ If these conditions are not met, the request will be rejected with an error expl
 ```csharp
 try
 {
-    var response = await client.BeaconUserReview(body);
+    var response = await client.BeaconUserReview(new BeaconUserReviewOperationRequest
+    {
+        Body = new BeaconUserReviewRequest { BeaconUserId = "some example string", Status = BeaconUserStatus.Rejected },
+    });
     // TODO: Handle 'response' of type BeaconUserGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -2449,14 +2547,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BeaconUserReviewRequest](Models/BeaconUserReviewRequest.cs)</code> | - |
+<code>[BeaconUserReviewOperationRequest](src/ThePlaidApi/Requests/BeaconUserReviewOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -2466,9 +2562,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BeaconUserGetResponse](Models/BeaconUserGetResponse.cs)</code>
+**OnSuccess**: <code>[BeaconUserGetResponse](src/ThePlaidApi/Models/BeaconUserGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -2479,7 +2575,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BeaconUserUpdateResponse&gt; BeaconUserUpdate(BeaconUserUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BeaconUserUpdateResponse&gt; BeaconUserUpdate(BeaconUserUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -2512,10 +2608,13 @@ Plaid maintains a version history for each Beacon User, so the Beacon User's ide
 ```csharp
 try
 {
-    var response = await client.BeaconUserUpdate(body);
+    var response = await client.BeaconUserUpdate(new BeaconUserUpdateOperationRequest
+    {
+        Body = new BeaconUserUpdateRequest { BeaconUserId = "some example string" },
+    });
     // TODO: Handle 'response' of type BeaconUserUpdateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -2524,14 +2623,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BeaconUserUpdateRequest](Models/BeaconUserUpdateRequest.cs)</code> | - |
+<code>[BeaconUserUpdateOperationRequest](src/ThePlaidApi/Requests/BeaconUserUpdateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -2541,9 +2638,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BeaconUserUpdateResponse](Models/BeaconUserUpdateResponse.cs)</code>
+**OnSuccess**: <code>[BeaconUserUpdateResponse](src/ThePlaidApi/Models/BeaconUserUpdateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -2554,7 +2651,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BetaEwaReportV1GetResponse&gt; BetaEwaReportV1Get(BetaEwaReportV1GetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BetaEwaReportV1GetResponse&gt; BetaEwaReportV1Get(BetaEwaReportV1GetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -2585,10 +2682,13 @@ This endpoint enables clients to assess repayment risk and make data-driven deci
 ```csharp
 try
 {
-    var response = await client.BetaEwaReportV1Get(body);
+    var response = await client.BetaEwaReportV1Get(new BetaEwaReportV1GetOperationRequest
+    {
+        Body = new BetaEwaReportV1GetRequest { AccessToken = "access-sandbox-71e02f71-0960-4a27-abd2-5631e04f2175" },
+    });
     // TODO: Handle 'response' of type BetaEwaReportV1GetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -2597,14 +2697,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BetaEwaReportV1GetRequest](Models/BetaEwaReportV1GetRequest.cs)</code> | - |
+<code>[BetaEwaReportV1GetOperationRequest](src/ThePlaidApi/Requests/BetaEwaReportV1GetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -2614,9 +2712,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BetaEwaReportV1GetResponse](Models/BetaEwaReportV1GetResponse.cs)</code>
+**OnSuccess**: <code>[BetaEwaReportV1GetResponse](src/ThePlaidApi/Models/BetaEwaReportV1GetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -2627,7 +2725,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BetaPartnerCustomerV1CreateResponse&gt; BetaPartnerCustomerV1Create(BetaPartnerCustomerV1CreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BetaPartnerCustomerV1CreateResponse&gt; BetaPartnerCustomerV1Create(BetaPartnerCustomerV1CreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -2650,10 +2748,51 @@ The `/beta/partner/customer/v1/create` endpoint creates a new end customer recor
 ```csharp
 try
 {
-    var response = await client.BetaPartnerCustomerV1Create(body);
+    var response = await client.BetaPartnerCustomerV1Create(new BetaPartnerCustomerV1CreateOperationRequest
+    {
+        Body = new BetaPartnerCustomerV1CreateRequest
+        {
+            ClientId = "7f57eb3d2a9j6480121fx361",
+            Secret = "79g03eoofwl8240v776r2h667442119",
+            CompanyName = "Plaid",
+            Products = [Products.Auth, Products.Identity],
+            CreateLinkCustomization = true,
+            LegalEntityName = "Plaid",
+            Website = "plaid.com",
+            ApplicationName = "Plaid",
+            TechnicalContact = new PartnerEndCustomerTechnicalContact
+            {
+                GivenName = "Alice",
+                FamilyName = "Smith",
+                Email = "alice.smith@example.com",
+            },
+            BillingContact = new PartnerEndCustomerBillingContact
+            {
+                GivenName = "Bob",
+                FamilyName = "Jones",
+                Email = "bob.jones@example.com",
+            },
+            CustomerSupportInfo = new PartnerEndCustomerCustomerSupportInfo
+            {
+                Email = "support@example.com",
+                PhoneNumber = "1234567890",
+                ContactUrl = "example.com/contact",
+                LinkUpdateUrl = "example.com/update",
+            },
+            Address = new PartnerEndCustomerAddress
+            {
+                City = "New York",
+                Street = "123 Main St",
+                Region = "NY",
+                PostalCode = "12345",
+                CountryCode = "US",
+            },
+            RedirectUris = ["http://localhost/oauth.html", "https://www.example.com/oauth.html"],
+        },
+    });
     // TODO: Handle 'response' of type BetaPartnerCustomerV1CreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -2662,14 +2801,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BetaPartnerCustomerV1CreateRequest](Models/BetaPartnerCustomerV1CreateRequest.cs)</code> | - |
+<code>[BetaPartnerCustomerV1CreateOperationRequest](src/ThePlaidApi/Requests/BetaPartnerCustomerV1CreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -2679,9 +2816,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BetaPartnerCustomerV1CreateResponse](Models/BetaPartnerCustomerV1CreateResponse.cs)</code>
+**OnSuccess**: <code>[BetaPartnerCustomerV1CreateResponse](src/ThePlaidApi/Models/BetaPartnerCustomerV1CreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -2692,7 +2829,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BetaPartnerCustomerV1EnableResponse&gt; BetaPartnerCustomerV1Enable(BetaPartnerCustomerV1EnableRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BetaPartnerCustomerV1EnableResponse&gt; BetaPartnerCustomerV1Enable(BetaPartnerCustomerV1EnableOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -2715,10 +2852,19 @@ The `/beta/partner/customer/v1/enable` endpoint is used by reseller partners to 
 ```csharp
 try
 {
-    var response = await client.BetaPartnerCustomerV1Enable(body);
+    var response = await client.BetaPartnerCustomerV1Enable(new BetaPartnerCustomerV1EnableOperationRequest
+    {
+        Body = new BetaPartnerCustomerV1EnableRequest
+        {
+            ClientId = "7f57eb3d2a9j6480121fx361",
+            Secret = "79g03eoofwl8240v776r2h667442119",
+            EndCustomerClientId = "634758733ebb4f00134b85ea",
+            Products = [Products.Auth],
+        },
+    });
     // TODO: Handle 'response' of type BetaPartnerCustomerV1EnableResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -2727,14 +2873,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BetaPartnerCustomerV1EnableRequest](Models/BetaPartnerCustomerV1EnableRequest.cs)</code> | - |
+<code>[BetaPartnerCustomerV1EnableOperationRequest](src/ThePlaidApi/Requests/BetaPartnerCustomerV1EnableOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -2744,9 +2888,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BetaPartnerCustomerV1EnableResponse](Models/BetaPartnerCustomerV1EnableResponse.cs)</code>
+**OnSuccess**: <code>[BetaPartnerCustomerV1EnableResponse](src/ThePlaidApi/Models/BetaPartnerCustomerV1EnableResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -2757,7 +2901,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BetaPartnerCustomerV1GetResponse&gt; BetaPartnerCustomerV1Get(BetaPartnerCustomerV1GetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BetaPartnerCustomerV1GetResponse&gt; BetaPartnerCustomerV1Get(BetaPartnerCustomerV1GetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -2780,10 +2924,18 @@ The `/beta/partner/customer/v1/get` endpoint is used by reseller partners to ret
 ```csharp
 try
 {
-    var response = await client.BetaPartnerCustomerV1Get(body);
+    var response = await client.BetaPartnerCustomerV1Get(new BetaPartnerCustomerV1GetOperationRequest
+    {
+        Body = new BetaPartnerCustomerV1GetRequest
+        {
+            ClientId = "7f57eb3d2a9j6480121fx361",
+            Secret = "79g03eoofwl8240v776r2h667442119",
+            EndCustomerClientId = "634758733ebb4f00134b85ea",
+        },
+    });
     // TODO: Handle 'response' of type BetaPartnerCustomerV1GetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -2792,14 +2944,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BetaPartnerCustomerV1GetRequest](Models/BetaPartnerCustomerV1GetRequest.cs)</code> | - |
+<code>[BetaPartnerCustomerV1GetOperationRequest](src/ThePlaidApi/Requests/BetaPartnerCustomerV1GetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -2809,9 +2959,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BetaPartnerCustomerV1GetResponse](Models/BetaPartnerCustomerV1GetResponse.cs)</code>
+**OnSuccess**: <code>[BetaPartnerCustomerV1GetResponse](src/ThePlaidApi/Models/BetaPartnerCustomerV1GetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -2822,7 +2972,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BetaPartnerCustomerV1UpdateResponse&gt; BetaPartnerCustomerV1Update(BetaPartnerCustomerV1UpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BetaPartnerCustomerV1UpdateResponse&gt; BetaPartnerCustomerV1Update(BetaPartnerCustomerV1UpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -2845,10 +2995,33 @@ The `/beta/partner/customer/v1/update` endpoint updates an existing end customer
 ```csharp
 try
 {
-    var response = await client.BetaPartnerCustomerV1Update(body);
+    var response = await client.BetaPartnerCustomerV1Update(new BetaPartnerCustomerV1UpdateOperationRequest
+    {
+        Body = new BetaPartnerCustomerV1UpdateRequest
+        {
+            ClientId = "7f57eb3d2a9j6480121fx361",
+            Secret = "79g03eoofwl8240v776r2h667442119",
+            EndCustomerClientId = "634758733ebb4f00134b85ea",
+            BankAddendumAcceptance = new PartnerEndCustomerBankAddendumAcceptance
+            {
+                CustomerAccepted = true,
+                CustomerIpAddress = "127.0.0.1",
+                CustomerAgreementTimestamp = DateTimeOffset.Parse("2025-01-01T01:00:00Z"),
+            },
+            Questionnaires = new PartnerEndCustomerQuestionnaires
+            {
+                Cra = new PartnerEndCustomerCraQuestionnaire
+                {
+                    Purposes = new PartnerEndCustomerCraPurposes(),
+                    IsThirdPartyInvolved = true,
+                    IsTechnicalServiceProviderInvolved = true,
+                },
+            },
+        },
+    });
     // TODO: Handle 'response' of type BetaPartnerCustomerV1UpdateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -2857,14 +3030,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BetaPartnerCustomerV1UpdateRequest](Models/BetaPartnerCustomerV1UpdateRequest.cs)</code> | - |
+<code>[BetaPartnerCustomerV1UpdateOperationRequest](src/ThePlaidApi/Requests/BetaPartnerCustomerV1UpdateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -2874,9 +3045,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BetaPartnerCustomerV1UpdateResponse](Models/BetaPartnerCustomerV1UpdateResponse.cs)</code>
+**OnSuccess**: <code>[BetaPartnerCustomerV1UpdateResponse](src/ThePlaidApi/Models/BetaPartnerCustomerV1UpdateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -2887,7 +3058,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BusinessVerificationCreateResponse&gt; BusinessVerificationCreate(BusinessVerificationCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BusinessVerificationCreateResponse&gt; BusinessVerificationCreate(BusinessVerificationCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -2910,10 +3081,13 @@ Create a new business verification to check a business's identity and risk profi
 ```csharp
 try
 {
-    var response = await client.BusinessVerificationCreate(body);
+    var response = await client.BusinessVerificationCreate(new BusinessVerificationCreateOperationRequest
+    {
+        Body = new BusinessVerificationCreateRequest { ClientUserId = "some example string" },
+    });
     // TODO: Handle 'response' of type BusinessVerificationCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -2922,14 +3096,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BusinessVerificationCreateRequest](Models/BusinessVerificationCreateRequest.cs)</code> | - |
+<code>[BusinessVerificationCreateOperationRequest](src/ThePlaidApi/Requests/BusinessVerificationCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -2939,9 +3111,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BusinessVerificationCreateResponse](Models/BusinessVerificationCreateResponse.cs)</code>
+**OnSuccess**: <code>[BusinessVerificationCreateResponse](src/ThePlaidApi/Models/BusinessVerificationCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -2952,7 +3124,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;BusinessVerificationGetResponse&gt; BusinessVerificationGet(BusinessVerificationGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;BusinessVerificationGetResponse&gt; BusinessVerificationGet(BusinessVerificationGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -2975,10 +3147,13 @@ Retrieve the current state of a specific business verification.
 ```csharp
 try
 {
-    var response = await client.BusinessVerificationGet(body);
+    var response = await client.BusinessVerificationGet(new BusinessVerificationGetOperationRequest
+    {
+        Body = new BusinessVerificationGetRequest { BusinessVerificationId = "some example string" },
+    });
     // TODO: Handle 'response' of type BusinessVerificationGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -2987,14 +3162,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[BusinessVerificationGetRequest](Models/BusinessVerificationGetRequest.cs)</code> | - |
+<code>[BusinessVerificationGetOperationRequest](src/ThePlaidApi/Requests/BusinessVerificationGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3004,9 +3177,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[BusinessVerificationGetResponse](Models/BusinessVerificationGetResponse.cs)</code>
+**OnSuccess**: <code>[BusinessVerificationGetResponse](src/ThePlaidApi/Models/BusinessVerificationGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -3017,7 +3190,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CashflowReportGetResponse&gt; CashflowReportGet(CashflowReportGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CashflowReportGetResponse&gt; CashflowReportGet(CashflowReportGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -3043,10 +3216,13 @@ Note that data isn't likely to be immediately available to `/cashflow_report/get
 ```csharp
 try
 {
-    var response = await client.CashflowReportGet(body);
+    var response = await client.CashflowReportGet(new CashflowReportGetOperationRequest
+    {
+        Body = new CashflowReportGetRequest { AccessToken = "some example string", DaysRequested = 1 },
+    });
     // TODO: Handle 'response' of type CashflowReportGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -3055,14 +3231,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CashflowReportGetRequest](Models/CashflowReportGetRequest.cs)</code> | - |
+<code>[CashflowReportGetOperationRequest](src/ThePlaidApi/Requests/CashflowReportGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3072,9 +3246,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CashflowReportGetResponse](Models/CashflowReportGetResponse.cs)</code>
+**OnSuccess**: <code>[CashflowReportGetResponse](src/ThePlaidApi/Models/CashflowReportGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -3085,7 +3259,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CashflowReportInsightsGetResponse&gt; CashflowReportInsightsGet(CashflowReportInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CashflowReportInsightsGetResponse&gt; CashflowReportInsightsGet(CashflowReportInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -3108,10 +3282,13 @@ The `/cashflow_report/insights/get` endpoint retrieves insights data associated 
 ```csharp
 try
 {
-    var response = await client.CashflowReportInsightsGet(body);
+    var response = await client.CashflowReportInsightsGet(new CashflowReportInsightsGetOperationRequest
+    {
+        Body = new CashflowReportInsightsGetRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type CashflowReportInsightsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -3120,14 +3297,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CashflowReportInsightsGetRequest](Models/CashflowReportInsightsGetRequest.cs)</code> | - |
+<code>[CashflowReportInsightsGetOperationRequest](src/ThePlaidApi/Requests/CashflowReportInsightsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3137,9 +3312,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CashflowReportInsightsGetResponse](Models/CashflowReportInsightsGetResponse.cs)</code>
+**OnSuccess**: <code>[CashflowReportInsightsGetResponse](src/ThePlaidApi/Models/CashflowReportInsightsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -3150,7 +3325,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CashflowReportRefreshResponse&gt; CashflowReportRefresh(CashflowReportRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CashflowReportRefreshResponse&gt; CashflowReportRefresh(CashflowReportRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -3179,10 +3354,13 @@ As this endpoint triggers a synchronous request for fresh data, latency may be h
 ```csharp
 try
 {
-    var response = await client.CashflowReportRefresh(body);
+    var response = await client.CashflowReportRefresh(new CashflowReportRefreshOperationRequest
+    {
+        Body = new CashflowReportRefreshRequest { AccessToken = "some example string", DaysRequested = 1 },
+    });
     // TODO: Handle 'response' of type CashflowReportRefreshResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -3191,14 +3369,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CashflowReportRefreshRequest](Models/CashflowReportRefreshRequest.cs)</code> | - |
+<code>[CashflowReportRefreshOperationRequest](src/ThePlaidApi/Requests/CashflowReportRefreshOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3208,9 +3384,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CashflowReportRefreshResponse](Models/CashflowReportRefreshResponse.cs)</code>
+**OnSuccess**: <code>[CashflowReportRefreshResponse](src/ThePlaidApi/Models/CashflowReportRefreshResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -3221,7 +3397,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CashflowReportTransactionsGetResponse&gt; CashflowReportTransactionsGet(CashflowReportTransactionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CashflowReportTransactionsGetResponse&gt; CashflowReportTransactionsGet(CashflowReportTransactionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -3247,10 +3423,13 @@ Note that data isn't likely to be immediately available to `/cashflow_report/tra
 ```csharp
 try
 {
-    var response = await client.CashflowReportTransactionsGet(body);
+    var response = await client.CashflowReportTransactionsGet(new CashflowReportTransactionsGetOperationRequest
+    {
+        Body = new CashflowReportTransactionsGetRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type CashflowReportTransactionsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -3259,14 +3438,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CashflowReportTransactionsGetRequest](Models/CashflowReportTransactionsGetRequest.cs)</code> | - |
+<code>[CashflowReportTransactionsGetOperationRequest](src/ThePlaidApi/Requests/CashflowReportTransactionsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3276,9 +3453,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CashflowReportTransactionsGetResponse](Models/CashflowReportTransactionsGetResponse.cs)</code>
+**OnSuccess**: <code>[CashflowReportTransactionsGetResponse](src/ThePlaidApi/Models/CashflowReportTransactionsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -3289,7 +3466,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CategoriesGetResponse&gt; CategoriesGet(object body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CategoriesGetResponse&gt; CategoriesGet(CategoriesGetRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -3314,10 +3491,10 @@ All implementations are recommended to [use the newer `personal_finance_category
 ```csharp
 try
 {
-    var response = await client.CategoriesGet(body);
+    var response = await client.CategoriesGet(new CategoriesGetRequest { Body = body });
     // TODO: Handle 'response' of type CategoriesGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -3326,14 +3503,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>object</code> | - |
+<code>[CategoriesGetRequest](src/ThePlaidApi/Requests/CategoriesGetRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3343,9 +3518,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CategoriesGetResponse](Models/CategoriesGetResponse.cs)</code>
+**OnSuccess**: <code>[CategoriesGetResponse](src/ThePlaidApi/Models/CategoriesGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -3356,7 +3531,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ConsentEventsGetResponse&gt; ConsentEventsGet(ConsentEventsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ConsentEventsGetResponse&gt; ConsentEventsGet(ConsentEventsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -3379,10 +3554,13 @@ List a historical log of Item consent events. Consent logs are only available fo
 ```csharp
 try
 {
-    var response = await client.ConsentEventsGet(body);
+    var response = await client.ConsentEventsGet(new ConsentEventsGetOperationRequest
+    {
+        Body = new ConsentEventsGetRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ConsentEventsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -3391,14 +3569,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ConsentEventsGetRequest](Models/ConsentEventsGetRequest.cs)</code> | - |
+<code>[ConsentEventsGetOperationRequest](src/ThePlaidApi/Requests/ConsentEventsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3408,9 +3584,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ConsentEventsGetResponse](Models/ConsentEventsGetResponse.cs)</code>
+**OnSuccess**: <code>[ConsentEventsGetResponse](src/ThePlaidApi/Models/ConsentEventsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -3421,7 +3597,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task ConsumerReportPdfGet(ConsumerReportPdfGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task ConsumerReportPdfGet(ConsumerReportPdfGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -3446,9 +3622,12 @@ Response is PDF binary data. The `request_id` is returned in the `Plaid-Request-
 ```csharp
 try
 {
-    await client.ConsumerReportPdfGet(body);
+    await client.ConsumerReportPdfGet(new ConsumerReportPdfGetOperationRequest
+    {
+        Body = new ConsumerReportPdfGetRequest { UserToken = "some example string" },
+    });
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -3457,14 +3636,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ConsumerReportPdfGetRequest](Models/ConsumerReportPdfGetRequest.cs)</code> | - |
+<code>[ConsumerReportPdfGetOperationRequest](src/ThePlaidApi/Requests/ConsumerReportPdfGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3476,7 +3653,7 @@ catch (SdkException<RawError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -3487,7 +3664,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraCheckReportBaseReportGetResponse&gt; CraCheckReportBaseReportGet(CraCheckReportBaseReportGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraCheckReportBaseReportGetResponse&gt; CraCheckReportBaseReportGet(CraCheckReportBaseReportGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -3510,10 +3687,13 @@ This endpoint allows you to retrieve the Base Report for your user, allowing you
 ```csharp
 try
 {
-    var response = await client.CraCheckReportBaseReportGet(body);
+    var response = await client.CraCheckReportBaseReportGet(new CraCheckReportBaseReportGetOperationRequest
+    {
+        Body = new CraCheckReportBaseReportGetRequest(),
+    });
     // TODO: Handle 'response' of type CraCheckReportBaseReportGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -3522,14 +3702,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraCheckReportBaseReportGetRequest](Models/CraCheckReportBaseReportGetRequest.cs)</code> | - |
+<code>[CraCheckReportBaseReportGetOperationRequest](src/ThePlaidApi/Requests/CraCheckReportBaseReportGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3539,9 +3717,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraCheckReportBaseReportGetResponse](Models/CraCheckReportBaseReportGetResponse.cs)</code>
+**OnSuccess**: <code>[CraCheckReportBaseReportGetResponse](src/ThePlaidApi/Models/CraCheckReportBaseReportGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -3552,7 +3730,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraCheckReportCashflowInsightsGetResponse&gt; CraCheckReportCashflowInsightsGet(CraCheckReportCashflowInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraCheckReportCashflowInsightsGetResponse&gt; CraCheckReportCashflowInsightsGet(CraCheckReportCashflowInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -3575,10 +3753,13 @@ This endpoint allows you to retrieve the Cashflow Insights report for your user.
 ```csharp
 try
 {
-    var response = await client.CraCheckReportCashflowInsightsGet(body);
+    var response = await client.CraCheckReportCashflowInsightsGet(new CraCheckReportCashflowInsightsGetOperationRequest
+    {
+        Body = new CraCheckReportCashflowInsightsGetRequest(),
+    });
     // TODO: Handle 'response' of type CraCheckReportCashflowInsightsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -3587,14 +3768,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraCheckReportCashflowInsightsGetRequest](Models/CraCheckReportCashflowInsightsGetRequest.cs)</code> | - |
+<code>[CraCheckReportCashflowInsightsGetOperationRequest](src/ThePlaidApi/Requests/CraCheckReportCashflowInsightsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3604,9 +3783,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraCheckReportCashflowInsightsGetResponse](Models/CraCheckReportCashflowInsightsGetResponse.cs)</code>
+**OnSuccess**: <code>[CraCheckReportCashflowInsightsGetResponse](src/ThePlaidApi/Models/CraCheckReportCashflowInsightsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -3617,7 +3796,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraCheckReportCreateResponse&gt; CraCheckReportCreate(CraCheckReportCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraCheckReportCreateResponse&gt; CraCheckReportCreate(CraCheckReportCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -3640,10 +3819,18 @@ Use `/cra/check_report/create` to refresh data in an existing report. A Consumer
 ```csharp
 try
 {
-    var response = await client.CraCheckReportCreate(body);
+    var response = await client.CraCheckReportCreate(new CraCheckReportCreateOperationRequest
+    {
+        Body = new CraCheckReportCreateRequest
+        {
+            Webhook = "some example string",
+            DaysRequested = 1,
+            ConsumerReportPermissiblePurpose = ConsumerReportPermissiblePurpose.AccountReviewCredit,
+        },
+    });
     // TODO: Handle 'response' of type CraCheckReportCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -3652,14 +3839,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraCheckReportCreateRequest](Models/CraCheckReportCreateRequest.cs)</code> | - |
+<code>[CraCheckReportCreateOperationRequest](src/ThePlaidApi/Requests/CraCheckReportCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3669,9 +3854,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraCheckReportCreateResponse](Models/CraCheckReportCreateResponse.cs)</code>
+**OnSuccess**: <code>[CraCheckReportCreateResponse](src/ThePlaidApi/Models/CraCheckReportCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -3682,7 +3867,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraCheckReportIncomeInsightsGetResponse&gt; CraCheckReportIncomeInsightsGet(CraCheckReportIncomeInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraCheckReportIncomeInsightsGetResponse&gt; CraCheckReportIncomeInsightsGet(CraCheckReportIncomeInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -3707,10 +3892,13 @@ NOTE: The following schema was updated in April 2026 to reflect the response whe
 ```csharp
 try
 {
-    var response = await client.CraCheckReportIncomeInsightsGet(body);
+    var response = await client.CraCheckReportIncomeInsightsGet(new CraCheckReportIncomeInsightsGetOperationRequest
+    {
+        Body = new CraCheckReportIncomeInsightsGetRequest(),
+    });
     // TODO: Handle 'response' of type CraCheckReportIncomeInsightsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -3719,14 +3907,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraCheckReportIncomeInsightsGetRequest](Models/CraCheckReportIncomeInsightsGetRequest.cs)</code> | - |
+<code>[CraCheckReportIncomeInsightsGetOperationRequest](src/ThePlaidApi/Requests/CraCheckReportIncomeInsightsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3736,9 +3922,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraCheckReportIncomeInsightsGetResponse](Models/CraCheckReportIncomeInsightsGetResponse.cs)</code>
+**OnSuccess**: <code>[CraCheckReportIncomeInsightsGetResponse](src/ThePlaidApi/Models/CraCheckReportIncomeInsightsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -3749,7 +3935,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraCheckReportLendScoreGetResponse&gt; CraCheckReportLendScoreGet(CraCheckReportLendScoreGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraCheckReportLendScoreGetResponse&gt; CraCheckReportLendScoreGet(CraCheckReportLendScoreGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -3772,10 +3958,13 @@ This endpoint allows you to retrieve the LendScore report for your user. You sho
 ```csharp
 try
 {
-    var response = await client.CraCheckReportLendScoreGet(body);
+    var response = await client.CraCheckReportLendScoreGet(new CraCheckReportLendScoreGetOperationRequest
+    {
+        Body = new CraCheckReportLendScoreGetRequest(),
+    });
     // TODO: Handle 'response' of type CraCheckReportLendScoreGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -3784,14 +3973,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraCheckReportLendScoreGetRequest](Models/CraCheckReportLendScoreGetRequest.cs)</code> | - |
+<code>[CraCheckReportLendScoreGetOperationRequest](src/ThePlaidApi/Requests/CraCheckReportLendScoreGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3801,9 +3988,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraCheckReportLendScoreGetResponse](Models/CraCheckReportLendScoreGetResponse.cs)</code>
+**OnSuccess**: <code>[CraCheckReportLendScoreGetResponse](src/ThePlaidApi/Models/CraCheckReportLendScoreGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -3814,7 +4001,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraCheckReportNetworkInsightsGetResponse&gt; CraCheckReportNetworkInsightsGet(CraCheckReportNetworkInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraCheckReportNetworkInsightsGetResponse&gt; CraCheckReportNetworkInsightsGet(CraCheckReportNetworkInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -3837,10 +4024,13 @@ This endpoint allows you to retrieve the Network Insights report for your user. 
 ```csharp
 try
 {
-    var response = await client.CraCheckReportNetworkInsightsGet(body);
+    var response = await client.CraCheckReportNetworkInsightsGet(new CraCheckReportNetworkInsightsGetOperationRequest
+    {
+        Body = new CraCheckReportNetworkInsightsGetRequest(),
+    });
     // TODO: Handle 'response' of type CraCheckReportNetworkInsightsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -3849,14 +4039,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraCheckReportNetworkInsightsGetRequest](Models/CraCheckReportNetworkInsightsGetRequest.cs)</code> | - |
+<code>[CraCheckReportNetworkInsightsGetOperationRequest](src/ThePlaidApi/Requests/CraCheckReportNetworkInsightsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3866,9 +4054,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraCheckReportNetworkInsightsGetResponse](Models/CraCheckReportNetworkInsightsGetResponse.cs)</code>
+**OnSuccess**: <code>[CraCheckReportNetworkInsightsGetResponse](src/ThePlaidApi/Models/CraCheckReportNetworkInsightsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -3879,7 +4067,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraCheckReportPartnerInsightsGetResponse&gt; CraCheckReportPartnerInsightsGet(CraCheckReportPartnerInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraCheckReportPartnerInsightsGetResponse&gt; CraCheckReportPartnerInsightsGet(CraCheckReportPartnerInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -3902,10 +4090,13 @@ This endpoint allows you to retrieve the Partner Insights report for your user. 
 ```csharp
 try
 {
-    var response = await client.CraCheckReportPartnerInsightsGet(body);
+    var response = await client.CraCheckReportPartnerInsightsGet(new CraCheckReportPartnerInsightsGetOperationRequest
+    {
+        Body = new CraCheckReportPartnerInsightsGetRequest(),
+    });
     // TODO: Handle 'response' of type CraCheckReportPartnerInsightsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -3914,14 +4105,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraCheckReportPartnerInsightsGetRequest](Models/CraCheckReportPartnerInsightsGetRequest.cs)</code> | - |
+<code>[CraCheckReportPartnerInsightsGetOperationRequest](src/ThePlaidApi/Requests/CraCheckReportPartnerInsightsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3931,9 +4120,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraCheckReportPartnerInsightsGetResponse](Models/CraCheckReportPartnerInsightsGetResponse.cs)</code>
+**OnSuccess**: <code>[CraCheckReportPartnerInsightsGetResponse](src/ThePlaidApi/Models/CraCheckReportPartnerInsightsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -3944,7 +4133,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task CraCheckReportPdfGet(CraCheckReportPdfGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task CraCheckReportPdfGet(CraCheckReportPdfGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -3967,9 +4156,12 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    await client.CraCheckReportPdfGet(body);
+    await client.CraCheckReportPdfGet(new CraCheckReportPdfGetOperationRequest
+    {
+        Body = new CraCheckReportPdfGetRequest(),
+    });
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -3978,14 +4170,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraCheckReportPdfGetRequest](Models/CraCheckReportPdfGetRequest.cs)</code> | - |
+<code>[CraCheckReportPdfGetOperationRequest](src/ThePlaidApi/Requests/CraCheckReportPdfGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -3997,7 +4187,7 @@ catch (SdkException<RawError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4008,7 +4198,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraCheckReportVerificationGetResponse&gt; CraCheckReportVerificationGet(CraCheckReportVerificationGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraCheckReportVerificationGetResponse&gt; CraCheckReportVerificationGet(CraCheckReportVerificationGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -4035,10 +4225,16 @@ If the most recent consumer report for the user doesn't have sufficient data to 
 ```csharp
 try
 {
-    var response = await client.CraCheckReportVerificationGet(body);
+    var response = await client.CraCheckReportVerificationGet(new CraCheckReportVerificationGetOperationRequest
+    {
+        Body = new CraCheckReportVerificationGetRequest
+        {
+            ReportsRequested = [CraCheckReportVerificationGetReportType.Voa],
+        },
+    });
     // TODO: Handle 'response' of type CraCheckReportVerificationGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -4047,14 +4243,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraCheckReportVerificationGetRequest](Models/CraCheckReportVerificationGetRequest.cs)</code> | - |
+<code>[CraCheckReportVerificationGetOperationRequest](src/ThePlaidApi/Requests/CraCheckReportVerificationGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -4064,9 +4258,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraCheckReportVerificationGetResponse](Models/CraCheckReportVerificationGetResponse.cs)</code>
+**OnSuccess**: <code>[CraCheckReportVerificationGetResponse](src/ThePlaidApi/Models/CraCheckReportVerificationGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4077,7 +4271,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task CraCheckReportVerificationPdfGet(CraCheckReportVerificationPdfGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task CraCheckReportVerificationPdfGet(CraCheckReportVerificationPdfGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -4102,9 +4296,12 @@ The response to `/cra/check_report/verification/pdf/get` is the PDF binary data.
 ```csharp
 try
 {
-    await client.CraCheckReportVerificationPdfGet(body);
+    await client.CraCheckReportVerificationPdfGet(new CraCheckReportVerificationPdfGetOperationRequest
+    {
+        Body = new CraCheckReportVerificationPdfGetRequest(),
+    });
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -4113,14 +4310,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraCheckReportVerificationPdfGetRequest](Models/CraCheckReportVerificationPdfGetRequest.cs)</code> | - |
+<code>[CraCheckReportVerificationPdfGetOperationRequest](src/ThePlaidApi/Requests/CraCheckReportVerificationPdfGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -4132,7 +4327,7 @@ catch (SdkException<RawError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4143,7 +4338,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraCreditProfileReportGetResponse&gt; CraCreditProfileReportGet(CraCreditProfileReportGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraCreditProfileReportGetResponse&gt; CraCreditProfileReportGet(CraCreditProfileReportGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -4166,10 +4361,21 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.CraCreditProfileReportGet(body);
+    var response = await client.CraCreditProfileReportGet(new CraCreditProfileReportGetOperationRequest
+    {
+        Body = new CraCreditProfileReportGetRequest
+        {
+            UserId = "some example string",
+            ConsumerReportPermissiblePurpose = ConsumerReportPermissiblePurpose.AccountReviewCredit,
+            ClientReportId = "some example string",
+            ReportType = CraCreditProfileReportType.Qualify,
+            InquiryType = CraCreditProfileInquiryType.SoftInquiry,
+            Version = CraCreditProfileReportVersion.V1,
+        },
+    });
     // TODO: Handle 'response' of type CraCreditProfileReportGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -4178,14 +4384,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraCreditProfileReportGetRequest](Models/CraCreditProfileReportGetRequest.cs)</code> | - |
+<code>[CraCreditProfileReportGetOperationRequest](src/ThePlaidApi/Requests/CraCreditProfileReportGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -4195,9 +4399,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraCreditProfileReportGetResponse](Models/CraCreditProfileReportGetResponse.cs)</code>
+**OnSuccess**: <code>[CraCreditProfileReportGetResponse](src/ThePlaidApi/Models/CraCreditProfileReportGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4208,7 +4412,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraLoansApplicationsRegisterResponse&gt; CraLoansApplicationsRegister(CraLoansApplicationsRegisterRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraLoansApplicationsRegisterResponse&gt; CraLoansApplicationsRegister(CraLoansApplicationsRegisterOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -4231,10 +4435,24 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.CraLoansApplicationsRegister(body);
+    var response = await client.CraLoansApplicationsRegister(new CraLoansApplicationsRegisterOperationRequest
+    {
+        Body = new CraLoansApplicationsRegisterRequest
+        {
+            Applications = [
+                new CraLoanApplication
+                {
+                    UserToken = "some example string",
+                    ApplicationId = "some example string",
+                    Type = CraLoanType.Personal,
+                    Decision = CraLoanApplicationDecision.Approved,
+                },
+            ],
+        },
+    });
     // TODO: Handle 'response' of type CraLoansApplicationsRegisterResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -4243,14 +4461,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraLoansApplicationsRegisterRequest](Models/CraLoansApplicationsRegisterRequest.cs)</code> | - |
+<code>[CraLoansApplicationsRegisterOperationRequest](src/ThePlaidApi/Requests/CraLoansApplicationsRegisterOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -4260,9 +4476,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraLoansApplicationsRegisterResponse](Models/CraLoansApplicationsRegisterResponse.cs)</code>
+**OnSuccess**: <code>[CraLoansApplicationsRegisterResponse](src/ThePlaidApi/Models/CraLoansApplicationsRegisterResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4273,7 +4489,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraLoansRegisterResponse&gt; CraLoansRegister(CraLoansRegisterRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraLoansRegisterResponse&gt; CraLoansRegister(CraLoansRegisterOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -4296,10 +4512,30 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.CraLoansRegister(body);
+    var response = await client.CraLoansRegister(new CraLoansRegisterOperationRequest
+    {
+        Body = new CraLoansRegisterRequest
+        {
+            Loans = [
+                new CraLoanRegister
+                {
+                    UserToken = "some example string",
+                    LoanId = "some example string",
+                    Type = CraLoanType.Personal,
+                    PaymentSchedule = CraLoanPaymentSchedule.Daily,
+                    OpenedDate = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+                    OpenedWithStatus = new CraLoanOpenedStatus
+                    {
+                        Status = CraLoanStatus.Approved,
+                        Date = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+                    },
+                },
+            ],
+        },
+    });
     // TODO: Handle 'response' of type CraLoansRegisterResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -4308,14 +4544,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraLoansRegisterRequest](Models/CraLoansRegisterRequest.cs)</code> | - |
+<code>[CraLoansRegisterOperationRequest](src/ThePlaidApi/Requests/CraLoansRegisterOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -4325,9 +4559,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraLoansRegisterResponse](Models/CraLoansRegisterResponse.cs)</code>
+**OnSuccess**: <code>[CraLoansRegisterResponse](src/ThePlaidApi/Models/CraLoansRegisterResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4338,7 +4572,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraLoanUnregisterResponse&gt; CraLoansUnregister(CraLoansUnregisterRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraLoanUnregisterResponse&gt; CraLoansUnregister(CraLoansUnregisterOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -4361,10 +4595,26 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.CraLoansUnregister(body);
+    var response = await client.CraLoansUnregister(new CraLoansUnregisterOperationRequest
+    {
+        Body = new CraLoansUnregisterRequest
+        {
+            Loans = [
+                new CraLoanUnregister
+                {
+                    LoanId = "some example string",
+                    ClosedWithStatus = new CraLoanClosedStatus
+                    {
+                        Status = CraLoanStatus.Approved,
+                        Date = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+                    },
+                },
+            ],
+        },
+    });
     // TODO: Handle 'response' of type CraLoanUnregisterResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -4373,14 +4623,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraLoansUnregisterRequest](Models/CraLoansUnregisterRequest.cs)</code> | - |
+<code>[CraLoansUnregisterOperationRequest](src/ThePlaidApi/Requests/CraLoansUnregisterOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -4390,9 +4638,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraLoanUnregisterResponse](Models/CraLoanUnregisterResponse.cs)</code>
+**OnSuccess**: <code>[CraLoanUnregisterResponse](src/ThePlaidApi/Models/CraLoanUnregisterResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4403,7 +4651,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraLoansUpdateResponse&gt; CraLoansUpdate(CraLoansUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraLoansUpdateResponse&gt; CraLoansUpdate(CraLoansUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -4426,10 +4674,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.CraLoansUpdate(body);
+    var response = await client.CraLoansUpdate(new CraLoansUpdateOperationRequest
+    {
+        Body = new CraLoansUpdateRequest { Loans = [new CraLoanUpdate()] },
+    });
     // TODO: Handle 'response' of type CraLoansUpdateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -4438,14 +4689,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraLoansUpdateRequest](Models/CraLoansUpdateRequest.cs)</code> | - |
+<code>[CraLoansUpdateOperationRequest](src/ThePlaidApi/Requests/CraLoansUpdateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -4455,9 +4704,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraLoansUpdateResponse](Models/CraLoansUpdateResponse.cs)</code>
+**OnSuccess**: <code>[CraLoansUpdateResponse](src/ThePlaidApi/Models/CraLoansUpdateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4468,7 +4717,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraMonitoringInsightsGetResponse&gt; CraMonitoringInsightsGet(CraMonitoringInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraMonitoringInsightsGetResponse&gt; CraMonitoringInsightsGet(CraMonitoringInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -4491,10 +4740,16 @@ This endpoint allows you to retrieve a Cash Flow Updates report by passing in th
 ```csharp
 try
 {
-    var response = await client.CraMonitoringInsightsGet(body);
+    var response = await client.CraMonitoringInsightsGet(new CraMonitoringInsightsGetOperationRequest
+    {
+        Body = new CraMonitoringInsightsGetRequest
+        {
+            ConsumerReportPermissiblePurpose = MonitoringConsumerReportPermissiblePurpose.AccountReviewCredit,
+        },
+    });
     // TODO: Handle 'response' of type CraMonitoringInsightsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -4503,14 +4758,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraMonitoringInsightsGetRequest](Models/CraMonitoringInsightsGetRequest.cs)</code> | - |
+<code>[CraMonitoringInsightsGetOperationRequest](src/ThePlaidApi/Requests/CraMonitoringInsightsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -4520,9 +4773,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraMonitoringInsightsGetResponse](Models/CraMonitoringInsightsGetResponse.cs)</code>
+**OnSuccess**: <code>[CraMonitoringInsightsGetResponse](src/ThePlaidApi/Models/CraMonitoringInsightsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4533,7 +4786,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraMonitoringInsightsSubscribeResponse&gt; CraMonitoringInsightsSubscribe(CraMonitoringInsightsSubscribeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraMonitoringInsightsSubscribeResponse&gt; CraMonitoringInsightsSubscribe(CraMonitoringInsightsSubscribeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -4556,10 +4809,13 @@ This endpoint allows you to subscribe to insights for a user's linked CRA Item, 
 ```csharp
 try
 {
-    var response = await client.CraMonitoringInsightsSubscribe(body);
+    var response = await client.CraMonitoringInsightsSubscribe(new CraMonitoringInsightsSubscribeOperationRequest
+    {
+        Body = new CraMonitoringInsightsSubscribeRequest { Webhook = "some example string" },
+    });
     // TODO: Handle 'response' of type CraMonitoringInsightsSubscribeResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -4568,14 +4824,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraMonitoringInsightsSubscribeRequest](Models/CraMonitoringInsightsSubscribeRequest.cs)</code> | - |
+<code>[CraMonitoringInsightsSubscribeOperationRequest](src/ThePlaidApi/Requests/CraMonitoringInsightsSubscribeOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -4585,9 +4839,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraMonitoringInsightsSubscribeResponse](Models/CraMonitoringInsightsSubscribeResponse.cs)</code>
+**OnSuccess**: <code>[CraMonitoringInsightsSubscribeResponse](src/ThePlaidApi/Models/CraMonitoringInsightsSubscribeResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4598,7 +4852,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraMonitoringInsightsUnsubscribeResponse&gt; CraMonitoringInsightsUnsubscribe(CraMonitoringInsightsUnsubscribeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraMonitoringInsightsUnsubscribeResponse&gt; CraMonitoringInsightsUnsubscribe(CraMonitoringInsightsUnsubscribeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -4621,10 +4875,13 @@ This endpoint allows you to unsubscribe from previously subscribed Monitoring In
 ```csharp
 try
 {
-    var response = await client.CraMonitoringInsightsUnsubscribe(body);
+    var response = await client.CraMonitoringInsightsUnsubscribe(new CraMonitoringInsightsUnsubscribeOperationRequest
+    {
+        Body = new CraMonitoringInsightsUnsubscribeRequest { SubscriptionId = "some example string" },
+    });
     // TODO: Handle 'response' of type CraMonitoringInsightsUnsubscribeResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -4633,14 +4890,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraMonitoringInsightsUnsubscribeRequest](Models/CraMonitoringInsightsUnsubscribeRequest.cs)</code> | - |
+<code>[CraMonitoringInsightsUnsubscribeOperationRequest](src/ThePlaidApi/Requests/CraMonitoringInsightsUnsubscribeOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -4650,9 +4905,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraMonitoringInsightsUnsubscribeResponse](Models/CraMonitoringInsightsUnsubscribeResponse.cs)</code>
+**OnSuccess**: <code>[CraMonitoringInsightsUnsubscribeResponse](src/ThePlaidApi/Models/CraMonitoringInsightsUnsubscribeResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4663,7 +4918,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraPartnerInsightsGetResponse&gt; CraPartnerInsightsGet(CraPartnerInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraPartnerInsightsGetResponse&gt; CraPartnerInsightsGet(CraPartnerInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -4686,10 +4941,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.CraPartnerInsightsGet(body);
+    var response = await client.CraPartnerInsightsGet(new CraPartnerInsightsGetOperationRequest
+    {
+        Body = new CraPartnerInsightsGetRequest { UserToken = "some example string" },
+    });
     // TODO: Handle 'response' of type CraPartnerInsightsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -4698,14 +4956,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraPartnerInsightsGetRequest](Models/CraPartnerInsightsGetRequest.cs)</code> | - |
+<code>[CraPartnerInsightsGetOperationRequest](src/ThePlaidApi/Requests/CraPartnerInsightsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -4715,9 +4971,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraPartnerInsightsGetResponse](Models/CraPartnerInsightsGetResponse.cs)</code>
+**OnSuccess**: <code>[CraPartnerInsightsGetResponse](src/ThePlaidApi/Models/CraPartnerInsightsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4728,7 +4984,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CraReportGetResponse&gt; CraReportGet(CraReportGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CraReportGetResponse&gt; CraReportGet(CraReportGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -4751,10 +5007,19 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.CraReportGet(body);
+    var response = await client.CraReportGet(new CraReportGetOperationRequest
+    {
+        Body = new CraReportGetRequest
+        {
+            UserId = "some example string",
+            Products = [new CraReportGetRequestProduct { Product = Products.Assets, Version = "some example string" }],
+            DecisionStage = CraReportDecisionStage.Prequalification,
+            ConsumerReportPermissiblePurpose = ConsumerReportPermissiblePurpose.AccountReviewCredit,
+        },
+    });
     // TODO: Handle 'response' of type CraReportGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -4763,14 +5028,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CraReportGetRequest](Models/CraReportGetRequest.cs)</code> | - |
+<code>[CraReportGetOperationRequest](src/ThePlaidApi/Requests/CraReportGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -4780,9 +5043,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CraReportGetResponse](Models/CraReportGetResponse.cs)</code>
+**OnSuccess**: <code>[CraReportGetResponse](src/ThePlaidApi/Models/CraReportGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4793,7 +5056,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PaymentInitiationPaymentTokenCreateResponse&gt; CreatePaymentToken(PaymentInitiationPaymentTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PaymentInitiationPaymentTokenCreateResponse&gt; CreatePaymentToken(CreatePaymentTokenRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -4818,10 +5081,13 @@ The `/payment_initiation/payment/token/create` endpoint is used to create a `pay
 ```csharp
 try
 {
-    var response = await client.CreatePaymentToken(body);
+    var response = await client.CreatePaymentToken(new CreatePaymentTokenRequest
+    {
+        Body = new PaymentInitiationPaymentTokenCreateRequest { PaymentId = "some example string" },
+    });
     // TODO: Handle 'response' of type PaymentInitiationPaymentTokenCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -4830,14 +5096,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PaymentInitiationPaymentTokenCreateRequest](Models/PaymentInitiationPaymentTokenCreateRequest.cs)</code> | - |
+<code>[CreatePaymentTokenRequest](src/ThePlaidApi/Requests/CreatePaymentTokenRequest.cs)</code>
 
 </dd>
 </dl>
@@ -4847,9 +5111,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PaymentInitiationPaymentTokenCreateResponse](Models/PaymentInitiationPaymentTokenCreateResponse.cs)</code>
+**OnSuccess**: <code>[PaymentInitiationPaymentTokenCreateResponse](src/ThePlaidApi/Models/PaymentInitiationPaymentTokenCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4860,7 +5124,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;AssetReportFreddieGetResponse&gt; CreditAssetReportFreddieMacGet(AssetReportFreddieGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;AssetReportFreddieGetResponse&gt; CreditAssetReportFreddieMacGet(CreditAssetReportFreddieMacGetRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -4883,10 +5147,13 @@ The `/credit/asset_report/freddie_mac/get` endpoint retrieves the Asset Report i
 ```csharp
 try
 {
-    var response = await client.CreditAssetReportFreddieMacGet(body);
+    var response = await client.CreditAssetReportFreddieMacGet(new CreditAssetReportFreddieMacGetRequest
+    {
+        Body = new AssetReportFreddieGetRequest { AuditCopyToken = "some example string" },
+    });
     // TODO: Handle 'response' of type AssetReportFreddieGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -4895,14 +5162,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[AssetReportFreddieGetRequest](Models/AssetReportFreddieGetRequest.cs)</code> | - |
+<code>[CreditAssetReportFreddieMacGetRequest](src/ThePlaidApi/Requests/CreditAssetReportFreddieMacGetRequest.cs)</code>
 
 </dd>
 </dl>
@@ -4912,9 +5177,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[AssetReportFreddieGetResponse](Models/AssetReportFreddieGetResponse.cs)</code>
+**OnSuccess**: <code>[AssetReportFreddieGetResponse](src/ThePlaidApi/Models/AssetReportFreddieGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4925,7 +5190,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditAuditCopyTokenCreateResponse&gt; CreditAuditCopyTokenCreate(CreditAuditCopyTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditAuditCopyTokenCreateResponse&gt; CreditAuditCopyTokenCreate(CreditAuditCopyTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -4950,10 +5215,13 @@ Use the `/credit/audit_copy_token/create` endpoint to create an `audit_copy_toke
 ```csharp
 try
 {
-    var response = await client.CreditAuditCopyTokenCreate(body);
+    var response = await client.CreditAuditCopyTokenCreate(new CreditAuditCopyTokenCreateOperationRequest
+    {
+        Body = new CreditAuditCopyTokenCreateRequest { ReportTokens = ["some example string"] },
+    });
     // TODO: Handle 'response' of type CreditAuditCopyTokenCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -4962,14 +5230,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditAuditCopyTokenCreateRequest](Models/CreditAuditCopyTokenCreateRequest.cs)</code> | - |
+<code>[CreditAuditCopyTokenCreateOperationRequest](src/ThePlaidApi/Requests/CreditAuditCopyTokenCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -4979,9 +5245,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditAuditCopyTokenCreateResponse](Models/CreditAuditCopyTokenCreateResponse.cs)</code>
+**OnSuccess**: <code>[CreditAuditCopyTokenCreateResponse](src/ThePlaidApi/Models/CreditAuditCopyTokenCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -4992,7 +5258,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditAuditCopyTokenUpdateResponse&gt; CreditAuditCopyTokenUpdate(CreditAuditCopyTokenUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditAuditCopyTokenUpdateResponse&gt; CreditAuditCopyTokenUpdate(CreditAuditCopyTokenUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -5015,10 +5281,17 @@ The `/credit/audit_copy_token/update` endpoint updates an existing Audit Copy To
 ```csharp
 try
 {
-    var response = await client.CreditAuditCopyTokenUpdate(body);
+    var response = await client.CreditAuditCopyTokenUpdate(new CreditAuditCopyTokenUpdateOperationRequest
+    {
+        Body = new CreditAuditCopyTokenUpdateRequest
+        {
+            AuditCopyToken = "some example string",
+            ReportTokens = ["some example string"],
+        },
+    });
     // TODO: Handle 'response' of type CreditAuditCopyTokenUpdateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -5027,14 +5300,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditAuditCopyTokenUpdateRequest](Models/CreditAuditCopyTokenUpdateRequest.cs)</code> | - |
+<code>[CreditAuditCopyTokenUpdateOperationRequest](src/ThePlaidApi/Requests/CreditAuditCopyTokenUpdateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -5044,9 +5315,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditAuditCopyTokenUpdateResponse](Models/CreditAuditCopyTokenUpdateResponse.cs)</code>
+**OnSuccess**: <code>[CreditAuditCopyTokenUpdateResponse](src/ThePlaidApi/Models/CreditAuditCopyTokenUpdateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -5057,7 +5328,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditBankEmploymentGetResponse&gt; CreditBankEmploymentGet(CreditBankEmploymentGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditBankEmploymentGetResponse&gt; CreditBankEmploymentGet(CreditBankEmploymentGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -5080,10 +5351,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.CreditBankEmploymentGet(body);
+    var response = await client.CreditBankEmploymentGet(new CreditBankEmploymentGetOperationRequest
+    {
+        Body = new CreditBankEmploymentGetRequest { UserToken = "some example string" },
+    });
     // TODO: Handle 'response' of type CreditBankEmploymentGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -5092,14 +5366,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditBankEmploymentGetRequest](Models/CreditBankEmploymentGetRequest.cs)</code> | - |
+<code>[CreditBankEmploymentGetOperationRequest](src/ThePlaidApi/Requests/CreditBankEmploymentGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -5109,9 +5381,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditBankEmploymentGetResponse](Models/CreditBankEmploymentGetResponse.cs)</code>
+**OnSuccess**: <code>[CreditBankEmploymentGetResponse](src/ThePlaidApi/Models/CreditBankEmploymentGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -5122,7 +5394,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditBankIncomeGetResponse&gt; CreditBankIncomeGet(CreditBankIncomeGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditBankIncomeGetResponse&gt; CreditBankIncomeGet(CreditBankIncomeGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -5145,10 +5417,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.CreditBankIncomeGet(body);
+    var response = await client.CreditBankIncomeGet(new CreditBankIncomeGetOperationRequest
+    {
+        Body = new CreditBankIncomeGetRequest(),
+    });
     // TODO: Handle 'response' of type CreditBankIncomeGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -5157,14 +5432,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditBankIncomeGetRequest](Models/CreditBankIncomeGetRequest.cs)</code> | - |
+<code>[CreditBankIncomeGetOperationRequest](src/ThePlaidApi/Requests/CreditBankIncomeGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -5174,9 +5447,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditBankIncomeGetResponse](Models/CreditBankIncomeGetResponse.cs)</code>
+**OnSuccess**: <code>[CreditBankIncomeGetResponse](src/ThePlaidApi/Models/CreditBankIncomeGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -5187,7 +5460,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task CreditBankIncomePdfGet(CreditBankIncomePdfGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task CreditBankIncomePdfGet(CreditBankIncomePdfGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -5210,9 +5483,12 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    await client.CreditBankIncomePdfGet(body);
+    await client.CreditBankIncomePdfGet(new CreditBankIncomePdfGetOperationRequest
+    {
+        Body = new CreditBankIncomePdfGetRequest { UserToken = "some example string" },
+    });
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -5221,14 +5497,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditBankIncomePdfGetRequest](Models/CreditBankIncomePdfGetRequest.cs)</code> | - |
+<code>[CreditBankIncomePdfGetOperationRequest](src/ThePlaidApi/Requests/CreditBankIncomePdfGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -5240,7 +5514,7 @@ catch (SdkException<RawError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -5251,7 +5525,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditBankIncomeRefreshResponse&gt; CreditBankIncomeRefresh(CreditBankIncomeRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditBankIncomeRefreshResponse&gt; CreditBankIncomeRefresh(CreditBankIncomeRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -5274,10 +5548,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.CreditBankIncomeRefresh(body);
+    var response = await client.CreditBankIncomeRefresh(new CreditBankIncomeRefreshOperationRequest
+    {
+        Body = new CreditBankIncomeRefreshRequest { UserToken = "some example string" },
+    });
     // TODO: Handle 'response' of type CreditBankIncomeRefreshResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -5286,14 +5563,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditBankIncomeRefreshRequest](Models/CreditBankIncomeRefreshRequest.cs)</code> | - |
+<code>[CreditBankIncomeRefreshOperationRequest](src/ThePlaidApi/Requests/CreditBankIncomeRefreshOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -5303,9 +5578,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditBankIncomeRefreshResponse](Models/CreditBankIncomeRefreshResponse.cs)</code>
+**OnSuccess**: <code>[CreditBankIncomeRefreshResponse](src/ThePlaidApi/Models/CreditBankIncomeRefreshResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -5316,7 +5591,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditBankIncomeWebhookUpdateResponse&gt; CreditBankIncomeWebhookUpdate(CreditBankIncomeWebhookUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditBankIncomeWebhookUpdateResponse&gt; CreditBankIncomeWebhookUpdate(CreditBankIncomeWebhookUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -5341,10 +5616,13 @@ If a user is subscribed, on significant changes to the user's income profile, yo
 ```csharp
 try
 {
-    var response = await client.CreditBankIncomeWebhookUpdate(body);
+    var response = await client.CreditBankIncomeWebhookUpdate(new CreditBankIncomeWebhookUpdateOperationRequest
+    {
+        Body = new CreditBankIncomeWebhookUpdateRequest { UserToken = "some example string", EnableWebhooks = true },
+    });
     // TODO: Handle 'response' of type CreditBankIncomeWebhookUpdateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -5353,14 +5631,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditBankIncomeWebhookUpdateRequest](Models/CreditBankIncomeWebhookUpdateRequest.cs)</code> | - |
+<code>[CreditBankIncomeWebhookUpdateOperationRequest](src/ThePlaidApi/Requests/CreditBankIncomeWebhookUpdateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -5370,9 +5646,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditBankIncomeWebhookUpdateResponse](Models/CreditBankIncomeWebhookUpdateResponse.cs)</code>
+**OnSuccess**: <code>[CreditBankIncomeWebhookUpdateResponse](src/ThePlaidApi/Models/CreditBankIncomeWebhookUpdateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -5383,7 +5659,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditBankStatementsUploadsGetResponse&gt; CreditBankStatementsUploadsGet(CreditBankStatementsUploadsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditBankStatementsUploadsGetResponse&gt; CreditBankStatementsUploadsGet(CreditBankStatementsUploadsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -5406,10 +5682,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.CreditBankStatementsUploadsGet(body);
+    var response = await client.CreditBankStatementsUploadsGet(new CreditBankStatementsUploadsGetOperationRequest
+    {
+        Body = new CreditBankStatementsUploadsGetRequest { UserToken = "some example string" },
+    });
     // TODO: Handle 'response' of type CreditBankStatementsUploadsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -5418,14 +5697,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditBankStatementsUploadsGetRequest](Models/CreditBankStatementsUploadsGetRequest.cs)</code> | - |
+<code>[CreditBankStatementsUploadsGetOperationRequest](src/ThePlaidApi/Requests/CreditBankStatementsUploadsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -5435,9 +5712,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditBankStatementsUploadsGetResponse](Models/CreditBankStatementsUploadsGetResponse.cs)</code>
+**OnSuccess**: <code>[CreditBankStatementsUploadsGetResponse](src/ThePlaidApi/Models/CreditBankStatementsUploadsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -5448,7 +5725,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditEmploymentGetResponse&gt; CreditEmploymentGet(CreditEmploymentGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditEmploymentGetResponse&gt; CreditEmploymentGet(CreditEmploymentGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -5471,10 +5748,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.CreditEmploymentGet(body);
+    var response = await client.CreditEmploymentGet(new CreditEmploymentGetOperationRequest
+    {
+        Body = new CreditEmploymentGetRequest { UserToken = "some example string" },
+    });
     // TODO: Handle 'response' of type CreditEmploymentGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -5483,14 +5763,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditEmploymentGetRequest](Models/CreditEmploymentGetRequest.cs)</code> | - |
+<code>[CreditEmploymentGetOperationRequest](src/ThePlaidApi/Requests/CreditEmploymentGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -5500,9 +5778,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditEmploymentGetResponse](Models/CreditEmploymentGetResponse.cs)</code>
+**OnSuccess**: <code>[CreditEmploymentGetResponse](src/ThePlaidApi/Models/CreditEmploymentGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -5513,7 +5791,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditFreddieMacReportsGetResponse&gt; CreditFreddieMacReportsGet(CreditFreddieMacReportsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditFreddieMacReportsGetResponse&gt; CreditFreddieMacReportsGet(CreditFreddieMacReportsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -5536,10 +5814,13 @@ The `/credit/freddie_mac/reports/get` endpoint retrieves the Verification of Ass
 ```csharp
 try
 {
-    var response = await client.CreditFreddieMacReportsGet(body);
+    var response = await client.CreditFreddieMacReportsGet(new CreditFreddieMacReportsGetOperationRequest
+    {
+        Body = new CreditFreddieMacReportsGetRequest { AuditCopyToken = "some example string" },
+    });
     // TODO: Handle 'response' of type CreditFreddieMacReportsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -5548,14 +5829,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditFreddieMacReportsGetRequest](Models/CreditFreddieMacReportsGetRequest.cs)</code> | - |
+<code>[CreditFreddieMacReportsGetOperationRequest](src/ThePlaidApi/Requests/CreditFreddieMacReportsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -5565,9 +5844,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditFreddieMacReportsGetResponse](Models/CreditFreddieMacReportsGetResponse.cs)</code>
+**OnSuccess**: <code>[CreditFreddieMacReportsGetResponse](src/ThePlaidApi/Models/CreditFreddieMacReportsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -5578,7 +5857,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditPayrollIncomeGetResponse&gt; CreditPayrollIncomeGet(CreditPayrollIncomeGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditPayrollIncomeGetResponse&gt; CreditPayrollIncomeGet(CreditPayrollIncomeGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -5601,10 +5880,13 @@ This endpoint gets payroll income information for a specific user, either as a r
 ```csharp
 try
 {
-    var response = await client.CreditPayrollIncomeGet(body);
+    var response = await client.CreditPayrollIncomeGet(new CreditPayrollIncomeGetOperationRequest
+    {
+        Body = new CreditPayrollIncomeGetRequest(),
+    });
     // TODO: Handle 'response' of type CreditPayrollIncomeGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -5613,14 +5895,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditPayrollIncomeGetRequest](Models/CreditPayrollIncomeGetRequest.cs)</code> | - |
+<code>[CreditPayrollIncomeGetOperationRequest](src/ThePlaidApi/Requests/CreditPayrollIncomeGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -5630,9 +5910,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditPayrollIncomeGetResponse](Models/CreditPayrollIncomeGetResponse.cs)</code>
+**OnSuccess**: <code>[CreditPayrollIncomeGetResponse](src/ThePlaidApi/Models/CreditPayrollIncomeGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -5643,7 +5923,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditPayrollIncomeParsingConfigUpdateResponse&gt; CreditPayrollIncomeParsingConfigUpdate(CreditPayrollIncomeParsingConfigUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditPayrollIncomeParsingConfigUpdateResponse&gt; CreditPayrollIncomeParsingConfigUpdate(CreditPayrollIncomeParsingConfigUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -5666,10 +5946,18 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.CreditPayrollIncomeParsingConfigUpdate(body);
+    var response = await client.CreditPayrollIncomeParsingConfigUpdate(
+        new CreditPayrollIncomeParsingConfigUpdateOperationRequest
+        {
+            Body = new CreditPayrollIncomeParsingConfigUpdateRequest
+            {
+                UserToken = "some example string",
+                ParsingConfig = [IncomeVerificationDocParsingConfig.Ocr],
+            },
+        });
     // TODO: Handle 'response' of type CreditPayrollIncomeParsingConfigUpdateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -5678,14 +5966,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditPayrollIncomeParsingConfigUpdateRequest](Models/CreditPayrollIncomeParsingConfigUpdateRequest.cs)</code> | - |
+<code>[CreditPayrollIncomeParsingConfigUpdateOperationRequest](src/ThePlaidApi/Requests/CreditPayrollIncomeParsingConfigUpdateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -5695,9 +5981,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditPayrollIncomeParsingConfigUpdateResponse](Models/CreditPayrollIncomeParsingConfigUpdateResponse.cs)</code>
+**OnSuccess**: <code>[CreditPayrollIncomeParsingConfigUpdateResponse](src/ThePlaidApi/Models/CreditPayrollIncomeParsingConfigUpdateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -5708,7 +5994,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditPayrollIncomePrecheckResponse&gt; CreditPayrollIncomePrecheck(CreditPayrollIncomePrecheckRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditPayrollIncomePrecheckResponse&gt; CreditPayrollIncomePrecheck(CreditPayrollIncomePrecheckOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -5735,10 +6021,13 @@ When testing in Sandbox, you can control the results by providing special test v
 ```csharp
 try
 {
-    var response = await client.CreditPayrollIncomePrecheck(body);
+    var response = await client.CreditPayrollIncomePrecheck(new CreditPayrollIncomePrecheckOperationRequest
+    {
+        Body = new CreditPayrollIncomePrecheckRequest(),
+    });
     // TODO: Handle 'response' of type CreditPayrollIncomePrecheckResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -5747,14 +6036,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditPayrollIncomePrecheckRequest](Models/CreditPayrollIncomePrecheckRequest.cs)</code> | - |
+<code>[CreditPayrollIncomePrecheckOperationRequest](src/ThePlaidApi/Requests/CreditPayrollIncomePrecheckOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -5764,9 +6051,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditPayrollIncomePrecheckResponse](Models/CreditPayrollIncomePrecheckResponse.cs)</code>
+**OnSuccess**: <code>[CreditPayrollIncomePrecheckResponse](src/ThePlaidApi/Models/CreditPayrollIncomePrecheckResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -5777,7 +6064,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditPayrollIncomeRefreshResponse&gt; CreditPayrollIncomeRefresh(CreditPayrollIncomeRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditPayrollIncomeRefreshResponse&gt; CreditPayrollIncomeRefresh(CreditPayrollIncomeRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -5800,10 +6087,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.CreditPayrollIncomeRefresh(body);
+    var response = await client.CreditPayrollIncomeRefresh(new CreditPayrollIncomeRefreshOperationRequest
+    {
+        Body = new CreditPayrollIncomeRefreshRequest { UserToken = "some example string" },
+    });
     // TODO: Handle 'response' of type CreditPayrollIncomeRefreshResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -5812,14 +6102,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditPayrollIncomeRefreshRequest](Models/CreditPayrollIncomeRefreshRequest.cs)</code> | - |
+<code>[CreditPayrollIncomeRefreshOperationRequest](src/ThePlaidApi/Requests/CreditPayrollIncomeRefreshOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -5829,9 +6117,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditPayrollIncomeRefreshResponse](Models/CreditPayrollIncomeRefreshResponse.cs)</code>
+**OnSuccess**: <code>[CreditPayrollIncomeRefreshResponse](src/ThePlaidApi/Models/CreditPayrollIncomeRefreshResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -5842,7 +6130,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditPayrollIncomeRiskSignalsGetResponse&gt; CreditPayrollIncomeRiskSignalsGet(CreditPayrollIncomeRiskSignalsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditPayrollIncomeRiskSignalsGetResponse&gt; CreditPayrollIncomeRiskSignalsGet(CreditPayrollIncomeRiskSignalsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -5869,10 +6157,13 @@ To trigger risk signal generation for an Item, call `/link/token/create` with `p
 ```csharp
 try
 {
-    var response = await client.CreditPayrollIncomeRiskSignalsGet(body);
+    var response = await client.CreditPayrollIncomeRiskSignalsGet(new CreditPayrollIncomeRiskSignalsGetOperationRequest
+    {
+        Body = new CreditPayrollIncomeRiskSignalsGetRequest(),
+    });
     // TODO: Handle 'response' of type CreditPayrollIncomeRiskSignalsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -5881,14 +6172,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditPayrollIncomeRiskSignalsGetRequest](Models/CreditPayrollIncomeRiskSignalsGetRequest.cs)</code> | - |
+<code>[CreditPayrollIncomeRiskSignalsGetOperationRequest](src/ThePlaidApi/Requests/CreditPayrollIncomeRiskSignalsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -5898,9 +6187,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditPayrollIncomeRiskSignalsGetResponse](Models/CreditPayrollIncomeRiskSignalsGetResponse.cs)</code>
+**OnSuccess**: <code>[CreditPayrollIncomeRiskSignalsGetResponse](src/ThePlaidApi/Models/CreditPayrollIncomeRiskSignalsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -5911,7 +6200,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditRelayCreateResponse&gt; CreditRelayCreate(CreditRelayCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditRelayCreateResponse&gt; CreditRelayCreate(CreditRelayCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -5936,10 +6225,17 @@ To grant a third party access to an Asset Report, use the `/credit/relay/create`
 ```csharp
 try
 {
-    var response = await client.CreditRelayCreate(body);
+    var response = await client.CreditRelayCreate(new CreditRelayCreateOperationRequest
+    {
+        Body = new CreditRelayCreateRequest
+        {
+            ReportTokens = ["some example string"],
+            SecondaryClientId = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type CreditRelayCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -5948,14 +6244,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditRelayCreateRequest](Models/CreditRelayCreateRequest.cs)</code> | - |
+<code>[CreditRelayCreateOperationRequest](src/ThePlaidApi/Requests/CreditRelayCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -5965,9 +6259,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditRelayCreateResponse](Models/CreditRelayCreateResponse.cs)</code>
+**OnSuccess**: <code>[CreditRelayCreateResponse](src/ThePlaidApi/Models/CreditRelayCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -5978,7 +6272,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;AssetReportGetResponse&gt; CreditRelayGet(CreditRelayGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;AssetReportGetResponse&gt; CreditRelayGet(CreditRelayGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6001,10 +6295,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.CreditRelayGet(body);
+    var response = await client.CreditRelayGet(new CreditRelayGetOperationRequest
+    {
+        Body = new CreditRelayGetRequest { RelayToken = "some example string", ReportType = ReportType.Asset },
+    });
     // TODO: Handle 'response' of type AssetReportGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6013,14 +6310,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditRelayGetRequest](Models/CreditRelayGetRequest.cs)</code> | - |
+<code>[CreditRelayGetOperationRequest](src/ThePlaidApi/Requests/CreditRelayGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -6030,9 +6325,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[AssetReportGetResponse](Models/AssetReportGetResponse.cs)</code>
+**OnSuccess**: <code>[AssetReportGetResponse](src/ThePlaidApi/Models/AssetReportGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -6043,7 +6338,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task CreditRelayPdfGet(CreditRelayPdfGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task CreditRelayPdfGet(CreditRelayPdfGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6072,9 +6367,12 @@ The response to `/credit/relay/pdf/get` is the PDF binary data. The `request_id`
 ```csharp
 try
 {
-    await client.CreditRelayPdfGet(body);
+    await client.CreditRelayPdfGet(new CreditRelayPdfGetOperationRequest
+    {
+        Body = new CreditRelayPdfGetRequest { RelayToken = "some example string", ReportType = ReportType.Asset },
+    });
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6083,14 +6381,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditRelayPdfGetRequest](Models/CreditRelayPdfGetRequest.cs)</code> | - |
+<code>[CreditRelayPdfGetOperationRequest](src/ThePlaidApi/Requests/CreditRelayPdfGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -6102,7 +6398,7 @@ catch (SdkException<RawError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -6113,7 +6409,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditRelayRefreshResponse&gt; CreditRelayRefresh(CreditRelayRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditRelayRefreshResponse&gt; CreditRelayRefresh(CreditRelayRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6136,10 +6432,13 @@ The `/credit/relay/refresh` endpoint allows third parties to refresh a report th
 ```csharp
 try
 {
-    var response = await client.CreditRelayRefresh(body);
+    var response = await client.CreditRelayRefresh(new CreditRelayRefreshOperationRequest
+    {
+        Body = new CreditRelayRefreshRequest { RelayToken = "some example string", ReportType = ReportType.Asset },
+    });
     // TODO: Handle 'response' of type CreditRelayRefreshResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6148,14 +6447,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditRelayRefreshRequest](Models/CreditRelayRefreshRequest.cs)</code> | - |
+<code>[CreditRelayRefreshOperationRequest](src/ThePlaidApi/Requests/CreditRelayRefreshOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -6165,9 +6462,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditRelayRefreshResponse](Models/CreditRelayRefreshResponse.cs)</code>
+**OnSuccess**: <code>[CreditRelayRefreshResponse](src/ThePlaidApi/Models/CreditRelayRefreshResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -6178,7 +6475,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditRelayRemoveResponse&gt; CreditRelayRemove(CreditRelayRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditRelayRemoveResponse&gt; CreditRelayRemove(CreditRelayRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6201,10 +6498,13 @@ The `/credit/relay/remove` endpoint allows you to invalidate a `relay_token`. Th
 ```csharp
 try
 {
-    var response = await client.CreditRelayRemove(body);
+    var response = await client.CreditRelayRemove(new CreditRelayRemoveOperationRequest
+    {
+        Body = new CreditRelayRemoveRequest { RelayToken = "some example string" },
+    });
     // TODO: Handle 'response' of type CreditRelayRemoveResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6213,14 +6513,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditRelayRemoveRequest](Models/CreditRelayRemoveRequest.cs)</code> | - |
+<code>[CreditRelayRemoveOperationRequest](src/ThePlaidApi/Requests/CreditRelayRemoveOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -6230,9 +6528,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditRelayRemoveResponse](Models/CreditRelayRemoveResponse.cs)</code>
+**OnSuccess**: <code>[CreditRelayRemoveResponse](src/ThePlaidApi/Models/CreditRelayRemoveResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -6243,7 +6541,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditAuditCopyTokenRemoveResponse&gt; CreditReportAuditCopyRemove(CreditAuditCopyTokenRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditAuditCopyTokenRemoveResponse&gt; CreditReportAuditCopyRemove(CreditReportAuditCopyRemoveRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6266,10 +6564,13 @@ The `/credit/audit_copy_token/remove` endpoint allows you to remove an Audit Cop
 ```csharp
 try
 {
-    var response = await client.CreditReportAuditCopyRemove(body);
+    var response = await client.CreditReportAuditCopyRemove(new CreditReportAuditCopyRemoveRequest
+    {
+        Body = new CreditAuditCopyTokenRemoveRequest { AuditCopyToken = "some example string" },
+    });
     // TODO: Handle 'response' of type CreditAuditCopyTokenRemoveResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6278,14 +6579,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditAuditCopyTokenRemoveRequest](Models/CreditAuditCopyTokenRemoveRequest.cs)</code> | - |
+<code>[CreditReportAuditCopyRemoveRequest](src/ThePlaidApi/Requests/CreditReportAuditCopyRemoveRequest.cs)</code>
 
 </dd>
 </dl>
@@ -6295,9 +6594,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditAuditCopyTokenRemoveResponse](Models/CreditAuditCopyTokenRemoveResponse.cs)</code>
+**OnSuccess**: <code>[CreditAuditCopyTokenRemoveResponse](src/ThePlaidApi/Models/CreditAuditCopyTokenRemoveResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -6308,7 +6607,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;CreditSessionsGetResponse&gt; CreditSessionsGet(CreditSessionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;CreditSessionsGetResponse&gt; CreditSessionsGet(CreditSessionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6333,10 +6632,13 @@ These results include details about the Item that was created and some product r
 ```csharp
 try
 {
-    var response = await client.CreditSessionsGet(body);
+    var response = await client.CreditSessionsGet(new CreditSessionsGetOperationRequest
+    {
+        Body = new CreditSessionsGetRequest { UserToken = "some example string" },
+    });
     // TODO: Handle 'response' of type CreditSessionsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6345,14 +6647,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[CreditSessionsGetRequest](Models/CreditSessionsGetRequest.cs)</code> | - |
+<code>[CreditSessionsGetOperationRequest](src/ThePlaidApi/Requests/CreditSessionsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -6362,9 +6662,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[CreditSessionsGetResponse](Models/CreditSessionsGetResponse.cs)</code>
+**OnSuccess**: <code>[CreditSessionsGetResponse](src/ThePlaidApi/Models/CreditSessionsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -6375,7 +6675,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;DashboardUserGetResponse&gt; DashboardUserGet(DashboardUserGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;DashboardUserGetResponse&gt; DashboardUserGet(DashboardUserGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6398,10 +6698,13 @@ The `/dashboard_user/get` endpoint provides details (such as email address) abou
 ```csharp
 try
 {
-    var response = await client.DashboardUserGet(body);
+    var response = await client.DashboardUserGet(new DashboardUserGetOperationRequest
+    {
+        Body = new DashboardUserGetRequest { DashboardUserId = "some example string" },
+    });
     // TODO: Handle 'response' of type DashboardUserGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6410,14 +6713,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[DashboardUserGetRequest](Models/DashboardUserGetRequest.cs)</code> | - |
+<code>[DashboardUserGetOperationRequest](src/ThePlaidApi/Requests/DashboardUserGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -6427,9 +6728,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[DashboardUserGetResponse](Models/DashboardUserGetResponse.cs)</code>
+**OnSuccess**: <code>[DashboardUserGetResponse](src/ThePlaidApi/Models/DashboardUserGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -6440,7 +6741,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;DashboardUserListResponse&gt; DashboardUserList(DashboardUserListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;DashboardUserListResponse&gt; DashboardUserList(DashboardUserListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6463,10 +6764,13 @@ The `/dashboard_user/list` endpoint provides details (such as email address) abo
 ```csharp
 try
 {
-    var response = await client.DashboardUserList(body);
+    var response = await client.DashboardUserList(new DashboardUserListOperationRequest
+    {
+        Body = new DashboardUserListRequest(),
+    });
     // TODO: Handle 'response' of type DashboardUserListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6475,14 +6779,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[DashboardUserListRequest](Models/DashboardUserListRequest.cs)</code> | - |
+<code>[DashboardUserListOperationRequest](src/ThePlaidApi/Requests/DashboardUserListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -6492,9 +6794,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[DashboardUserListResponse](Models/DashboardUserListResponse.cs)</code>
+**OnSuccess**: <code>[DashboardUserListResponse](src/ThePlaidApi/Models/DashboardUserListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -6505,7 +6807,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;EmployersSearchResponse&gt; EmployersSearch(EmployersSearchRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;EmployersSearchResponse&gt; EmployersSearch(EmployersSearchOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6530,10 +6832,13 @@ The data in the employer database is currently limited. As the Deposit Switch an
 ```csharp
 try
 {
-    var response = await client.EmployersSearch(body);
+    var response = await client.EmployersSearch(new EmployersSearchOperationRequest
+    {
+        Body = new EmployersSearchRequest { Query = "some example string", Products = ["some example string"] },
+    });
     // TODO: Handle 'response' of type EmployersSearchResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6542,14 +6847,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[EmployersSearchRequest](Models/EmployersSearchRequest.cs)</code> | - |
+<code>[EmployersSearchOperationRequest](src/ThePlaidApi/Requests/EmployersSearchOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -6559,9 +6862,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[EmployersSearchResponse](Models/EmployersSearchResponse.cs)</code>
+**OnSuccess**: <code>[EmployersSearchResponse](src/ThePlaidApi/Models/EmployersSearchResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -6572,7 +6875,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;EmploymentVerificationGetResponse&gt; EmploymentVerificationGet(EmploymentVerificationGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;EmploymentVerificationGetResponse&gt; EmploymentVerificationGet(EmploymentVerificationGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6597,10 +6900,13 @@ This endpoint has been deprecated; new integrations should use `/credit/employme
 ```csharp
 try
 {
-    var response = await client.EmploymentVerificationGet(body);
+    var response = await client.EmploymentVerificationGet(new EmploymentVerificationGetOperationRequest
+    {
+        Body = new EmploymentVerificationGetRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type EmploymentVerificationGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6609,14 +6915,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[EmploymentVerificationGetRequest](Models/EmploymentVerificationGetRequest.cs)</code> | - |
+<code>[EmploymentVerificationGetOperationRequest](src/ThePlaidApi/Requests/EmploymentVerificationGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -6626,9 +6930,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[EmploymentVerificationGetResponse](Models/EmploymentVerificationGetResponse.cs)</code>
+**OnSuccess**: <code>[EmploymentVerificationGetResponse](src/ThePlaidApi/Models/EmploymentVerificationGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -6639,7 +6943,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;FdxConsentGrant&gt; FdxConsentsGet(string consentId, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;FdxConsentGrant&gt; FdxConsentsGet(FdxConsentsGetRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6662,10 +6966,10 @@ Returns a consent grant by its identifier
 ```csharp
 try
 {
-    var response = await client.FdxConsentsGet(consentId);
+    var response = await client.FdxConsentsGet(new FdxConsentsGetRequest { ConsentId = "some example string" });
     // TODO: Handle 'response' of type FdxConsentGrant
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6674,14 +6978,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>consentId</code> | <code>string</code> | Consent Grant Identifier. Uniquely identifies the consent grant |
+<code>[FdxConsentsGetRequest](src/ThePlaidApi/Requests/FdxConsentsGetRequest.cs)</code>
 
 </dd>
 </dl>
@@ -6691,9 +6993,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[FdxConsentGrant](Models/FdxConsentGrant.cs)</code>
+**OnSuccess**: <code>[FdxConsentGrant](src/ThePlaidApi/Models/FdxConsentGrant.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -6704,7 +7006,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;GetConsentsResponse&gt; FdxConsentsList(string customerId, FdxConsentGrantStatus? status, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;GetConsentsResponse&gt; FdxConsentsList(FdxConsentsListRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6727,10 +7029,10 @@ Returns zero or more consent grants associated with the given data provider cust
 ```csharp
 try
 {
-    var response = await client.FdxConsentsList(customerId, status);
+    var response = await client.FdxConsentsList(new FdxConsentsListRequest { CustomerId = "some example string" });
     // TODO: Handle 'response' of type GetConsentsResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6739,15 +7041,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>customerId</code> | <code>string</code> | Data provider customer identifier whose consent grants to return. |
-| <code>status</code> | <code>[FdxConsentGrantStatus?](Models/Enums/FdxConsentGrantStatus.cs)</code> | Optional filter restricting results to a single consent grant status. One of `ACTIVE`, `REVOKED`, `EXPIRED`. |
+<code>[FdxConsentsListRequest](src/ThePlaidApi/Requests/FdxConsentsListRequest.cs)</code>
 
 </dd>
 </dl>
@@ -6757,9 +7056,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[GetConsentsResponse](Models/GetConsentsResponse.cs)</code>
+**OnSuccess**: <code>[GetConsentsResponse](src/ThePlaidApi/Models/GetConsentsResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -6770,7 +7069,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;FdxConsentRevocations&gt; FdxConsentsRevocationGet(string consentId, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;FdxConsentRevocations&gt; FdxConsentsRevocationGet(FdxConsentsRevocationGetRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6793,10 +7092,13 @@ Returns the revocation history of a consent grant
 ```csharp
 try
 {
-    var response = await client.FdxConsentsRevocationGet(consentId);
+    var response = await client.FdxConsentsRevocationGet(new FdxConsentsRevocationGetRequest
+    {
+        ConsentId = "some example string",
+    });
     // TODO: Handle 'response' of type FdxConsentRevocations
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6805,14 +7107,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>consentId</code> | <code>string</code> | Consent Grant Identifier. Uniquely identifies the consent grant |
+<code>[FdxConsentsRevocationGetRequest](src/ThePlaidApi/Requests/FdxConsentsRevocationGetRequest.cs)</code>
 
 </dd>
 </dl>
@@ -6822,9 +7122,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[FdxConsentRevocations](Models/FdxConsentRevocations.cs)</code>
+**OnSuccess**: <code>[FdxConsentRevocations](src/ThePlaidApi/Models/FdxConsentRevocations.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -6835,7 +7135,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task FdxConsentsRevoke(string consentId, FdxConsentRevocation body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task FdxConsentsRevoke(FdxConsentsRevokeRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6858,9 +7158,17 @@ Appends a REVOKED status record to the named consent grant
 ```csharp
 try
 {
-    await client.FdxConsentsRevoke(consentId, body);
+    await client.FdxConsentsRevoke(new FdxConsentsRevokeRequest
+    {
+        ConsentId = "some example string",
+        Body = new FdxConsentRevocation
+        {
+            Initiator = PartyType.DataAccessPlatform,
+            Reason = FdxUpdateReason.BusinessRule,
+        },
+    });
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6869,15 +7177,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>consentId</code> | <code>string</code> | Consent Grant Identifier. Uniquely identifies the consent grant |
-| <code>body</code> | <code>[FdxConsentRevocation](Models/FdxConsentRevocation.cs)</code> | - |
+<code>[FdxConsentsRevokeRequest](src/ThePlaidApi/Requests/FdxConsentsRevokeRequest.cs)</code>
 
 </dd>
 </dl>
@@ -6889,7 +7194,7 @@ catch (SdkException<RawError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -6900,7 +7205,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task FdxNotifications(FdxNotificationEntity body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task FdxNotifications(FdxNotificationsRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6923,9 +7228,19 @@ A generic webhook receiver endpoint for FDX Event Notifications
 ```csharp
 try
 {
-    await client.FdxNotifications(body);
+    await client.FdxNotifications(new FdxNotificationsRequest
+    {
+        Body = new FdxNotificationEntity
+        {
+            NotificationId = "some example string",
+            Type = NotificationType.AccountTakeover,
+            SentOn = DateTimeOffset.Parse("2024-01-15T09:30:00Z"),
+            Category = NotificationCategory.Security,
+            NotificationPayload = new NotificationPayloadEntity(),
+        },
+    });
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6934,14 +7249,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[FdxNotificationEntity](Models/FdxNotificationEntity.cs)</code> | - |
+<code>[FdxNotificationsRequest](src/ThePlaidApi/Requests/FdxNotificationsRequest.cs)</code>
 
 </dd>
 </dl>
@@ -6953,7 +7266,7 @@ catch (SdkException<RawError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -6964,7 +7277,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;FdxRecipientMetadata&gt; GetRecipient(string recipientId, string? oauthStateId, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;FdxRecipientMetadata&gt; GetRecipient(GetRecipientRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -6987,10 +7300,10 @@ Get a specific recipient
 ```csharp
 try
 {
-    var response = await client.GetRecipient(recipientId, oauthStateId);
+    var response = await client.GetRecipient(new GetRecipientRequest { RecipientId = "some example string" });
     // TODO: Handle 'response' of type FdxRecipientMetadata
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -6999,15 +7312,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>recipientId</code> | <code>string</code> | Recipient Identifier. Uniquely identifies the recipient |
-| <code>oauthStateId</code> | <code>string?</code> | The value that is passed into the OAuth URI 'state' query parameter. |
+<code>[GetRecipientRequest](src/ThePlaidApi/Requests/GetRecipientRequest.cs)</code>
 
 </dd>
 </dl>
@@ -7017,9 +7327,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[FdxRecipientMetadata](Models/FdxRecipientMetadata.cs)</code>
+**OnSuccess**: <code>[FdxRecipientMetadata](src/ThePlaidApi/Models/FdxRecipientMetadata.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -7030,7 +7340,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;GetRecipientsResponse&gt; GetRecipients(RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;GetRecipientsResponse&gt; GetRecipients(RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -7056,7 +7366,7 @@ try
     var response = await client.GetRecipients();
     // TODO: Handle 'response' of type GetRecipientsResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -7070,9 +7380,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[GetRecipientsResponse](Models/GetRecipientsResponse.cs)</code>
+**OnSuccess**: <code>[GetRecipientsResponse](src/ThePlaidApi/Models/GetRecipientsResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -7083,7 +7393,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IdentityDocumentsUploadsGetResponse&gt; IdentityDocumentsUploadsGet(IdentityDocumentsUploadsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IdentityDocumentsUploadsGetResponse&gt; IdentityDocumentsUploadsGet(IdentityDocumentsUploadsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -7106,10 +7416,13 @@ Use `/identity/documents/uploads/get` to retrieve identity details when using [I
 ```csharp
 try
 {
-    var response = await client.IdentityDocumentsUploadsGet(body);
+    var response = await client.IdentityDocumentsUploadsGet(new IdentityDocumentsUploadsGetOperationRequest
+    {
+        Body = new IdentityDocumentsUploadsGetRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type IdentityDocumentsUploadsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -7118,14 +7431,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IdentityDocumentsUploadsGetRequest](Models/IdentityDocumentsUploadsGetRequest.cs)</code> | - |
+<code>[IdentityDocumentsUploadsGetOperationRequest](src/ThePlaidApi/Requests/IdentityDocumentsUploadsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -7135,9 +7446,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IdentityDocumentsUploadsGetResponse](Models/IdentityDocumentsUploadsGetResponse.cs)</code>
+**OnSuccess**: <code>[IdentityDocumentsUploadsGetResponse](src/ThePlaidApi/Models/IdentityDocumentsUploadsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -7148,7 +7459,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IdentityGetResponse&gt; IdentityGet(IdentityGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IdentityGetResponse&gt; IdentityGet(IdentityGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -7173,10 +7484,13 @@ Note: In API versions 2018-05-22 and earlier, the `owners` object is not returne
 ```csharp
 try
 {
-    var response = await client.IdentityGet(body);
+    var response = await client.IdentityGet(new IdentityGetOperationRequest
+    {
+        Body = new IdentityGetRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type IdentityGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -7185,14 +7499,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IdentityGetRequest](Models/IdentityGetRequest.cs)</code> | - |
+<code>[IdentityGetOperationRequest](src/ThePlaidApi/Requests/IdentityGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -7202,9 +7514,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IdentityGetResponse](Models/IdentityGetResponse.cs)</code>
+**OnSuccess**: <code>[IdentityGetResponse](src/ThePlaidApi/Models/IdentityGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -7215,7 +7527,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IdentityMatchResponse&gt; IdentityMatch(IdentityMatchRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IdentityMatchResponse&gt; IdentityMatch(IdentityMatchOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -7240,10 +7552,13 @@ Fields within the `balances` object will always be null when retrieved by `/iden
 ```csharp
 try
 {
-    var response = await client.IdentityMatch(body);
+    var response = await client.IdentityMatch(new IdentityMatchOperationRequest
+    {
+        Body = new IdentityMatchRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type IdentityMatchResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -7252,14 +7567,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IdentityMatchRequest](Models/IdentityMatchRequest.cs)</code> | - |
+<code>[IdentityMatchOperationRequest](src/ThePlaidApi/Requests/IdentityMatchOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -7269,9 +7582,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IdentityMatchResponse](Models/IdentityMatchResponse.cs)</code>
+**OnSuccess**: <code>[IdentityMatchResponse](src/ThePlaidApi/Models/IdentityMatchResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -7282,7 +7595,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IdentityRefreshResponse&gt; IdentityRefresh(IdentityRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IdentityRefreshResponse&gt; IdentityRefresh(IdentityRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -7309,10 +7622,13 @@ As this endpoint triggers a synchronous request for fresh data, latency may be h
 ```csharp
 try
 {
-    var response = await client.IdentityRefresh(body);
+    var response = await client.IdentityRefresh(new IdentityRefreshOperationRequest
+    {
+        Body = new IdentityRefreshRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type IdentityRefreshResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -7321,14 +7637,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IdentityRefreshRequest](Models/IdentityRefreshRequest.cs)</code> | - |
+<code>[IdentityRefreshOperationRequest](src/ThePlaidApi/Requests/IdentityRefreshOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -7338,9 +7652,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IdentityRefreshResponse](Models/IdentityRefreshResponse.cs)</code>
+**OnSuccess**: <code>[IdentityRefreshResponse](src/ThePlaidApi/Models/IdentityRefreshResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -7351,7 +7665,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IdentityVerificationAutofillCreateResponse&gt; IdentityVerificationAutofillCreate(IdentityVerificationAutofillCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IdentityVerificationAutofillCreateResponse&gt; IdentityVerificationAutofillCreate(IdentityVerificationAutofillCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -7374,10 +7688,14 @@ Try to autofill an Identity Verification based on the provided phone number, dat
 ```csharp
 try
 {
-    var response = await client.IdentityVerificationAutofillCreate(body);
+    var response = await client.IdentityVerificationAutofillCreate(
+        new IdentityVerificationAutofillCreateOperationRequest
+        {
+            Body = new IdentityVerificationAutofillCreateRequest { IdentityVerificationId = "flwses_42cF1MNo42r9Xj" },
+        });
     // TODO: Handle 'response' of type IdentityVerificationAutofillCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -7386,14 +7704,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IdentityVerificationAutofillCreateRequest](Models/IdentityVerificationAutofillCreateRequest.cs)</code> | - |
+<code>[IdentityVerificationAutofillCreateOperationRequest](src/ThePlaidApi/Requests/IdentityVerificationAutofillCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -7403,9 +7719,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IdentityVerificationAutofillCreateResponse](Models/IdentityVerificationAutofillCreateResponse.cs)</code>
+**OnSuccess**: <code>[IdentityVerificationAutofillCreateResponse](src/ThePlaidApi/Models/IdentityVerificationAutofillCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -7416,7 +7732,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IdentityVerificationCreateResponse&gt; IdentityVerificationCreate(IdentityVerificationCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IdentityVerificationCreateResponse&gt; IdentityVerificationCreate(IdentityVerificationCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -7434,7 +7750,6 @@ If you don't know whether an active Identity Verification exists for a given `cl
 
 If `user_id` is not provided, you can also use this endpoint to supply information you already have collected about the user; if any of these fields are specified, the screens prompting the user to enter them will be skipped during the Link flow. If `user_id` is provided, user information can not be included in the request body. Please use the `/user/update` endpoint to update user data instead.
 
-
 </dd>
 </dl>
 
@@ -7446,10 +7761,18 @@ If `user_id` is not provided, you can also use this endpoint to supply informati
 ```csharp
 try
 {
-    var response = await client.IdentityVerificationCreate(body);
+    var response = await client.IdentityVerificationCreate(new IdentityVerificationCreateOperationRequest
+    {
+        Body = new IdentityVerificationCreateRequest
+        {
+            IsShareable = true,
+            TemplateId = "some example string",
+            GaveConsent = true,
+        },
+    });
     // TODO: Handle 'response' of type IdentityVerificationCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -7458,14 +7781,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IdentityVerificationCreateRequest](Models/IdentityVerificationCreateRequest.cs)</code> | - |
+<code>[IdentityVerificationCreateOperationRequest](src/ThePlaidApi/Requests/IdentityVerificationCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -7475,9 +7796,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IdentityVerificationCreateResponse](Models/IdentityVerificationCreateResponse.cs)</code>
+**OnSuccess**: <code>[IdentityVerificationCreateResponse](src/ThePlaidApi/Models/IdentityVerificationCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -7488,7 +7809,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IdentityVerificationGetResponse&gt; IdentityVerificationGet(IdentityVerificationGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IdentityVerificationGetResponse&gt; IdentityVerificationGet(IdentityVerificationGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -7511,10 +7832,13 @@ Retrieve a previously created Identity Verification.
 ```csharp
 try
 {
-    var response = await client.IdentityVerificationGet(body);
+    var response = await client.IdentityVerificationGet(new IdentityVerificationGetOperationRequest
+    {
+        Body = new IdentityVerificationGetRequest { IdentityVerificationId = "some example string" },
+    });
     // TODO: Handle 'response' of type IdentityVerificationGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -7523,14 +7847,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IdentityVerificationGetRequest](Models/IdentityVerificationGetRequest.cs)</code> | - |
+<code>[IdentityVerificationGetOperationRequest](src/ThePlaidApi/Requests/IdentityVerificationGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -7540,9 +7862,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IdentityVerificationGetResponse](Models/IdentityVerificationGetResponse.cs)</code>
+**OnSuccess**: <code>[IdentityVerificationGetResponse](src/ThePlaidApi/Models/IdentityVerificationGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -7553,7 +7875,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IdentityVerificationListResponse&gt; IdentityVerificationList(IdentityVerificationListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IdentityVerificationListResponse&gt; IdentityVerificationList(IdentityVerificationListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -7576,10 +7898,13 @@ Filter and list Identity Verifications created by your account
 ```csharp
 try
 {
-    var response = await client.IdentityVerificationList(body);
+    var response = await client.IdentityVerificationList(new IdentityVerificationListOperationRequest
+    {
+        Body = new IdentityVerificationListRequest { TemplateId = "some example string" },
+    });
     // TODO: Handle 'response' of type IdentityVerificationListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -7588,14 +7913,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IdentityVerificationListRequest](Models/IdentityVerificationListRequest.cs)</code> | - |
+<code>[IdentityVerificationListOperationRequest](src/ThePlaidApi/Requests/IdentityVerificationListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -7605,9 +7928,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IdentityVerificationListResponse](Models/IdentityVerificationListResponse.cs)</code>
+**OnSuccess**: <code>[IdentityVerificationListResponse](src/ThePlaidApi/Models/IdentityVerificationListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -7618,7 +7941,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IdentityVerificationRetryResponse&gt; IdentityVerificationRetry(IdentityVerificationRetryRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IdentityVerificationRetryResponse&gt; IdentityVerificationRetry(IdentityVerificationRetryOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -7641,10 +7964,18 @@ Allow a customer to retry their Identity Verification
 ```csharp
 try
 {
-    var response = await client.IdentityVerificationRetry(body);
+    var response = await client.IdentityVerificationRetry(new IdentityVerificationRetryOperationRequest
+    {
+        Body = new IdentityVerificationRetryRequest
+        {
+            ClientUserId = "some example string",
+            TemplateId = "some example string",
+            Strategy = Strategy.Reset,
+        },
+    });
     // TODO: Handle 'response' of type IdentityVerificationRetryResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -7653,14 +7984,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IdentityVerificationRetryRequest](Models/IdentityVerificationRetryRequest.cs)</code> | - |
+<code>[IdentityVerificationRetryOperationRequest](src/ThePlaidApi/Requests/IdentityVerificationRetryOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -7670,9 +7999,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IdentityVerificationRetryResponse](Models/IdentityVerificationRetryResponse.cs)</code>
+**OnSuccess**: <code>[IdentityVerificationRetryResponse](src/ThePlaidApi/Models/IdentityVerificationRetryResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -7683,7 +8012,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IncomeVerificationCreateResponse&gt; IncomeVerificationCreate(IncomeVerificationCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IncomeVerificationCreateResponse&gt; IncomeVerificationCreate(IncomeVerificationCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -7693,7 +8022,7 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-`/income/verification/create` begins the income verification process by returning an `income_verification_id`. You can then provide the `income_verification_id` to `/link/token/create` under the `income_verification` parameter in order to create a Link instance that will prompt the user to go through the income verification flow. Plaid will fire an `INCOME` webhook once the user completes the Payroll Income flow, or when the uploaded documents in the Document Income flow have finished processing. 
+`/income/verification/create` begins the income verification process by returning an `income_verification_id`. You can then provide the `income_verification_id` to `/link/token/create` under the `income_verification` parameter in order to create a Link instance that will prompt the user to go through the income verification flow. Plaid will fire an `INCOME` webhook once the user completes the Payroll Income flow, or when the uploaded documents in the Document Income flow have finished processing.
 
 </dd>
 </dl>
@@ -7706,10 +8035,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.IncomeVerificationCreate(body);
+    var response = await client.IncomeVerificationCreate(new IncomeVerificationCreateOperationRequest
+    {
+        Body = new IncomeVerificationCreateRequest { Webhook = "some example string" },
+    });
     // TODO: Handle 'response' of type IncomeVerificationCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -7718,14 +8050,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IncomeVerificationCreateRequest](Models/IncomeVerificationCreateRequest.cs)</code> | - |
+<code>[IncomeVerificationCreateOperationRequest](src/ThePlaidApi/Requests/IncomeVerificationCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -7735,9 +8065,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IncomeVerificationCreateResponse](Models/IncomeVerificationCreateResponse.cs)</code>
+**OnSuccess**: <code>[IncomeVerificationCreateResponse](src/ThePlaidApi/Models/IncomeVerificationCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -7748,7 +8078,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task IncomeVerificationDocumentsDownload(IncomeVerificationDocumentsDownloadRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task IncomeVerificationDocumentsDownload(IncomeVerificationDocumentsDownloadOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -7778,9 +8108,12 @@ The `request_id` is returned in the `Plaid-Request-ID` header.
 ```csharp
 try
 {
-    await client.IncomeVerificationDocumentsDownload(body);
+    await client.IncomeVerificationDocumentsDownload(new IncomeVerificationDocumentsDownloadOperationRequest
+    {
+        Body = new IncomeVerificationDocumentsDownloadRequest(),
+    });
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -7789,14 +8122,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IncomeVerificationDocumentsDownloadRequest](Models/IncomeVerificationDocumentsDownloadRequest.cs)</code> | - |
+<code>[IncomeVerificationDocumentsDownloadOperationRequest](src/ThePlaidApi/Requests/IncomeVerificationDocumentsDownloadOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -7808,7 +8139,7 @@ catch (SdkException<RawError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -7819,7 +8150,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IncomeVerificationPaystubsGetResponse&gt; IncomeVerificationPaystubsGet(IncomeVerificationPaystubsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IncomeVerificationPaystubsGetResponse&gt; IncomeVerificationPaystubsGet(IncomeVerificationPaystubsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -7844,10 +8175,13 @@ This endpoint has been deprecated; new integrations should use `/credit/payroll_
 ```csharp
 try
 {
-    var response = await client.IncomeVerificationPaystubsGet(body);
+    var response = await client.IncomeVerificationPaystubsGet(new IncomeVerificationPaystubsGetOperationRequest
+    {
+        Body = new IncomeVerificationPaystubsGetRequest(),
+    });
     // TODO: Handle 'response' of type IncomeVerificationPaystubsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -7856,14 +8190,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IncomeVerificationPaystubsGetRequest](Models/IncomeVerificationPaystubsGetRequest.cs)</code> | - |
+<code>[IncomeVerificationPaystubsGetOperationRequest](src/ThePlaidApi/Requests/IncomeVerificationPaystubsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -7873,9 +8205,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IncomeVerificationPaystubsGetResponse](Models/IncomeVerificationPaystubsGetResponse.cs)</code>
+**OnSuccess**: <code>[IncomeVerificationPaystubsGetResponse](src/ThePlaidApi/Models/IncomeVerificationPaystubsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -7886,7 +8218,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IncomeVerificationPrecheckResponse&gt; IncomeVerificationPrecheck(IncomeVerificationPrecheckRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IncomeVerificationPrecheckResponse&gt; IncomeVerificationPrecheck(IncomeVerificationPrecheckOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -7913,10 +8245,13 @@ This endpoint has been deprecated; new integrations should use `/credit/payroll_
 ```csharp
 try
 {
-    var response = await client.IncomeVerificationPrecheck(body);
+    var response = await client.IncomeVerificationPrecheck(new IncomeVerificationPrecheckOperationRequest
+    {
+        Body = new IncomeVerificationPrecheckRequest(),
+    });
     // TODO: Handle 'response' of type IncomeVerificationPrecheckResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -7925,14 +8260,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IncomeVerificationPrecheckRequest](Models/IncomeVerificationPrecheckRequest.cs)</code> | - |
+<code>[IncomeVerificationPrecheckOperationRequest](src/ThePlaidApi/Requests/IncomeVerificationPrecheckOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -7942,9 +8275,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IncomeVerificationPrecheckResponse](Models/IncomeVerificationPrecheckResponse.cs)</code>
+**OnSuccess**: <code>[IncomeVerificationPrecheckResponse](src/ThePlaidApi/Models/IncomeVerificationPrecheckResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -7955,7 +8288,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IncomeVerificationTaxformsGetResponse&gt; IncomeVerificationTaxformsGet(IncomeVerificationTaxformsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IncomeVerificationTaxformsGetResponse&gt; IncomeVerificationTaxformsGet(IncomeVerificationTaxformsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -7980,10 +8313,13 @@ This endpoint has been deprecated; new integrations should use `/credit/payroll_
 ```csharp
 try
 {
-    var response = await client.IncomeVerificationTaxformsGet(body);
+    var response = await client.IncomeVerificationTaxformsGet(new IncomeVerificationTaxformsGetOperationRequest
+    {
+        Body = new IncomeVerificationTaxformsGetRequest(),
+    });
     // TODO: Handle 'response' of type IncomeVerificationTaxformsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -7992,14 +8328,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IncomeVerificationTaxformsGetRequest](Models/IncomeVerificationTaxformsGetRequest.cs)</code> | - |
+<code>[IncomeVerificationTaxformsGetOperationRequest](src/ThePlaidApi/Requests/IncomeVerificationTaxformsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -8009,9 +8343,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IncomeVerificationTaxformsGetResponse](Models/IncomeVerificationTaxformsGetResponse.cs)</code>
+**OnSuccess**: <code>[IncomeVerificationTaxformsGetResponse](src/ThePlaidApi/Models/IncomeVerificationTaxformsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -8022,7 +8356,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;InstitutionsGetResponse&gt; InstitutionsGet(InstitutionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;InstitutionsGetResponse&gt; InstitutionsGet(InstitutionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -8047,10 +8381,13 @@ If there is no overlap between an institution's enabled products and a client's 
 ```csharp
 try
 {
-    var response = await client.InstitutionsGet(body);
+    var response = await client.InstitutionsGet(new InstitutionsGetOperationRequest
+    {
+        Body = new InstitutionsGetRequest { Count = 1, Offset = 1, CountryCodes = [CountryCode.Us] },
+    });
     // TODO: Handle 'response' of type InstitutionsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -8059,14 +8396,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[InstitutionsGetRequest](Models/InstitutionsGetRequest.cs)</code> | - |
+<code>[InstitutionsGetOperationRequest](src/ThePlaidApi/Requests/InstitutionsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -8076,9 +8411,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[InstitutionsGetResponse](Models/InstitutionsGetResponse.cs)</code>
+**OnSuccess**: <code>[InstitutionsGetResponse](src/ThePlaidApi/Models/InstitutionsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -8089,7 +8424,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;InstitutionsGetByIdResponse&gt; InstitutionsGetById(InstitutionsGetByIdRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;InstitutionsGetByIdResponse&gt; InstitutionsGetById(InstitutionsGetByIdOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -8103,7 +8438,6 @@ Returns a JSON response containing details on a specified financial institution 
 
 Versioning note: API versions 2019-05-29 and earlier allow use of the `public_key` parameter instead of the `client_id` and `secret` to authenticate to this endpoint. The `public_key` has been deprecated; all customers are encouraged to use `client_id` and `secret` instead.
 
-
 </dd>
 </dl>
 
@@ -8115,10 +8449,17 @@ Versioning note: API versions 2019-05-29 and earlier allow use of the `public_ke
 ```csharp
 try
 {
-    var response = await client.InstitutionsGetById(body);
+    var response = await client.InstitutionsGetById(new InstitutionsGetByIdOperationRequest
+    {
+        Body = new InstitutionsGetByIdRequest
+        {
+            InstitutionId = "some example string",
+            CountryCodes = [CountryCode.Us],
+        },
+    });
     // TODO: Handle 'response' of type InstitutionsGetByIdResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -8127,14 +8468,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[InstitutionsGetByIdRequest](Models/InstitutionsGetByIdRequest.cs)</code> | - |
+<code>[InstitutionsGetByIdOperationRequest](src/ThePlaidApi/Requests/InstitutionsGetByIdOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -8144,9 +8483,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[InstitutionsGetByIdResponse](Models/InstitutionsGetByIdResponse.cs)</code>
+**OnSuccess**: <code>[InstitutionsGetByIdResponse](src/ThePlaidApi/Models/InstitutionsGetByIdResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -8157,7 +8496,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;InstitutionsSearchResponse&gt; InstitutionsSearch(InstitutionsSearchRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;InstitutionsSearchResponse&gt; InstitutionsSearch(InstitutionsSearchOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -8171,7 +8510,6 @@ Returns a JSON response containing details for institutions that match the query
 
 Versioning note: API versions 2019-05-29 and earlier allow use of the `public_key` parameter instead of the `client_id` and `secret` parameters to authenticate to this endpoint. The `public_key` parameter has since been deprecated; all customers are encouraged to use `client_id` and `secret` instead.
 
-
 </dd>
 </dl>
 
@@ -8183,10 +8521,13 @@ Versioning note: API versions 2019-05-29 and earlier allow use of the `public_ke
 ```csharp
 try
 {
-    var response = await client.InstitutionsSearch(body);
+    var response = await client.InstitutionsSearch(new InstitutionsSearchOperationRequest
+    {
+        Body = new InstitutionsSearchRequest { Query = "some example string", CountryCodes = [CountryCode.Us] },
+    });
     // TODO: Handle 'response' of type InstitutionsSearchResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -8195,14 +8536,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[InstitutionsSearchRequest](Models/InstitutionsSearchRequest.cs)</code> | - |
+<code>[InstitutionsSearchOperationRequest](src/ThePlaidApi/Requests/InstitutionsSearchOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -8212,9 +8551,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[InstitutionsSearchResponse](Models/InstitutionsSearchResponse.cs)</code>
+**OnSuccess**: <code>[InstitutionsSearchResponse](src/ThePlaidApi/Models/InstitutionsSearchResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -8225,7 +8564,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;InvestmentsAuthGetResponse&gt; InvestmentsAuthGet(InvestmentsAuthGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;InvestmentsAuthGetResponse&gt; InvestmentsAuthGet(InvestmentsAuthGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -8248,10 +8587,13 @@ The `/investments/auth/get` endpoint allows developers to receive user-authorize
 ```csharp
 try
 {
-    var response = await client.InvestmentsAuthGet(body);
+    var response = await client.InvestmentsAuthGet(new InvestmentsAuthGetOperationRequest
+    {
+        Body = new InvestmentsAuthGetRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type InvestmentsAuthGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -8260,14 +8602,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[InvestmentsAuthGetRequest](Models/InvestmentsAuthGetRequest.cs)</code> | - |
+<code>[InvestmentsAuthGetOperationRequest](src/ThePlaidApi/Requests/InvestmentsAuthGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -8277,9 +8617,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[InvestmentsAuthGetResponse](Models/InvestmentsAuthGetResponse.cs)</code>
+**OnSuccess**: <code>[InvestmentsAuthGetResponse](src/ThePlaidApi/Models/InvestmentsAuthGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -8290,7 +8630,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;InvestmentsHoldingsGetResponse&gt; InvestmentsHoldingsGet(InvestmentsHoldingsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;InvestmentsHoldingsGetResponse&gt; InvestmentsHoldingsGet(InvestmentsHoldingsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -8313,10 +8653,13 @@ The `/investments/holdings/get` endpoint allows developers to receive user-autho
 ```csharp
 try
 {
-    var response = await client.InvestmentsHoldingsGet(body);
+    var response = await client.InvestmentsHoldingsGet(new InvestmentsHoldingsGetOperationRequest
+    {
+        Body = new InvestmentsHoldingsGetRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type InvestmentsHoldingsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -8325,14 +8668,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[InvestmentsHoldingsGetRequest](Models/InvestmentsHoldingsGetRequest.cs)</code> | - |
+<code>[InvestmentsHoldingsGetOperationRequest](src/ThePlaidApi/Requests/InvestmentsHoldingsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -8342,9 +8683,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[InvestmentsHoldingsGetResponse](Models/InvestmentsHoldingsGetResponse.cs)</code>
+**OnSuccess**: <code>[InvestmentsHoldingsGetResponse](src/ThePlaidApi/Models/InvestmentsHoldingsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -8355,7 +8696,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;InvestmentsRefreshResponse&gt; InvestmentsRefresh(InvestmentsRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;InvestmentsRefreshResponse&gt; InvestmentsRefresh(InvestmentsRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -8382,10 +8723,13 @@ As this endpoint triggers a synchronous request for fresh data, latency may be h
 ```csharp
 try
 {
-    var response = await client.InvestmentsRefresh(body);
+    var response = await client.InvestmentsRefresh(new InvestmentsRefreshOperationRequest
+    {
+        Body = new InvestmentsRefreshRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type InvestmentsRefreshResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -8394,14 +8738,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[InvestmentsRefreshRequest](Models/InvestmentsRefreshRequest.cs)</code> | - |
+<code>[InvestmentsRefreshOperationRequest](src/ThePlaidApi/Requests/InvestmentsRefreshOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -8411,9 +8753,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[InvestmentsRefreshResponse](Models/InvestmentsRefreshResponse.cs)</code>
+**OnSuccess**: <code>[InvestmentsRefreshResponse](src/ThePlaidApi/Models/InvestmentsRefreshResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -8424,7 +8766,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;InvestmentsTransactionsGetResponse&gt; InvestmentsTransactionsGet(InvestmentsTransactionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;InvestmentsTransactionsGetResponse&gt; InvestmentsTransactionsGet(InvestmentsTransactionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -8455,10 +8797,18 @@ Data returned by the asynchronous investments extraction flow (when `async_updat
 ```csharp
 try
 {
-    var response = await client.InvestmentsTransactionsGet(body);
+    var response = await client.InvestmentsTransactionsGet(new InvestmentsTransactionsGetOperationRequest
+    {
+        Body = new InvestmentsTransactionsGetRequest
+        {
+            AccessToken = "some example string",
+            StartDate = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+            EndDate = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+        },
+    });
     // TODO: Handle 'response' of type InvestmentsTransactionsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -8467,14 +8817,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[InvestmentsTransactionsGetRequest](Models/InvestmentsTransactionsGetRequest.cs)</code> | - |
+<code>[InvestmentsTransactionsGetOperationRequest](src/ThePlaidApi/Requests/InvestmentsTransactionsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -8484,9 +8832,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[InvestmentsTransactionsGetResponse](Models/InvestmentsTransactionsGetResponse.cs)</code>
+**OnSuccess**: <code>[InvestmentsTransactionsGetResponse](src/ThePlaidApi/Models/InvestmentsTransactionsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -8497,7 +8845,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IssuesGetResponse&gt; IssuesGet(IssuesGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IssuesGetResponse&gt; IssuesGet(IssuesGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -8520,10 +8868,13 @@ Retrieve detailed information about a specific `Issue`. This endpoint returns a 
 ```csharp
 try
 {
-    var response = await client.IssuesGet(body);
+    var response = await client.IssuesGet(new IssuesGetOperationRequest
+    {
+        Body = new IssuesGetRequest { IssueId = "some example string" },
+    });
     // TODO: Handle 'response' of type IssuesGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -8532,14 +8883,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IssuesGetRequest](Models/IssuesGetRequest.cs)</code> | - |
+<code>[IssuesGetOperationRequest](src/ThePlaidApi/Requests/IssuesGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -8549,9 +8898,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IssuesGetResponse](Models/IssuesGetResponse.cs)</code>
+**OnSuccess**: <code>[IssuesGetResponse](src/ThePlaidApi/Models/IssuesGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -8562,7 +8911,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IssuesSearchResponse&gt; IssuesSearch(IssuesSearchRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IssuesSearchResponse&gt; IssuesSearch(IssuesSearchOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -8585,10 +8934,10 @@ Search for an issue associated with one of the following identifiers:  `item_id`
 ```csharp
 try
 {
-    var response = await client.IssuesSearch(body);
+    var response = await client.IssuesSearch(new IssuesSearchOperationRequest { Body = new IssuesSearchRequest() });
     // TODO: Handle 'response' of type IssuesSearchResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -8597,14 +8946,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IssuesSearchRequest](Models/IssuesSearchRequest.cs)</code> | - |
+<code>[IssuesSearchOperationRequest](src/ThePlaidApi/Requests/IssuesSearchOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -8614,9 +8961,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IssuesSearchResponse](Models/IssuesSearchResponse.cs)</code>
+**OnSuccess**: <code>[IssuesSearchResponse](src/ThePlaidApi/Models/IssuesSearchResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -8627,7 +8974,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;IssuesSubscribeResponse&gt; IssuesSubscribe(IssuesSubscribeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;IssuesSubscribeResponse&gt; IssuesSubscribe(IssuesSubscribeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -8650,10 +8997,13 @@ Allows a user to subscribe to updates on a specific `Issue` using a POST method.
 ```csharp
 try
 {
-    var response = await client.IssuesSubscribe(body);
+    var response = await client.IssuesSubscribe(new IssuesSubscribeOperationRequest
+    {
+        Body = new IssuesSubscribeRequest { IssueId = "some example string", Webhook = "some example string" },
+    });
     // TODO: Handle 'response' of type IssuesSubscribeResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -8662,14 +9012,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[IssuesSubscribeRequest](Models/IssuesSubscribeRequest.cs)</code> | - |
+<code>[IssuesSubscribeOperationRequest](src/ThePlaidApi/Requests/IssuesSubscribeOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -8679,9 +9027,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[IssuesSubscribeResponse](Models/IssuesSubscribeResponse.cs)</code>
+**OnSuccess**: <code>[IssuesSubscribeResponse](src/ThePlaidApi/Models/IssuesSubscribeResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -8692,7 +9040,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ItemAccessTokenInvalidateResponse&gt; ItemAccessTokenInvalidate(ItemAccessTokenInvalidateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ItemAccessTokenInvalidateResponse&gt; ItemAccessTokenInvalidate(ItemAccessTokenInvalidateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -8706,7 +9054,6 @@ By default, the `access_token` associated with an Item does not expire and shoul
 
 You can use the `/item/access_token/invalidate` endpoint to rotate the `access_token` associated with an Item. The endpoint returns a new `access_token` and immediately invalidates the previous `access_token`.
 
-
 </dd>
 </dl>
 
@@ -8718,10 +9065,13 @@ You can use the `/item/access_token/invalidate` endpoint to rotate the `access_t
 ```csharp
 try
 {
-    var response = await client.ItemAccessTokenInvalidate(body);
+    var response = await client.ItemAccessTokenInvalidate(new ItemAccessTokenInvalidateOperationRequest
+    {
+        Body = new ItemAccessTokenInvalidateRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ItemAccessTokenInvalidateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -8730,14 +9080,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ItemAccessTokenInvalidateRequest](Models/ItemAccessTokenInvalidateRequest.cs)</code> | - |
+<code>[ItemAccessTokenInvalidateOperationRequest](src/ThePlaidApi/Requests/ItemAccessTokenInvalidateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -8747,9 +9095,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ItemAccessTokenInvalidateResponse](Models/ItemAccessTokenInvalidateResponse.cs)</code>
+**OnSuccess**: <code>[ItemAccessTokenInvalidateResponse](src/ThePlaidApi/Models/ItemAccessTokenInvalidateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -8760,7 +9108,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ItemActivityListResponse&gt; ItemActivityList(ItemActivityListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ItemActivityListResponse&gt; ItemActivityList(ItemActivityListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -8783,10 +9131,13 @@ List a historical log of user consent events
 ```csharp
 try
 {
-    var response = await client.ItemActivityList(body);
+    var response = await client.ItemActivityList(new ItemActivityListOperationRequest
+    {
+        Body = new ItemActivityListRequest(),
+    });
     // TODO: Handle 'response' of type ItemActivityListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -8795,14 +9146,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ItemActivityListRequest](Models/ItemActivityListRequest.cs)</code> | - |
+<code>[ItemActivityListOperationRequest](src/ThePlaidApi/Requests/ItemActivityListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -8812,9 +9161,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ItemActivityListResponse](Models/ItemActivityListResponse.cs)</code>
+**OnSuccess**: <code>[ItemActivityListResponse](src/ThePlaidApi/Models/ItemActivityListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -8825,7 +9174,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ItemApplicationListResponse&gt; ItemApplicationList(ItemApplicationListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ItemApplicationListResponse&gt; ItemApplicationList(ItemApplicationListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -8848,10 +9197,13 @@ List a user's connected applications
 ```csharp
 try
 {
-    var response = await client.ItemApplicationList(body);
+    var response = await client.ItemApplicationList(new ItemApplicationListOperationRequest
+    {
+        Body = new ItemApplicationListRequest(),
+    });
     // TODO: Handle 'response' of type ItemApplicationListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -8860,14 +9212,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ItemApplicationListRequest](Models/ItemApplicationListRequest.cs)</code> | - |
+<code>[ItemApplicationListOperationRequest](src/ThePlaidApi/Requests/ItemApplicationListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -8877,9 +9227,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ItemApplicationListResponse](Models/ItemApplicationListResponse.cs)</code>
+**OnSuccess**: <code>[ItemApplicationListResponse](src/ThePlaidApi/Models/ItemApplicationListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -8890,7 +9240,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ItemApplicationScopesUpdateResponse&gt; ItemApplicationScopesUpdate(ItemApplicationScopesUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ItemApplicationScopesUpdateResponse&gt; ItemApplicationScopesUpdate(ItemApplicationScopesUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -8913,10 +9263,19 @@ Enable consumers to update product access on selected accounts for an applicatio
 ```csharp
 try
 {
-    var response = await client.ItemApplicationScopesUpdate(body);
+    var response = await client.ItemApplicationScopesUpdate(new ItemApplicationScopesUpdateOperationRequest
+    {
+        Body = new ItemApplicationScopesUpdateRequest
+        {
+            AccessToken = "some example string",
+            ApplicationId = "some example string",
+            Scopes = new Scopes(),
+            Context = ScopesContext.Enrollment,
+        },
+    });
     // TODO: Handle 'response' of type ItemApplicationScopesUpdateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -8925,14 +9284,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ItemApplicationScopesUpdateRequest](Models/ItemApplicationScopesUpdateRequest.cs)</code> | - |
+<code>[ItemApplicationScopesUpdateOperationRequest](src/ThePlaidApi/Requests/ItemApplicationScopesUpdateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -8942,9 +9299,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ItemApplicationScopesUpdateResponse](Models/ItemApplicationScopesUpdateResponse.cs)</code>
+**OnSuccess**: <code>[ItemApplicationScopesUpdateResponse](src/ThePlaidApi/Models/ItemApplicationScopesUpdateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -8955,7 +9312,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ItemApplicationUnlinkResponse&gt; ItemApplicationUnlink(ItemApplicationUnlinkRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ItemApplicationUnlinkResponse&gt; ItemApplicationUnlink(ItemApplicationUnlinkOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -8982,10 +9339,17 @@ This endpoint should be called in real time as the User is unlinking an Applicat
 ```csharp
 try
 {
-    var response = await client.ItemApplicationUnlink(body);
+    var response = await client.ItemApplicationUnlink(new ItemApplicationUnlinkOperationRequest
+    {
+        Body = new ItemApplicationUnlinkRequest
+        {
+            AccessToken = "some example string",
+            ApplicationId = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type ItemApplicationUnlinkResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -8994,14 +9358,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ItemApplicationUnlinkRequest](Models/ItemApplicationUnlinkRequest.cs)</code> | - |
+<code>[ItemApplicationUnlinkOperationRequest](src/ThePlaidApi/Requests/ItemApplicationUnlinkOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -9011,9 +9373,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ItemApplicationUnlinkResponse](Models/ItemApplicationUnlinkResponse.cs)</code>
+**OnSuccess**: <code>[ItemApplicationUnlinkResponse](src/ThePlaidApi/Models/ItemApplicationUnlinkResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -9024,7 +9386,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ItemPublicTokenCreateResponse&gt; ItemCreatePublicToken(ItemPublicTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ItemPublicTokenCreateResponse&gt; ItemCreatePublicToken(ItemCreatePublicTokenRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -9053,10 +9415,13 @@ The `/item/public_token/create` endpoint is **not** used to create your initial 
 ```csharp
 try
 {
-    var response = await client.ItemCreatePublicToken(body);
+    var response = await client.ItemCreatePublicToken(new ItemCreatePublicTokenRequest
+    {
+        Body = new ItemPublicTokenCreateRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ItemPublicTokenCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -9065,14 +9430,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ItemPublicTokenCreateRequest](Models/ItemPublicTokenCreateRequest.cs)</code> | - |
+<code>[ItemCreatePublicTokenRequest](src/ThePlaidApi/Requests/ItemCreatePublicTokenRequest.cs)</code>
 
 </dd>
 </dl>
@@ -9082,9 +9445,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ItemPublicTokenCreateResponse](Models/ItemPublicTokenCreateResponse.cs)</code>
+**OnSuccess**: <code>[ItemPublicTokenCreateResponse](src/ThePlaidApi/Models/ItemPublicTokenCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -9095,7 +9458,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ItemGetResponse&gt; ItemGet(ItemGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ItemGetResponse&gt; ItemGet(ItemGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -9118,10 +9481,13 @@ Returns information about the status of an Item.
 ```csharp
 try
 {
-    var response = await client.ItemGet(body);
+    var response = await client.ItemGet(new ItemGetOperationRequest
+    {
+        Body = new ItemGetRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ItemGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -9130,14 +9496,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ItemGetRequest](Models/ItemGetRequest.cs)</code> | - |
+<code>[ItemGetOperationRequest](src/ThePlaidApi/Requests/ItemGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -9147,9 +9511,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ItemGetResponse](Models/ItemGetResponse.cs)</code>
+**OnSuccess**: <code>[ItemGetResponse](src/ThePlaidApi/Models/ItemGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -9160,7 +9524,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ItemImportResponse&gt; ItemImport(ItemImportRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ItemImportResponse&gt; ItemImport(ItemImportOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -9185,10 +9549,21 @@ Upon creating an Item via `/item/import`, Plaid will automatically begin an extr
 ```csharp
 try
 {
-    var response = await client.ItemImport(body);
+    var response = await client.ItemImport(new ItemImportOperationRequest
+    {
+        Body = new ItemImportRequest
+        {
+            Products = [Products.Assets],
+            UserAuth = new ItemImportRequestUserAuth
+            {
+                UserId = "some example string",
+                AuthToken = "some example string",
+            },
+        },
+    });
     // TODO: Handle 'response' of type ItemImportResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -9197,14 +9572,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ItemImportRequest](Models/ItemImportRequest.cs)</code> | - |
+<code>[ItemImportOperationRequest](src/ThePlaidApi/Requests/ItemImportOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -9214,9 +9587,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ItemImportResponse](Models/ItemImportResponse.cs)</code>
+**OnSuccess**: <code>[ItemImportResponse](src/ThePlaidApi/Models/ItemImportResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -9227,7 +9600,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ItemProductsTerminateResponse&gt; ItemProductsTerminate(ItemProductsTerminateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ItemProductsTerminateResponse&gt; ItemProductsTerminate(ItemProductsTerminateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -9252,10 +9625,17 @@ The `/item/products/terminate` endpoint allows you to terminate an Item. Once te
 ```csharp
 try
 {
-    var response = await client.ItemProductsTerminate(body);
+    var response = await client.ItemProductsTerminate(new ItemProductsTerminateOperationRequest
+    {
+        Body = new ItemProductsTerminateRequest
+        {
+            AccessToken = "some example string",
+            ReasonCode = ProductsTerminateReasonCode.FraudFirstParty,
+        },
+    });
     // TODO: Handle 'response' of type ItemProductsTerminateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -9264,14 +9644,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ItemProductsTerminateRequest](Models/ItemProductsTerminateRequest.cs)</code> | - |
+<code>[ItemProductsTerminateOperationRequest](src/ThePlaidApi/Requests/ItemProductsTerminateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -9281,9 +9659,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ItemProductsTerminateResponse](Models/ItemProductsTerminateResponse.cs)</code>
+**OnSuccess**: <code>[ItemProductsTerminateResponse](src/ThePlaidApi/Models/ItemProductsTerminateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -9294,7 +9672,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ItemPublicTokenExchangeResponse&gt; ItemPublicTokenExchange(ItemPublicTokenExchangeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ItemPublicTokenExchangeResponse&gt; ItemPublicTokenExchange(ItemPublicTokenExchangeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -9319,10 +9697,13 @@ The response also includes an `item_id` that should be stored with the `access_t
 ```csharp
 try
 {
-    var response = await client.ItemPublicTokenExchange(body);
+    var response = await client.ItemPublicTokenExchange(new ItemPublicTokenExchangeOperationRequest
+    {
+        Body = new ItemPublicTokenExchangeRequest { PublicToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ItemPublicTokenExchangeResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -9331,14 +9712,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ItemPublicTokenExchangeRequest](Models/ItemPublicTokenExchangeRequest.cs)</code> | - |
+<code>[ItemPublicTokenExchangeOperationRequest](src/ThePlaidApi/Requests/ItemPublicTokenExchangeOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -9348,9 +9727,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ItemPublicTokenExchangeResponse](Models/ItemPublicTokenExchangeResponse.cs)</code>
+**OnSuccess**: <code>[ItemPublicTokenExchangeResponse](src/ThePlaidApi/Models/ItemPublicTokenExchangeResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -9361,7 +9740,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ItemRemoveResponse&gt; ItemRemove(ItemRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ItemRemoveResponse&gt; ItemRemove(ItemRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -9394,10 +9773,13 @@ API versions 2019-05-29 and earlier return a `removed` boolean as part of the re
 ```csharp
 try
 {
-    var response = await client.ItemRemove(body);
+    var response = await client.ItemRemove(new ItemRemoveOperationRequest
+    {
+        Body = new ItemRemoveRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ItemRemoveResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -9406,14 +9788,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ItemRemoveRequest](Models/ItemRemoveRequest.cs)</code> | - |
+<code>[ItemRemoveOperationRequest](src/ThePlaidApi/Requests/ItemRemoveOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -9423,9 +9803,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ItemRemoveResponse](Models/ItemRemoveResponse.cs)</code>
+**OnSuccess**: <code>[ItemRemoveResponse](src/ThePlaidApi/Models/ItemRemoveResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -9436,7 +9816,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ItemWebhookUpdateResponse&gt; ItemWebhookUpdate(ItemWebhookUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ItemWebhookUpdateResponse&gt; ItemWebhookUpdate(ItemWebhookUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -9459,10 +9839,13 @@ The POST `/item/webhook/update` allows you to update the webhook URL associated 
 ```csharp
 try
 {
-    var response = await client.ItemWebhookUpdate(body);
+    var response = await client.ItemWebhookUpdate(new ItemWebhookUpdateOperationRequest
+    {
+        Body = new ItemWebhookUpdateRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ItemWebhookUpdateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -9471,14 +9854,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ItemWebhookUpdateRequest](Models/ItemWebhookUpdateRequest.cs)</code> | - |
+<code>[ItemWebhookUpdateOperationRequest](src/ThePlaidApi/Requests/ItemWebhookUpdateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -9488,9 +9869,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ItemWebhookUpdateResponse](Models/ItemWebhookUpdateResponse.cs)</code>
+**OnSuccess**: <code>[ItemWebhookUpdateResponse](src/ThePlaidApi/Models/ItemWebhookUpdateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -9501,7 +9882,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;LiabilitiesGetResponse&gt; LiabilitiesGet(LiabilitiesGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;LiabilitiesGetResponse&gt; LiabilitiesGet(LiabilitiesGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -9526,10 +9907,13 @@ The types of information returned by Liabilities can include balances and due da
 ```csharp
 try
 {
-    var response = await client.LiabilitiesGet(body);
+    var response = await client.LiabilitiesGet(new LiabilitiesGetOperationRequest
+    {
+        Body = new LiabilitiesGetRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type LiabilitiesGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -9538,14 +9922,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[LiabilitiesGetRequest](Models/LiabilitiesGetRequest.cs)</code> | - |
+<code>[LiabilitiesGetOperationRequest](src/ThePlaidApi/Requests/LiabilitiesGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -9555,9 +9937,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[LiabilitiesGetResponse](Models/LiabilitiesGetResponse.cs)</code>
+**OnSuccess**: <code>[LiabilitiesGetResponse](src/ThePlaidApi/Models/LiabilitiesGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -9568,7 +9950,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;LinkDeliveryCreateResponse&gt; LinkDeliveryCreate(LinkDeliveryCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;LinkDeliveryCreateResponse&gt; LinkDeliveryCreate(LinkDeliveryCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -9591,10 +9973,13 @@ Use the `/link_delivery/create` endpoint to create a Hosted Link session.
 ```csharp
 try
 {
-    var response = await client.LinkDeliveryCreate(body);
+    var response = await client.LinkDeliveryCreate(new LinkDeliveryCreateOperationRequest
+    {
+        Body = new LinkDeliveryCreateRequest { LinkToken = "some example string" },
+    });
     // TODO: Handle 'response' of type LinkDeliveryCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -9603,14 +9988,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[LinkDeliveryCreateRequest](Models/LinkDeliveryCreateRequest.cs)</code> | - |
+<code>[LinkDeliveryCreateOperationRequest](src/ThePlaidApi/Requests/LinkDeliveryCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -9620,9 +10003,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[LinkDeliveryCreateResponse](Models/LinkDeliveryCreateResponse.cs)</code>
+**OnSuccess**: <code>[LinkDeliveryCreateResponse](src/ThePlaidApi/Models/LinkDeliveryCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -9633,7 +10016,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;LinkDeliveryGetResponse&gt; LinkDeliveryGet(LinkDeliveryGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;LinkDeliveryGetResponse&gt; LinkDeliveryGet(LinkDeliveryGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -9656,10 +10039,13 @@ Use the `/link_delivery/get` endpoint to get the status of a Hosted Link session
 ```csharp
 try
 {
-    var response = await client.LinkDeliveryGet(body);
+    var response = await client.LinkDeliveryGet(new LinkDeliveryGetOperationRequest
+    {
+        Body = new LinkDeliveryGetRequest { LinkDeliverySessionId = "some example string" },
+    });
     // TODO: Handle 'response' of type LinkDeliveryGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -9668,14 +10054,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[LinkDeliveryGetRequest](Models/LinkDeliveryGetRequest.cs)</code> | - |
+<code>[LinkDeliveryGetOperationRequest](src/ThePlaidApi/Requests/LinkDeliveryGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -9685,9 +10069,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[LinkDeliveryGetResponse](Models/LinkDeliveryGetResponse.cs)</code>
+**OnSuccess**: <code>[LinkDeliveryGetResponse](src/ThePlaidApi/Models/LinkDeliveryGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -9698,7 +10082,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;LinkOAuthCorrelationIdExchangeResponse&gt; LinkOauthCorrelationIdExchange(LinkOAuthCorrelationIdExchangeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;LinkOAuthCorrelationIdExchangeResponse&gt; LinkOauthCorrelationIdExchange(LinkOauthCorrelationIdExchangeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -9722,10 +10106,13 @@ The `link_correlation_id` is ephemeral and expires in a brief period, after whic
 ```csharp
 try
 {
-    var response = await client.LinkOauthCorrelationIdExchange(body);
+    var response = await client.LinkOauthCorrelationIdExchange(new LinkOauthCorrelationIdExchangeOperationRequest
+    {
+        Body = new LinkOAuthCorrelationIdExchangeRequest { LinkCorrelationId = "some example string" },
+    });
     // TODO: Handle 'response' of type LinkOAuthCorrelationIdExchangeResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -9734,14 +10121,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[LinkOAuthCorrelationIdExchangeRequest](Models/LinkOAuthCorrelationIdExchangeRequest.cs)</code> | - |
+<code>[LinkOauthCorrelationIdExchangeOperationRequest](src/ThePlaidApi/Requests/LinkOauthCorrelationIdExchangeOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -9751,9 +10136,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[LinkOAuthCorrelationIdExchangeResponse](Models/LinkOAuthCorrelationIdExchangeResponse.cs)</code>
+**OnSuccess**: <code>[LinkOAuthCorrelationIdExchangeResponse](src/ThePlaidApi/Models/LinkOAuthCorrelationIdExchangeResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -9764,7 +10149,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;LinkTokenCreateResponse&gt; LinkTokenCreate(LinkTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;LinkTokenCreateResponse&gt; LinkTokenCreate(LinkTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -9789,10 +10174,18 @@ A `link_token` generated by `/link/token/create` is also used to initialize othe
 ```csharp
 try
 {
-    var response = await client.LinkTokenCreate(body);
+    var response = await client.LinkTokenCreate(new LinkTokenCreateOperationRequest
+    {
+        Body = new LinkTokenCreateRequest
+        {
+            ClientName = "some example string",
+            Language = "some example string",
+            CountryCodes = [CountryCode.Us],
+        },
+    });
     // TODO: Handle 'response' of type LinkTokenCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -9801,14 +10194,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[LinkTokenCreateRequest](Models/LinkTokenCreateRequest.cs)</code> | - |
+<code>[LinkTokenCreateOperationRequest](src/ThePlaidApi/Requests/LinkTokenCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -9818,9 +10209,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[LinkTokenCreateResponse](Models/LinkTokenCreateResponse.cs)</code>
+**OnSuccess**: <code>[LinkTokenCreateResponse](src/ThePlaidApi/Models/LinkTokenCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -9831,7 +10222,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;LinkTokenGetResponse&gt; LinkTokenGet(LinkTokenGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;LinkTokenGetResponse&gt; LinkTokenGet(LinkTokenGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -9856,10 +10247,13 @@ By default, this endpoint will only return complete event data for Hosted Link s
 ```csharp
 try
 {
-    var response = await client.LinkTokenGet(body);
+    var response = await client.LinkTokenGet(new LinkTokenGetOperationRequest
+    {
+        Body = new LinkTokenGetRequest { LinkToken = "some example string" },
+    });
     // TODO: Handle 'response' of type LinkTokenGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -9868,14 +10262,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[LinkTokenGetRequest](Models/LinkTokenGetRequest.cs)</code> | - |
+<code>[LinkTokenGetOperationRequest](src/ThePlaidApi/Requests/LinkTokenGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -9885,9 +10277,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[LinkTokenGetResponse](Models/LinkTokenGetResponse.cs)</code>
+**OnSuccess**: <code>[LinkTokenGetResponse](src/ThePlaidApi/Models/LinkTokenGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -9898,7 +10290,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;NetworkStatusGetResponse&gt; NetworkStatusGet(NetworkStatusGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;NetworkStatusGetResponse&gt; NetworkStatusGet(NetworkStatusGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -9925,10 +10317,13 @@ For instructions on performing a frontend eligibility check, see the [Layer docu
 ```csharp
 try
 {
-    var response = await client.NetworkStatusGet(body);
+    var response = await client.NetworkStatusGet(new NetworkStatusGetOperationRequest
+    {
+        Body = new NetworkStatusGetRequest { User = new NetworkStatusGetUser { PhoneNumber = "some example string" } },
+    });
     // TODO: Handle 'response' of type NetworkStatusGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -9937,14 +10332,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[NetworkStatusGetRequest](Models/NetworkStatusGetRequest.cs)</code> | - |
+<code>[NetworkStatusGetOperationRequest](src/ThePlaidApi/Requests/NetworkStatusGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -9954,9 +10347,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[NetworkStatusGetResponse](Models/NetworkStatusGetResponse.cs)</code>
+**OnSuccess**: <code>[NetworkStatusGetResponse](src/ThePlaidApi/Models/NetworkStatusGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -9967,7 +10360,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;OAuthIntrospectResponse&gt; OauthIntrospect(OAuthIntrospectRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;OAuthIntrospectResponse&gt; OauthIntrospect(OauthIntrospectOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -9992,10 +10385,13 @@ Note: This endpoint supports `Content-Type: application/x-www-form-urlencoded` a
 ```csharp
 try
 {
-    var response = await client.OauthIntrospect(body);
+    var response = await client.OauthIntrospect(new OauthIntrospectOperationRequest
+    {
+        Body = new OAuthIntrospectRequest { Token = "some example string" },
+    });
     // TODO: Handle 'response' of type OAuthIntrospectResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -10004,14 +10400,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[OAuthIntrospectRequest](Models/OAuthIntrospectRequest.cs)</code> | - |
+<code>[OauthIntrospectOperationRequest](src/ThePlaidApi/Requests/OauthIntrospectOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -10021,9 +10415,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[OAuthIntrospectResponse](Models/OAuthIntrospectResponse.cs)</code>
+**OnSuccess**: <code>[OAuthIntrospectResponse](src/ThePlaidApi/Models/OAuthIntrospectResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -10034,7 +10428,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;OAuthRevokeResponse&gt; OauthRevoke(OAuthRevokeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;OAuthRevokeResponse&gt; OauthRevoke(OauthRevokeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -10059,10 +10453,13 @@ Note: This endpoint supports `Content-Type: application/x-www-form-urlencoded` a
 ```csharp
 try
 {
-    var response = await client.OauthRevoke(body);
+    var response = await client.OauthRevoke(new OauthRevokeOperationRequest
+    {
+        Body = new OAuthRevokeRequest { Token = "some example string" },
+    });
     // TODO: Handle 'response' of type OAuthRevokeResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -10071,14 +10468,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[OAuthRevokeRequest](Models/OAuthRevokeRequest.cs)</code> | - |
+<code>[OauthRevokeOperationRequest](src/ThePlaidApi/Requests/OauthRevokeOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -10088,9 +10483,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[OAuthRevokeResponse](Models/OAuthRevokeResponse.cs)</code>
+**OnSuccess**: <code>[OAuthRevokeResponse](src/ThePlaidApi/Models/OAuthRevokeResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -10101,7 +10496,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;OAuthTokenResponse&gt; OauthToken(OAuthTokenRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;OAuthTokenResponse&gt; OauthToken(OauthTokenOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -10124,10 +10519,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.OauthToken(body);
+    var response = await client.OauthToken(new OauthTokenOperationRequest
+    {
+        Body = new OAuthTokenRequest { GrantType = OAuthGrantType.RefreshToken },
+    });
     // TODO: Handle 'response' of type OAuthTokenResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -10136,14 +10534,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[OAuthTokenRequest](Models/OAuthTokenRequest.cs)</code> | - |
+<code>[OauthTokenOperationRequest](src/ThePlaidApi/Requests/OauthTokenOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -10153,9 +10549,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[OAuthTokenResponse](Models/OAuthTokenResponse.cs)</code>
+**OnSuccess**: <code>[OAuthTokenResponse](src/ThePlaidApi/Models/OAuthTokenResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -10166,7 +10562,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PartnerCustomerCreateResponse&gt; PartnerCustomerCreate(PartnerCustomerCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PartnerCustomerCreateResponse&gt; PartnerCustomerCreate(PartnerCustomerCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -10189,10 +10585,53 @@ The `/partner/customer/create` endpoint is used by reseller partners to create e
 ```csharp
 try
 {
-    var response = await client.PartnerCustomerCreate(body);
+    var response = await client.PartnerCustomerCreate(new PartnerCustomerCreateOperationRequest
+    {
+        Body = new PartnerCustomerCreateRequest
+        {
+            ClientId = "7f57eb3d2a9j6480121fx361",
+            Secret = "79g03eoofwl8240v776r2h667442119",
+            CompanyName = "Plaid",
+            IsDiligenceAttested = true,
+            Products = [Products.Auth, Products.Identity],
+            CreateLinkCustomization = true,
+            LegalEntityName = "Plaid",
+            Website = "plaid.com",
+            ApplicationName = "Plaid",
+            TechnicalContact = new PartnerEndCustomerTechnicalContact
+            {
+                GivenName = "Alice",
+                FamilyName = "Smith",
+                Email = "alice.smith@example.com",
+            },
+            BillingContact = new PartnerEndCustomerBillingContact
+            {
+                GivenName = "Bob",
+                FamilyName = "Jones",
+                Email = "bob.jones@example.com",
+            },
+            CustomerSupportInfo = new PartnerEndCustomerCustomerSupportInfo
+            {
+                Email = "support@example.com",
+                PhoneNumber = "1234567890",
+                ContactUrl = "example.com/contact",
+                LinkUpdateUrl = "example.com/update",
+            },
+            Address = new PartnerEndCustomerAddress
+            {
+                City = "New York",
+                Street = "123 Main St",
+                Region = "NY",
+                PostalCode = "12345",
+                CountryCode = "US",
+            },
+            IsBankAddendumCompleted = true,
+            RedirectUris = ["http://localhost/oauth.html", "https://www.example.com/oauth.html"],
+        },
+    });
     // TODO: Handle 'response' of type PartnerCustomerCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -10201,14 +10640,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PartnerCustomerCreateRequest](Models/PartnerCustomerCreateRequest.cs)</code> | - |
+<code>[PartnerCustomerCreateOperationRequest](src/ThePlaidApi/Requests/PartnerCustomerCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -10218,9 +10655,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PartnerCustomerCreateResponse](Models/PartnerCustomerCreateResponse.cs)</code>
+**OnSuccess**: <code>[PartnerCustomerCreateResponse](src/ThePlaidApi/Models/PartnerCustomerCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -10231,7 +10668,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PartnerCustomerEnableResponse&gt; PartnerCustomerEnable(PartnerCustomerEnableRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PartnerCustomerEnableResponse&gt; PartnerCustomerEnable(PartnerCustomerEnableOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -10254,10 +10691,18 @@ The `/partner/customer/enable` endpoint is used by reseller partners to enable a
 ```csharp
 try
 {
-    var response = await client.PartnerCustomerEnable(body);
+    var response = await client.PartnerCustomerEnable(new PartnerCustomerEnableOperationRequest
+    {
+        Body = new PartnerCustomerEnableRequest
+        {
+            ClientId = "7f57eb3d2a9j6480121fx361",
+            Secret = "79g03eoofwl8240v776r2h667442119",
+            EndCustomerClientId = "7f57eb3d2a9j6480121fx361",
+        },
+    });
     // TODO: Handle 'response' of type PartnerCustomerEnableResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -10266,14 +10711,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PartnerCustomerEnableRequest](Models/PartnerCustomerEnableRequest.cs)</code> | - |
+<code>[PartnerCustomerEnableOperationRequest](src/ThePlaidApi/Requests/PartnerCustomerEnableOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -10283,9 +10726,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PartnerCustomerEnableResponse](Models/PartnerCustomerEnableResponse.cs)</code>
+**OnSuccess**: <code>[PartnerCustomerEnableResponse](src/ThePlaidApi/Models/PartnerCustomerEnableResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -10296,7 +10739,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PartnerCustomerGetResponse&gt; PartnerCustomerGet(PartnerCustomerGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PartnerCustomerGetResponse&gt; PartnerCustomerGet(PartnerCustomerGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -10319,10 +10762,18 @@ The `/partner/customer/get` endpoint is used by reseller partners to retrieve da
 ```csharp
 try
 {
-    var response = await client.PartnerCustomerGet(body);
+    var response = await client.PartnerCustomerGet(new PartnerCustomerGetOperationRequest
+    {
+        Body = new PartnerCustomerGetRequest
+        {
+            ClientId = "7f57eb3d2a9j6480121fx361",
+            Secret = "79g03eoofwl8240v776r2h667442119",
+            EndCustomerClientId = "7f57eb3d2a9j6480121fx361",
+        },
+    });
     // TODO: Handle 'response' of type PartnerCustomerGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -10331,14 +10782,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PartnerCustomerGetRequest](Models/PartnerCustomerGetRequest.cs)</code> | - |
+<code>[PartnerCustomerGetOperationRequest](src/ThePlaidApi/Requests/PartnerCustomerGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -10348,9 +10797,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PartnerCustomerGetResponse](Models/PartnerCustomerGetResponse.cs)</code>
+**OnSuccess**: <code>[PartnerCustomerGetResponse](src/ThePlaidApi/Models/PartnerCustomerGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -10361,7 +10810,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PartnerCustomerOAuthInstitutionsGetResponse&gt; PartnerCustomerOauthInstitutionsGet(PartnerCustomerOAuthInstitutionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PartnerCustomerOAuthInstitutionsGetResponse&gt; PartnerCustomerOauthInstitutionsGet(PartnerCustomerOauthInstitutionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -10384,10 +10833,19 @@ The `/partner/customer/oauth_institutions/get` endpoint is used by reseller part
 ```csharp
 try
 {
-    var response = await client.PartnerCustomerOauthInstitutionsGet(body);
+    var response = await client.PartnerCustomerOauthInstitutionsGet(
+        new PartnerCustomerOauthInstitutionsGetOperationRequest
+        {
+            Body = new PartnerCustomerOAuthInstitutionsGetRequest
+            {
+                ClientId = "7f57eb3d2a9j6480121fx361",
+                Secret = "79g03eoofwl8240v776r2h667442119",
+                EndCustomerClientId = "7f57eb3d2a9j6480121fx361",
+            },
+        });
     // TODO: Handle 'response' of type PartnerCustomerOAuthInstitutionsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -10396,14 +10854,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PartnerCustomerOAuthInstitutionsGetRequest](Models/PartnerCustomerOAuthInstitutionsGetRequest.cs)</code> | - |
+<code>[PartnerCustomerOauthInstitutionsGetOperationRequest](src/ThePlaidApi/Requests/PartnerCustomerOauthInstitutionsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -10413,9 +10869,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PartnerCustomerOAuthInstitutionsGetResponse](Models/PartnerCustomerOAuthInstitutionsGetResponse.cs)</code>
+**OnSuccess**: <code>[PartnerCustomerOAuthInstitutionsGetResponse](src/ThePlaidApi/Models/PartnerCustomerOAuthInstitutionsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -10426,7 +10882,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PartnerCustomerRemoveResponse&gt; PartnerCustomerRemove(PartnerCustomerRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PartnerCustomerRemoveResponse&gt; PartnerCustomerRemove(PartnerCustomerRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -10449,10 +10905,18 @@ The `/partner/customer/remove` endpoint is used by reseller partners to remove a
 ```csharp
 try
 {
-    var response = await client.PartnerCustomerRemove(body);
+    var response = await client.PartnerCustomerRemove(new PartnerCustomerRemoveOperationRequest
+    {
+        Body = new PartnerCustomerRemoveRequest
+        {
+            ClientId = "7f57eb3d2a9j6480121fx361",
+            Secret = "79g03eoofwl8240v776r2h667442119",
+            EndCustomerClientId = "7f57eb3d2a9j6480121fx361",
+        },
+    });
     // TODO: Handle 'response' of type PartnerCustomerRemoveResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -10461,14 +10925,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PartnerCustomerRemoveRequest](Models/PartnerCustomerRemoveRequest.cs)</code> | - |
+<code>[PartnerCustomerRemoveOperationRequest](src/ThePlaidApi/Requests/PartnerCustomerRemoveOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -10478,9 +10940,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PartnerCustomerRemoveResponse](Models/PartnerCustomerRemoveResponse.cs)</code>
+**OnSuccess**: <code>[PartnerCustomerRemoveResponse](src/ThePlaidApi/Models/PartnerCustomerRemoveResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -10491,7 +10953,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PaymentInitiationConsentCreateResponse&gt; PaymentInitiationConsentCreate(PaymentInitiationConsentCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PaymentInitiationConsentCreateResponse&gt; PaymentInitiationConsentCreate(PaymentInitiationConsentCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -10516,10 +10978,29 @@ Consents can be limited in time and scope, and have constraints that describe li
 ```csharp
 try
 {
-    var response = await client.PaymentInitiationConsentCreate(body);
+    var response = await client.PaymentInitiationConsentCreate(new PaymentInitiationConsentCreateOperationRequest
+    {
+        Body = new PaymentInitiationConsentCreateRequest
+        {
+            RecipientId = "some example string",
+            Reference = "some example string",
+            Constraints = new PaymentInitiationConsentConstraints
+            {
+                MaxPaymentAmount = new PaymentAmount { Currency = PaymentAmountCurrency.Gbp, Value = 1.5d },
+                PeriodicAmounts = [
+                    new PaymentConsentPeriodicAmount
+                    {
+                        Amount = new PaymentAmount { Currency = currency, Value = value },
+                        Interval = PaymentConsentPeriodicInterval.Day,
+                        Alignment = PaymentConsentPeriodicAlignment.Calendar,
+                    },
+                ],
+            },
+        },
+    });
     // TODO: Handle 'response' of type PaymentInitiationConsentCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -10528,14 +11009,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PaymentInitiationConsentCreateRequest](Models/PaymentInitiationConsentCreateRequest.cs)</code> | - |
+<code>[PaymentInitiationConsentCreateOperationRequest](src/ThePlaidApi/Requests/PaymentInitiationConsentCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -10545,9 +11024,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PaymentInitiationConsentCreateResponse](Models/PaymentInitiationConsentCreateResponse.cs)</code>
+**OnSuccess**: <code>[PaymentInitiationConsentCreateResponse](src/ThePlaidApi/Models/PaymentInitiationConsentCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -10558,7 +11037,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PaymentInitiationConsentGetResponse&gt; PaymentInitiationConsentGet(PaymentInitiationConsentGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PaymentInitiationConsentGetResponse&gt; PaymentInitiationConsentGet(PaymentInitiationConsentGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -10581,10 +11060,13 @@ The `/payment_initiation/consent/get` endpoint can be used to check the status o
 ```csharp
 try
 {
-    var response = await client.PaymentInitiationConsentGet(body);
+    var response = await client.PaymentInitiationConsentGet(new PaymentInitiationConsentGetOperationRequest
+    {
+        Body = new PaymentInitiationConsentGetRequest { ConsentId = "some example string" },
+    });
     // TODO: Handle 'response' of type PaymentInitiationConsentGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -10593,14 +11075,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PaymentInitiationConsentGetRequest](Models/PaymentInitiationConsentGetRequest.cs)</code> | - |
+<code>[PaymentInitiationConsentGetOperationRequest](src/ThePlaidApi/Requests/PaymentInitiationConsentGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -10610,9 +11090,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PaymentInitiationConsentGetResponse](Models/PaymentInitiationConsentGetResponse.cs)</code>
+**OnSuccess**: <code>[PaymentInitiationConsentGetResponse](src/ThePlaidApi/Models/PaymentInitiationConsentGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -10623,7 +11103,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PaymentInitiationConsentPaymentExecuteResponse&gt; PaymentInitiationConsentPaymentExecute(PaymentInitiationConsentPaymentExecuteRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PaymentInitiationConsentPaymentExecuteResponse&gt; PaymentInitiationConsentPaymentExecute(PaymentInitiationConsentPaymentExecuteOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -10646,10 +11126,19 @@ The `/payment_initiation/consent/payment/execute` endpoint can be used to execut
 ```csharp
 try
 {
-    var response = await client.PaymentInitiationConsentPaymentExecute(body);
+    var response = await client.PaymentInitiationConsentPaymentExecute(
+        new PaymentInitiationConsentPaymentExecuteOperationRequest
+        {
+            Body = new PaymentInitiationConsentPaymentExecuteRequest
+            {
+                ConsentId = "some example string",
+                Amount = new PaymentAmount { Currency = PaymentAmountCurrency.Gbp, Value = 1.5d },
+                IdempotencyKey = "some example string",
+            },
+        });
     // TODO: Handle 'response' of type PaymentInitiationConsentPaymentExecuteResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -10658,14 +11147,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PaymentInitiationConsentPaymentExecuteRequest](Models/PaymentInitiationConsentPaymentExecuteRequest.cs)</code> | - |
+<code>[PaymentInitiationConsentPaymentExecuteOperationRequest](src/ThePlaidApi/Requests/PaymentInitiationConsentPaymentExecuteOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -10675,9 +11162,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PaymentInitiationConsentPaymentExecuteResponse](Models/PaymentInitiationConsentPaymentExecuteResponse.cs)</code>
+**OnSuccess**: <code>[PaymentInitiationConsentPaymentExecuteResponse](src/ThePlaidApi/Models/PaymentInitiationConsentPaymentExecuteResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -10688,7 +11175,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PaymentInitiationConsentRevokeResponse&gt; PaymentInitiationConsentRevoke(PaymentInitiationConsentRevokeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PaymentInitiationConsentRevokeResponse&gt; PaymentInitiationConsentRevoke(PaymentInitiationConsentRevokeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -10711,10 +11198,13 @@ The `/payment_initiation/consent/revoke` endpoint can be used to revoke the paym
 ```csharp
 try
 {
-    var response = await client.PaymentInitiationConsentRevoke(body);
+    var response = await client.PaymentInitiationConsentRevoke(new PaymentInitiationConsentRevokeOperationRequest
+    {
+        Body = new PaymentInitiationConsentRevokeRequest { ConsentId = "some example string" },
+    });
     // TODO: Handle 'response' of type PaymentInitiationConsentRevokeResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -10723,14 +11213,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PaymentInitiationConsentRevokeRequest](Models/PaymentInitiationConsentRevokeRequest.cs)</code> | - |
+<code>[PaymentInitiationConsentRevokeOperationRequest](src/ThePlaidApi/Requests/PaymentInitiationConsentRevokeOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -10740,9 +11228,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PaymentInitiationConsentRevokeResponse](Models/PaymentInitiationConsentRevokeResponse.cs)</code>
+**OnSuccess**: <code>[PaymentInitiationConsentRevokeResponse](src/ThePlaidApi/Models/PaymentInitiationConsentRevokeResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -10753,7 +11241,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PaymentInitiationPaymentCreateResponse&gt; PaymentInitiationPaymentCreate(PaymentInitiationPaymentCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PaymentInitiationPaymentCreateResponse&gt; PaymentInitiationPaymentCreate(PaymentInitiationPaymentCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -10778,10 +11266,18 @@ Standing orders (recurring payments) must be denominated in GBP and can only be 
 ```csharp
 try
 {
-    var response = await client.PaymentInitiationPaymentCreate(body);
+    var response = await client.PaymentInitiationPaymentCreate(new PaymentInitiationPaymentCreateOperationRequest
+    {
+        Body = new PaymentInitiationPaymentCreateRequest
+        {
+            RecipientId = "some example string",
+            Reference = "some example string",
+            Amount = new PaymentAmount { Currency = PaymentAmountCurrency.Gbp, Value = 1.5d },
+        },
+    });
     // TODO: Handle 'response' of type PaymentInitiationPaymentCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -10790,14 +11286,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PaymentInitiationPaymentCreateRequest](Models/PaymentInitiationPaymentCreateRequest.cs)</code> | - |
+<code>[PaymentInitiationPaymentCreateOperationRequest](src/ThePlaidApi/Requests/PaymentInitiationPaymentCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -10807,9 +11301,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PaymentInitiationPaymentCreateResponse](Models/PaymentInitiationPaymentCreateResponse.cs)</code>
+**OnSuccess**: <code>[PaymentInitiationPaymentCreateResponse](src/ThePlaidApi/Models/PaymentInitiationPaymentCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -10820,7 +11314,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PaymentInitiationPaymentGetResponse&gt; PaymentInitiationPaymentGet(PaymentInitiationPaymentGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PaymentInitiationPaymentGetResponse&gt; PaymentInitiationPaymentGet(PaymentInitiationPaymentGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -10845,10 +11339,13 @@ Polling for status updates in Production is highly discouraged. Repeatedly calli
 ```csharp
 try
 {
-    var response = await client.PaymentInitiationPaymentGet(body);
+    var response = await client.PaymentInitiationPaymentGet(new PaymentInitiationPaymentGetOperationRequest
+    {
+        Body = new PaymentInitiationPaymentGetRequest { PaymentId = "some example string" },
+    });
     // TODO: Handle 'response' of type PaymentInitiationPaymentGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -10857,14 +11354,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PaymentInitiationPaymentGetRequest](Models/PaymentInitiationPaymentGetRequest.cs)</code> | - |
+<code>[PaymentInitiationPaymentGetOperationRequest](src/ThePlaidApi/Requests/PaymentInitiationPaymentGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -10874,9 +11369,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PaymentInitiationPaymentGetResponse](Models/PaymentInitiationPaymentGetResponse.cs)</code>
+**OnSuccess**: <code>[PaymentInitiationPaymentGetResponse](src/ThePlaidApi/Models/PaymentInitiationPaymentGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -10887,7 +11382,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PaymentInitiationPaymentListResponse&gt; PaymentInitiationPaymentList(PaymentInitiationPaymentListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PaymentInitiationPaymentListResponse&gt; PaymentInitiationPaymentList(PaymentInitiationPaymentListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -10910,10 +11405,13 @@ The `/payment_initiation/payment/list` endpoint can be used to retrieve all crea
 ```csharp
 try
 {
-    var response = await client.PaymentInitiationPaymentList(body);
+    var response = await client.PaymentInitiationPaymentList(new PaymentInitiationPaymentListOperationRequest
+    {
+        Body = new PaymentInitiationPaymentListRequest(),
+    });
     // TODO: Handle 'response' of type PaymentInitiationPaymentListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -10922,14 +11420,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PaymentInitiationPaymentListRequest](Models/PaymentInitiationPaymentListRequest.cs)</code> | - |
+<code>[PaymentInitiationPaymentListOperationRequest](src/ThePlaidApi/Requests/PaymentInitiationPaymentListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -10939,9 +11435,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PaymentInitiationPaymentListResponse](Models/PaymentInitiationPaymentListResponse.cs)</code>
+**OnSuccess**: <code>[PaymentInitiationPaymentListResponse](src/ThePlaidApi/Models/PaymentInitiationPaymentListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -10952,7 +11448,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PaymentInitiationPaymentReverseResponse&gt; PaymentInitiationPaymentReverse(PaymentInitiationPaymentReverseRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PaymentInitiationPaymentReverseResponse&gt; PaymentInitiationPaymentReverse(PaymentInitiationPaymentReverseOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -10976,7 +11472,6 @@ so that this account can be used to initiate the refund.
 Providing counterparty information such as date of birth and address increases
 the likelihood of refund being successful without human intervention.
 
-
 </dd>
 </dl>
 
@@ -10988,10 +11483,18 @@ the likelihood of refund being successful without human intervention.
 ```csharp
 try
 {
-    var response = await client.PaymentInitiationPaymentReverse(body);
+    var response = await client.PaymentInitiationPaymentReverse(new PaymentInitiationPaymentReverseOperationRequest
+    {
+        Body = new PaymentInitiationPaymentReverseRequest
+        {
+            PaymentId = "some example string",
+            IdempotencyKey = "some example string",
+            Reference = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type PaymentInitiationPaymentReverseResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11000,14 +11503,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PaymentInitiationPaymentReverseRequest](Models/PaymentInitiationPaymentReverseRequest.cs)</code> | - |
+<code>[PaymentInitiationPaymentReverseOperationRequest](src/ThePlaidApi/Requests/PaymentInitiationPaymentReverseOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -11017,9 +11518,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PaymentInitiationPaymentReverseResponse](Models/PaymentInitiationPaymentReverseResponse.cs)</code>
+**OnSuccess**: <code>[PaymentInitiationPaymentReverseResponse](src/ThePlaidApi/Models/PaymentInitiationPaymentReverseResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -11030,7 +11531,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PaymentInitiationRecipientCreateResponse&gt; PaymentInitiationRecipientCreate(PaymentInitiationRecipientCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PaymentInitiationRecipientCreateResponse&gt; PaymentInitiationRecipientCreate(PaymentInitiationRecipientCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -11046,7 +11547,6 @@ It is recommended to use `bacs` in the UK and `iban` in EU.
 
 The endpoint is idempotent: if a developer has already made a request with the same payment details, Plaid will return the same `recipient_id`.
 
-
 </dd>
 </dl>
 
@@ -11058,10 +11558,13 @@ The endpoint is idempotent: if a developer has already made a request with the s
 ```csharp
 try
 {
-    var response = await client.PaymentInitiationRecipientCreate(body);
+    var response = await client.PaymentInitiationRecipientCreate(new PaymentInitiationRecipientCreateOperationRequest
+    {
+        Body = new PaymentInitiationRecipientCreateRequest { Name = "some example string" },
+    });
     // TODO: Handle 'response' of type PaymentInitiationRecipientCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11070,14 +11573,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PaymentInitiationRecipientCreateRequest](Models/PaymentInitiationRecipientCreateRequest.cs)</code> | - |
+<code>[PaymentInitiationRecipientCreateOperationRequest](src/ThePlaidApi/Requests/PaymentInitiationRecipientCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -11087,9 +11588,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PaymentInitiationRecipientCreateResponse](Models/PaymentInitiationRecipientCreateResponse.cs)</code>
+**OnSuccess**: <code>[PaymentInitiationRecipientCreateResponse](src/ThePlaidApi/Models/PaymentInitiationRecipientCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -11100,7 +11601,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PaymentInitiationRecipientGetResponse&gt; PaymentInitiationRecipientGet(PaymentInitiationRecipientGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PaymentInitiationRecipientGetResponse&gt; PaymentInitiationRecipientGet(PaymentInitiationRecipientGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -11123,10 +11624,13 @@ Get details about a payment recipient you have previously created.
 ```csharp
 try
 {
-    var response = await client.PaymentInitiationRecipientGet(body);
+    var response = await client.PaymentInitiationRecipientGet(new PaymentInitiationRecipientGetOperationRequest
+    {
+        Body = new PaymentInitiationRecipientGetRequest { RecipientId = "some example string" },
+    });
     // TODO: Handle 'response' of type PaymentInitiationRecipientGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11135,14 +11639,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PaymentInitiationRecipientGetRequest](Models/PaymentInitiationRecipientGetRequest.cs)</code> | - |
+<code>[PaymentInitiationRecipientGetOperationRequest](src/ThePlaidApi/Requests/PaymentInitiationRecipientGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -11152,9 +11654,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PaymentInitiationRecipientGetResponse](Models/PaymentInitiationRecipientGetResponse.cs)</code>
+**OnSuccess**: <code>[PaymentInitiationRecipientGetResponse](src/ThePlaidApi/Models/PaymentInitiationRecipientGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -11165,7 +11667,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PaymentInitiationRecipientListResponse&gt; PaymentInitiationRecipientList(PaymentInitiationRecipientListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PaymentInitiationRecipientListResponse&gt; PaymentInitiationRecipientList(PaymentInitiationRecipientListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -11188,10 +11690,13 @@ The `/payment_initiation/recipient/list` endpoint lists the payment recipients t
 ```csharp
 try
 {
-    var response = await client.PaymentInitiationRecipientList(body);
+    var response = await client.PaymentInitiationRecipientList(new PaymentInitiationRecipientListOperationRequest
+    {
+        Body = new PaymentInitiationRecipientListRequest(),
+    });
     // TODO: Handle 'response' of type PaymentInitiationRecipientListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11200,14 +11705,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PaymentInitiationRecipientListRequest](Models/PaymentInitiationRecipientListRequest.cs)</code> | - |
+<code>[PaymentInitiationRecipientListOperationRequest](src/ThePlaidApi/Requests/PaymentInitiationRecipientListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -11217,9 +11720,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PaymentInitiationRecipientListResponse](Models/PaymentInitiationRecipientListResponse.cs)</code>
+**OnSuccess**: <code>[PaymentInitiationRecipientListResponse](src/ThePlaidApi/Models/PaymentInitiationRecipientListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -11230,7 +11733,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PaymentProfileCreateResponse&gt; PaymentProfileCreate(PaymentProfileCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PaymentProfileCreateResponse&gt; PaymentProfileCreate(PaymentProfileCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -11255,10 +11758,13 @@ You can then use the `payment_profile_token` when creating transfers using `/tra
 ```csharp
 try
 {
-    var response = await client.PaymentProfileCreate(body);
+    var response = await client.PaymentProfileCreate(new PaymentProfileCreateOperationRequest
+    {
+        Body = new PaymentProfileCreateRequest(),
+    });
     // TODO: Handle 'response' of type PaymentProfileCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11267,14 +11773,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PaymentProfileCreateRequest](Models/PaymentProfileCreateRequest.cs)</code> | - |
+<code>[PaymentProfileCreateOperationRequest](src/ThePlaidApi/Requests/PaymentProfileCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -11284,9 +11788,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PaymentProfileCreateResponse](Models/PaymentProfileCreateResponse.cs)</code>
+**OnSuccess**: <code>[PaymentProfileCreateResponse](src/ThePlaidApi/Models/PaymentProfileCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -11297,7 +11801,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PaymentProfileGetResponse&gt; PaymentProfileGet(PaymentProfileGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PaymentProfileGetResponse&gt; PaymentProfileGet(PaymentProfileGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -11320,10 +11824,13 @@ Use `/payment_profile/get` endpoint to get the status of a given Payment Profile
 ```csharp
 try
 {
-    var response = await client.PaymentProfileGet(body);
+    var response = await client.PaymentProfileGet(new PaymentProfileGetOperationRequest
+    {
+        Body = new PaymentProfileGetRequest { PaymentProfileToken = "some example string" },
+    });
     // TODO: Handle 'response' of type PaymentProfileGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11332,14 +11839,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PaymentProfileGetRequest](Models/PaymentProfileGetRequest.cs)</code> | - |
+<code>[PaymentProfileGetOperationRequest](src/ThePlaidApi/Requests/PaymentProfileGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -11349,9 +11854,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PaymentProfileGetResponse](Models/PaymentProfileGetResponse.cs)</code>
+**OnSuccess**: <code>[PaymentProfileGetResponse](src/ThePlaidApi/Models/PaymentProfileGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -11362,7 +11867,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;PaymentProfileRemoveResponse&gt; PaymentProfileRemove(PaymentProfileRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;PaymentProfileRemoveResponse&gt; PaymentProfileRemove(PaymentProfileRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -11385,10 +11890,13 @@ Use the `/payment_profile/remove` endpoint to remove a given Payment Profile. On
 ```csharp
 try
 {
-    var response = await client.PaymentProfileRemove(body);
+    var response = await client.PaymentProfileRemove(new PaymentProfileRemoveOperationRequest
+    {
+        Body = new PaymentProfileRemoveRequest { PaymentProfileToken = "some example string" },
+    });
     // TODO: Handle 'response' of type PaymentProfileRemoveResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11397,14 +11905,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[PaymentProfileRemoveRequest](Models/PaymentProfileRemoveRequest.cs)</code> | - |
+<code>[PaymentProfileRemoveOperationRequest](src/ThePlaidApi/Requests/PaymentProfileRemoveOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -11414,9 +11920,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PaymentProfileRemoveResponse](Models/PaymentProfileRemoveResponse.cs)</code>
+**OnSuccess**: <code>[PaymentProfileRemoveResponse](src/ThePlaidApi/Models/PaymentProfileRemoveResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -11427,7 +11933,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorAccountGetResponse&gt; ProcessorAccountGet(ProcessorAccountGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorAccountGetResponse&gt; ProcessorAccountGet(ProcessorAccountGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -11441,7 +11947,6 @@ This endpoint returns the account associated with a given processor token.
 
 This endpoint retrieves cached information, rather than extracting fresh information from the institution. As a result, the account balance returned may not be up-to-date; for real-time balance information, use `/processor/balance/get` instead. Note that some information is nullable.
 
-
 </dd>
 </dl>
 
@@ -11453,10 +11958,13 @@ This endpoint retrieves cached information, rather than extracting fresh informa
 ```csharp
 try
 {
-    var response = await client.ProcessorAccountGet(body);
+    var response = await client.ProcessorAccountGet(new ProcessorAccountGetOperationRequest
+    {
+        Body = new ProcessorAccountGetRequest { ProcessorToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ProcessorAccountGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11465,14 +11973,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorAccountGetRequest](Models/ProcessorAccountGetRequest.cs)</code> | - |
+<code>[ProcessorAccountGetOperationRequest](src/ThePlaidApi/Requests/ProcessorAccountGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -11482,9 +11988,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorAccountGetResponse](Models/ProcessorAccountGetResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorAccountGetResponse](src/ThePlaidApi/Models/ProcessorAccountGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -11495,7 +12001,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorTokenCreateResponse&gt; ProcessorApexProcessorTokenCreate(ProcessorApexProcessorTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorTokenCreateResponse&gt; ProcessorApexProcessorTokenCreate(ProcessorApexProcessorTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -11518,10 +12024,17 @@ Used to create a token suitable for sending to Apex to enable Plaid-Apex integra
 ```csharp
 try
 {
-    var response = await client.ProcessorApexProcessorTokenCreate(body);
+    var response = await client.ProcessorApexProcessorTokenCreate(new ProcessorApexProcessorTokenCreateOperationRequest
+    {
+        Body = new ProcessorApexProcessorTokenCreateRequest
+        {
+            AccessToken = "some example string",
+            AccountId = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type ProcessorTokenCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11530,14 +12043,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorApexProcessorTokenCreateRequest](Models/ProcessorApexProcessorTokenCreateRequest.cs)</code> | - |
+<code>[ProcessorApexProcessorTokenCreateOperationRequest](src/ThePlaidApi/Requests/ProcessorApexProcessorTokenCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -11547,9 +12058,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorTokenCreateResponse](Models/ProcessorTokenCreateResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorTokenCreateResponse](src/ThePlaidApi/Models/ProcessorTokenCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -11560,7 +12071,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorAuthGetResponse&gt; ProcessorAuthGet(ProcessorAuthGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorAuthGetResponse&gt; ProcessorAuthGet(ProcessorAuthGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -11574,7 +12085,6 @@ The `/processor/auth/get` endpoint returns the bank account and bank identificat
 
 Versioning note: API versions 2019-05-29 and earlier use a different schema for the `numbers` object returned by this endpoint. For details, see [Plaid API versioning](https://plaid.com/docs/api/versioning/#version-2020-09-14).
 
-
 </dd>
 </dl>
 
@@ -11586,10 +12096,13 @@ Versioning note: API versions 2019-05-29 and earlier use a different schema for 
 ```csharp
 try
 {
-    var response = await client.ProcessorAuthGet(body);
+    var response = await client.ProcessorAuthGet(new ProcessorAuthGetOperationRequest
+    {
+        Body = new ProcessorAuthGetRequest { ProcessorToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ProcessorAuthGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11598,14 +12111,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorAuthGetRequest](Models/ProcessorAuthGetRequest.cs)</code> | - |
+<code>[ProcessorAuthGetOperationRequest](src/ThePlaidApi/Requests/ProcessorAuthGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -11615,9 +12126,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorAuthGetResponse](Models/ProcessorAuthGetResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorAuthGetResponse](src/ThePlaidApi/Models/ProcessorAuthGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -11628,7 +12139,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorBalanceGetResponse&gt; ProcessorBalanceGet(ProcessorBalanceGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorBalanceGetResponse&gt; ProcessorBalanceGet(ProcessorBalanceGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -11638,7 +12149,7 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-The `/processor/balance/get` endpoint returns the real-time balance for each of an Item's accounts. While other endpoints may return a balance object, only `/processor/balance/get` forces the available and current balance fields to be refreshed rather than cached. 
+The `/processor/balance/get` endpoint returns the real-time balance for each of an Item's accounts. While other endpoints may return a balance object, only `/processor/balance/get` forces the available and current balance fields to be refreshed rather than cached.
 
 </dd>
 </dl>
@@ -11651,10 +12162,13 @@ The `/processor/balance/get` endpoint returns the real-time balance for each of 
 ```csharp
 try
 {
-    var response = await client.ProcessorBalanceGet(body);
+    var response = await client.ProcessorBalanceGet(new ProcessorBalanceGetOperationRequest
+    {
+        Body = new ProcessorBalanceGetRequest { ProcessorToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ProcessorBalanceGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11663,14 +12177,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorBalanceGetRequest](Models/ProcessorBalanceGetRequest.cs)</code> | - |
+<code>[ProcessorBalanceGetOperationRequest](src/ThePlaidApi/Requests/ProcessorBalanceGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -11680,9 +12192,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorBalanceGetResponse](Models/ProcessorBalanceGetResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorBalanceGetResponse](src/ThePlaidApi/Models/ProcessorBalanceGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -11693,7 +12205,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorBankTransferCreateResponse&gt; ProcessorBankTransferCreate(ProcessorBankTransferCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorBankTransferCreateResponse&gt; ProcessorBankTransferCreate(ProcessorBankTransferCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -11716,10 +12228,23 @@ Use the `/processor/bank_transfer/create` endpoint to initiate a new bank transf
 ```csharp
 try
 {
-    var response = await client.ProcessorBankTransferCreate(body);
+    var response = await client.ProcessorBankTransferCreate(new ProcessorBankTransferCreateOperationRequest
+    {
+        Body = new ProcessorBankTransferCreateRequest
+        {
+            IdempotencyKey = "some example string",
+            ProcessorToken = "some example string",
+            Type = BankTransferType.Debit,
+            Network = BankTransferNetwork.Ach,
+            Amount = "some example string",
+            IsoCurrencyCode = "some example string",
+            Description = "some example string",
+            User = new BankTransferUser { LegalName = "some example string" },
+        },
+    });
     // TODO: Handle 'response' of type ProcessorBankTransferCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11728,14 +12253,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorBankTransferCreateRequest](Models/ProcessorBankTransferCreateRequest.cs)</code> | - |
+<code>[ProcessorBankTransferCreateOperationRequest](src/ThePlaidApi/Requests/ProcessorBankTransferCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -11745,9 +12268,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorBankTransferCreateResponse](Models/ProcessorBankTransferCreateResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorBankTransferCreateResponse](src/ThePlaidApi/Models/ProcessorBankTransferCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -11758,7 +12281,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorIdentityGetResponse&gt; ProcessorIdentityGet(ProcessorIdentityGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorIdentityGetResponse&gt; ProcessorIdentityGet(ProcessorIdentityGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -11781,10 +12304,13 @@ The `/processor/identity/get` endpoint allows you to retrieve various account ho
 ```csharp
 try
 {
-    var response = await client.ProcessorIdentityGet(body);
+    var response = await client.ProcessorIdentityGet(new ProcessorIdentityGetOperationRequest
+    {
+        Body = new ProcessorIdentityGetRequest { ProcessorToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ProcessorIdentityGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11793,14 +12319,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorIdentityGetRequest](Models/ProcessorIdentityGetRequest.cs)</code> | - |
+<code>[ProcessorIdentityGetOperationRequest](src/ThePlaidApi/Requests/ProcessorIdentityGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -11810,9 +12334,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorIdentityGetResponse](Models/ProcessorIdentityGetResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorIdentityGetResponse](src/ThePlaidApi/Models/ProcessorIdentityGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -11823,7 +12347,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorIdentityMatchResponse&gt; ProcessorIdentityMatch(ProcessorIdentityMatchRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorIdentityMatchResponse&gt; ProcessorIdentityMatch(ProcessorIdentityMatchOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -11848,10 +12372,13 @@ Fields within the `balances` object will always be null when retrieved by `/proc
 ```csharp
 try
 {
-    var response = await client.ProcessorIdentityMatch(body);
+    var response = await client.ProcessorIdentityMatch(new ProcessorIdentityMatchOperationRequest
+    {
+        Body = new ProcessorIdentityMatchRequest { ProcessorToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ProcessorIdentityMatchResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11860,14 +12387,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorIdentityMatchRequest](Models/ProcessorIdentityMatchRequest.cs)</code> | - |
+<code>[ProcessorIdentityMatchOperationRequest](src/ThePlaidApi/Requests/ProcessorIdentityMatchOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -11877,9 +12402,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorIdentityMatchResponse](Models/ProcessorIdentityMatchResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorIdentityMatchResponse](src/ThePlaidApi/Models/ProcessorIdentityMatchResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -11890,7 +12415,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorInvestmentsAuthGetResponse&gt; ProcessorInvestmentsAuthGet(ProcessorInvestmentsAuthGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorInvestmentsAuthGetResponse&gt; ProcessorInvestmentsAuthGet(ProcessorInvestmentsAuthGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -11905,7 +12430,6 @@ authorized by a processor token, including account numbers, account owners, hold
 
 To receive Investments Auth webhooks for a processor token, set its webhook URL via the [`/processor/token/webhook/update`](https://plaid.com/docs/api/processor-partners/#processortokenwebhookupdate) endpoint.
 
-
 </dd>
 </dl>
 
@@ -11917,10 +12441,13 @@ To receive Investments Auth webhooks for a processor token, set its webhook URL 
 ```csharp
 try
 {
-    var response = await client.ProcessorInvestmentsAuthGet(body);
+    var response = await client.ProcessorInvestmentsAuthGet(new ProcessorInvestmentsAuthGetOperationRequest
+    {
+        Body = new ProcessorInvestmentsAuthGetRequest { ProcessorToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ProcessorInvestmentsAuthGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11929,14 +12456,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorInvestmentsAuthGetRequest](Models/ProcessorInvestmentsAuthGetRequest.cs)</code> | - |
+<code>[ProcessorInvestmentsAuthGetOperationRequest](src/ThePlaidApi/Requests/ProcessorInvestmentsAuthGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -11946,9 +12471,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorInvestmentsAuthGetResponse](Models/ProcessorInvestmentsAuthGetResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorInvestmentsAuthGetResponse](src/ThePlaidApi/Models/ProcessorInvestmentsAuthGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -11959,7 +12484,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorInvestmentsHoldingsGetResponse&gt; ProcessorInvestmentsHoldingsGet(ProcessorInvestmentsHoldingsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorInvestmentsHoldingsGetResponse&gt; ProcessorInvestmentsHoldingsGet(ProcessorInvestmentsHoldingsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -11971,7 +12496,6 @@ catch (SdkException<RawError> ex)
 
 This endpoint returns the stock position data of the account associated with a given processor token.
 
-
 </dd>
 </dl>
 
@@ -11983,10 +12507,13 @@ This endpoint returns the stock position data of the account associated with a g
 ```csharp
 try
 {
-    var response = await client.ProcessorInvestmentsHoldingsGet(body);
+    var response = await client.ProcessorInvestmentsHoldingsGet(new ProcessorInvestmentsHoldingsGetOperationRequest
+    {
+        Body = new ProcessorInvestmentsHoldingsGetRequest { ProcessorToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ProcessorInvestmentsHoldingsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -11995,14 +12522,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorInvestmentsHoldingsGetRequest](Models/ProcessorInvestmentsHoldingsGetRequest.cs)</code> | - |
+<code>[ProcessorInvestmentsHoldingsGetOperationRequest](src/ThePlaidApi/Requests/ProcessorInvestmentsHoldingsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -12012,9 +12537,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorInvestmentsHoldingsGetResponse](Models/ProcessorInvestmentsHoldingsGetResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorInvestmentsHoldingsGetResponse](src/ThePlaidApi/Models/ProcessorInvestmentsHoldingsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -12025,7 +12550,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorInvestmentsTransactionsGetResponse&gt; ProcessorInvestmentsTransactionsGet(ProcessorInvestmentsTransactionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorInvestmentsTransactionsGetResponse&gt; ProcessorInvestmentsTransactionsGet(ProcessorInvestmentsTransactionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -12058,10 +12583,19 @@ To receive Investments Transactions webhooks for a processor token, set its webh
 ```csharp
 try
 {
-    var response = await client.ProcessorInvestmentsTransactionsGet(body);
+    var response = await client.ProcessorInvestmentsTransactionsGet(
+        new ProcessorInvestmentsTransactionsGetOperationRequest
+        {
+            Body = new ProcessorInvestmentsTransactionsGetRequest
+            {
+                ProcessorToken = "some example string",
+                StartDate = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+                EndDate = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+            },
+        });
     // TODO: Handle 'response' of type ProcessorInvestmentsTransactionsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -12070,14 +12604,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorInvestmentsTransactionsGetRequest](Models/ProcessorInvestmentsTransactionsGetRequest.cs)</code> | - |
+<code>[ProcessorInvestmentsTransactionsGetOperationRequest](src/ThePlaidApi/Requests/ProcessorInvestmentsTransactionsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -12087,9 +12619,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorInvestmentsTransactionsGetResponse](Models/ProcessorInvestmentsTransactionsGetResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorInvestmentsTransactionsGetResponse](src/ThePlaidApi/Models/ProcessorInvestmentsTransactionsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -12100,7 +12632,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorLiabilitiesGetResponse&gt; ProcessorLiabilitiesGet(ProcessorLiabilitiesGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorLiabilitiesGetResponse&gt; ProcessorLiabilitiesGet(ProcessorLiabilitiesGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -12127,10 +12659,13 @@ Note: This request may take some time to complete if `liabilities` was not speci
 ```csharp
 try
 {
-    var response = await client.ProcessorLiabilitiesGet(body);
+    var response = await client.ProcessorLiabilitiesGet(new ProcessorLiabilitiesGetOperationRequest
+    {
+        Body = new ProcessorLiabilitiesGetRequest { ProcessorToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ProcessorLiabilitiesGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -12139,14 +12674,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorLiabilitiesGetRequest](Models/ProcessorLiabilitiesGetRequest.cs)</code> | - |
+<code>[ProcessorLiabilitiesGetOperationRequest](src/ThePlaidApi/Requests/ProcessorLiabilitiesGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -12156,9 +12689,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorLiabilitiesGetResponse](Models/ProcessorLiabilitiesGetResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorLiabilitiesGetResponse](src/ThePlaidApi/Models/ProcessorLiabilitiesGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -12169,7 +12702,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorSignalDecisionReportResponse&gt; ProcessorSignalDecisionReport(ProcessorSignalDecisionReportRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorSignalDecisionReportResponse&gt; ProcessorSignalDecisionReport(ProcessorSignalDecisionReportOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -12196,10 +12729,18 @@ If using a Balance-only ruleset, this endpoint will not impact scores (Balance d
 ```csharp
 try
 {
-    var response = await client.ProcessorSignalDecisionReport(body);
+    var response = await client.ProcessorSignalDecisionReport(new ProcessorSignalDecisionReportOperationRequest
+    {
+        Body = new ProcessorSignalDecisionReportRequest
+        {
+            ProcessorToken = "some example string",
+            ClientTransactionId = "some example string",
+            Initiated = true,
+        },
+    });
     // TODO: Handle 'response' of type ProcessorSignalDecisionReportResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -12208,14 +12749,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorSignalDecisionReportRequest](Models/ProcessorSignalDecisionReportRequest.cs)</code> | - |
+<code>[ProcessorSignalDecisionReportOperationRequest](src/ThePlaidApi/Requests/ProcessorSignalDecisionReportOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -12225,9 +12764,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorSignalDecisionReportResponse](Models/ProcessorSignalDecisionReportResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorSignalDecisionReportResponse](src/ThePlaidApi/Models/ProcessorSignalDecisionReportResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -12238,7 +12777,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorSignalEvaluateResponse&gt; ProcessorSignalEvaluate(ProcessorSignalEvaluateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorSignalEvaluateResponse&gt; ProcessorSignalEvaluate(ProcessorSignalEvaluateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -12265,10 +12804,18 @@ Note: This request may have higher latency if Signal Transaction Scores is being
 ```csharp
 try
 {
-    var response = await client.ProcessorSignalEvaluate(body);
+    var response = await client.ProcessorSignalEvaluate(new ProcessorSignalEvaluateOperationRequest
+    {
+        Body = new ProcessorSignalEvaluateRequest
+        {
+            ProcessorToken = "some example string",
+            ClientTransactionId = "some example string",
+            Amount = 1.5d,
+        },
+    });
     // TODO: Handle 'response' of type ProcessorSignalEvaluateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -12277,14 +12824,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorSignalEvaluateRequest](Models/ProcessorSignalEvaluateRequest.cs)</code> | - |
+<code>[ProcessorSignalEvaluateOperationRequest](src/ThePlaidApi/Requests/ProcessorSignalEvaluateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -12294,9 +12839,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorSignalEvaluateResponse](Models/ProcessorSignalEvaluateResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorSignalEvaluateResponse](src/ThePlaidApi/Models/ProcessorSignalEvaluateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -12307,7 +12852,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorSignalPrepareResponse&gt; ProcessorSignalPrepare(ProcessorSignalPrepareRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorSignalPrepareResponse&gt; ProcessorSignalPrepare(ProcessorSignalPrepareOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -12332,10 +12877,13 @@ If this endpoint is called with a processor token that is already initialized wi
 ```csharp
 try
 {
-    var response = await client.ProcessorSignalPrepare(body);
+    var response = await client.ProcessorSignalPrepare(new ProcessorSignalPrepareOperationRequest
+    {
+        Body = new ProcessorSignalPrepareRequest { ProcessorToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ProcessorSignalPrepareResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -12344,14 +12892,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorSignalPrepareRequest](Models/ProcessorSignalPrepareRequest.cs)</code> | - |
+<code>[ProcessorSignalPrepareOperationRequest](src/ThePlaidApi/Requests/ProcessorSignalPrepareOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -12361,9 +12907,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorSignalPrepareResponse](Models/ProcessorSignalPrepareResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorSignalPrepareResponse](src/ThePlaidApi/Models/ProcessorSignalPrepareResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -12374,7 +12920,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorSignalReturnReportResponse&gt; ProcessorSignalReturnReport(ProcessorSignalReturnReportRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorSignalReturnReportResponse&gt; ProcessorSignalReturnReport(ProcessorSignalReturnReportOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -12399,10 +12945,18 @@ If you are using the [Plaid Transfer product](https://plaid.com/docs/transfer) t
 ```csharp
 try
 {
-    var response = await client.ProcessorSignalReturnReport(body);
+    var response = await client.ProcessorSignalReturnReport(new ProcessorSignalReturnReportOperationRequest
+    {
+        Body = new ProcessorSignalReturnReportRequest
+        {
+            ProcessorToken = "some example string",
+            ClientTransactionId = "some example string",
+            ReturnCode = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type ProcessorSignalReturnReportResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -12411,14 +12965,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorSignalReturnReportRequest](Models/ProcessorSignalReturnReportRequest.cs)</code> | - |
+<code>[ProcessorSignalReturnReportOperationRequest](src/ThePlaidApi/Requests/ProcessorSignalReturnReportOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -12428,9 +12980,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorSignalReturnReportResponse](Models/ProcessorSignalReturnReportResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorSignalReturnReportResponse](src/ThePlaidApi/Models/ProcessorSignalReturnReportResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -12441,7 +12993,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorStripeBankAccountTokenCreateResponse&gt; ProcessorStripeBankAccountTokenCreate(ProcessorStripeBankAccountTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorStripeBankAccountTokenCreateResponse&gt; ProcessorStripeBankAccountTokenCreate(ProcessorStripeBankAccountTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -12450,7 +13002,6 @@ catch (SdkException<RawError> ex)
 
 <dl>
 <dd>
-
 
 Used to create a token suitable for sending to Stripe to enable Plaid-Stripe integrations. For a detailed guide on integrating Stripe, see [Add Stripe to your app](https://plaid.com/docs/auth/partnerships/stripe/).
 
@@ -12469,10 +13020,18 @@ To revoke a bank account token, the entire underlying access token must be revok
 ```csharp
 try
 {
-    var response = await client.ProcessorStripeBankAccountTokenCreate(body);
+    var response = await client.ProcessorStripeBankAccountTokenCreate(
+        new ProcessorStripeBankAccountTokenCreateOperationRequest
+        {
+            Body = new ProcessorStripeBankAccountTokenCreateRequest
+            {
+                AccessToken = "some example string",
+                AccountId = "some example string",
+            },
+        });
     // TODO: Handle 'response' of type ProcessorStripeBankAccountTokenCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -12481,14 +13040,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorStripeBankAccountTokenCreateRequest](Models/ProcessorStripeBankAccountTokenCreateRequest.cs)</code> | - |
+<code>[ProcessorStripeBankAccountTokenCreateOperationRequest](src/ThePlaidApi/Requests/ProcessorStripeBankAccountTokenCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -12498,9 +13055,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorStripeBankAccountTokenCreateResponse](Models/ProcessorStripeBankAccountTokenCreateResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorStripeBankAccountTokenCreateResponse](src/ThePlaidApi/Models/ProcessorStripeBankAccountTokenCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -12511,7 +13068,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorTokenCreateResponse&gt; ProcessorTokenCreate(ProcessorTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorTokenCreateResponse&gt; ProcessorTokenCreate(ProcessorTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -12534,10 +13091,18 @@ Used to create a token suitable for sending to one of Plaid's partners to enable
 ```csharp
 try
 {
-    var response = await client.ProcessorTokenCreate(body);
+    var response = await client.ProcessorTokenCreate(new ProcessorTokenCreateOperationRequest
+    {
+        Body = new ProcessorTokenCreateRequest
+        {
+            AccessToken = "some example string",
+            AccountId = "some example string",
+            Processor = Processor.Dwolla,
+        },
+    });
     // TODO: Handle 'response' of type ProcessorTokenCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -12546,14 +13111,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorTokenCreateRequest](Models/ProcessorTokenCreateRequest.cs)</code> | - |
+<code>[ProcessorTokenCreateOperationRequest](src/ThePlaidApi/Requests/ProcessorTokenCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -12563,9 +13126,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorTokenCreateResponse](Models/ProcessorTokenCreateResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorTokenCreateResponse](src/ThePlaidApi/Models/ProcessorTokenCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -12576,7 +13139,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorTokenPermissionsGetResponse&gt; ProcessorTokenPermissionsGet(ProcessorTokenPermissionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorTokenPermissionsGetResponse&gt; ProcessorTokenPermissionsGet(ProcessorTokenPermissionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -12599,10 +13162,13 @@ Used to get a processor token's product permissions. The `products` field will b
 ```csharp
 try
 {
-    var response = await client.ProcessorTokenPermissionsGet(body);
+    var response = await client.ProcessorTokenPermissionsGet(new ProcessorTokenPermissionsGetOperationRequest
+    {
+        Body = new ProcessorTokenPermissionsGetRequest { ProcessorToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ProcessorTokenPermissionsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -12611,14 +13177,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorTokenPermissionsGetRequest](Models/ProcessorTokenPermissionsGetRequest.cs)</code> | - |
+<code>[ProcessorTokenPermissionsGetOperationRequest](src/ThePlaidApi/Requests/ProcessorTokenPermissionsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -12628,9 +13192,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorTokenPermissionsGetResponse](Models/ProcessorTokenPermissionsGetResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorTokenPermissionsGetResponse](src/ThePlaidApi/Models/ProcessorTokenPermissionsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -12641,7 +13205,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorTokenPermissionsSetResponse&gt; ProcessorTokenPermissionsSet(ProcessorTokenPermissionsSetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorTokenPermissionsSetResponse&gt; ProcessorTokenPermissionsSet(ProcessorTokenPermissionsSetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -12664,10 +13228,17 @@ Used to control a processor's access to products on the given processor token. B
 ```csharp
 try
 {
-    var response = await client.ProcessorTokenPermissionsSet(body);
+    var response = await client.ProcessorTokenPermissionsSet(new ProcessorTokenPermissionsSetOperationRequest
+    {
+        Body = new ProcessorTokenPermissionsSetRequest
+        {
+            ProcessorToken = "some example string",
+            Products = [Products.Assets],
+        },
+    });
     // TODO: Handle 'response' of type ProcessorTokenPermissionsSetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -12676,14 +13247,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorTokenPermissionsSetRequest](Models/ProcessorTokenPermissionsSetRequest.cs)</code> | - |
+<code>[ProcessorTokenPermissionsSetOperationRequest](src/ThePlaidApi/Requests/ProcessorTokenPermissionsSetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -12693,9 +13262,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorTokenPermissionsSetResponse](Models/ProcessorTokenPermissionsSetResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorTokenPermissionsSetResponse](src/ThePlaidApi/Models/ProcessorTokenPermissionsSetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -12706,7 +13275,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorTokenWebhookUpdateResponse&gt; ProcessorTokenWebhookUpdate(ProcessorTokenWebhookUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorTokenWebhookUpdateResponse&gt; ProcessorTokenWebhookUpdate(ProcessorTokenWebhookUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -12729,10 +13298,17 @@ This endpoint allows you, the processor, to update the webhook URL associated wi
 ```csharp
 try
 {
-    var response = await client.ProcessorTokenWebhookUpdate(body);
+    var response = await client.ProcessorTokenWebhookUpdate(new ProcessorTokenWebhookUpdateOperationRequest
+    {
+        Body = new ProcessorTokenWebhookUpdateRequest
+        {
+            ProcessorToken = "some example string",
+            Webhook = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type ProcessorTokenWebhookUpdateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -12741,14 +13317,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorTokenWebhookUpdateRequest](Models/ProcessorTokenWebhookUpdateRequest.cs)</code> | - |
+<code>[ProcessorTokenWebhookUpdateOperationRequest](src/ThePlaidApi/Requests/ProcessorTokenWebhookUpdateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -12758,9 +13332,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorTokenWebhookUpdateResponse](Models/ProcessorTokenWebhookUpdateResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorTokenWebhookUpdateResponse](src/ThePlaidApi/Models/ProcessorTokenWebhookUpdateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -12771,7 +13345,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorTransactionsGetResponse&gt; ProcessorTransactionsGet(ProcessorTransactionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorTransactionsGetResponse&gt; ProcessorTransactionsGet(ProcessorTransactionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -12804,10 +13378,18 @@ To receive Transactions webhooks for a processor token, set its webhook URL via 
 ```csharp
 try
 {
-    var response = await client.ProcessorTransactionsGet(body);
+    var response = await client.ProcessorTransactionsGet(new ProcessorTransactionsGetOperationRequest
+    {
+        Body = new ProcessorTransactionsGetRequest
+        {
+            ProcessorToken = "some example string",
+            StartDate = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+            EndDate = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+        },
+    });
     // TODO: Handle 'response' of type ProcessorTransactionsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -12816,14 +13398,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorTransactionsGetRequest](Models/ProcessorTransactionsGetRequest.cs)</code> | - |
+<code>[ProcessorTransactionsGetOperationRequest](src/ThePlaidApi/Requests/ProcessorTransactionsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -12833,9 +13413,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorTransactionsGetResponse](Models/ProcessorTransactionsGetResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorTransactionsGetResponse](src/ThePlaidApi/Models/ProcessorTransactionsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -12846,7 +13426,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorTransactionsRecurringGetResponse&gt; ProcessorTransactionsRecurringGet(ProcessorTransactionsRecurringGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorTransactionsRecurringGetResponse&gt; ProcessorTransactionsRecurringGet(ProcessorTransactionsRecurringGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -12877,10 +13457,13 @@ To receive Transactions webhooks for a processor token, set its webhook URL via 
 ```csharp
 try
 {
-    var response = await client.ProcessorTransactionsRecurringGet(body);
+    var response = await client.ProcessorTransactionsRecurringGet(new ProcessorTransactionsRecurringGetOperationRequest
+    {
+        Body = new ProcessorTransactionsRecurringGetRequest { ProcessorToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ProcessorTransactionsRecurringGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -12889,14 +13472,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorTransactionsRecurringGetRequest](Models/ProcessorTransactionsRecurringGetRequest.cs)</code> | - |
+<code>[ProcessorTransactionsRecurringGetOperationRequest](src/ThePlaidApi/Requests/ProcessorTransactionsRecurringGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -12906,9 +13487,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorTransactionsRecurringGetResponse](Models/ProcessorTransactionsRecurringGetResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorTransactionsRecurringGetResponse](src/ThePlaidApi/Models/ProcessorTransactionsRecurringGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -12919,7 +13500,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorTransactionsRefreshResponse&gt; ProcessorTransactionsRefresh(ProcessorTransactionsRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorTransactionsRefreshResponse&gt; ProcessorTransactionsRefresh(ProcessorTransactionsRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -12946,10 +13527,13 @@ As this endpoint triggers a synchronous request for fresh data, latency may be h
 ```csharp
 try
 {
-    var response = await client.ProcessorTransactionsRefresh(body);
+    var response = await client.ProcessorTransactionsRefresh(new ProcessorTransactionsRefreshOperationRequest
+    {
+        Body = new ProcessorTransactionsRefreshRequest { ProcessorToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ProcessorTransactionsRefreshResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -12958,14 +13542,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorTransactionsRefreshRequest](Models/ProcessorTransactionsRefreshRequest.cs)</code> | - |
+<code>[ProcessorTransactionsRefreshOperationRequest](src/ThePlaidApi/Requests/ProcessorTransactionsRefreshOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -12975,9 +13557,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorTransactionsRefreshResponse](Models/ProcessorTransactionsRefreshResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorTransactionsRefreshResponse](src/ThePlaidApi/Models/ProcessorTransactionsRefreshResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -12988,7 +13570,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProcessorTransactionsSyncResponse&gt; ProcessorTransactionsSync(ProcessorTransactionsSyncRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProcessorTransactionsSyncResponse&gt; ProcessorTransactionsSync(ProcessorTransactionsSyncOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -12997,7 +13579,6 @@ catch (SdkException<RawError> ex)
 
 <dl>
 <dd>
-
 
 The `/processor/transactions/sync` endpoint retrieves transactions associated with an Item and can fetch updates using a cursor to track which updates have already been seen.
 
@@ -13026,10 +13607,13 @@ To receive Transactions webhooks for a processor token, set its webhook URL via 
 ```csharp
 try
 {
-    var response = await client.ProcessorTransactionsSync(body);
+    var response = await client.ProcessorTransactionsSync(new ProcessorTransactionsSyncOperationRequest
+    {
+        Body = new ProcessorTransactionsSyncRequest { ProcessorToken = "some example string" },
+    });
     // TODO: Handle 'response' of type ProcessorTransactionsSyncResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -13038,14 +13622,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProcessorTransactionsSyncRequest](Models/ProcessorTransactionsSyncRequest.cs)</code> | - |
+<code>[ProcessorTransactionsSyncOperationRequest](src/ThePlaidApi/Requests/ProcessorTransactionsSyncOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -13055,9 +13637,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProcessorTransactionsSyncResponse](Models/ProcessorTransactionsSyncResponse.cs)</code>
+**OnSuccess**: <code>[ProcessorTransactionsSyncResponse](src/ThePlaidApi/Models/ProcessorTransactionsSyncResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -13068,7 +13650,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProfileNetworkStatusGetResponse&gt; ProfileNetworkStatusGet(ProfileNetworkStatusGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProfileNetworkStatusGetResponse&gt; ProfileNetworkStatusGet(ProfileNetworkStatusGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -13091,10 +13673,16 @@ The `/profile/network_status/get` endpoint can be used to check whether Plaid ha
 ```csharp
 try
 {
-    var response = await client.ProfileNetworkStatusGet(body);
+    var response = await client.ProfileNetworkStatusGet(new ProfileNetworkStatusGetOperationRequest
+    {
+        Body = new ProfileNetworkStatusGetRequest
+        {
+            User = new NetworkStatusGetUser { PhoneNumber = "some example string" },
+        },
+    });
     // TODO: Handle 'response' of type ProfileNetworkStatusGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -13103,14 +13691,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProfileNetworkStatusGetRequest](Models/ProfileNetworkStatusGetRequest.cs)</code> | - |
+<code>[ProfileNetworkStatusGetOperationRequest](src/ThePlaidApi/Requests/ProfileNetworkStatusGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -13120,9 +13706,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProfileNetworkStatusGetResponse](Models/ProfileNetworkStatusGetResponse.cs)</code>
+**OnSuccess**: <code>[ProfileNetworkStatusGetResponse](src/ThePlaidApi/Models/ProfileNetworkStatusGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -13133,7 +13719,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProtectComputeResponse&gt; ProtectCompute(ProtectComputeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProtectComputeResponse&gt; ProtectCompute(ProtectComputeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -13158,10 +13744,13 @@ The endpoint returns HTTP 400 with `error_type` = `INVALID_REQUEST` and `error_c
 ```csharp
 try
 {
-    var response = await client.ProtectCompute(body);
+    var response = await client.ProtectCompute(new ProtectComputeOperationRequest
+    {
+        Body = new ProtectComputeRequest { Model = "some example string", User = new ProtectUser() },
+    });
     // TODO: Handle 'response' of type ProtectComputeResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -13170,14 +13759,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProtectComputeRequest](Models/ProtectComputeRequest.cs)</code> | - |
+<code>[ProtectComputeOperationRequest](src/ThePlaidApi/Requests/ProtectComputeOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -13187,9 +13774,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProtectComputeResponse](Models/ProtectComputeResponse.cs)</code>
+**OnSuccess**: <code>[ProtectComputeResponse](src/ThePlaidApi/Models/ProtectComputeResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -13200,7 +13787,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProtectEventGetResponse&gt; ProtectEventGet(ProtectEventGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProtectEventGetResponse&gt; ProtectEventGet(ProtectEventGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -13223,10 +13810,13 @@ Get information about a user event including Trust Index score and fraud attribu
 ```csharp
 try
 {
-    var response = await client.ProtectEventGet(body);
+    var response = await client.ProtectEventGet(new ProtectEventGetOperationRequest
+    {
+        Body = new ProtectEventGetRequest { EventId = "some example string" },
+    });
     // TODO: Handle 'response' of type ProtectEventGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -13235,14 +13825,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProtectEventGetRequest](Models/ProtectEventGetRequest.cs)</code> | - |
+<code>[ProtectEventGetOperationRequest](src/ThePlaidApi/Requests/ProtectEventGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -13252,9 +13840,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProtectEventGetResponse](Models/ProtectEventGetResponse.cs)</code>
+**OnSuccess**: <code>[ProtectEventGetResponse](src/ThePlaidApi/Models/ProtectEventGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -13265,7 +13853,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProtectEventSendResponse&gt; ProtectEventSend(ProtectEventSendRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProtectEventSendResponse&gt; ProtectEventSend(ProtectEventSendOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -13288,10 +13876,16 @@ Send a new event to enrich user data and optionally get a Trust Index score for 
 ```csharp
 try
 {
-    var response = await client.ProtectEventSend(body);
+    var response = await client.ProtectEventSend(new ProtectEventSendOperationRequest
+    {
+        Body = new ProtectEventSendRequest
+        {
+            Event = new ProtectEvent { Timestamp = DateTimeOffset.Parse("2024-01-15T09:30:00Z") },
+        },
+    });
     // TODO: Handle 'response' of type ProtectEventSendResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -13300,14 +13894,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProtectEventSendRequest](Models/ProtectEventSendRequest.cs)</code> | - |
+<code>[ProtectEventSendOperationRequest](src/ThePlaidApi/Requests/ProtectEventSendOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -13317,9 +13909,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProtectEventSendResponse](Models/ProtectEventSendResponse.cs)</code>
+**OnSuccess**: <code>[ProtectEventSendResponse](src/ThePlaidApi/Models/ProtectEventSendResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -13330,7 +13922,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProtectReportCreateResponse&gt; ProtectReportCreate(ProtectReportCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProtectReportCreateResponse&gt; ProtectReportCreate(ProtectReportCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -13358,10 +13950,18 @@ Each report must include `user_id`, or an `incident_event` with at least one sup
 ```csharp
 try
 {
-    var response = await client.ProtectReportCreate(body);
+    var response = await client.ProtectReportCreate(new ProtectReportCreateOperationRequest
+    {
+        Body = new ProtectReportCreateRequest
+        {
+            ReportConfidence = ProtectReportConfidence.Confirmed,
+            ReportType = ProtectReportType.UserAccountTakeover,
+            ReportSource = ProtectReportSource.InternalReview,
+        },
+    });
     // TODO: Handle 'response' of type ProtectReportCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -13370,14 +13970,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProtectReportCreateRequest](Models/ProtectReportCreateRequest.cs)</code> | - |
+<code>[ProtectReportCreateOperationRequest](src/ThePlaidApi/Requests/ProtectReportCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -13387,9 +13985,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProtectReportCreateResponse](Models/ProtectReportCreateResponse.cs)</code>
+**OnSuccess**: <code>[ProtectReportCreateResponse](src/ThePlaidApi/Models/ProtectReportCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -13400,7 +13998,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;ProtectUserInsightsGetResponse&gt; ProtectUserInsightsGet(ProtectUserInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;ProtectUserInsightsGetResponse&gt; ProtectUserInsightsGet(ProtectUserInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -13423,10 +14021,13 @@ Use this endpoint to get basic information about a user as it relates to their f
 ```csharp
 try
 {
-    var response = await client.ProtectUserInsightsGet(body);
+    var response = await client.ProtectUserInsightsGet(new ProtectUserInsightsGetOperationRequest
+    {
+        Body = new ProtectUserInsightsGetRequest(),
+    });
     // TODO: Handle 'response' of type ProtectUserInsightsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -13435,14 +14036,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[ProtectUserInsightsGetRequest](Models/ProtectUserInsightsGetRequest.cs)</code> | - |
+<code>[ProtectUserInsightsGetOperationRequest](src/ThePlaidApi/Requests/ProtectUserInsightsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -13452,9 +14051,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ProtectUserInsightsGetResponse](Models/ProtectUserInsightsGetResponse.cs)</code>
+**OnSuccess**: <code>[ProtectUserInsightsGetResponse](src/ThePlaidApi/Models/ProtectUserInsightsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -13465,7 +14064,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxBankIncomeFireWebhookResponse&gt; SandboxBankIncomeFireWebhook(SandboxBankIncomeFireWebhookRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxBankIncomeFireWebhookResponse&gt; SandboxBankIncomeFireWebhook(SandboxBankIncomeFireWebhookOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -13488,10 +14087,17 @@ Use the `/sandbox/bank_income/fire_webhook` endpoint to manually trigger a Bank 
 ```csharp
 try
 {
-    var response = await client.SandboxBankIncomeFireWebhook(body);
+    var response = await client.SandboxBankIncomeFireWebhook(new SandboxBankIncomeFireWebhookOperationRequest
+    {
+        Body = new SandboxBankIncomeFireWebhookRequest
+        {
+            WebhookCode = SandboxBankIncomeWebhookFireRequestWebhookCode.BankIncomeRefreshUpdate,
+            WebhookFields = new SandboxBankIncomeWebhookFireRequestWebhookFields { UserId = "some example string" },
+        },
+    });
     // TODO: Handle 'response' of type SandboxBankIncomeFireWebhookResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -13500,14 +14106,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxBankIncomeFireWebhookRequest](Models/SandboxBankIncomeFireWebhookRequest.cs)</code> | - |
+<code>[SandboxBankIncomeFireWebhookOperationRequest](src/ThePlaidApi/Requests/SandboxBankIncomeFireWebhookOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -13517,9 +14121,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxBankIncomeFireWebhookResponse](Models/SandboxBankIncomeFireWebhookResponse.cs)</code>
+**OnSuccess**: <code>[SandboxBankIncomeFireWebhookResponse](src/ThePlaidApi/Models/SandboxBankIncomeFireWebhookResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -13530,7 +14134,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxBankTransferFireWebhookResponse&gt; SandboxBankTransferFireWebhook(SandboxBankTransferFireWebhookRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxBankTransferFireWebhookResponse&gt; SandboxBankTransferFireWebhook(SandboxBankTransferFireWebhookOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -13553,10 +14157,13 @@ Use the `/sandbox/bank_transfer/fire_webhook` endpoint to manually trigger a Ban
 ```csharp
 try
 {
-    var response = await client.SandboxBankTransferFireWebhook(body);
+    var response = await client.SandboxBankTransferFireWebhook(new SandboxBankTransferFireWebhookOperationRequest
+    {
+        Body = new SandboxBankTransferFireWebhookRequest { Webhook = "some example string" },
+    });
     // TODO: Handle 'response' of type SandboxBankTransferFireWebhookResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -13565,14 +14172,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxBankTransferFireWebhookRequest](Models/SandboxBankTransferFireWebhookRequest.cs)</code> | - |
+<code>[SandboxBankTransferFireWebhookOperationRequest](src/ThePlaidApi/Requests/SandboxBankTransferFireWebhookOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -13582,9 +14187,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxBankTransferFireWebhookResponse](Models/SandboxBankTransferFireWebhookResponse.cs)</code>
+**OnSuccess**: <code>[SandboxBankTransferFireWebhookResponse](src/ThePlaidApi/Models/SandboxBankTransferFireWebhookResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -13595,7 +14200,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxBankTransferSimulateResponse&gt; SandboxBankTransferSimulate(SandboxBankTransferSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxBankTransferSimulateResponse&gt; SandboxBankTransferSimulate(SandboxBankTransferSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -13618,10 +14223,17 @@ Use the `/sandbox/bank_transfer/simulate` endpoint to simulate a bank transfer e
 ```csharp
 try
 {
-    var response = await client.SandboxBankTransferSimulate(body);
+    var response = await client.SandboxBankTransferSimulate(new SandboxBankTransferSimulateOperationRequest
+    {
+        Body = new SandboxBankTransferSimulateRequest
+        {
+            BankTransferId = "some example string",
+            EventType = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type SandboxBankTransferSimulateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -13630,14 +14242,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxBankTransferSimulateRequest](Models/SandboxBankTransferSimulateRequest.cs)</code> | - |
+<code>[SandboxBankTransferSimulateOperationRequest](src/ThePlaidApi/Requests/SandboxBankTransferSimulateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -13647,9 +14257,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxBankTransferSimulateResponse](Models/SandboxBankTransferSimulateResponse.cs)</code>
+**OnSuccess**: <code>[SandboxBankTransferSimulateResponse](src/ThePlaidApi/Models/SandboxBankTransferSimulateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -13660,7 +14270,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxCraCashflowUpdatesUpdateResponse&gt; SandboxCraCashflowUpdatesUpdate(SandboxCraCashflowUpdatesUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxCraCashflowUpdatesUpdateResponse&gt; SandboxCraCashflowUpdatesUpdate(SandboxCraCashflowUpdatesUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -13683,10 +14293,13 @@ Use the `/sandbox/cra/cashflow_updates/update` endpoint to manually trigger an u
 ```csharp
 try
 {
-    var response = await client.SandboxCraCashflowUpdatesUpdate(body);
+    var response = await client.SandboxCraCashflowUpdatesUpdate(new SandboxCraCashflowUpdatesUpdateOperationRequest
+    {
+        Body = new SandboxCraCashflowUpdatesUpdateRequest(),
+    });
     // TODO: Handle 'response' of type SandboxCraCashflowUpdatesUpdateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -13695,14 +14308,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxCraCashflowUpdatesUpdateRequest](Models/SandboxCraCashflowUpdatesUpdateRequest.cs)</code> | - |
+<code>[SandboxCraCashflowUpdatesUpdateOperationRequest](src/ThePlaidApi/Requests/SandboxCraCashflowUpdatesUpdateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -13712,9 +14323,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxCraCashflowUpdatesUpdateResponse](Models/SandboxCraCashflowUpdatesUpdateResponse.cs)</code>
+**OnSuccess**: <code>[SandboxCraCashflowUpdatesUpdateResponse](src/ThePlaidApi/Models/SandboxCraCashflowUpdatesUpdateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -13725,7 +14336,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxFdxConsentSeedResponse&gt; SandboxFdxConsentSeed(SandboxFdxConsentSeedRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxFdxConsentSeedResponse&gt; SandboxFdxConsentSeed(SandboxFdxConsentSeedOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -13750,10 +14361,17 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.SandboxFdxConsentSeed(body);
+    var response = await client.SandboxFdxConsentSeed(new SandboxFdxConsentSeedOperationRequest
+    {
+        Body = new SandboxFdxConsentSeedRequest
+        {
+            CustomerId = "some example string",
+            ApplicationId = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type SandboxFdxConsentSeedResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -13762,14 +14380,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxFdxConsentSeedRequest](Models/SandboxFdxConsentSeedRequest.cs)</code> | - |
+<code>[SandboxFdxConsentSeedOperationRequest](src/ThePlaidApi/Requests/SandboxFdxConsentSeedOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -13779,9 +14395,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxFdxConsentSeedResponse](Models/SandboxFdxConsentSeedResponse.cs)</code>
+**OnSuccess**: <code>[SandboxFdxConsentSeedResponse](src/ThePlaidApi/Models/SandboxFdxConsentSeedResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -13792,7 +14408,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxIncomeFireWebhookResponse&gt; SandboxIncomeFireWebhook(SandboxIncomeFireWebhookRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxIncomeFireWebhookResponse&gt; SandboxIncomeFireWebhook(SandboxIncomeFireWebhookOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -13815,10 +14431,18 @@ Use the `/sandbox/income/fire_webhook` endpoint to manually trigger a Payroll or
 ```csharp
 try
 {
-    var response = await client.SandboxIncomeFireWebhook(body);
+    var response = await client.SandboxIncomeFireWebhook(new SandboxIncomeFireWebhookOperationRequest
+    {
+        Body = new SandboxIncomeFireWebhookRequest
+        {
+            ItemId = "some example string",
+            Webhook = "some example string",
+            WebhookCode = SandboxIncomeWebhookFireRequestWebhookCode.IncomeVerification,
+        },
+    });
     // TODO: Handle 'response' of type SandboxIncomeFireWebhookResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -13827,14 +14451,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxIncomeFireWebhookRequest](Models/SandboxIncomeFireWebhookRequest.cs)</code> | - |
+<code>[SandboxIncomeFireWebhookOperationRequest](src/ThePlaidApi/Requests/SandboxIncomeFireWebhookOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -13844,9 +14466,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxIncomeFireWebhookResponse](Models/SandboxIncomeFireWebhookResponse.cs)</code>
+**OnSuccess**: <code>[SandboxIncomeFireWebhookResponse](src/ThePlaidApi/Models/SandboxIncomeFireWebhookResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -13857,7 +14479,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxItemApplicationSeedResponse&gt; SandboxItemApplicationSeed(SandboxItemApplicationSeedRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxItemApplicationSeedResponse&gt; SandboxItemApplicationSeed(SandboxItemApplicationSeedOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -13882,10 +14504,17 @@ The `access_token` must belong to a Permissions Manager Item created via `/item/
 ```csharp
 try
 {
-    var response = await client.SandboxItemApplicationSeed(body);
+    var response = await client.SandboxItemApplicationSeed(new SandboxItemApplicationSeedOperationRequest
+    {
+        Body = new SandboxItemApplicationSeedRequest
+        {
+            AccessToken = "some example string",
+            ApplicationId = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type SandboxItemApplicationSeedResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -13894,14 +14523,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxItemApplicationSeedRequest](Models/SandboxItemApplicationSeedRequest.cs)</code> | - |
+<code>[SandboxItemApplicationSeedOperationRequest](src/ThePlaidApi/Requests/SandboxItemApplicationSeedOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -13911,9 +14538,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxItemApplicationSeedResponse](Models/SandboxItemApplicationSeedResponse.cs)</code>
+**OnSuccess**: <code>[SandboxItemApplicationSeedResponse](src/ThePlaidApi/Models/SandboxItemApplicationSeedResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -13924,7 +14551,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxItemFireWebhookResponse&gt; SandboxItemFireWebhook(SandboxItemFireWebhookRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxItemFireWebhookResponse&gt; SandboxItemFireWebhook(SandboxItemFireWebhookOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -13971,10 +14598,17 @@ Note that this endpoint is provided for developer ease-of-use and is not require
 ```csharp
 try
 {
-    var response = await client.SandboxItemFireWebhook(body);
+    var response = await client.SandboxItemFireWebhook(new SandboxItemFireWebhookOperationRequest
+    {
+        Body = new SandboxItemFireWebhookRequest
+        {
+            AccessToken = "some example string",
+            WebhookCode = WebhookCode.DefaultUpdate,
+        },
+    });
     // TODO: Handle 'response' of type SandboxItemFireWebhookResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -13983,14 +14617,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxItemFireWebhookRequest](Models/SandboxItemFireWebhookRequest.cs)</code> | - |
+<code>[SandboxItemFireWebhookOperationRequest](src/ThePlaidApi/Requests/SandboxItemFireWebhookOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14000,9 +14632,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxItemFireWebhookResponse](Models/SandboxItemFireWebhookResponse.cs)</code>
+**OnSuccess**: <code>[SandboxItemFireWebhookResponse](src/ThePlaidApi/Models/SandboxItemFireWebhookResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -14013,7 +14645,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxItemResetLoginResponse&gt; SandboxItemResetLogin(SandboxItemResetLoginRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxItemResetLoginResponse&gt; SandboxItemResetLogin(SandboxItemResetLoginOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -14037,10 +14669,13 @@ In the Sandbox, Items will transition to an `ITEM_LOGIN_REQUIRED` error state au
 ```csharp
 try
 {
-    var response = await client.SandboxItemResetLogin(body);
+    var response = await client.SandboxItemResetLogin(new SandboxItemResetLoginOperationRequest
+    {
+        Body = new SandboxItemResetLoginRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type SandboxItemResetLoginResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -14049,14 +14684,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxItemResetLoginRequest](Models/SandboxItemResetLoginRequest.cs)</code> | - |
+<code>[SandboxItemResetLoginOperationRequest](src/ThePlaidApi/Requests/SandboxItemResetLoginOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14066,9 +14699,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxItemResetLoginResponse](Models/SandboxItemResetLoginResponse.cs)</code>
+**OnSuccess**: <code>[SandboxItemResetLoginResponse](src/ThePlaidApi/Models/SandboxItemResetLoginResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -14079,7 +14712,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxItemSetVerificationStatusResponse&gt; SandboxItemSetVerificationStatus(SandboxItemSetVerificationStatusRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxItemSetVerificationStatusResponse&gt; SandboxItemSetVerificationStatus(SandboxItemSetVerificationStatusOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -14104,10 +14737,18 @@ For more information on testing Automated Micro-deposits in Sandbox, see [Auth f
 ```csharp
 try
 {
-    var response = await client.SandboxItemSetVerificationStatus(body);
+    var response = await client.SandboxItemSetVerificationStatus(new SandboxItemSetVerificationStatusOperationRequest
+    {
+        Body = new SandboxItemSetVerificationStatusRequest
+        {
+            AccessToken = "some example string",
+            AccountId = "some example string",
+            VerificationStatus = VerificationStatus1.AutomaticallyVerified,
+        },
+    });
     // TODO: Handle 'response' of type SandboxItemSetVerificationStatusResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -14116,14 +14757,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxItemSetVerificationStatusRequest](Models/SandboxItemSetVerificationStatusRequest.cs)</code> | - |
+<code>[SandboxItemSetVerificationStatusOperationRequest](src/ThePlaidApi/Requests/SandboxItemSetVerificationStatusOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14133,9 +14772,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxItemSetVerificationStatusResponse](Models/SandboxItemSetVerificationStatusResponse.cs)</code>
+**OnSuccess**: <code>[SandboxItemSetVerificationStatusResponse](src/ThePlaidApi/Models/SandboxItemSetVerificationStatusResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -14146,7 +14785,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;object&gt; SandboxOauthSelectAccounts(SandboxOauthSelectAccountsRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;object&gt; SandboxOauthSelectAccounts(SandboxOauthSelectAccountsOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -14169,10 +14808,17 @@ Save the selected accounts when connecting to the Platypus OAuth institution
 ```csharp
 try
 {
-    var response = await client.SandboxOauthSelectAccounts(body);
+    var response = await client.SandboxOauthSelectAccounts(new SandboxOauthSelectAccountsOperationRequest
+    {
+        Body = new SandboxOauthSelectAccountsRequest
+        {
+            OauthStateId = "some example string",
+            Accounts = ["some example string"],
+        },
+    });
     // TODO: Handle 'response' of type object
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -14181,14 +14827,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxOauthSelectAccountsRequest](Models/SandboxOauthSelectAccountsRequest.cs)</code> | - |
+<code>[SandboxOauthSelectAccountsOperationRequest](src/ThePlaidApi/Requests/SandboxOauthSelectAccountsOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14200,7 +14844,7 @@ catch (SdkException<RawError> ex)
 
 **OnSuccess**: <code>object</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -14211,7 +14855,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxPaymentProfileResetLoginResponse&gt; SandboxPaymentProfileResetLogin(SandboxPaymentProfileResetLoginRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxPaymentProfileResetLoginResponse&gt; SandboxPaymentProfileResetLogin(SandboxPaymentProfileResetLoginOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -14238,10 +14882,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.SandboxPaymentProfileResetLogin(body);
+    var response = await client.SandboxPaymentProfileResetLogin(new SandboxPaymentProfileResetLoginOperationRequest
+    {
+        Body = new SandboxPaymentProfileResetLoginRequest { PaymentProfileToken = "some example string" },
+    });
     // TODO: Handle 'response' of type SandboxPaymentProfileResetLoginResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -14250,14 +14897,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxPaymentProfileResetLoginRequest](Models/SandboxPaymentProfileResetLoginRequest.cs)</code> | - |
+<code>[SandboxPaymentProfileResetLoginOperationRequest](src/ThePlaidApi/Requests/SandboxPaymentProfileResetLoginOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14267,9 +14912,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxPaymentProfileResetLoginResponse](Models/SandboxPaymentProfileResetLoginResponse.cs)</code>
+**OnSuccess**: <code>[SandboxPaymentProfileResetLoginResponse](src/ThePlaidApi/Models/SandboxPaymentProfileResetLoginResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -14280,7 +14925,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxPaymentSimulateResponse&gt; SandboxPaymentSimulate(SandboxPaymentSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxPaymentSimulateResponse&gt; SandboxPaymentSimulate(SandboxPaymentSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -14303,10 +14948,18 @@ Use the `/sandbox/payment/simulate` endpoint to simulate various payment events 
 ```csharp
 try
 {
-    var response = await client.SandboxPaymentSimulate(body);
+    var response = await client.SandboxPaymentSimulate(new SandboxPaymentSimulateOperationRequest
+    {
+        Body = new SandboxPaymentSimulateRequest
+        {
+            PaymentId = "some example string",
+            Webhook = "some example string",
+            Status = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type SandboxPaymentSimulateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -14315,14 +14968,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxPaymentSimulateRequest](Models/SandboxPaymentSimulateRequest.cs)</code> | - |
+<code>[SandboxPaymentSimulateOperationRequest](src/ThePlaidApi/Requests/SandboxPaymentSimulateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14332,9 +14983,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxPaymentSimulateResponse](Models/SandboxPaymentSimulateResponse.cs)</code>
+**OnSuccess**: <code>[SandboxPaymentSimulateResponse](src/ThePlaidApi/Models/SandboxPaymentSimulateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -14345,7 +14996,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxProcessorTokenCreateResponse&gt; SandboxProcessorTokenCreate(SandboxProcessorTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxProcessorTokenCreateResponse&gt; SandboxProcessorTokenCreate(SandboxProcessorTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -14368,10 +15019,13 @@ Use the `/sandbox/processor_token/create` endpoint to create a valid `processor_
 ```csharp
 try
 {
-    var response = await client.SandboxProcessorTokenCreate(body);
+    var response = await client.SandboxProcessorTokenCreate(new SandboxProcessorTokenCreateOperationRequest
+    {
+        Body = new SandboxProcessorTokenCreateRequest { InstitutionId = "some example string" },
+    });
     // TODO: Handle 'response' of type SandboxProcessorTokenCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -14380,14 +15034,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxProcessorTokenCreateRequest](Models/SandboxProcessorTokenCreateRequest.cs)</code> | - |
+<code>[SandboxProcessorTokenCreateOperationRequest](src/ThePlaidApi/Requests/SandboxProcessorTokenCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14397,9 +15049,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxProcessorTokenCreateResponse](Models/SandboxProcessorTokenCreateResponse.cs)</code>
+**OnSuccess**: <code>[SandboxProcessorTokenCreateResponse](src/ThePlaidApi/Models/SandboxProcessorTokenCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -14410,7 +15062,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxPublicTokenCreateResponse&gt; SandboxPublicTokenCreate(SandboxPublicTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxPublicTokenCreateResponse&gt; SandboxPublicTokenCreate(SandboxPublicTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -14433,10 +15085,17 @@ Use the `/sandbox/public_token/create` endpoint to create a valid `public_token`
 ```csharp
 try
 {
-    var response = await client.SandboxPublicTokenCreate(body);
+    var response = await client.SandboxPublicTokenCreate(new SandboxPublicTokenCreateOperationRequest
+    {
+        Body = new SandboxPublicTokenCreateRequest
+        {
+            InstitutionId = "some example string",
+            InitialProducts = [Products.Assets],
+        },
+    });
     // TODO: Handle 'response' of type SandboxPublicTokenCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -14445,14 +15104,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxPublicTokenCreateRequest](Models/SandboxPublicTokenCreateRequest.cs)</code> | - |
+<code>[SandboxPublicTokenCreateOperationRequest](src/ThePlaidApi/Requests/SandboxPublicTokenCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14462,9 +15119,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxPublicTokenCreateResponse](Models/SandboxPublicTokenCreateResponse.cs)</code>
+**OnSuccess**: <code>[SandboxPublicTokenCreateResponse](src/ThePlaidApi/Models/SandboxPublicTokenCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -14475,7 +15132,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxTransactionsCreateResponse&gt; SandboxTransactionsCreate(SandboxTransactionsCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxTransactionsCreateResponse&gt; SandboxTransactionsCreate(SandboxTransactionsCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -14502,10 +15159,25 @@ Custom transactions are only applied to the depository account. Support for per-
 ```csharp
 try
 {
-    var response = await client.SandboxTransactionsCreate(body);
+    var response = await client.SandboxTransactionsCreate(new SandboxTransactionsCreateOperationRequest
+    {
+        Body = new SandboxTransactionsCreateRequest
+        {
+            AccessToken = "some example string",
+            Transactions = [
+                new CustomSandboxTransaction
+                {
+                    DateTransacted = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+                    DatePosted = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+                    Amount = 1.5d,
+                    Description = "some example string",
+                },
+            ],
+        },
+    });
     // TODO: Handle 'response' of type SandboxTransactionsCreateResponse
 }
-catch (SdkException<SandboxTransactionsCreateError> ex)
+catch (ApiException<SandboxTransactionsCreateError> ex)
 {
     if (ex.Error.TryGetError(out var error))
     {
@@ -14517,14 +15189,12 @@ catch (SdkException<SandboxTransactionsCreateError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxTransactionsCreateRequest](Models/SandboxTransactionsCreateRequest.cs)</code> | - |
+<code>[SandboxTransactionsCreateOperationRequest](src/ThePlaidApi/Requests/SandboxTransactionsCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14534,9 +15204,9 @@ catch (SdkException<SandboxTransactionsCreateError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxTransactionsCreateResponse](Models/SandboxTransactionsCreateResponse.cs)</code>
+**OnSuccess**: <code>[SandboxTransactionsCreateResponse](src/ThePlaidApi/Models/SandboxTransactionsCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[SandboxTransactionsCreateError](Errors/SandboxTransactionsCreateError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[SandboxTransactionsCreateError](src/ThePlaidApi/Errors/SandboxTransactionsCreateError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -14547,7 +15217,7 @@ catch (SdkException<SandboxTransactionsCreateError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxTransferFireWebhookResponse&gt; SandboxTransferFireWebhook(SandboxTransferFireWebhookRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxTransferFireWebhookResponse&gt; SandboxTransferFireWebhook(SandboxTransferFireWebhookOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -14570,10 +15240,13 @@ Use the `/sandbox/transfer/fire_webhook` endpoint to manually trigger a `TRANSFE
 ```csharp
 try
 {
-    var response = await client.SandboxTransferFireWebhook(body);
+    var response = await client.SandboxTransferFireWebhook(new SandboxTransferFireWebhookOperationRequest
+    {
+        Body = new SandboxTransferFireWebhookRequest { Webhook = "some example string" },
+    });
     // TODO: Handle 'response' of type SandboxTransferFireWebhookResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -14582,14 +15255,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxTransferFireWebhookRequest](Models/SandboxTransferFireWebhookRequest.cs)</code> | - |
+<code>[SandboxTransferFireWebhookOperationRequest](src/ThePlaidApi/Requests/SandboxTransferFireWebhookOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14599,9 +15270,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxTransferFireWebhookResponse](Models/SandboxTransferFireWebhookResponse.cs)</code>
+**OnSuccess**: <code>[SandboxTransferFireWebhookResponse](src/ThePlaidApi/Models/SandboxTransferFireWebhookResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -14612,7 +15283,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxTransferLedgerDepositSimulateResponse&gt; SandboxTransferLedgerDepositSimulate(SandboxTransferLedgerDepositSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxTransferLedgerDepositSimulateResponse&gt; SandboxTransferLedgerDepositSimulate(SandboxTransferLedgerDepositSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -14635,10 +15306,18 @@ Use the `/sandbox/transfer/ledger/deposit/simulate` endpoint to simulate a ledge
 ```csharp
 try
 {
-    var response = await client.SandboxTransferLedgerDepositSimulate(body);
+    var response = await client.SandboxTransferLedgerDepositSimulate(
+        new SandboxTransferLedgerDepositSimulateOperationRequest
+        {
+            Body = new SandboxTransferLedgerDepositSimulateRequest
+            {
+                SweepId = "some example string",
+                EventType = TransferLedgerSweepSimulateEventType.SweepPosted,
+            },
+        });
     // TODO: Handle 'response' of type SandboxTransferLedgerDepositSimulateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -14647,14 +15326,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxTransferLedgerDepositSimulateRequest](Models/SandboxTransferLedgerDepositSimulateRequest.cs)</code> | - |
+<code>[SandboxTransferLedgerDepositSimulateOperationRequest](src/ThePlaidApi/Requests/SandboxTransferLedgerDepositSimulateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14664,9 +15341,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxTransferLedgerDepositSimulateResponse](Models/SandboxTransferLedgerDepositSimulateResponse.cs)</code>
+**OnSuccess**: <code>[SandboxTransferLedgerDepositSimulateResponse](src/ThePlaidApi/Models/SandboxTransferLedgerDepositSimulateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -14677,7 +15354,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxTransferLedgerSimulateAvailableResponse&gt; SandboxTransferLedgerSimulateAvailable(SandboxTransferLedgerSimulateAvailableRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxTransferLedgerSimulateAvailableResponse&gt; SandboxTransferLedgerSimulateAvailable(SandboxTransferLedgerSimulateAvailableOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -14700,10 +15377,14 @@ Use the `/sandbox/transfer/ledger/simulate_available` endpoint to simulate conve
 ```csharp
 try
 {
-    var response = await client.SandboxTransferLedgerSimulateAvailable(body);
+    var response = await client.SandboxTransferLedgerSimulateAvailable(
+        new SandboxTransferLedgerSimulateAvailableOperationRequest
+        {
+            Body = new SandboxTransferLedgerSimulateAvailableRequest(),
+        });
     // TODO: Handle 'response' of type SandboxTransferLedgerSimulateAvailableResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -14712,14 +15393,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxTransferLedgerSimulateAvailableRequest](Models/SandboxTransferLedgerSimulateAvailableRequest.cs)</code> | - |
+<code>[SandboxTransferLedgerSimulateAvailableOperationRequest](src/ThePlaidApi/Requests/SandboxTransferLedgerSimulateAvailableOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14729,9 +15408,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxTransferLedgerSimulateAvailableResponse](Models/SandboxTransferLedgerSimulateAvailableResponse.cs)</code>
+**OnSuccess**: <code>[SandboxTransferLedgerSimulateAvailableResponse](src/ThePlaidApi/Models/SandboxTransferLedgerSimulateAvailableResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -14742,7 +15421,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxTransferLedgerWithdrawSimulateResponse&gt; SandboxTransferLedgerWithdrawSimulate(SandboxTransferLedgerWithdrawSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxTransferLedgerWithdrawSimulateResponse&gt; SandboxTransferLedgerWithdrawSimulate(SandboxTransferLedgerWithdrawSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -14765,10 +15444,18 @@ Use the `/sandbox/transfer/ledger/withdraw/simulate` endpoint to simulate a ledg
 ```csharp
 try
 {
-    var response = await client.SandboxTransferLedgerWithdrawSimulate(body);
+    var response = await client.SandboxTransferLedgerWithdrawSimulate(
+        new SandboxTransferLedgerWithdrawSimulateOperationRequest
+        {
+            Body = new SandboxTransferLedgerWithdrawSimulateRequest
+            {
+                SweepId = "some example string",
+                EventType = TransferLedgerSweepSimulateEventType.SweepPosted,
+            },
+        });
     // TODO: Handle 'response' of type SandboxTransferLedgerWithdrawSimulateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -14777,14 +15464,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxTransferLedgerWithdrawSimulateRequest](Models/SandboxTransferLedgerWithdrawSimulateRequest.cs)</code> | - |
+<code>[SandboxTransferLedgerWithdrawSimulateOperationRequest](src/ThePlaidApi/Requests/SandboxTransferLedgerWithdrawSimulateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14794,9 +15479,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxTransferLedgerWithdrawSimulateResponse](Models/SandboxTransferLedgerWithdrawSimulateResponse.cs)</code>
+**OnSuccess**: <code>[SandboxTransferLedgerWithdrawSimulateResponse](src/ThePlaidApi/Models/SandboxTransferLedgerWithdrawSimulateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -14807,7 +15492,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxTransferRefundSimulateResponse&gt; SandboxTransferRefundSimulate(SandboxTransferRefundSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxTransferRefundSimulateResponse&gt; SandboxTransferRefundSimulate(SandboxTransferRefundSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -14830,10 +15515,17 @@ Use the `/sandbox/transfer/refund/simulate` endpoint to simulate a refund event 
 ```csharp
 try
 {
-    var response = await client.SandboxTransferRefundSimulate(body);
+    var response = await client.SandboxTransferRefundSimulate(new SandboxTransferRefundSimulateOperationRequest
+    {
+        Body = new SandboxTransferRefundSimulateRequest
+        {
+            RefundId = "some example string",
+            EventType = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type SandboxTransferRefundSimulateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -14842,14 +15534,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxTransferRefundSimulateRequest](Models/SandboxTransferRefundSimulateRequest.cs)</code> | - |
+<code>[SandboxTransferRefundSimulateOperationRequest](src/ThePlaidApi/Requests/SandboxTransferRefundSimulateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14859,9 +15549,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxTransferRefundSimulateResponse](Models/SandboxTransferRefundSimulateResponse.cs)</code>
+**OnSuccess**: <code>[SandboxTransferRefundSimulateResponse](src/ThePlaidApi/Models/SandboxTransferRefundSimulateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -14872,7 +15562,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxTransferRepaymentSimulateResponse&gt; SandboxTransferRepaymentSimulate(SandboxTransferRepaymentSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxTransferRepaymentSimulateResponse&gt; SandboxTransferRepaymentSimulate(SandboxTransferRepaymentSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -14895,10 +15585,13 @@ Use the `/sandbox/transfer/repayment/simulate` endpoint to trigger the creation 
 ```csharp
 try
 {
-    var response = await client.SandboxTransferRepaymentSimulate(body);
+    var response = await client.SandboxTransferRepaymentSimulate(new SandboxTransferRepaymentSimulateOperationRequest
+    {
+        Body = new SandboxTransferRepaymentSimulateRequest(),
+    });
     // TODO: Handle 'response' of type SandboxTransferRepaymentSimulateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -14907,14 +15600,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxTransferRepaymentSimulateRequest](Models/SandboxTransferRepaymentSimulateRequest.cs)</code> | - |
+<code>[SandboxTransferRepaymentSimulateOperationRequest](src/ThePlaidApi/Requests/SandboxTransferRepaymentSimulateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14924,9 +15615,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxTransferRepaymentSimulateResponse](Models/SandboxTransferRepaymentSimulateResponse.cs)</code>
+**OnSuccess**: <code>[SandboxTransferRepaymentSimulateResponse](src/ThePlaidApi/Models/SandboxTransferRepaymentSimulateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -14937,7 +15628,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxTransferSimulateResponse&gt; SandboxTransferSimulate(SandboxTransferSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxTransferSimulateResponse&gt; SandboxTransferSimulate(SandboxTransferSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -14960,10 +15651,17 @@ Use the `/sandbox/transfer/simulate` endpoint to simulate a transfer event in th
 ```csharp
 try
 {
-    var response = await client.SandboxTransferSimulate(body);
+    var response = await client.SandboxTransferSimulate(new SandboxTransferSimulateOperationRequest
+    {
+        Body = new SandboxTransferSimulateRequest
+        {
+            TransferId = "some example string",
+            EventType = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type SandboxTransferSimulateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -14972,14 +15670,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxTransferSimulateRequest](Models/SandboxTransferSimulateRequest.cs)</code> | - |
+<code>[SandboxTransferSimulateOperationRequest](src/ThePlaidApi/Requests/SandboxTransferSimulateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -14989,9 +15685,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxTransferSimulateResponse](Models/SandboxTransferSimulateResponse.cs)</code>
+**OnSuccess**: <code>[SandboxTransferSimulateResponse](src/ThePlaidApi/Models/SandboxTransferSimulateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -15002,7 +15698,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxTransferSweepSimulateResponse&gt; SandboxTransferSweepSimulate(SandboxTransferSweepSimulateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxTransferSweepSimulateResponse&gt; SandboxTransferSweepSimulate(SandboxTransferSweepSimulateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -15025,10 +15721,13 @@ Use the `/sandbox/transfer/sweep/simulate` endpoint to create a sweep and associ
 ```csharp
 try
 {
-    var response = await client.SandboxTransferSweepSimulate(body);
+    var response = await client.SandboxTransferSweepSimulate(new SandboxTransferSweepSimulateOperationRequest
+    {
+        Body = new SandboxTransferSweepSimulateRequest(),
+    });
     // TODO: Handle 'response' of type SandboxTransferSweepSimulateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -15037,14 +15736,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxTransferSweepSimulateRequest](Models/SandboxTransferSweepSimulateRequest.cs)</code> | - |
+<code>[SandboxTransferSweepSimulateOperationRequest](src/ThePlaidApi/Requests/SandboxTransferSweepSimulateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -15054,9 +15751,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxTransferSweepSimulateResponse](Models/SandboxTransferSweepSimulateResponse.cs)</code>
+**OnSuccess**: <code>[SandboxTransferSweepSimulateResponse](src/ThePlaidApi/Models/SandboxTransferSweepSimulateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -15067,7 +15764,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxTransferTestClockAdvanceResponse&gt; SandboxTransferTestClockAdvance(SandboxTransferTestClockAdvanceRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxTransferTestClockAdvanceResponse&gt; SandboxTransferTestClockAdvance(SandboxTransferTestClockAdvanceOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -15100,10 +15797,17 @@ For example, if the recurring transfer associated with this test clock originate
 ```csharp
 try
 {
-    var response = await client.SandboxTransferTestClockAdvance(body);
+    var response = await client.SandboxTransferTestClockAdvance(new SandboxTransferTestClockAdvanceOperationRequest
+    {
+        Body = new SandboxTransferTestClockAdvanceRequest
+        {
+            TestClockId = "some example string",
+            NewVirtualTime = DateTimeOffset.Parse("2024-01-15T09:30:00Z"),
+        },
+    });
     // TODO: Handle 'response' of type SandboxTransferTestClockAdvanceResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -15112,14 +15816,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxTransferTestClockAdvanceRequest](Models/SandboxTransferTestClockAdvanceRequest.cs)</code> | - |
+<code>[SandboxTransferTestClockAdvanceOperationRequest](src/ThePlaidApi/Requests/SandboxTransferTestClockAdvanceOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -15129,9 +15831,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxTransferTestClockAdvanceResponse](Models/SandboxTransferTestClockAdvanceResponse.cs)</code>
+**OnSuccess**: <code>[SandboxTransferTestClockAdvanceResponse](src/ThePlaidApi/Models/SandboxTransferTestClockAdvanceResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -15142,7 +15844,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxTransferTestClockCreateResponse&gt; SandboxTransferTestClockCreate(SandboxTransferTestClockCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxTransferTestClockCreateResponse&gt; SandboxTransferTestClockCreate(SandboxTransferTestClockCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -15169,10 +15871,13 @@ A test clock can be associated with up to 5 recurring transfers.
 ```csharp
 try
 {
-    var response = await client.SandboxTransferTestClockCreate(body);
+    var response = await client.SandboxTransferTestClockCreate(new SandboxTransferTestClockCreateOperationRequest
+    {
+        Body = new SandboxTransferTestClockCreateRequest(),
+    });
     // TODO: Handle 'response' of type SandboxTransferTestClockCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -15181,14 +15886,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxTransferTestClockCreateRequest](Models/SandboxTransferTestClockCreateRequest.cs)</code> | - |
+<code>[SandboxTransferTestClockCreateOperationRequest](src/ThePlaidApi/Requests/SandboxTransferTestClockCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -15198,9 +15901,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxTransferTestClockCreateResponse](Models/SandboxTransferTestClockCreateResponse.cs)</code>
+**OnSuccess**: <code>[SandboxTransferTestClockCreateResponse](src/ThePlaidApi/Models/SandboxTransferTestClockCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -15211,7 +15914,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxTransferTestClockGetResponse&gt; SandboxTransferTestClockGet(SandboxTransferTestClockGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxTransferTestClockGetResponse&gt; SandboxTransferTestClockGet(SandboxTransferTestClockGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -15234,10 +15937,13 @@ Use the `/sandbox/transfer/test_clock/get` endpoint to get a `test_clock` in the
 ```csharp
 try
 {
-    var response = await client.SandboxTransferTestClockGet(body);
+    var response = await client.SandboxTransferTestClockGet(new SandboxTransferTestClockGetOperationRequest
+    {
+        Body = new SandboxTransferTestClockGetRequest { TestClockId = "some example string" },
+    });
     // TODO: Handle 'response' of type SandboxTransferTestClockGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -15246,14 +15952,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxTransferTestClockGetRequest](Models/SandboxTransferTestClockGetRequest.cs)</code> | - |
+<code>[SandboxTransferTestClockGetOperationRequest](src/ThePlaidApi/Requests/SandboxTransferTestClockGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -15263,9 +15967,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxTransferTestClockGetResponse](Models/SandboxTransferTestClockGetResponse.cs)</code>
+**OnSuccess**: <code>[SandboxTransferTestClockGetResponse](src/ThePlaidApi/Models/SandboxTransferTestClockGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -15276,7 +15980,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxTransferTestClockListResponse&gt; SandboxTransferTestClockList(SandboxTransferTestClockListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxTransferTestClockListResponse&gt; SandboxTransferTestClockList(SandboxTransferTestClockListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -15299,10 +16003,13 @@ Use the `/sandbox/transfer/test_clock/list` endpoint to see a list of all your t
 ```csharp
 try
 {
-    var response = await client.SandboxTransferTestClockList(body);
+    var response = await client.SandboxTransferTestClockList(new SandboxTransferTestClockListOperationRequest
+    {
+        Body = new SandboxTransferTestClockListRequest(),
+    });
     // TODO: Handle 'response' of type SandboxTransferTestClockListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -15311,14 +16018,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxTransferTestClockListRequest](Models/SandboxTransferTestClockListRequest.cs)</code> | - |
+<code>[SandboxTransferTestClockListOperationRequest](src/ThePlaidApi/Requests/SandboxTransferTestClockListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -15328,9 +16033,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxTransferTestClockListResponse](Models/SandboxTransferTestClockListResponse.cs)</code>
+**OnSuccess**: <code>[SandboxTransferTestClockListResponse](src/ThePlaidApi/Models/SandboxTransferTestClockListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -15341,7 +16046,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SandboxUserResetLoginResponse&gt; SandboxUserResetLogin(SandboxUserResetLoginRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SandboxUserResetLoginResponse&gt; SandboxUserResetLogin(SandboxUserResetLoginOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -15365,10 +16070,13 @@ In the Sandbox, Items will transition to an `ITEM_LOGIN_REQUIRED` error state au
 ```csharp
 try
 {
-    var response = await client.SandboxUserResetLogin(body);
+    var response = await client.SandboxUserResetLogin(new SandboxUserResetLoginOperationRequest
+    {
+        Body = new SandboxUserResetLoginRequest(),
+    });
     // TODO: Handle 'response' of type SandboxUserResetLoginResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -15377,14 +16085,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SandboxUserResetLoginRequest](Models/SandboxUserResetLoginRequest.cs)</code> | - |
+<code>[SandboxUserResetLoginOperationRequest](src/ThePlaidApi/Requests/SandboxUserResetLoginOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -15394,9 +16100,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SandboxUserResetLoginResponse](Models/SandboxUserResetLoginResponse.cs)</code>
+**OnSuccess**: <code>[SandboxUserResetLoginResponse](src/ThePlaidApi/Models/SandboxUserResetLoginResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -15407,7 +16113,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SessionTokenCreateResponse&gt; SessionTokenCreate(SessionTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SessionTokenCreateResponse&gt; SessionTokenCreate(SessionTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -15430,10 +16136,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.SessionTokenCreate(body);
+    var response = await client.SessionTokenCreate(new SessionTokenCreateOperationRequest
+    {
+        Body = new SessionTokenCreateRequest { TemplateId = "some example string" },
+    });
     // TODO: Handle 'response' of type SessionTokenCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -15442,14 +16151,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SessionTokenCreateRequest](Models/SessionTokenCreateRequest.cs)</code> | - |
+<code>[SessionTokenCreateOperationRequest](src/ThePlaidApi/Requests/SessionTokenCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -15459,9 +16166,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SessionTokenCreateResponse](Models/SessionTokenCreateResponse.cs)</code>
+**OnSuccess**: <code>[SessionTokenCreateResponse](src/ThePlaidApi/Models/SessionTokenCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -15472,7 +16179,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SignalDecisionReportResponse&gt; SignalDecisionReport(SignalDecisionReportRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SignalDecisionReportResponse&gt; SignalDecisionReport(SignalDecisionReportOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -15499,10 +16206,13 @@ If using a Balance-only ruleset, this endpoint will not impact scores (Balance d
 ```csharp
 try
 {
-    var response = await client.SignalDecisionReport(body);
+    var response = await client.SignalDecisionReport(new SignalDecisionReportOperationRequest
+    {
+        Body = new SignalDecisionReportRequest { ClientTransactionId = "some example string", Initiated = true },
+    });
     // TODO: Handle 'response' of type SignalDecisionReportResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -15511,14 +16221,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SignalDecisionReportRequest](Models/SignalDecisionReportRequest.cs)</code> | - |
+<code>[SignalDecisionReportOperationRequest](src/ThePlaidApi/Requests/SignalDecisionReportOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -15528,9 +16236,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SignalDecisionReportResponse](Models/SignalDecisionReportResponse.cs)</code>
+**OnSuccess**: <code>[SignalDecisionReportResponse](src/ThePlaidApi/Models/SignalDecisionReportResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -15541,7 +16249,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SignalEvaluateResponse&gt; SignalEvaluate(SignalEvaluateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SignalEvaluateResponse&gt; SignalEvaluate(SignalEvaluateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -15570,10 +16278,19 @@ Note: This request may have higher latency when using a Balance-only ruleset. Th
 ```csharp
 try
 {
-    var response = await client.SignalEvaluate(body);
+    var response = await client.SignalEvaluate(new SignalEvaluateOperationRequest
+    {
+        Body = new SignalEvaluateRequest
+        {
+            AccessToken = "some example string",
+            AccountId = "some example string",
+            ClientTransactionId = "some example string",
+            Amount = 1.5d,
+        },
+    });
     // TODO: Handle 'response' of type SignalEvaluateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -15582,14 +16299,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SignalEvaluateRequest](Models/SignalEvaluateRequest.cs)</code> | - |
+<code>[SignalEvaluateOperationRequest](src/ThePlaidApi/Requests/SignalEvaluateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -15599,9 +16314,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SignalEvaluateResponse](Models/SignalEvaluateResponse.cs)</code>
+**OnSuccess**: <code>[SignalEvaluateResponse](src/ThePlaidApi/Models/SignalEvaluateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -15612,7 +16327,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SignalPrepareResponse&gt; SignalPrepare(SignalPrepareRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SignalPrepareResponse&gt; SignalPrepare(SignalPrepareOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -15639,10 +16354,13 @@ If run on an Item that is already initialized with `signal`, this endpoint will 
 ```csharp
 try
 {
-    var response = await client.SignalPrepare(body);
+    var response = await client.SignalPrepare(new SignalPrepareOperationRequest
+    {
+        Body = new SignalPrepareRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type SignalPrepareResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -15651,14 +16369,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SignalPrepareRequest](Models/SignalPrepareRequest.cs)</code> | - |
+<code>[SignalPrepareOperationRequest](src/ThePlaidApi/Requests/SignalPrepareOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -15668,9 +16384,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SignalPrepareResponse](Models/SignalPrepareResponse.cs)</code>
+**OnSuccess**: <code>[SignalPrepareResponse](src/ThePlaidApi/Models/SignalPrepareResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -15681,7 +16397,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SignalReturnReportResponse&gt; SignalReturnReport(SignalReturnReportRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SignalReturnReportResponse&gt; SignalReturnReport(SignalReturnReportOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -15704,10 +16420,17 @@ Call the `/signal/return/report` endpoint to report a returned transaction that 
 ```csharp
 try
 {
-    var response = await client.SignalReturnReport(body);
+    var response = await client.SignalReturnReport(new SignalReturnReportOperationRequest
+    {
+        Body = new SignalReturnReportRequest
+        {
+            ClientTransactionId = "some example string",
+            ReturnCode = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type SignalReturnReportResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -15716,14 +16439,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SignalReturnReportRequest](Models/SignalReturnReportRequest.cs)</code> | - |
+<code>[SignalReturnReportOperationRequest](src/ThePlaidApi/Requests/SignalReturnReportOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -15733,9 +16454,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SignalReturnReportResponse](Models/SignalReturnReportResponse.cs)</code>
+**OnSuccess**: <code>[SignalReturnReportResponse](src/ThePlaidApi/Models/SignalReturnReportResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -15746,7 +16467,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;SignalScheduleResponse&gt; SignalSchedule(SignalScheduleRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;SignalScheduleResponse&gt; SignalSchedule(SignalScheduleOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -15769,10 +16490,19 @@ Use `/signal/schedule` to schedule a planned ACH transaction.
 ```csharp
 try
 {
-    var response = await client.SignalSchedule(body);
+    var response = await client.SignalSchedule(new SignalScheduleOperationRequest
+    {
+        Body = new SignalScheduleRequest
+        {
+            AccessToken = "some example string",
+            AccountId = "some example string",
+            ClientTransactionId = "some example string",
+            Amount = 1.5d,
+        },
+    });
     // TODO: Handle 'response' of type SignalScheduleResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -15781,14 +16511,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[SignalScheduleRequest](Models/SignalScheduleRequest.cs)</code> | - |
+<code>[SignalScheduleOperationRequest](src/ThePlaidApi/Requests/SignalScheduleOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -15798,9 +16526,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SignalScheduleResponse](Models/SignalScheduleResponse.cs)</code>
+**OnSuccess**: <code>[SignalScheduleResponse](src/ThePlaidApi/Models/SignalScheduleResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -15811,7 +16539,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task StatementsDownload(StatementsDownloadRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task StatementsDownload(StatementsDownloadOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -15834,9 +16562,16 @@ The `/statements/download` endpoint retrieves a single statement PDF in binary f
 ```csharp
 try
 {
-    await client.StatementsDownload(body);
+    await client.StatementsDownload(new StatementsDownloadOperationRequest
+    {
+        Body = new StatementsDownloadRequest
+        {
+            AccessToken = "some example string",
+            StatementId = "some example string",
+        },
+    });
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -15845,14 +16580,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[StatementsDownloadRequest](Models/StatementsDownloadRequest.cs)</code> | - |
+<code>[StatementsDownloadOperationRequest](src/ThePlaidApi/Requests/StatementsDownloadOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -15864,7 +16597,7 @@ catch (SdkException<RawError> ex)
 
 **OnSuccess**: No content
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -15875,7 +16608,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;StatementsListResponse&gt; StatementsList(StatementsListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;StatementsListResponse&gt; StatementsList(StatementsListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -15898,10 +16631,13 @@ The `/statements/list` endpoint retrieves a list of all statements associated wi
 ```csharp
 try
 {
-    var response = await client.StatementsList(body);
+    var response = await client.StatementsList(new StatementsListOperationRequest
+    {
+        Body = new StatementsListRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type StatementsListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -15910,14 +16646,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[StatementsListRequest](Models/StatementsListRequest.cs)</code> | - |
+<code>[StatementsListOperationRequest](src/ThePlaidApi/Requests/StatementsListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -15927,9 +16661,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[StatementsListResponse](Models/StatementsListResponse.cs)</code>
+**OnSuccess**: <code>[StatementsListResponse](src/ThePlaidApi/Models/StatementsListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -15940,7 +16674,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;StatementsRefreshResponse&gt; StatementsRefresh(StatementsRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;StatementsRefreshResponse&gt; StatementsRefresh(StatementsRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -15963,10 +16697,18 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.StatementsRefresh(body);
+    var response = await client.StatementsRefresh(new StatementsRefreshOperationRequest
+    {
+        Body = new StatementsRefreshRequest
+        {
+            AccessToken = "some example string",
+            StartDate = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+            EndDate = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+        },
+    });
     // TODO: Handle 'response' of type StatementsRefreshResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -15975,14 +16717,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[StatementsRefreshRequest](Models/StatementsRefreshRequest.cs)</code> | - |
+<code>[StatementsRefreshOperationRequest](src/ThePlaidApi/Requests/StatementsRefreshOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -15992,9 +16732,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[StatementsRefreshResponse](Models/StatementsRefreshResponse.cs)</code>
+**OnSuccess**: <code>[StatementsRefreshResponse](src/ThePlaidApi/Models/StatementsRefreshResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -16005,7 +16745,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransactionsEnhanceGetResponse&gt; TransactionsEnhance(TransactionsEnhanceGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransactionsEnhanceGetResponse&gt; TransactionsEnhance(TransactionsEnhanceRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -16030,10 +16770,25 @@ The product is currently in beta.
 ```csharp
 try
 {
-    var response = await client.TransactionsEnhance(body);
+    var response = await client.TransactionsEnhance(new TransactionsEnhanceRequest
+    {
+        Body = new TransactionsEnhanceGetRequest
+        {
+            AccountType = "some example string",
+            Transactions = [
+                new ClientProvidedRawTransaction
+                {
+                    Id = "some example string",
+                    Description = "some example string",
+                    Amount = 1.5d,
+                    IsoCurrencyCode = "some example string",
+                },
+            ],
+        },
+    });
     // TODO: Handle 'response' of type TransactionsEnhanceGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -16042,14 +16797,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransactionsEnhanceGetRequest](Models/TransactionsEnhanceGetRequest.cs)</code> | - |
+<code>[TransactionsEnhanceRequest](src/ThePlaidApi/Requests/TransactionsEnhanceRequest.cs)</code>
 
 </dd>
 </dl>
@@ -16059,9 +16812,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransactionsEnhanceGetResponse](Models/TransactionsEnhanceGetResponse.cs)</code>
+**OnSuccess**: <code>[TransactionsEnhanceGetResponse](src/ThePlaidApi/Models/TransactionsEnhanceGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -16072,7 +16825,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransactionsEnrichResponse&gt; TransactionsEnrich(TransactionsEnrichRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransactionsEnrichResponse&gt; TransactionsEnrich(TransactionsEnrichOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -16095,10 +16848,26 @@ The `/transactions/enrich` endpoint enriches raw transaction data generated by y
 ```csharp
 try
 {
-    var response = await client.TransactionsEnrich(body);
+    var response = await client.TransactionsEnrich(new TransactionsEnrichOperationRequest
+    {
+        Body = new TransactionsEnrichRequest
+        {
+            AccountType = "some example string",
+            Transactions = [
+                new ClientProvidedTransaction
+                {
+                    Id = "some example string",
+                    Description = "some example string",
+                    Amount = 1.5d,
+                    Direction = EnrichTransactionDirection.Inflow,
+                    IsoCurrencyCode = "some example string",
+                },
+            ],
+        },
+    });
     // TODO: Handle 'response' of type TransactionsEnrichResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -16107,14 +16876,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransactionsEnrichRequest](Models/TransactionsEnrichRequest.cs)</code> | - |
+<code>[TransactionsEnrichOperationRequest](src/ThePlaidApi/Requests/TransactionsEnrichOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -16124,9 +16891,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransactionsEnrichResponse](Models/TransactionsEnrichResponse.cs)</code>
+**OnSuccess**: <code>[TransactionsEnrichResponse](src/ThePlaidApi/Models/TransactionsEnrichResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -16137,7 +16904,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransactionsGetResponse&gt; TransactionsGet(TransactionsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransactionsGetResponse&gt; TransactionsGet(TransactionsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -16167,10 +16934,18 @@ Note that data may not be immediately available to `/transactions/get`. Plaid wi
 ```csharp
 try
 {
-    var response = await client.TransactionsGet(body);
+    var response = await client.TransactionsGet(new TransactionsGetOperationRequest
+    {
+        Body = new TransactionsGetRequest
+        {
+            AccessToken = "some example string",
+            StartDate = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+            EndDate = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+        },
+    });
     // TODO: Handle 'response' of type TransactionsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -16179,14 +16954,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransactionsGetRequest](Models/TransactionsGetRequest.cs)</code> | - |
+<code>[TransactionsGetOperationRequest](src/ThePlaidApi/Requests/TransactionsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -16196,9 +16969,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransactionsGetResponse](Models/TransactionsGetResponse.cs)</code>
+**OnSuccess**: <code>[TransactionsGetResponse](src/ThePlaidApi/Models/TransactionsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -16209,7 +16982,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransactionsRecurringGetResponse&gt; TransactionsRecurringGet(TransactionsRecurringGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransactionsRecurringGetResponse&gt; TransactionsRecurringGet(TransactionsRecurringGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -16240,10 +17013,13 @@ After the initial call, you can call the `/transactions/recurring/get` endpoint 
 ```csharp
 try
 {
-    var response = await client.TransactionsRecurringGet(body);
+    var response = await client.TransactionsRecurringGet(new TransactionsRecurringGetOperationRequest
+    {
+        Body = new TransactionsRecurringGetRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type TransactionsRecurringGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -16252,14 +17028,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransactionsRecurringGetRequest](Models/TransactionsRecurringGetRequest.cs)</code> | - |
+<code>[TransactionsRecurringGetOperationRequest](src/ThePlaidApi/Requests/TransactionsRecurringGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -16269,9 +17043,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransactionsRecurringGetResponse](Models/TransactionsRecurringGetResponse.cs)</code>
+**OnSuccess**: <code>[TransactionsRecurringGetResponse](src/ThePlaidApi/Models/TransactionsRecurringGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -16282,7 +17056,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransactionsRefreshResponse&gt; TransactionsRefresh(TransactionsRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransactionsRefreshResponse&gt; TransactionsRefresh(TransactionsRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -16313,10 +17087,13 @@ As this endpoint triggers a synchronous request for fresh data, latency may be h
 ```csharp
 try
 {
-    var response = await client.TransactionsRefresh(body);
+    var response = await client.TransactionsRefresh(new TransactionsRefreshOperationRequest
+    {
+        Body = new TransactionsRefreshRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type TransactionsRefreshResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -16325,14 +17102,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransactionsRefreshRequest](Models/TransactionsRefreshRequest.cs)</code> | - |
+<code>[TransactionsRefreshOperationRequest](src/ThePlaidApi/Requests/TransactionsRefreshOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -16342,9 +17117,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransactionsRefreshResponse](Models/TransactionsRefreshResponse.cs)</code>
+**OnSuccess**: <code>[TransactionsRefreshResponse](src/ThePlaidApi/Models/TransactionsRefreshResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -16355,7 +17130,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransactionsRulesCreateResponse&gt; TransactionsRulesCreate(TransactionsRulesCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransactionsRulesCreateResponse&gt; TransactionsRulesCreate(TransactionsRulesCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -16382,10 +17157,26 @@ The product is currently in beta. To request access, contact transactions-feedba
 ```csharp
 try
 {
-    var response = await client.TransactionsRulesCreate(body);
+    var response = await client.TransactionsRulesCreate(new TransactionsRulesCreateOperationRequest
+    {
+        Body = new TransactionsRulesCreateRequest
+        {
+            ClientId = "7f57eb3d2a9j6480121fx361",
+            Secret = "79g03eoofwl8240v776r2h667442119",
+            ClientUserId = "your-client-user-id",
+            PfcPrimaryCategory = "FOOD_AND_DRINK",
+            PfcDetailedCategory = "FOOD_AND_DRINK_FAST_FOOD",
+            RuleDetails = new TransactionsRuleDetails
+            {
+                Field = TransactionsRuleField.MerchantName,
+                Type = TransactionsRuleType.SubstringMatch,
+                Query = "Burger Shack",
+            },
+        },
+    });
     // TODO: Handle 'response' of type TransactionsRulesCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -16394,14 +17185,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransactionsRulesCreateRequest](Models/TransactionsRulesCreateRequest.cs)</code> | - |
+<code>[TransactionsRulesCreateOperationRequest](src/ThePlaidApi/Requests/TransactionsRulesCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -16411,9 +17200,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransactionsRulesCreateResponse](Models/TransactionsRulesCreateResponse.cs)</code>
+**OnSuccess**: <code>[TransactionsRulesCreateResponse](src/ThePlaidApi/Models/TransactionsRulesCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -16424,7 +17213,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransactionsRulesListResponse&gt; TransactionsRulesList(TransactionsRulesListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransactionsRulesListResponse&gt; TransactionsRulesList(TransactionsRulesListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -16447,10 +17236,18 @@ The `/beta/transactions/rules/v1/list` returns a list of transaction rules creat
 ```csharp
 try
 {
-    var response = await client.TransactionsRulesList(body);
+    var response = await client.TransactionsRulesList(new TransactionsRulesListOperationRequest
+    {
+        Body = new TransactionsRulesListRequest
+        {
+            ClientId = "7f57eb3d2a9j6480121fx361",
+            Secret = "79g03eoofwl8240v776r2h667442119",
+            ClientUserId = "your-client-user-id",
+        },
+    });
     // TODO: Handle 'response' of type TransactionsRulesListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -16459,14 +17256,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransactionsRulesListRequest](Models/TransactionsRulesListRequest.cs)</code> | - |
+<code>[TransactionsRulesListOperationRequest](src/ThePlaidApi/Requests/TransactionsRulesListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -16476,9 +17271,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransactionsRulesListResponse](Models/TransactionsRulesListResponse.cs)</code>
+**OnSuccess**: <code>[TransactionsRulesListResponse](src/ThePlaidApi/Models/TransactionsRulesListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -16489,7 +17284,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransactionsRulesRemoveResponse&gt; TransactionsRulesRemove(TransactionsRulesRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransactionsRulesRemoveResponse&gt; TransactionsRulesRemove(TransactionsRulesRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -16512,10 +17307,19 @@ The `/beta/transactions/rules/v1/remove` endpoint is used to remove a transactio
 ```csharp
 try
 {
-    var response = await client.TransactionsRulesRemove(body);
+    var response = await client.TransactionsRulesRemove(new TransactionsRulesRemoveOperationRequest
+    {
+        Body = new TransactionsRulesRemoveRequest
+        {
+            ClientId = "7f57eb3d2a9j6480121fx361",
+            Secret = "79g03eoofwl8240v776r2h667442119",
+            ClientUserId = "your-client-user-id",
+            RuleId = "eVBnVMp7zdTJLkRNr33Rs6zr7KNJqBF",
+        },
+    });
     // TODO: Handle 'response' of type TransactionsRulesRemoveResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -16524,14 +17328,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransactionsRulesRemoveRequest](Models/TransactionsRulesRemoveRequest.cs)</code> | - |
+<code>[TransactionsRulesRemoveOperationRequest](src/ThePlaidApi/Requests/TransactionsRulesRemoveOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -16541,9 +17343,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransactionsRulesRemoveResponse](Models/TransactionsRulesRemoveResponse.cs)</code>
+**OnSuccess**: <code>[TransactionsRulesRemoveResponse](src/ThePlaidApi/Models/TransactionsRulesRemoveResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -16554,7 +17356,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransactionsSyncResponse&gt; TransactionsSync(TransactionsSyncRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransactionsSyncResponse&gt; TransactionsSync(TransactionsSyncOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -16589,10 +17391,13 @@ To be alerted when new transactions are available, listen for the [`SYNC_UPDATES
 ```csharp
 try
 {
-    var response = await client.TransactionsSync(body);
+    var response = await client.TransactionsSync(new TransactionsSyncOperationRequest
+    {
+        Body = new TransactionsSyncRequest { AccessToken = "some example string" },
+    });
     // TODO: Handle 'response' of type TransactionsSyncResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -16601,14 +17406,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransactionsSyncRequest](Models/TransactionsSyncRequest.cs)</code> | - |
+<code>[TransactionsSyncOperationRequest](src/ThePlaidApi/Requests/TransactionsSyncOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -16618,9 +17421,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransactionsSyncResponse](Models/TransactionsSyncResponse.cs)</code>
+**OnSuccess**: <code>[TransactionsSyncResponse](src/ThePlaidApi/Models/TransactionsSyncResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -16631,7 +17434,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransactionsUserInsightsGetResponse&gt; TransactionsUserInsightsGet(TransactionsUserInsightsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransactionsUserInsightsGetResponse&gt; TransactionsUserInsightsGet(TransactionsUserInsightsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -16656,10 +17459,13 @@ The product is currently in beta.
 ```csharp
 try
 {
-    var response = await client.TransactionsUserInsightsGet(body);
+    var response = await client.TransactionsUserInsightsGet(new TransactionsUserInsightsGetOperationRequest
+    {
+        Body = new TransactionsUserInsightsGetRequest { ClientUserId = "some example string" },
+    });
     // TODO: Handle 'response' of type TransactionsUserInsightsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -16668,14 +17474,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransactionsUserInsightsGetRequest](Models/TransactionsUserInsightsGetRequest.cs)</code> | - |
+<code>[TransactionsUserInsightsGetOperationRequest](src/ThePlaidApi/Requests/TransactionsUserInsightsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -16685,9 +17489,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransactionsUserInsightsGetResponse](Models/TransactionsUserInsightsGetResponse.cs)</code>
+**OnSuccess**: <code>[TransactionsUserInsightsGetResponse](src/ThePlaidApi/Models/TransactionsUserInsightsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -16698,7 +17502,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferAuthorizationCancelResponse&gt; TransferAuthorizationCancel(TransferAuthorizationCancelRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferAuthorizationCancelResponse&gt; TransferAuthorizationCancel(TransferAuthorizationCancelOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -16721,10 +17525,13 @@ Use the `/transfer/authorization/cancel` endpoint to cancel a transfer authoriza
 ```csharp
 try
 {
-    var response = await client.TransferAuthorizationCancel(body);
+    var response = await client.TransferAuthorizationCancel(new TransferAuthorizationCancelOperationRequest
+    {
+        Body = new TransferAuthorizationCancelRequest { AuthorizationId = "some example string" },
+    });
     // TODO: Handle 'response' of type TransferAuthorizationCancelResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -16733,14 +17540,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferAuthorizationCancelRequest](Models/TransferAuthorizationCancelRequest.cs)</code> | - |
+<code>[TransferAuthorizationCancelOperationRequest](src/ThePlaidApi/Requests/TransferAuthorizationCancelOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -16750,9 +17555,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferAuthorizationCancelResponse](Models/TransferAuthorizationCancelResponse.cs)</code>
+**OnSuccess**: <code>[TransferAuthorizationCancelResponse](src/ThePlaidApi/Models/TransferAuthorizationCancelResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -16763,7 +17568,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferAuthorizationCreateResponse&gt; TransferAuthorizationCreate(TransferAuthorizationCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferAuthorizationCreateResponse&gt; TransferAuthorizationCreate(TransferAuthorizationCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -16808,10 +17613,21 @@ In Plaid's Sandbox environment the decisions will be returned as follows:
 ```csharp
 try
 {
-    var response = await client.TransferAuthorizationCreate(body);
+    var response = await client.TransferAuthorizationCreate(new TransferAuthorizationCreateOperationRequest
+    {
+        Body = new TransferAuthorizationCreateRequest
+        {
+            AccessToken = "some example string",
+            AccountId = "some example string",
+            Type = TransferType.Debit,
+            Network = TransferNetwork.Ach,
+            Amount = "some example string",
+            User = new TransferAuthorizationUserInRequest { LegalName = "some example string" },
+        },
+    });
     // TODO: Handle 'response' of type TransferAuthorizationCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -16820,14 +17636,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferAuthorizationCreateRequest](Models/TransferAuthorizationCreateRequest.cs)</code> | - |
+<code>[TransferAuthorizationCreateOperationRequest](src/ThePlaidApi/Requests/TransferAuthorizationCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -16837,9 +17651,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferAuthorizationCreateResponse](Models/TransferAuthorizationCreateResponse.cs)</code>
+**OnSuccess**: <code>[TransferAuthorizationCreateResponse](src/ThePlaidApi/Models/TransferAuthorizationCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -16850,7 +17664,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferBalanceGetResponse&gt; TransferBalanceGet(TransferBalanceGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferBalanceGetResponse&gt; TransferBalanceGet(TransferBalanceGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -16873,10 +17687,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.TransferBalanceGet(body);
+    var response = await client.TransferBalanceGet(new TransferBalanceGetOperationRequest
+    {
+        Body = new TransferBalanceGetRequest(),
+    });
     // TODO: Handle 'response' of type TransferBalanceGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -16885,14 +17702,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferBalanceGetRequest](Models/TransferBalanceGetRequest.cs)</code> | - |
+<code>[TransferBalanceGetOperationRequest](src/ThePlaidApi/Requests/TransferBalanceGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -16902,9 +17717,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferBalanceGetResponse](Models/TransferBalanceGetResponse.cs)</code>
+**OnSuccess**: <code>[TransferBalanceGetResponse](src/ThePlaidApi/Models/TransferBalanceGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -16915,7 +17730,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferCancelResponse&gt; TransferCancel(TransferCancelRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferCancelResponse&gt; TransferCancel(TransferCancelOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -16938,10 +17753,13 @@ Use the `/transfer/cancel` endpoint to cancel a transfer.  A transfer is eligibl
 ```csharp
 try
 {
-    var response = await client.TransferCancel(body);
+    var response = await client.TransferCancel(new TransferCancelOperationRequest
+    {
+        Body = new TransferCancelRequest { TransferId = "some example string" },
+    });
     // TODO: Handle 'response' of type TransferCancelResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -16950,14 +17768,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferCancelRequest](Models/TransferCancelRequest.cs)</code> | - |
+<code>[TransferCancelOperationRequest](src/ThePlaidApi/Requests/TransferCancelOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -16967,9 +17783,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferCancelResponse](Models/TransferCancelResponse.cs)</code>
+**OnSuccess**: <code>[TransferCancelResponse](src/ThePlaidApi/Models/TransferCancelResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -16980,7 +17796,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferCapabilitiesGetResponse&gt; TransferCapabilitiesGet(TransferCapabilitiesGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferCapabilitiesGetResponse&gt; TransferCapabilitiesGet(TransferCapabilitiesGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17003,10 +17819,17 @@ Use the `/transfer/capabilities/get` endpoint to determine the RTP eligibility i
 ```csharp
 try
 {
-    var response = await client.TransferCapabilitiesGet(body);
+    var response = await client.TransferCapabilitiesGet(new TransferCapabilitiesGetOperationRequest
+    {
+        Body = new TransferCapabilitiesGetRequest
+        {
+            AccessToken = "some example string",
+            AccountId = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type TransferCapabilitiesGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17015,14 +17838,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferCapabilitiesGetRequest](Models/TransferCapabilitiesGetRequest.cs)</code> | - |
+<code>[TransferCapabilitiesGetOperationRequest](src/ThePlaidApi/Requests/TransferCapabilitiesGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -17032,9 +17853,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferCapabilitiesGetResponse](Models/TransferCapabilitiesGetResponse.cs)</code>
+**OnSuccess**: <code>[TransferCapabilitiesGetResponse](src/ThePlaidApi/Models/TransferCapabilitiesGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -17045,7 +17866,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferConfigurationGetResponse&gt; TransferConfigurationGet(TransferConfigurationGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferConfigurationGetResponse&gt; TransferConfigurationGet(TransferConfigurationGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17068,10 +17889,13 @@ Use the `/transfer/configuration/get` endpoint to view your transfer product con
 ```csharp
 try
 {
-    var response = await client.TransferConfigurationGet(body);
+    var response = await client.TransferConfigurationGet(new TransferConfigurationGetOperationRequest
+    {
+        Body = new TransferConfigurationGetRequest(),
+    });
     // TODO: Handle 'response' of type TransferConfigurationGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17080,14 +17904,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferConfigurationGetRequest](Models/TransferConfigurationGetRequest.cs)</code> | - |
+<code>[TransferConfigurationGetOperationRequest](src/ThePlaidApi/Requests/TransferConfigurationGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -17097,9 +17919,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferConfigurationGetResponse](Models/TransferConfigurationGetResponse.cs)</code>
+**OnSuccess**: <code>[TransferConfigurationGetResponse](src/ThePlaidApi/Models/TransferConfigurationGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -17110,7 +17932,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferCreateResponse&gt; TransferCreate(TransferCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferCreateResponse&gt; TransferCreate(TransferCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17133,10 +17955,19 @@ Use the `/transfer/create` endpoint to initiate a new transfer. This endpoint is
 ```csharp
 try
 {
-    var response = await client.TransferCreate(body);
+    var response = await client.TransferCreate(new TransferCreateOperationRequest
+    {
+        Body = new TransferCreateRequest
+        {
+            AccessToken = "some example string",
+            AccountId = "some example string",
+            AuthorizationId = "some example string",
+            Description = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type TransferCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17145,14 +17976,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferCreateRequest](Models/TransferCreateRequest.cs)</code> | - |
+<code>[TransferCreateOperationRequest](src/ThePlaidApi/Requests/TransferCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -17162,9 +17991,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferCreateResponse](Models/TransferCreateResponse.cs)</code>
+**OnSuccess**: <code>[TransferCreateResponse](src/ThePlaidApi/Models/TransferCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -17175,7 +18004,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferDiligenceDocumentUploadResponse&gt; TransferDiligenceDocumentUpload(TransferDiligenceDocumentUploadRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferDiligenceDocumentUploadResponse&gt; TransferDiligenceDocumentUpload(TransferDiligenceDocumentUploadOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17199,10 +18028,18 @@ You must provide the `client_id` in the `PLAID-CLIENT-ID` header and `secret` in
 ```csharp
 try
 {
-    var response = await client.TransferDiligenceDocumentUpload(body);
+    var response = await client.TransferDiligenceDocumentUpload(new TransferDiligenceDocumentUploadOperationRequest
+    {
+        Body = new TransferDiligenceDocumentUploadRequest
+        {
+            OriginatorClientId = "some example string",
+            File = Array.Empty<byte>(),
+            Purpose = Purpose.DueDiligence,
+        },
+    });
     // TODO: Handle 'response' of type TransferDiligenceDocumentUploadResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17211,14 +18048,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferDiligenceDocumentUploadRequest](Models/TransferDiligenceDocumentUploadRequest.cs)</code> | - |
+<code>[TransferDiligenceDocumentUploadOperationRequest](src/ThePlaidApi/Requests/TransferDiligenceDocumentUploadOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -17228,9 +18063,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferDiligenceDocumentUploadResponse](Models/TransferDiligenceDocumentUploadResponse.cs)</code>
+**OnSuccess**: <code>[TransferDiligenceDocumentUploadResponse](src/ThePlaidApi/Models/TransferDiligenceDocumentUploadResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -17241,7 +18076,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferDiligenceSubmitResponse&gt; TransferDiligenceSubmit(TransferDiligenceSubmitRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferDiligenceSubmitResponse&gt; TransferDiligenceSubmit(TransferDiligenceSubmitOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17264,10 +18099,36 @@ Use the `/transfer/diligence/submit` endpoint to submit transfer diligence on be
 ```csharp
 try
 {
-    var response = await client.TransferDiligenceSubmit(body);
+    var response = await client.TransferDiligenceSubmit(new TransferDiligenceSubmitOperationRequest
+    {
+        Body = new TransferDiligenceSubmitRequest
+        {
+            OriginatorClientId = "some example string",
+            OriginatorDiligence = new TransferOriginatorDiligence
+            {
+                Dba = "some example string",
+                TaxId = "some example string",
+                Address = new TransferOriginatorAddress
+                {
+                    City = "some example string",
+                    Street = "some example string",
+                    Region = "some example string",
+                    PostalCode = "some example string",
+                    CountryCode = "some example string",
+                },
+                Website = "some example string",
+                NaicsCode = "some example string",
+                FundingAccount = new TransferFundingAccount
+                {
+                    AccessToken = "some example string",
+                    AccountId = "some example string",
+                },
+            },
+        },
+    });
     // TODO: Handle 'response' of type TransferDiligenceSubmitResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17276,14 +18137,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferDiligenceSubmitRequest](Models/TransferDiligenceSubmitRequest.cs)</code> | - |
+<code>[TransferDiligenceSubmitOperationRequest](src/ThePlaidApi/Requests/TransferDiligenceSubmitOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -17293,9 +18152,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferDiligenceSubmitResponse](Models/TransferDiligenceSubmitResponse.cs)</code>
+**OnSuccess**: <code>[TransferDiligenceSubmitResponse](src/ThePlaidApi/Models/TransferDiligenceSubmitResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -17306,7 +18165,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferEventListResponse&gt; TransferEventList(TransferEventListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferEventListResponse&gt; TransferEventList(TransferEventListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17329,10 +18188,13 @@ Use the `/transfer/event/list` endpoint to get a list of transfer events based o
 ```csharp
 try
 {
-    var response = await client.TransferEventList(body);
+    var response = await client.TransferEventList(new TransferEventListOperationRequest
+    {
+        Body = new TransferEventListRequest(),
+    });
     // TODO: Handle 'response' of type TransferEventListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17341,14 +18203,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferEventListRequest](Models/TransferEventListRequest.cs)</code> | - |
+<code>[TransferEventListOperationRequest](src/ThePlaidApi/Requests/TransferEventListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -17358,9 +18218,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferEventListResponse](Models/TransferEventListResponse.cs)</code>
+**OnSuccess**: <code>[TransferEventListResponse](src/ThePlaidApi/Models/TransferEventListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -17371,7 +18231,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferEventSyncResponse&gt; TransferEventSync(TransferEventSyncRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferEventSyncResponse&gt; TransferEventSync(TransferEventSyncOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17394,10 +18254,13 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.TransferEventSync(body);
+    var response = await client.TransferEventSync(new TransferEventSyncOperationRequest
+    {
+        Body = new TransferEventSyncRequest { AfterId = 1 },
+    });
     // TODO: Handle 'response' of type TransferEventSyncResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17406,14 +18269,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferEventSyncRequest](Models/TransferEventSyncRequest.cs)</code> | - |
+<code>[TransferEventSyncOperationRequest](src/ThePlaidApi/Requests/TransferEventSyncOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -17423,9 +18284,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferEventSyncResponse](Models/TransferEventSyncResponse.cs)</code>
+**OnSuccess**: <code>[TransferEventSyncResponse](src/ThePlaidApi/Models/TransferEventSyncResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -17436,7 +18297,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferGetResponse&gt; TransferGet(TransferGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferGetResponse&gt; TransferGet(TransferGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17459,10 +18320,10 @@ The `/transfer/get` endpoint fetches information about the transfer correspondin
 ```csharp
 try
 {
-    var response = await client.TransferGet(body);
+    var response = await client.TransferGet(new TransferGetOperationRequest { Body = new TransferGetRequest() });
     // TODO: Handle 'response' of type TransferGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17471,14 +18332,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferGetRequest](Models/TransferGetRequest.cs)</code> | - |
+<code>[TransferGetOperationRequest](src/ThePlaidApi/Requests/TransferGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -17488,9 +18347,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferGetResponse](Models/TransferGetResponse.cs)</code>
+**OnSuccess**: <code>[TransferGetResponse](src/ThePlaidApi/Models/TransferGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -17501,7 +18360,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferIntentCreateResponse&gt; TransferIntentCreate(TransferIntentCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferIntentCreateResponse&gt; TransferIntentCreate(TransferIntentCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17524,10 +18383,19 @@ Use the `/transfer/intent/create` endpoint to generate a transfer intent object 
 ```csharp
 try
 {
-    var response = await client.TransferIntentCreate(body);
+    var response = await client.TransferIntentCreate(new TransferIntentCreateOperationRequest
+    {
+        Body = new TransferIntentCreateRequest
+        {
+            Mode = TransferIntentCreateMode.Payment,
+            Amount = "some example string",
+            Description = "some example string",
+            User = new TransferUserInRequest { LegalName = "some example string" },
+        },
+    });
     // TODO: Handle 'response' of type TransferIntentCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17536,14 +18404,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferIntentCreateRequest](Models/TransferIntentCreateRequest.cs)</code> | - |
+<code>[TransferIntentCreateOperationRequest](src/ThePlaidApi/Requests/TransferIntentCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -17553,9 +18419,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferIntentCreateResponse](Models/TransferIntentCreateResponse.cs)</code>
+**OnSuccess**: <code>[TransferIntentCreateResponse](src/ThePlaidApi/Models/TransferIntentCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -17566,7 +18432,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferIntentGetResponse&gt; TransferIntentGet(TransferIntentGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferIntentGetResponse&gt; TransferIntentGet(TransferIntentGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17589,10 +18455,13 @@ Use the `/transfer/intent/get` endpoint to retrieve more information about a tra
 ```csharp
 try
 {
-    var response = await client.TransferIntentGet(body);
+    var response = await client.TransferIntentGet(new TransferIntentGetOperationRequest
+    {
+        Body = new TransferIntentGetRequest { TransferIntentId = "some example string" },
+    });
     // TODO: Handle 'response' of type TransferIntentGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17601,14 +18470,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferIntentGetRequest](Models/TransferIntentGetRequest.cs)</code> | - |
+<code>[TransferIntentGetOperationRequest](src/ThePlaidApi/Requests/TransferIntentGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -17618,9 +18485,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferIntentGetResponse](Models/TransferIntentGetResponse.cs)</code>
+**OnSuccess**: <code>[TransferIntentGetResponse](src/ThePlaidApi/Models/TransferIntentGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -17631,7 +18498,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferLedgerDepositResponse&gt; TransferLedgerDeposit(TransferLedgerDepositRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferLedgerDepositResponse&gt; TransferLedgerDeposit(TransferLedgerDepositOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17654,10 +18521,18 @@ Use the `/transfer/ledger/deposit` endpoint to deposit funds into Plaid Ledger.
 ```csharp
 try
 {
-    var response = await client.TransferLedgerDeposit(body);
+    var response = await client.TransferLedgerDeposit(new TransferLedgerDepositOperationRequest
+    {
+        Body = new TransferLedgerDepositRequest
+        {
+            Amount = "some example string",
+            IdempotencyKey = "some example string",
+            Network = TransferAchNetwork.Ach,
+        },
+    });
     // TODO: Handle 'response' of type TransferLedgerDepositResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17666,14 +18541,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferLedgerDepositRequest](Models/TransferLedgerDepositRequest.cs)</code> | - |
+<code>[TransferLedgerDepositOperationRequest](src/ThePlaidApi/Requests/TransferLedgerDepositOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -17683,9 +18556,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferLedgerDepositResponse](Models/TransferLedgerDepositResponse.cs)</code>
+**OnSuccess**: <code>[TransferLedgerDepositResponse](src/ThePlaidApi/Models/TransferLedgerDepositResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -17696,7 +18569,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferLedgerDistributeResponse&gt; TransferLedgerDistribute(TransferLedgerDistributeRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferLedgerDistributeResponse&gt; TransferLedgerDistribute(TransferLedgerDistributeOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17719,10 +18592,19 @@ Use the `/transfer/ledger/distribute` endpoint to move available balance between
 ```csharp
 try
 {
-    var response = await client.TransferLedgerDistribute(body);
+    var response = await client.TransferLedgerDistribute(new TransferLedgerDistributeOperationRequest
+    {
+        Body = new TransferLedgerDistributeRequest
+        {
+            FromLedgerId = "some example string",
+            ToLedgerId = "some example string",
+            Amount = "some example string",
+            IdempotencyKey = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type TransferLedgerDistributeResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17731,14 +18613,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferLedgerDistributeRequest](Models/TransferLedgerDistributeRequest.cs)</code> | - |
+<code>[TransferLedgerDistributeOperationRequest](src/ThePlaidApi/Requests/TransferLedgerDistributeOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -17748,9 +18628,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferLedgerDistributeResponse](Models/TransferLedgerDistributeResponse.cs)</code>
+**OnSuccess**: <code>[TransferLedgerDistributeResponse](src/ThePlaidApi/Models/TransferLedgerDistributeResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -17761,7 +18641,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferLedgerEventListResponse&gt; TransferLedgerEventList(TransferLedgerEventListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferLedgerEventListResponse&gt; TransferLedgerEventList(TransferLedgerEventListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17784,10 +18664,13 @@ Use the `/transfer/ledger/event/list` endpoint to get a list of ledger events fo
 ```csharp
 try
 {
-    var response = await client.TransferLedgerEventList(body);
+    var response = await client.TransferLedgerEventList(new TransferLedgerEventListOperationRequest
+    {
+        Body = new TransferLedgerEventListRequest(),
+    });
     // TODO: Handle 'response' of type TransferLedgerEventListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17796,14 +18679,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferLedgerEventListRequest](Models/TransferLedgerEventListRequest.cs)</code> | - |
+<code>[TransferLedgerEventListOperationRequest](src/ThePlaidApi/Requests/TransferLedgerEventListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -17813,9 +18694,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferLedgerEventListResponse](Models/TransferLedgerEventListResponse.cs)</code>
+**OnSuccess**: <code>[TransferLedgerEventListResponse](src/ThePlaidApi/Models/TransferLedgerEventListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -17826,7 +18707,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferLedgerGetResponse&gt; TransferLedgerGet(TransferLedgerGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferLedgerGetResponse&gt; TransferLedgerGet(TransferLedgerGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17849,10 +18730,13 @@ Use the `/transfer/ledger/get` endpoint to view a balance on the ledger held wit
 ```csharp
 try
 {
-    var response = await client.TransferLedgerGet(body);
+    var response = await client.TransferLedgerGet(new TransferLedgerGetOperationRequest
+    {
+        Body = new TransferLedgerGetRequest(),
+    });
     // TODO: Handle 'response' of type TransferLedgerGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17861,14 +18745,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferLedgerGetRequest](Models/TransferLedgerGetRequest.cs)</code> | - |
+<code>[TransferLedgerGetOperationRequest](src/ThePlaidApi/Requests/TransferLedgerGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -17878,9 +18760,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferLedgerGetResponse](Models/TransferLedgerGetResponse.cs)</code>
+**OnSuccess**: <code>[TransferLedgerGetResponse](src/ThePlaidApi/Models/TransferLedgerGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -17891,7 +18773,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferLedgerWithdrawResponse&gt; TransferLedgerWithdraw(TransferLedgerWithdrawRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferLedgerWithdrawResponse&gt; TransferLedgerWithdraw(TransferLedgerWithdrawOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17914,10 +18796,18 @@ Use the `/transfer/ledger/withdraw` endpoint to withdraw funds from a Plaid Ledg
 ```csharp
 try
 {
-    var response = await client.TransferLedgerWithdraw(body);
+    var response = await client.TransferLedgerWithdraw(new TransferLedgerWithdrawOperationRequest
+    {
+        Body = new TransferLedgerWithdrawRequest
+        {
+            Amount = "some example string",
+            IdempotencyKey = "some example string",
+            Network = TransferNetwork.Ach,
+        },
+    });
     // TODO: Handle 'response' of type TransferLedgerWithdrawResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17926,14 +18816,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferLedgerWithdrawRequest](Models/TransferLedgerWithdrawRequest.cs)</code> | - |
+<code>[TransferLedgerWithdrawOperationRequest](src/ThePlaidApi/Requests/TransferLedgerWithdrawOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -17943,9 +18831,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferLedgerWithdrawResponse](Models/TransferLedgerWithdrawResponse.cs)</code>
+**OnSuccess**: <code>[TransferLedgerWithdrawResponse](src/ThePlaidApi/Models/TransferLedgerWithdrawResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -17956,7 +18844,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferListResponse&gt; TransferList(TransferListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferListResponse&gt; TransferList(TransferListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -17967,7 +18855,6 @@ catch (SdkException<RawError> ex)
 <dd>
 
 Use the `/transfer/list` endpoint to see a list of all your transfers and their statuses. Results are paginated; use the `count` and `offset` query parameters to retrieve the desired transfers.
-
 
 </dd>
 </dl>
@@ -17980,10 +18867,10 @@ Use the `/transfer/list` endpoint to see a list of all your transfers and their 
 ```csharp
 try
 {
-    var response = await client.TransferList(body);
+    var response = await client.TransferList(new TransferListOperationRequest { Body = new TransferListRequest() });
     // TODO: Handle 'response' of type TransferListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -17992,14 +18879,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferListRequest](Models/TransferListRequest.cs)</code> | - |
+<code>[TransferListOperationRequest](src/ThePlaidApi/Requests/TransferListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18009,9 +18894,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferListResponse](Models/TransferListResponse.cs)</code>
+**OnSuccess**: <code>[TransferListResponse](src/ThePlaidApi/Models/TransferListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -18022,7 +18907,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferMetricsGetResponse&gt; TransferMetricsGet(TransferMetricsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferMetricsGetResponse&gt; TransferMetricsGet(TransferMetricsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -18047,10 +18932,13 @@ In the Sandbox environment, this endpoint returns static placeholder values rath
 ```csharp
 try
 {
-    var response = await client.TransferMetricsGet(body);
+    var response = await client.TransferMetricsGet(new TransferMetricsGetOperationRequest
+    {
+        Body = new TransferMetricsGetRequest(),
+    });
     // TODO: Handle 'response' of type TransferMetricsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -18059,14 +18947,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferMetricsGetRequest](Models/TransferMetricsGetRequest.cs)</code> | - |
+<code>[TransferMetricsGetOperationRequest](src/ThePlaidApi/Requests/TransferMetricsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18076,9 +18962,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferMetricsGetResponse](Models/TransferMetricsGetResponse.cs)</code>
+**OnSuccess**: <code>[TransferMetricsGetResponse](src/ThePlaidApi/Models/TransferMetricsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -18089,7 +18975,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferMigrateAccountResponse&gt; TransferMigrateAccount(TransferMigrateAccountRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferMigrateAccountResponse&gt; TransferMigrateAccount(TransferMigrateAccountOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -18112,10 +18998,18 @@ As an alternative to adding Items via Link, you can also use the `/transfer/migr
 ```csharp
 try
 {
-    var response = await client.TransferMigrateAccount(body);
+    var response = await client.TransferMigrateAccount(new TransferMigrateAccountOperationRequest
+    {
+        Body = new TransferMigrateAccountRequest
+        {
+            AccountNumber = "some example string",
+            RoutingNumber = "some example string",
+            AccountType = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type TransferMigrateAccountResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -18124,14 +19018,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferMigrateAccountRequest](Models/TransferMigrateAccountRequest.cs)</code> | - |
+<code>[TransferMigrateAccountOperationRequest](src/ThePlaidApi/Requests/TransferMigrateAccountOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18141,9 +19033,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferMigrateAccountResponse](Models/TransferMigrateAccountResponse.cs)</code>
+**OnSuccess**: <code>[TransferMigrateAccountResponse](src/ThePlaidApi/Models/TransferMigrateAccountResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -18154,7 +19046,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferOriginatorCreateResponse&gt; TransferOriginatorCreate(TransferOriginatorCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferOriginatorCreateResponse&gt; TransferOriginatorCreate(TransferOriginatorCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -18177,10 +19069,13 @@ Use the `/transfer/originator/create` endpoint to create a new originator and re
 ```csharp
 try
 {
-    var response = await client.TransferOriginatorCreate(body);
+    var response = await client.TransferOriginatorCreate(new TransferOriginatorCreateOperationRequest
+    {
+        Body = new TransferOriginatorCreateRequest { CompanyName = "some example string" },
+    });
     // TODO: Handle 'response' of type TransferOriginatorCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -18189,14 +19084,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferOriginatorCreateRequest](Models/TransferOriginatorCreateRequest.cs)</code> | - |
+<code>[TransferOriginatorCreateOperationRequest](src/ThePlaidApi/Requests/TransferOriginatorCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18206,9 +19099,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferOriginatorCreateResponse](Models/TransferOriginatorCreateResponse.cs)</code>
+**OnSuccess**: <code>[TransferOriginatorCreateResponse](src/ThePlaidApi/Models/TransferOriginatorCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -18219,7 +19112,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferOriginatorFundingAccountCreateResponse&gt; TransferOriginatorFundingAccountCreate(TransferOriginatorFundingAccountCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferOriginatorFundingAccountCreateResponse&gt; TransferOriginatorFundingAccountCreate(TransferOriginatorFundingAccountCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -18242,10 +19135,22 @@ Use the `/transfer/originator/funding_account/create` endpoint to create a new f
 ```csharp
 try
 {
-    var response = await client.TransferOriginatorFundingAccountCreate(body);
+    var response = await client.TransferOriginatorFundingAccountCreate(
+        new TransferOriginatorFundingAccountCreateOperationRequest
+        {
+            Body = new TransferOriginatorFundingAccountCreateRequest
+            {
+                OriginatorClientId = "some example string",
+                FundingAccount = new TransferFundingAccountWithDisplayName
+                {
+                    AccessToken = "some example string",
+                    AccountId = "some example string",
+                },
+            },
+        });
     // TODO: Handle 'response' of type TransferOriginatorFundingAccountCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -18254,14 +19159,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferOriginatorFundingAccountCreateRequest](Models/TransferOriginatorFundingAccountCreateRequest.cs)</code> | - |
+<code>[TransferOriginatorFundingAccountCreateOperationRequest](src/ThePlaidApi/Requests/TransferOriginatorFundingAccountCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18271,9 +19174,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferOriginatorFundingAccountCreateResponse](Models/TransferOriginatorFundingAccountCreateResponse.cs)</code>
+**OnSuccess**: <code>[TransferOriginatorFundingAccountCreateResponse](src/ThePlaidApi/Models/TransferOriginatorFundingAccountCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -18284,7 +19187,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferOriginatorFundingAccountUpdateResponse&gt; TransferOriginatorFundingAccountUpdate(TransferOriginatorFundingAccountUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferOriginatorFundingAccountUpdateResponse&gt; TransferOriginatorFundingAccountUpdate(TransferOriginatorFundingAccountUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -18307,10 +19210,22 @@ Use the `/transfer/originator/funding_account/update` endpoint to update the fun
 ```csharp
 try
 {
-    var response = await client.TransferOriginatorFundingAccountUpdate(body);
+    var response = await client.TransferOriginatorFundingAccountUpdate(
+        new TransferOriginatorFundingAccountUpdateOperationRequest
+        {
+            Body = new TransferOriginatorFundingAccountUpdateRequest
+            {
+                OriginatorClientId = "some example string",
+                FundingAccount = new TransferFundingAccount
+                {
+                    AccessToken = "some example string",
+                    AccountId = "some example string",
+                },
+            },
+        });
     // TODO: Handle 'response' of type TransferOriginatorFundingAccountUpdateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -18319,14 +19234,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferOriginatorFundingAccountUpdateRequest](Models/TransferOriginatorFundingAccountUpdateRequest.cs)</code> | - |
+<code>[TransferOriginatorFundingAccountUpdateOperationRequest](src/ThePlaidApi/Requests/TransferOriginatorFundingAccountUpdateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18336,9 +19249,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferOriginatorFundingAccountUpdateResponse](Models/TransferOriginatorFundingAccountUpdateResponse.cs)</code>
+**OnSuccess**: <code>[TransferOriginatorFundingAccountUpdateResponse](src/ThePlaidApi/Models/TransferOriginatorFundingAccountUpdateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -18349,7 +19262,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferOriginatorGetResponse&gt; TransferOriginatorGet(TransferOriginatorGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferOriginatorGetResponse&gt; TransferOriginatorGet(TransferOriginatorGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -18372,10 +19285,13 @@ The `/transfer/originator/get` endpoint gets status updates for an originator's 
 ```csharp
 try
 {
-    var response = await client.TransferOriginatorGet(body);
+    var response = await client.TransferOriginatorGet(new TransferOriginatorGetOperationRequest
+    {
+        Body = new TransferOriginatorGetRequest { OriginatorClientId = "some example string" },
+    });
     // TODO: Handle 'response' of type TransferOriginatorGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -18384,14 +19300,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferOriginatorGetRequest](Models/TransferOriginatorGetRequest.cs)</code> | - |
+<code>[TransferOriginatorGetOperationRequest](src/ThePlaidApi/Requests/TransferOriginatorGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18401,9 +19315,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferOriginatorGetResponse](Models/TransferOriginatorGetResponse.cs)</code>
+**OnSuccess**: <code>[TransferOriginatorGetResponse](src/ThePlaidApi/Models/TransferOriginatorGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -18414,7 +19328,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferOriginatorListResponse&gt; TransferOriginatorList(TransferOriginatorListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferOriginatorListResponse&gt; TransferOriginatorList(TransferOriginatorListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -18437,10 +19351,13 @@ The `/transfer/originator/list` endpoint gets status updates for all of your ori
 ```csharp
 try
 {
-    var response = await client.TransferOriginatorList(body);
+    var response = await client.TransferOriginatorList(new TransferOriginatorListOperationRequest
+    {
+        Body = new TransferOriginatorListRequest(),
+    });
     // TODO: Handle 'response' of type TransferOriginatorListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -18449,14 +19366,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferOriginatorListRequest](Models/TransferOriginatorListRequest.cs)</code> | - |
+<code>[TransferOriginatorListOperationRequest](src/ThePlaidApi/Requests/TransferOriginatorListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18466,9 +19381,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferOriginatorListResponse](Models/TransferOriginatorListResponse.cs)</code>
+**OnSuccess**: <code>[TransferOriginatorListResponse](src/ThePlaidApi/Models/TransferOriginatorListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -18479,7 +19394,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferPlatformOriginatorCreateResponse&gt; TransferPlatformOriginatorCreate(TransferPlatformOriginatorCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferPlatformOriginatorCreateResponse&gt; TransferPlatformOriginatorCreate(TransferPlatformOriginatorCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -18502,10 +19417,23 @@ Use the `/transfer/platform/originator/create` endpoint to submit information ab
 ```csharp
 try
 {
-    var response = await client.TransferPlatformOriginatorCreate(body);
+    var response = await client.TransferPlatformOriginatorCreate(new TransferPlatformOriginatorCreateOperationRequest
+    {
+        Body = new TransferPlatformOriginatorCreateRequest
+        {
+            OriginatorClientId = "some example string",
+            TosAcceptanceMetadata = new TosAcceptanceMetadata
+            {
+                AgreementAccepted = true,
+                OriginatorIpAddress = "some example string",
+                AgreementAcceptedAt = DateTimeOffset.Parse("2024-01-15T09:30:00Z"),
+            },
+            OriginatorReviewedAt = DateTimeOffset.Parse("2024-01-15T09:30:00Z"),
+        },
+    });
     // TODO: Handle 'response' of type TransferPlatformOriginatorCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -18514,14 +19442,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferPlatformOriginatorCreateRequest](Models/TransferPlatformOriginatorCreateRequest.cs)</code> | - |
+<code>[TransferPlatformOriginatorCreateOperationRequest](src/ThePlaidApi/Requests/TransferPlatformOriginatorCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18531,9 +19457,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferPlatformOriginatorCreateResponse](Models/TransferPlatformOriginatorCreateResponse.cs)</code>
+**OnSuccess**: <code>[TransferPlatformOriginatorCreateResponse](src/ThePlaidApi/Models/TransferPlatformOriginatorCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -18544,7 +19470,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferPlatformPersonCreateResponse&gt; TransferPlatformPersonCreate(TransferPlatformPersonCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferPlatformPersonCreateResponse&gt; TransferPlatformPersonCreate(TransferPlatformPersonCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -18567,10 +19493,13 @@ Use the `/transfer/platform/person/create` endpoint to create a person associate
 ```csharp
 try
 {
-    var response = await client.TransferPlatformPersonCreate(body);
+    var response = await client.TransferPlatformPersonCreate(new TransferPlatformPersonCreateOperationRequest
+    {
+        Body = new TransferPlatformPersonCreateRequest { OriginatorClientId = "some example string" },
+    });
     // TODO: Handle 'response' of type TransferPlatformPersonCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -18579,14 +19508,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferPlatformPersonCreateRequest](Models/TransferPlatformPersonCreateRequest.cs)</code> | - |
+<code>[TransferPlatformPersonCreateOperationRequest](src/ThePlaidApi/Requests/TransferPlatformPersonCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18596,9 +19523,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferPlatformPersonCreateResponse](Models/TransferPlatformPersonCreateResponse.cs)</code>
+**OnSuccess**: <code>[TransferPlatformPersonCreateResponse](src/ThePlaidApi/Models/TransferPlatformPersonCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -18609,7 +19536,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferPlatformRequirementSubmitResponse&gt; TransferPlatformRequirementSubmit(TransferPlatformRequirementSubmitRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferPlatformRequirementSubmitResponse&gt; TransferPlatformRequirementSubmit(TransferPlatformRequirementSubmitOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -18632,10 +19559,19 @@ Use the `/transfer/platform/requirement/submit` endpoint to submit additional on
 ```csharp
 try
 {
-    var response = await client.TransferPlatformRequirementSubmit(body);
+    var response = await client.TransferPlatformRequirementSubmit(new TransferPlatformRequirementSubmitOperationRequest
+    {
+        Body = new TransferPlatformRequirementSubmitRequest
+        {
+            OriginatorClientId = "some example string",
+            RequirementSubmissions = [
+                new RequirementSubmission { RequirementType = "some example string", Value = "some example string" },
+            ],
+        },
+    });
     // TODO: Handle 'response' of type TransferPlatformRequirementSubmitResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -18644,14 +19580,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferPlatformRequirementSubmitRequest](Models/TransferPlatformRequirementSubmitRequest.cs)</code> | - |
+<code>[TransferPlatformRequirementSubmitOperationRequest](src/ThePlaidApi/Requests/TransferPlatformRequirementSubmitOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18661,9 +19595,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferPlatformRequirementSubmitResponse](Models/TransferPlatformRequirementSubmitResponse.cs)</code>
+**OnSuccess**: <code>[TransferPlatformRequirementSubmitResponse](src/ThePlaidApi/Models/TransferPlatformRequirementSubmitResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -18674,7 +19608,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferQuestionnaireCreateResponse&gt; TransferQuestionnaireCreate(TransferQuestionnaireCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferQuestionnaireCreateResponse&gt; TransferQuestionnaireCreate(TransferQuestionnaireCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -18697,10 +19631,17 @@ The `/transfer/questionnaire/create` endpoint generates a Plaid-hosted onboardin
 ```csharp
 try
 {
-    var response = await client.TransferQuestionnaireCreate(body);
+    var response = await client.TransferQuestionnaireCreate(new TransferQuestionnaireCreateOperationRequest
+    {
+        Body = new TransferQuestionnaireCreateRequest
+        {
+            OriginatorClientId = "some example string",
+            RedirectUri = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type TransferQuestionnaireCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -18709,14 +19650,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferQuestionnaireCreateRequest](Models/TransferQuestionnaireCreateRequest.cs)</code> | - |
+<code>[TransferQuestionnaireCreateOperationRequest](src/ThePlaidApi/Requests/TransferQuestionnaireCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18726,9 +19665,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferQuestionnaireCreateResponse](Models/TransferQuestionnaireCreateResponse.cs)</code>
+**OnSuccess**: <code>[TransferQuestionnaireCreateResponse](src/ThePlaidApi/Models/TransferQuestionnaireCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -18739,7 +19678,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferRecurringCancelResponse&gt; TransferRecurringCancel(TransferRecurringCancelRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferRecurringCancelResponse&gt; TransferRecurringCancel(TransferRecurringCancelOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -18762,10 +19701,13 @@ Use the `/transfer/recurring/cancel` endpoint to cancel a recurring transfer.  A
 ```csharp
 try
 {
-    var response = await client.TransferRecurringCancel(body);
+    var response = await client.TransferRecurringCancel(new TransferRecurringCancelOperationRequest
+    {
+        Body = new TransferRecurringCancelRequest { RecurringTransferId = "some example string" },
+    });
     // TODO: Handle 'response' of type TransferRecurringCancelResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -18774,14 +19716,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferRecurringCancelRequest](Models/TransferRecurringCancelRequest.cs)</code> | - |
+<code>[TransferRecurringCancelOperationRequest](src/ThePlaidApi/Requests/TransferRecurringCancelOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18791,9 +19731,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferRecurringCancelResponse](Models/TransferRecurringCancelResponse.cs)</code>
+**OnSuccess**: <code>[TransferRecurringCancelResponse](src/ThePlaidApi/Models/TransferRecurringCancelResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -18804,7 +19744,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferRecurringCreateResponse&gt; TransferRecurringCreate(TransferRecurringCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferRecurringCreateResponse&gt; TransferRecurringCreate(TransferRecurringCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -18827,10 +19767,30 @@ Use the `/transfer/recurring/create` endpoint to initiate a new recurring transf
 ```csharp
 try
 {
-    var response = await client.TransferRecurringCreate(body);
+    var response = await client.TransferRecurringCreate(new TransferRecurringCreateOperationRequest
+    {
+        Body = new TransferRecurringCreateRequest
+        {
+            AccessToken = "some example string",
+            IdempotencyKey = "some example string",
+            AccountId = "some example string",
+            Type = TransferType.Debit,
+            Network = TransferRecurringNetwork.Ach,
+            Amount = "some example string",
+            Description = "some example string",
+            Schedule = new TransferRecurringSchedule
+            {
+                IntervalUnit = TransferScheduleIntervalUnit.Week,
+                IntervalCount = 1,
+                IntervalExecutionDay = 1,
+                StartDate = DateTimeOffset.Parse("2024-01-15T00:00:00Z"),
+            },
+            User = new TransferUserInRequest { LegalName = "some example string" },
+        },
+    });
     // TODO: Handle 'response' of type TransferRecurringCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -18839,14 +19799,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferRecurringCreateRequest](Models/TransferRecurringCreateRequest.cs)</code> | - |
+<code>[TransferRecurringCreateOperationRequest](src/ThePlaidApi/Requests/TransferRecurringCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18856,9 +19814,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferRecurringCreateResponse](Models/TransferRecurringCreateResponse.cs)</code>
+**OnSuccess**: <code>[TransferRecurringCreateResponse](src/ThePlaidApi/Models/TransferRecurringCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -18869,7 +19827,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferRecurringGetResponse&gt; TransferRecurringGet(TransferRecurringGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferRecurringGetResponse&gt; TransferRecurringGet(TransferRecurringGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -18892,10 +19850,13 @@ The `/transfer/recurring/get` fetches information about the recurring transfer c
 ```csharp
 try
 {
-    var response = await client.TransferRecurringGet(body);
+    var response = await client.TransferRecurringGet(new TransferRecurringGetOperationRequest
+    {
+        Body = new TransferRecurringGetRequest { RecurringTransferId = "some example string" },
+    });
     // TODO: Handle 'response' of type TransferRecurringGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -18904,14 +19865,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferRecurringGetRequest](Models/TransferRecurringGetRequest.cs)</code> | - |
+<code>[TransferRecurringGetOperationRequest](src/ThePlaidApi/Requests/TransferRecurringGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18921,9 +19880,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferRecurringGetResponse](Models/TransferRecurringGetResponse.cs)</code>
+**OnSuccess**: <code>[TransferRecurringGetResponse](src/ThePlaidApi/Models/TransferRecurringGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -18934,7 +19893,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferRecurringListResponse&gt; TransferRecurringList(TransferRecurringListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferRecurringListResponse&gt; TransferRecurringList(TransferRecurringListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -18945,7 +19904,6 @@ catch (SdkException<RawError> ex)
 <dd>
 
 Use the `/transfer/recurring/list` endpoint to see a list of all your recurring transfers and their statuses. Results are paginated; use the `count` and `offset` query parameters to retrieve the desired recurring transfers.
-
 
 </dd>
 </dl>
@@ -18958,10 +19916,13 @@ Use the `/transfer/recurring/list` endpoint to see a list of all your recurring 
 ```csharp
 try
 {
-    var response = await client.TransferRecurringList(body);
+    var response = await client.TransferRecurringList(new TransferRecurringListOperationRequest
+    {
+        Body = new TransferRecurringListRequest(),
+    });
     // TODO: Handle 'response' of type TransferRecurringListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -18970,14 +19931,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferRecurringListRequest](Models/TransferRecurringListRequest.cs)</code> | - |
+<code>[TransferRecurringListOperationRequest](src/ThePlaidApi/Requests/TransferRecurringListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -18987,9 +19946,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferRecurringListResponse](Models/TransferRecurringListResponse.cs)</code>
+**OnSuccess**: <code>[TransferRecurringListResponse](src/ThePlaidApi/Models/TransferRecurringListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -19000,7 +19959,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferRefundCancelResponse&gt; TransferRefundCancel(TransferRefundCancelRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferRefundCancelResponse&gt; TransferRefundCancel(TransferRefundCancelOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -19023,10 +19982,13 @@ Use the `/transfer/refund/cancel` endpoint to cancel a refund.  A refund is elig
 ```csharp
 try
 {
-    var response = await client.TransferRefundCancel(body);
+    var response = await client.TransferRefundCancel(new TransferRefundCancelOperationRequest
+    {
+        Body = new TransferRefundCancelRequest { RefundId = "some example string" },
+    });
     // TODO: Handle 'response' of type TransferRefundCancelResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -19035,14 +19997,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferRefundCancelRequest](Models/TransferRefundCancelRequest.cs)</code> | - |
+<code>[TransferRefundCancelOperationRequest](src/ThePlaidApi/Requests/TransferRefundCancelOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -19052,9 +20012,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferRefundCancelResponse](Models/TransferRefundCancelResponse.cs)</code>
+**OnSuccess**: <code>[TransferRefundCancelResponse](src/ThePlaidApi/Models/TransferRefundCancelResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -19065,7 +20025,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferRefundCreateResponse&gt; TransferRefundCreate(TransferRefundCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferRefundCreateResponse&gt; TransferRefundCreate(TransferRefundCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -19092,10 +20052,18 @@ A refund can still be issued even if the Item's `access_token` is no longer vali
 ```csharp
 try
 {
-    var response = await client.TransferRefundCreate(body);
+    var response = await client.TransferRefundCreate(new TransferRefundCreateOperationRequest
+    {
+        Body = new TransferRefundCreateRequest
+        {
+            TransferId = "some example string",
+            Amount = "some example string",
+            IdempotencyKey = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type TransferRefundCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -19104,14 +20072,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferRefundCreateRequest](Models/TransferRefundCreateRequest.cs)</code> | - |
+<code>[TransferRefundCreateOperationRequest](src/ThePlaidApi/Requests/TransferRefundCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -19121,9 +20087,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferRefundCreateResponse](Models/TransferRefundCreateResponse.cs)</code>
+**OnSuccess**: <code>[TransferRefundCreateResponse](src/ThePlaidApi/Models/TransferRefundCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -19134,7 +20100,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferRefundGetResponse&gt; TransferRefundGet(TransferRefundGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferRefundGetResponse&gt; TransferRefundGet(TransferRefundGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -19157,10 +20123,13 @@ The `/transfer/refund/get` endpoint fetches information about the refund corresp
 ```csharp
 try
 {
-    var response = await client.TransferRefundGet(body);
+    var response = await client.TransferRefundGet(new TransferRefundGetOperationRequest
+    {
+        Body = new TransferRefundGetRequest { RefundId = "some example string" },
+    });
     // TODO: Handle 'response' of type TransferRefundGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -19169,14 +20138,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferRefundGetRequest](Models/TransferRefundGetRequest.cs)</code> | - |
+<code>[TransferRefundGetOperationRequest](src/ThePlaidApi/Requests/TransferRefundGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -19186,9 +20153,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferRefundGetResponse](Models/TransferRefundGetResponse.cs)</code>
+**OnSuccess**: <code>[TransferRefundGetResponse](src/ThePlaidApi/Models/TransferRefundGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -19199,7 +20166,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferRepaymentListResponse&gt; TransferRepaymentList(TransferRepaymentListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferRepaymentListResponse&gt; TransferRepaymentList(TransferRepaymentListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -19222,10 +20189,13 @@ The `/transfer/repayment/list` endpoint fetches repayments matching the given fi
 ```csharp
 try
 {
-    var response = await client.TransferRepaymentList(body);
+    var response = await client.TransferRepaymentList(new TransferRepaymentListOperationRequest
+    {
+        Body = new TransferRepaymentListRequest { Count = 1 },
+    });
     // TODO: Handle 'response' of type TransferRepaymentListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -19234,14 +20204,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferRepaymentListRequest](Models/TransferRepaymentListRequest.cs)</code> | - |
+<code>[TransferRepaymentListOperationRequest](src/ThePlaidApi/Requests/TransferRepaymentListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -19251,9 +20219,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferRepaymentListResponse](Models/TransferRepaymentListResponse.cs)</code>
+**OnSuccess**: <code>[TransferRepaymentListResponse](src/ThePlaidApi/Models/TransferRepaymentListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -19264,7 +20232,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferRepaymentReturnListResponse&gt; TransferRepaymentReturnList(TransferRepaymentReturnListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferRepaymentReturnListResponse&gt; TransferRepaymentReturnList(TransferRepaymentReturnListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -19287,10 +20255,17 @@ The `/transfer/repayment/return/list` endpoint retrieves the set of returns that
 ```csharp
 try
 {
-    var response = await client.TransferRepaymentReturnList(body);
+    var response = await client.TransferRepaymentReturnList(new TransferRepaymentReturnListOperationRequest
+    {
+        Body = new TransferRepaymentReturnListRequest
+        {
+            RepaymentId = "d4bfce70-2470-4298-ae87-5e9b3e18bfaf",
+            Count = 1,
+        },
+    });
     // TODO: Handle 'response' of type TransferRepaymentReturnListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -19299,14 +20274,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferRepaymentReturnListRequest](Models/TransferRepaymentReturnListRequest.cs)</code> | - |
+<code>[TransferRepaymentReturnListOperationRequest](src/ThePlaidApi/Requests/TransferRepaymentReturnListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -19316,9 +20289,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferRepaymentReturnListResponse](Models/TransferRepaymentReturnListResponse.cs)</code>
+**OnSuccess**: <code>[TransferRepaymentReturnListResponse](src/ThePlaidApi/Models/TransferRepaymentReturnListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -19329,7 +20302,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferReturnRecoverResponse&gt; TransferReturnRecover(TransferReturnRecoverRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferReturnRecoverResponse&gt; TransferReturnRecover(TransferReturnRecoverOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -19354,10 +20327,18 @@ Recovery can be reported in full or in parts; the sum of recovered amounts acros
 ```csharp
 try
 {
-    var response = await client.TransferReturnRecover(body);
+    var response = await client.TransferReturnRecover(new TransferReturnRecoverOperationRequest
+    {
+        Body = new TransferReturnRecoverRequest
+        {
+            TransferId = "some example string",
+            Amount = "some example string",
+            IdempotencyKey = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type TransferReturnRecoverResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -19366,14 +20347,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferReturnRecoverRequest](Models/TransferReturnRecoverRequest.cs)</code> | - |
+<code>[TransferReturnRecoverOperationRequest](src/ThePlaidApi/Requests/TransferReturnRecoverOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -19383,9 +20362,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferReturnRecoverResponse](Models/TransferReturnRecoverResponse.cs)</code>
+**OnSuccess**: <code>[TransferReturnRecoverResponse](src/ThePlaidApi/Models/TransferReturnRecoverResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -19396,7 +20375,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferSweepGetResponse&gt; TransferSweepGet(TransferSweepGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferSweepGetResponse&gt; TransferSweepGet(TransferSweepGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -19419,10 +20398,13 @@ The `/transfer/sweep/get` endpoint fetches a sweep corresponding to the given `s
 ```csharp
 try
 {
-    var response = await client.TransferSweepGet(body);
+    var response = await client.TransferSweepGet(new TransferSweepGetOperationRequest
+    {
+        Body = new TransferSweepGetRequest { SweepId = "some example string" },
+    });
     // TODO: Handle 'response' of type TransferSweepGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -19431,14 +20413,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferSweepGetRequest](Models/TransferSweepGetRequest.cs)</code> | - |
+<code>[TransferSweepGetOperationRequest](src/ThePlaidApi/Requests/TransferSweepGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -19448,9 +20428,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferSweepGetResponse](Models/TransferSweepGetResponse.cs)</code>
+**OnSuccess**: <code>[TransferSweepGetResponse](src/ThePlaidApi/Models/TransferSweepGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -19461,7 +20441,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;TransferSweepListResponse&gt; TransferSweepList(TransferSweepListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;TransferSweepListResponse&gt; TransferSweepList(TransferSweepListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -19484,10 +20464,13 @@ The `/transfer/sweep/list` endpoint fetches sweeps matching the given filters.
 ```csharp
 try
 {
-    var response = await client.TransferSweepList(body);
+    var response = await client.TransferSweepList(new TransferSweepListOperationRequest
+    {
+        Body = new TransferSweepListRequest(),
+    });
     // TODO: Handle 'response' of type TransferSweepListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -19496,14 +20479,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[TransferSweepListRequest](Models/TransferSweepListRequest.cs)</code> | - |
+<code>[TransferSweepListOperationRequest](src/ThePlaidApi/Requests/TransferSweepListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -19513,9 +20494,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TransferSweepListResponse](Models/TransferSweepListResponse.cs)</code>
+**OnSuccess**: <code>[TransferSweepListResponse](src/ThePlaidApi/Models/TransferSweepListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -19526,7 +20507,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;UserAccountSessionEventSendResponse&gt; UserAccountSessionEventSend(UserAccountSessionEventSendRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;UserAccountSessionEventSendResponse&gt; UserAccountSessionEventSend(UserAccountSessionEventSendOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -19549,10 +20530,21 @@ This endpoint allows sending client-specific events related to Layer sessions fo
 ```csharp
 try
 {
-    var response = await client.UserAccountSessionEventSend(body);
+    var response = await client.UserAccountSessionEventSend(new UserAccountSessionEventSendOperationRequest
+    {
+        Body = new UserAccountSessionEventSendRequest
+        {
+            LinkSessionId = "some example string",
+            Event = new UserAccountSessionEvent
+            {
+                Name = "some example string",
+                Timestamp = DateTimeOffset.Parse("2024-01-15T09:30:00Z"),
+            },
+        },
+    });
     // TODO: Handle 'response' of type UserAccountSessionEventSendResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -19561,14 +20553,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[UserAccountSessionEventSendRequest](Models/UserAccountSessionEventSendRequest.cs)</code> | - |
+<code>[UserAccountSessionEventSendOperationRequest](src/ThePlaidApi/Requests/UserAccountSessionEventSendOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -19578,9 +20568,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[UserAccountSessionEventSendResponse](Models/UserAccountSessionEventSendResponse.cs)</code>
+**OnSuccess**: <code>[UserAccountSessionEventSendResponse](src/ThePlaidApi/Models/UserAccountSessionEventSendResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -19591,7 +20581,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;UserAccountSessionGetResponse&gt; UserAccountSessionGet(UserAccountSessionGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;UserAccountSessionGetResponse&gt; UserAccountSessionGet(UserAccountSessionGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -19614,10 +20604,13 @@ This endpoint returns user permissioned account data, including identity and Ite
 ```csharp
 try
 {
-    var response = await client.UserAccountSessionGet(body);
+    var response = await client.UserAccountSessionGet(new UserAccountSessionGetOperationRequest
+    {
+        Body = new UserAccountSessionGetRequest { PublicToken = "some example string" },
+    });
     // TODO: Handle 'response' of type UserAccountSessionGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -19626,14 +20619,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[UserAccountSessionGetRequest](Models/UserAccountSessionGetRequest.cs)</code> | - |
+<code>[UserAccountSessionGetOperationRequest](src/ThePlaidApi/Requests/UserAccountSessionGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -19643,9 +20634,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[UserAccountSessionGetResponse](Models/UserAccountSessionGetResponse.cs)</code>
+**OnSuccess**: <code>[UserAccountSessionGetResponse](src/ThePlaidApi/Models/UserAccountSessionGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -19656,7 +20647,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;UserCreateResponse&gt; UserCreate(UserCreateRequest body, bool? plaidNewUserApiEnabled = false, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;UserCreateResponse&gt; UserCreate(UserCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -19690,10 +20681,13 @@ Plaid will normalize identity fields before storing them and utilize the same id
 ```csharp
 try
 {
-    var response = await client.UserCreate(body);
+    var response = await client.UserCreate(new UserCreateOperationRequest
+    {
+        Body = new UserCreateRequest { ClientUserId = "some example string" },
+    });
     // TODO: Handle 'response' of type UserCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -19702,15 +20696,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[UserCreateRequest](Models/UserCreateRequest.cs)</code> | - |
-| <code>plaidNewUserApiEnabled</code> | <code>bool?</code> | The HTTP header used in API requests to determine which set of User APIs to invoke: the legacy CRA version or the new User API version.<br>**Default**: false |
+<code>[UserCreateOperationRequest](src/ThePlaidApi/Requests/UserCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -19720,9 +20711,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[UserCreateResponse](Models/UserCreateResponse.cs)</code>
+**OnSuccess**: <code>[UserCreateResponse](src/ThePlaidApi/Models/UserCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -19733,7 +20724,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;UserFinancialDataRefreshResponse&gt; UserFinancialDataRefresh(UserFinancialDataRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;UserFinancialDataRefreshResponse&gt; UserFinancialDataRefresh(UserFinancialDataRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -19761,10 +20752,13 @@ This endpoint is distinct from `/transactions/refresh`, which triggers a refresh
 ```csharp
 try
 {
-    var response = await client.UserFinancialDataRefresh(body);
+    var response = await client.UserFinancialDataRefresh(new UserFinancialDataRefreshOperationRequest
+    {
+        Body = new UserFinancialDataRefreshRequest { UserId = "usr_8c3ZbDBYjaqUXZ" },
+    });
     // TODO: Handle 'response' of type UserFinancialDataRefreshResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -19773,14 +20767,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[UserFinancialDataRefreshRequest](Models/UserFinancialDataRefreshRequest.cs)</code> | - |
+<code>[UserFinancialDataRefreshOperationRequest](src/ThePlaidApi/Requests/UserFinancialDataRefreshOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -19790,9 +20782,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[UserFinancialDataRefreshResponse](Models/UserFinancialDataRefreshResponse.cs)</code>
+**OnSuccess**: <code>[UserFinancialDataRefreshResponse](src/ThePlaidApi/Models/UserFinancialDataRefreshResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -19803,7 +20795,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;UserGetResponse&gt; UserGet(UserGetRequest body, bool? plaidNewUserApiEnabled = false, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;UserGetResponse&gt; UserGet(UserGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -19826,10 +20818,13 @@ Get user details using a `user_id`. This endpoint only supports users that were 
 ```csharp
 try
 {
-    var response = await client.UserGet(body);
+    var response = await client.UserGet(new UserGetOperationRequest
+    {
+        Body = new UserGetRequest { UserId = "some example string" },
+    });
     // TODO: Handle 'response' of type UserGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -19838,15 +20833,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[UserGetRequest](Models/UserGetRequest.cs)</code> | - |
-| <code>plaidNewUserApiEnabled</code> | <code>bool?</code> | The HTTP header used in API requests to determine which set of User APIs to invoke: the legacy CRA version or the new User API version.<br>**Default**: false |
+<code>[UserGetOperationRequest](src/ThePlaidApi/Requests/UserGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -19856,9 +20848,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[UserGetResponse](Models/UserGetResponse.cs)</code>
+**OnSuccess**: <code>[UserGetResponse](src/ThePlaidApi/Models/UserGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -19869,7 +20861,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;UserIdentityRemoveResponse&gt; UserIdentityRemove(UserIdentityRemoveRequest body, bool? plaidNewUserApiEnabled = false, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;UserIdentityRemoveResponse&gt; UserIdentityRemove(UserIdentityRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -19892,10 +20884,13 @@ This endpoint allows customers to explicitly purge identity/PII data provided to
 ```csharp
 try
 {
-    var response = await client.UserIdentityRemove(body);
+    var response = await client.UserIdentityRemove(new UserIdentityRemoveOperationRequest
+    {
+        Body = new UserIdentityRemoveRequest { UserId = "some example string" },
+    });
     // TODO: Handle 'response' of type UserIdentityRemoveResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -19904,15 +20899,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[UserIdentityRemoveRequest](Models/UserIdentityRemoveRequest.cs)</code> | - |
-| <code>plaidNewUserApiEnabled</code> | <code>bool?</code> | The HTTP header used in API requests to determine which set of User APIs to invoke: the legacy CRA version or the new User API version.<br>**Default**: false |
+<code>[UserIdentityRemoveOperationRequest](src/ThePlaidApi/Requests/UserIdentityRemoveOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -19922,9 +20914,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[UserIdentityRemoveResponse](Models/UserIdentityRemoveResponse.cs)</code>
+**OnSuccess**: <code>[UserIdentityRemoveResponse](src/ThePlaidApi/Models/UserIdentityRemoveResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -19935,7 +20927,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;UserItemsAssociateResponse&gt; UserItemsAssociate(UserItemsAssociateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;UserItemsAssociateResponse&gt; UserItemsAssociate(UserItemsAssociateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -19958,10 +20950,13 @@ Associates Items to the target user. If an Item is already associated to another
 ```csharp
 try
 {
-    var response = await client.UserItemsAssociate(body);
+    var response = await client.UserItemsAssociate(new UserItemsAssociateOperationRequest
+    {
+        Body = new UserItemsAssociateRequest { UserId = "some example string", ItemIds = ["some example string"] },
+    });
     // TODO: Handle 'response' of type UserItemsAssociateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -19970,14 +20965,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[UserItemsAssociateRequest](Models/UserItemsAssociateRequest.cs)</code> | - |
+<code>[UserItemsAssociateOperationRequest](src/ThePlaidApi/Requests/UserItemsAssociateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -19987,9 +20980,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[UserItemsAssociateResponse](Models/UserItemsAssociateResponse.cs)</code>
+**OnSuccess**: <code>[UserItemsAssociateResponse](src/ThePlaidApi/Models/UserItemsAssociateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20000,7 +20993,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;UserItemsGetResponse&gt; UserItemsGet(UserItemsGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;UserItemsGetResponse&gt; UserItemsGet(UserItemsGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -20023,10 +21016,10 @@ Returns Items associated with a `user_id`, along with their corresponding status
 ```csharp
 try
 {
-    var response = await client.UserItemsGet(body);
+    var response = await client.UserItemsGet(new UserItemsGetOperationRequest { Body = new UserItemsGetRequest() });
     // TODO: Handle 'response' of type UserItemsGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -20035,14 +21028,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[UserItemsGetRequest](Models/UserItemsGetRequest.cs)</code> | - |
+<code>[UserItemsGetOperationRequest](src/ThePlaidApi/Requests/UserItemsGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -20052,9 +21043,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[UserItemsGetResponse](Models/UserItemsGetResponse.cs)</code>
+**OnSuccess**: <code>[UserItemsGetResponse](src/ThePlaidApi/Models/UserItemsGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20065,7 +21056,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;UserItemsRemoveResponse&gt; UserItemsRemove(UserItemsRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;UserItemsRemoveResponse&gt; UserItemsRemove(UserItemsRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -20089,10 +21080,13 @@ This endpoint is not intended to remove all data for a user, as it will only rem
 ```csharp
 try
 {
-    var response = await client.UserItemsRemove(body);
+    var response = await client.UserItemsRemove(new UserItemsRemoveOperationRequest
+    {
+        Body = new UserItemsRemoveRequest { ItemIds = ["some example string"] },
+    });
     // TODO: Handle 'response' of type UserItemsRemoveResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -20101,14 +21095,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[UserItemsRemoveRequest](Models/UserItemsRemoveRequest.cs)</code> | - |
+<code>[UserItemsRemoveOperationRequest](src/ThePlaidApi/Requests/UserItemsRemoveOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -20118,9 +21110,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[UserItemsRemoveResponse](Models/UserItemsRemoveResponse.cs)</code>
+**OnSuccess**: <code>[UserItemsRemoveResponse](src/ThePlaidApi/Models/UserItemsRemoveResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20131,7 +21123,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;UserProductsTerminateResponse&gt; UserProductsTerminate(UserProductsTerminateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;UserProductsTerminateResponse&gt; UserProductsTerminate(UserProductsTerminateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -20154,10 +21146,18 @@ Terminates user-based recurring subscription bundles or products (Financial Mana
 ```csharp
 try
 {
-    var response = await client.UserProductsTerminate(body);
+    var response = await client.UserProductsTerminate(new UserProductsTerminateOperationRequest
+    {
+        Body = new UserProductsTerminateRequest
+        {
+            UserId = "usr_8c3ZbDBYjaqUXZ",
+            ReasonCode = ProductsTerminateReasonCode.ConsumerAccountClosed,
+            ReasonNote = "User closed account with client.",
+        },
+    });
     // TODO: Handle 'response' of type UserProductsTerminateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -20166,14 +21166,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[UserProductsTerminateRequest](Models/UserProductsTerminateRequest.cs)</code> | - |
+<code>[UserProductsTerminateOperationRequest](src/ThePlaidApi/Requests/UserProductsTerminateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -20183,9 +21181,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[UserProductsTerminateResponse](Models/UserProductsTerminateResponse.cs)</code>
+**OnSuccess**: <code>[UserProductsTerminateResponse](src/ThePlaidApi/Models/UserProductsTerminateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20196,7 +21194,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;UserRemoveResponse&gt; UserRemove(UserRemoveRequest body, bool? plaidNewUserApiEnabled = false, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;UserRemoveResponse&gt; UserRemove(UserRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -20219,10 +21217,10 @@ catch (SdkException<RawError> ex)
 ```csharp
 try
 {
-    var response = await client.UserRemove(body);
+    var response = await client.UserRemove(new UserRemoveOperationRequest { Body = new UserRemoveRequest() });
     // TODO: Handle 'response' of type UserRemoveResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -20231,15 +21229,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[UserRemoveRequest](Models/UserRemoveRequest.cs)</code> | - |
-| <code>plaidNewUserApiEnabled</code> | <code>bool?</code> | The HTTP header used in API requests to determine which set of User APIs to invoke: the legacy CRA version or the new User API version.<br>**Default**: false |
+<code>[UserRemoveOperationRequest](src/ThePlaidApi/Requests/UserRemoveOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -20249,9 +21244,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[UserRemoveResponse](Models/UserRemoveResponse.cs)</code>
+**OnSuccess**: <code>[UserRemoveResponse](src/ThePlaidApi/Models/UserRemoveResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20262,7 +21257,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;UserThirdPartyTokenCreateResponse&gt; UserThirdPartyTokenCreate(UserThirdPartyTokenCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;UserThirdPartyTokenCreateResponse&gt; UserThirdPartyTokenCreate(UserThirdPartyTokenCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -20287,10 +21282,13 @@ Ensure you store the `third_party_user_token` along with the `user_token` and `t
 ```csharp
 try
 {
-    var response = await client.UserThirdPartyTokenCreate(body);
+    var response = await client.UserThirdPartyTokenCreate(new UserThirdPartyTokenCreateOperationRequest
+    {
+        Body = new UserThirdPartyTokenCreateRequest { ThirdPartyClientId = "some example string" },
+    });
     // TODO: Handle 'response' of type UserThirdPartyTokenCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -20299,14 +21297,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[UserThirdPartyTokenCreateRequest](Models/UserThirdPartyTokenCreateRequest.cs)</code> | - |
+<code>[UserThirdPartyTokenCreateOperationRequest](src/ThePlaidApi/Requests/UserThirdPartyTokenCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -20316,9 +21312,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[UserThirdPartyTokenCreateResponse](Models/UserThirdPartyTokenCreateResponse.cs)</code>
+**OnSuccess**: <code>[UserThirdPartyTokenCreateResponse](src/ThePlaidApi/Models/UserThirdPartyTokenCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20329,7 +21325,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;UserThirdPartyTokenRemoveResponse&gt; UserThirdPartyTokenRemove(UserThirdPartyTokenRemoveRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;UserThirdPartyTokenRemoveResponse&gt; UserThirdPartyTokenRemove(UserThirdPartyTokenRemoveOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -20354,10 +21350,13 @@ Any subsequent calls to retrieve information using the same third-party user tok
 ```csharp
 try
 {
-    var response = await client.UserThirdPartyTokenRemove(body);
+    var response = await client.UserThirdPartyTokenRemove(new UserThirdPartyTokenRemoveOperationRequest
+    {
+        Body = new UserThirdPartyTokenRemoveRequest { ThirdPartyUserToken = "some example string" },
+    });
     // TODO: Handle 'response' of type UserThirdPartyTokenRemoveResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -20366,14 +21365,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[UserThirdPartyTokenRemoveRequest](Models/UserThirdPartyTokenRemoveRequest.cs)</code> | - |
+<code>[UserThirdPartyTokenRemoveOperationRequest](src/ThePlaidApi/Requests/UserThirdPartyTokenRemoveOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -20383,9 +21380,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[UserThirdPartyTokenRemoveResponse](Models/UserThirdPartyTokenRemoveResponse.cs)</code>
+**OnSuccess**: <code>[UserThirdPartyTokenRemoveResponse](src/ThePlaidApi/Models/UserThirdPartyTokenRemoveResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20396,7 +21393,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;UserTransactionsRefreshResponse&gt; UserTransactionsRefresh(UserTransactionsRefreshRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;UserTransactionsRefreshResponse&gt; UserTransactionsRefresh(UserTransactionsRefreshOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -20424,10 +21421,13 @@ This endpoint is distinct from `/transactions/refresh`, which triggers a refresh
 ```csharp
 try
 {
-    var response = await client.UserTransactionsRefresh(body);
+    var response = await client.UserTransactionsRefresh(new UserTransactionsRefreshOperationRequest
+    {
+        Body = new UserTransactionsRefreshRequest { UserId = "usr_8c3ZbDBYjaqUXZ" },
+    });
     // TODO: Handle 'response' of type UserTransactionsRefreshResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -20436,14 +21436,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[UserTransactionsRefreshRequest](Models/UserTransactionsRefreshRequest.cs)</code> | - |
+<code>[UserTransactionsRefreshOperationRequest](src/ThePlaidApi/Requests/UserTransactionsRefreshOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -20453,9 +21451,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[UserTransactionsRefreshResponse](Models/UserTransactionsRefreshResponse.cs)</code>
+**OnSuccess**: <code>[UserTransactionsRefreshResponse](src/ThePlaidApi/Models/UserTransactionsRefreshResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20466,7 +21464,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;UserUpdateResponse&gt; UserUpdate(UserUpdateRequest body, bool? plaidNewUserApiEnabled = false, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;UserUpdateResponse&gt; UserUpdate(UserUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -20491,10 +21489,10 @@ Identity updates use merge semantics: provided fields overwrite existing ones; o
 ```csharp
 try
 {
-    var response = await client.UserUpdate(body);
+    var response = await client.UserUpdate(new UserUpdateOperationRequest { Body = new UserUpdateRequest() });
     // TODO: Handle 'response' of type UserUpdateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -20503,15 +21501,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[UserUpdateRequest](Models/UserUpdateRequest.cs)</code> | - |
-| <code>plaidNewUserApiEnabled</code> | <code>bool?</code> | The HTTP header used in API requests to determine which set of User APIs to invoke: the legacy CRA version or the new User API version.<br>**Default**: false |
+<code>[UserUpdateOperationRequest](src/ThePlaidApi/Requests/UserUpdateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -20521,9 +21516,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[UserUpdateResponse](Models/UserUpdateResponse.cs)</code>
+**OnSuccess**: <code>[UserUpdateResponse](src/ThePlaidApi/Models/UserUpdateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20534,7 +21529,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WalletCreateResponse&gt; WalletCreate(WalletCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WalletCreateResponse&gt; WalletCreate(WalletCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -20557,10 +21552,13 @@ Create an e-wallet. The response is the newly created e-wallet object.
 ```csharp
 try
 {
-    var response = await client.WalletCreate(body);
+    var response = await client.WalletCreate(new WalletCreateOperationRequest
+    {
+        Body = new WalletCreateRequest { IsoCurrencyCode = IsoCurrencyCode.Gbp },
+    });
     // TODO: Handle 'response' of type WalletCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -20569,14 +21567,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WalletCreateRequest](Models/WalletCreateRequest.cs)</code> | - |
+<code>[WalletCreateOperationRequest](src/ThePlaidApi/Requests/WalletCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -20586,9 +21582,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WalletCreateResponse](Models/WalletCreateResponse.cs)</code>
+**OnSuccess**: <code>[WalletCreateResponse](src/ThePlaidApi/Models/WalletCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20599,7 +21595,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WalletGetResponse&gt; WalletGet(WalletGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WalletGetResponse&gt; WalletGet(WalletGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -20622,10 +21618,13 @@ Fetch an e-wallet. The response includes the current balance.
 ```csharp
 try
 {
-    var response = await client.WalletGet(body);
+    var response = await client.WalletGet(new WalletGetOperationRequest
+    {
+        Body = new WalletGetRequest { WalletId = "some example string" },
+    });
     // TODO: Handle 'response' of type WalletGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -20634,14 +21633,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WalletGetRequest](Models/WalletGetRequest.cs)</code> | - |
+<code>[WalletGetOperationRequest](src/ThePlaidApi/Requests/WalletGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -20651,9 +21648,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WalletGetResponse](Models/WalletGetResponse.cs)</code>
+**OnSuccess**: <code>[WalletGetResponse](src/ThePlaidApi/Models/WalletGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20664,7 +21661,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WalletListResponse&gt; WalletList(WalletListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WalletListResponse&gt; WalletList(WalletListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -20687,10 +21684,10 @@ This endpoint lists all e-wallets in descending order of creation.
 ```csharp
 try
 {
-    var response = await client.WalletList(body);
+    var response = await client.WalletList(new WalletListOperationRequest { Body = new WalletListRequest() });
     // TODO: Handle 'response' of type WalletListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -20699,14 +21696,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WalletListRequest](Models/WalletListRequest.cs)</code> | - |
+<code>[WalletListOperationRequest](src/ThePlaidApi/Requests/WalletListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -20716,9 +21711,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WalletListResponse](Models/WalletListResponse.cs)</code>
+**OnSuccess**: <code>[WalletListResponse](src/ThePlaidApi/Models/WalletListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20729,7 +21724,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WalletTransactionExecuteResponse&gt; WalletTransactionExecute(WalletTransactionExecuteRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WalletTransactionExecuteResponse&gt; WalletTransactionExecute(WalletTransactionExecuteOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -20754,10 +21749,24 @@ Transactions will settle in seconds to several days, depending on the underlying
 ```csharp
 try
 {
-    var response = await client.WalletTransactionExecute(body);
+    var response = await client.WalletTransactionExecute(new WalletTransactionExecuteOperationRequest
+    {
+        Body = new WalletTransactionExecuteRequest
+        {
+            IdempotencyKey = "some example string",
+            WalletId = "some example string",
+            Counterparty = new WalletTransactionCounterparty
+            {
+                Name = "some example string",
+                Numbers = new WalletTransactionCounterpartyNumbers(),
+            },
+            Amount = new WalletTransactionAmount { IsoCurrencyCode = IsoCurrencyCode.Gbp, Value = 1.5d },
+            Reference = "some example string",
+        },
+    });
     // TODO: Handle 'response' of type WalletTransactionExecuteResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -20766,14 +21775,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WalletTransactionExecuteRequest](Models/WalletTransactionExecuteRequest.cs)</code> | - |
+<code>[WalletTransactionExecuteOperationRequest](src/ThePlaidApi/Requests/WalletTransactionExecuteOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -20783,9 +21790,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WalletTransactionExecuteResponse](Models/WalletTransactionExecuteResponse.cs)</code>
+**OnSuccess**: <code>[WalletTransactionExecuteResponse](src/ThePlaidApi/Models/WalletTransactionExecuteResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20796,7 +21803,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WalletTransactionGetResponse&gt; WalletTransactionGet(WalletTransactionGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WalletTransactionGetResponse&gt; WalletTransactionGet(WalletTransactionGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -20819,10 +21826,13 @@ Fetch a specific e-wallet transaction
 ```csharp
 try
 {
-    var response = await client.WalletTransactionGet(body);
+    var response = await client.WalletTransactionGet(new WalletTransactionGetOperationRequest
+    {
+        Body = new WalletTransactionGetRequest { TransactionId = "some example string" },
+    });
     // TODO: Handle 'response' of type WalletTransactionGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -20831,14 +21841,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WalletTransactionGetRequest](Models/WalletTransactionGetRequest.cs)</code> | - |
+<code>[WalletTransactionGetOperationRequest](src/ThePlaidApi/Requests/WalletTransactionGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -20848,9 +21856,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WalletTransactionGetResponse](Models/WalletTransactionGetResponse.cs)</code>
+**OnSuccess**: <code>[WalletTransactionGetResponse](src/ThePlaidApi/Models/WalletTransactionGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20861,7 +21869,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WalletTransactionListResponse&gt; WalletTransactionList(WalletTransactionListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WalletTransactionListResponse&gt; WalletTransactionList(WalletTransactionListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -20884,10 +21892,13 @@ This endpoint lists the latest transactions of the specified e-wallet. Transacti
 ```csharp
 try
 {
-    var response = await client.WalletTransactionList(body);
+    var response = await client.WalletTransactionList(new WalletTransactionListOperationRequest
+    {
+        Body = new WalletTransactionListRequest { WalletId = "some example string" },
+    });
     // TODO: Handle 'response' of type WalletTransactionListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -20896,14 +21907,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WalletTransactionListRequest](Models/WalletTransactionListRequest.cs)</code> | - |
+<code>[WalletTransactionListOperationRequest](src/ThePlaidApi/Requests/WalletTransactionListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -20913,9 +21922,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WalletTransactionListResponse](Models/WalletTransactionListResponse.cs)</code>
+**OnSuccess**: <code>[WalletTransactionListResponse](src/ThePlaidApi/Models/WalletTransactionListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20926,7 +21935,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningEntityCreateResponse&gt; WatchlistScreeningEntityCreate(WatchlistScreeningEntityCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningEntityCreateResponse&gt; WatchlistScreeningEntityCreate(WatchlistScreeningEntityCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -20949,10 +21958,20 @@ Create a new entity watchlist screening to check your customer against watchlist
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningEntityCreate(body);
+    var response = await client.WatchlistScreeningEntityCreate(new WatchlistScreeningEntityCreateOperationRequest
+    {
+        Body = new WatchlistScreeningEntityCreateRequest
+        {
+            SearchTerms = new EntityWatchlistSearchTerms
+            {
+                EntityWatchlistProgramId = "some example string",
+                LegalName = "some example string",
+            },
+        },
+    });
     // TODO: Handle 'response' of type WatchlistScreeningEntityCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -20961,14 +21980,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningEntityCreateRequest](Models/WatchlistScreeningEntityCreateRequest.cs)</code> | - |
+<code>[WatchlistScreeningEntityCreateOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningEntityCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -20978,9 +21995,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningEntityCreateResponse](Models/WatchlistScreeningEntityCreateResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningEntityCreateResponse](src/ThePlaidApi/Models/WatchlistScreeningEntityCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -20991,7 +22008,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningEntityGetResponse&gt; WatchlistScreeningEntityGet(WatchlistScreeningEntityGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningEntityGetResponse&gt; WatchlistScreeningEntityGet(WatchlistScreeningEntityGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21014,10 +22031,13 @@ Retrieve an entity watchlist screening.
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningEntityGet(body);
+    var response = await client.WatchlistScreeningEntityGet(new WatchlistScreeningEntityGetOperationRequest
+    {
+        Body = new WatchlistScreeningEntityGetRequest { EntityWatchlistScreeningId = "some example string" },
+    });
     // TODO: Handle 'response' of type WatchlistScreeningEntityGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -21026,14 +22046,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningEntityGetRequest](Models/WatchlistScreeningEntityGetRequest.cs)</code> | - |
+<code>[WatchlistScreeningEntityGetOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningEntityGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -21043,9 +22061,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningEntityGetResponse](Models/WatchlistScreeningEntityGetResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningEntityGetResponse](src/ThePlaidApi/Models/WatchlistScreeningEntityGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -21056,7 +22074,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningEntityHistoryListResponse&gt; WatchlistScreeningEntityHistoryList(WatchlistScreeningEntityHistoryListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningEntityHistoryListResponse&gt; WatchlistScreeningEntityHistoryList(WatchlistScreeningEntityHistoryListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21079,10 +22097,17 @@ List all changes to the entity watchlist screening in reverse-chronological orde
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningEntityHistoryList(body);
+    var response = await client.WatchlistScreeningEntityHistoryList(
+        new WatchlistScreeningEntityHistoryListOperationRequest
+        {
+            Body = new WatchlistScreeningEntityHistoryListRequest
+            {
+                EntityWatchlistScreeningId = "some example string",
+            },
+        });
     // TODO: Handle 'response' of type WatchlistScreeningEntityHistoryListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -21091,14 +22116,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningEntityHistoryListRequest](Models/WatchlistScreeningEntityHistoryListRequest.cs)</code> | - |
+<code>[WatchlistScreeningEntityHistoryListOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningEntityHistoryListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -21108,9 +22131,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningEntityHistoryListResponse](Models/WatchlistScreeningEntityHistoryListResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningEntityHistoryListResponse](src/ThePlaidApi/Models/WatchlistScreeningEntityHistoryListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -21121,7 +22144,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningEntityHitListResponse&gt; WatchlistScreeningEntityHitList(WatchlistScreeningEntityHitListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningEntityHitListResponse&gt; WatchlistScreeningEntityHitList(WatchlistScreeningEntityHitListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21144,10 +22167,13 @@ List all hits for the entity watchlist screening.
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningEntityHitList(body);
+    var response = await client.WatchlistScreeningEntityHitList(new WatchlistScreeningEntityHitListOperationRequest
+    {
+        Body = new WatchlistScreeningEntityHitListRequest { EntityWatchlistScreeningId = "some example string" },
+    });
     // TODO: Handle 'response' of type WatchlistScreeningEntityHitListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -21156,14 +22182,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningEntityHitListRequest](Models/WatchlistScreeningEntityHitListRequest.cs)</code> | - |
+<code>[WatchlistScreeningEntityHitListOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningEntityHitListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -21173,9 +22197,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningEntityHitListResponse](Models/WatchlistScreeningEntityHitListResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningEntityHitListResponse](src/ThePlaidApi/Models/WatchlistScreeningEntityHitListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -21186,7 +22210,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningEntityListResponse&gt; WatchlistScreeningEntityList(WatchlistScreeningEntityListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningEntityListResponse&gt; WatchlistScreeningEntityList(WatchlistScreeningEntityListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21209,10 +22233,13 @@ List all entity screenings.
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningEntityList(body);
+    var response = await client.WatchlistScreeningEntityList(new WatchlistScreeningEntityListOperationRequest
+    {
+        Body = new WatchlistScreeningEntityListRequest { EntityWatchlistProgramId = "some example string" },
+    });
     // TODO: Handle 'response' of type WatchlistScreeningEntityListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -21221,14 +22248,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningEntityListRequest](Models/WatchlistScreeningEntityListRequest.cs)</code> | - |
+<code>[WatchlistScreeningEntityListOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningEntityListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -21238,9 +22263,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningEntityListResponse](Models/WatchlistScreeningEntityListResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningEntityListResponse](src/ThePlaidApi/Models/WatchlistScreeningEntityListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -21251,7 +22276,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningEntityProgramGetResponse&gt; WatchlistScreeningEntityProgramGet(WatchlistScreeningEntityProgramGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningEntityProgramGetResponse&gt; WatchlistScreeningEntityProgramGet(WatchlistScreeningEntityProgramGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21274,10 +22299,14 @@ Get an entity watchlist screening program
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningEntityProgramGet(body);
+    var response = await client.WatchlistScreeningEntityProgramGet(
+        new WatchlistScreeningEntityProgramGetOperationRequest
+        {
+            Body = new WatchlistScreeningEntityProgramGetRequest { EntityWatchlistProgramId = "some example string" },
+        });
     // TODO: Handle 'response' of type WatchlistScreeningEntityProgramGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -21286,14 +22315,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningEntityProgramGetRequest](Models/WatchlistScreeningEntityProgramGetRequest.cs)</code> | - |
+<code>[WatchlistScreeningEntityProgramGetOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningEntityProgramGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -21303,9 +22330,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningEntityProgramGetResponse](Models/WatchlistScreeningEntityProgramGetResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningEntityProgramGetResponse](src/ThePlaidApi/Models/WatchlistScreeningEntityProgramGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -21316,7 +22343,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningEntityProgramListResponse&gt; WatchlistScreeningEntityProgramList(WatchlistScreeningEntityProgramListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningEntityProgramListResponse&gt; WatchlistScreeningEntityProgramList(WatchlistScreeningEntityProgramListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21339,10 +22366,14 @@ List all entity watchlist screening programs
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningEntityProgramList(body);
+    var response = await client.WatchlistScreeningEntityProgramList(
+        new WatchlistScreeningEntityProgramListOperationRequest
+        {
+            Body = new WatchlistScreeningEntityProgramListRequest(),
+        });
     // TODO: Handle 'response' of type WatchlistScreeningEntityProgramListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -21351,14 +22382,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningEntityProgramListRequest](Models/WatchlistScreeningEntityProgramListRequest.cs)</code> | - |
+<code>[WatchlistScreeningEntityProgramListOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningEntityProgramListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -21368,9 +22397,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningEntityProgramListResponse](Models/WatchlistScreeningEntityProgramListResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningEntityProgramListResponse](src/ThePlaidApi/Models/WatchlistScreeningEntityProgramListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -21381,7 +22410,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningEntityReviewCreateResponse&gt; WatchlistScreeningEntityReviewCreate(WatchlistScreeningEntityReviewCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningEntityReviewCreateResponse&gt; WatchlistScreeningEntityReviewCreate(WatchlistScreeningEntityReviewCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21404,10 +22433,19 @@ Create a review for an entity watchlist screening. Reviews are compliance report
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningEntityReviewCreate(body);
+    var response = await client.WatchlistScreeningEntityReviewCreate(
+        new WatchlistScreeningEntityReviewCreateOperationRequest
+        {
+            Body = new WatchlistScreeningEntityReviewCreateRequest
+            {
+                ConfirmedHits = ["some example string"],
+                DismissedHits = ["some example string"],
+                EntityWatchlistScreeningId = "some example string",
+            },
+        });
     // TODO: Handle 'response' of type WatchlistScreeningEntityReviewCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -21416,14 +22454,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningEntityReviewCreateRequest](Models/WatchlistScreeningEntityReviewCreateRequest.cs)</code> | - |
+<code>[WatchlistScreeningEntityReviewCreateOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningEntityReviewCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -21433,9 +22469,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningEntityReviewCreateResponse](Models/WatchlistScreeningEntityReviewCreateResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningEntityReviewCreateResponse](src/ThePlaidApi/Models/WatchlistScreeningEntityReviewCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -21446,7 +22482,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningEntityReviewListResponse&gt; WatchlistScreeningEntityReviewList(WatchlistScreeningEntityReviewListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningEntityReviewListResponse&gt; WatchlistScreeningEntityReviewList(WatchlistScreeningEntityReviewListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21469,10 +22505,14 @@ List all reviews for a particular entity watchlist screening. Reviews are compli
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningEntityReviewList(body);
+    var response = await client.WatchlistScreeningEntityReviewList(
+        new WatchlistScreeningEntityReviewListOperationRequest
+        {
+            Body = new WatchlistScreeningEntityReviewListRequest { EntityWatchlistScreeningId = "some example string" },
+        });
     // TODO: Handle 'response' of type WatchlistScreeningEntityReviewListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -21481,14 +22521,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningEntityReviewListRequest](Models/WatchlistScreeningEntityReviewListRequest.cs)</code> | - |
+<code>[WatchlistScreeningEntityReviewListOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningEntityReviewListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -21498,9 +22536,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningEntityReviewListResponse](Models/WatchlistScreeningEntityReviewListResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningEntityReviewListResponse](src/ThePlaidApi/Models/WatchlistScreeningEntityReviewListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -21511,7 +22549,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningEntityUpdateResponse&gt; WatchlistScreeningEntityUpdate(WatchlistScreeningEntityUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningEntityUpdateResponse&gt; WatchlistScreeningEntityUpdate(WatchlistScreeningEntityUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21534,10 +22572,13 @@ Update an entity watchlist screening.
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningEntityUpdate(body);
+    var response = await client.WatchlistScreeningEntityUpdate(new WatchlistScreeningEntityUpdateOperationRequest
+    {
+        Body = new WatchlistScreeningEntityUpdateRequest { EntityWatchlistScreeningId = "some example string" },
+    });
     // TODO: Handle 'response' of type WatchlistScreeningEntityUpdateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -21546,14 +22587,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningEntityUpdateRequest](Models/WatchlistScreeningEntityUpdateRequest.cs)</code> | - |
+<code>[WatchlistScreeningEntityUpdateOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningEntityUpdateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -21563,9 +22602,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningEntityUpdateResponse](Models/WatchlistScreeningEntityUpdateResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningEntityUpdateResponse](src/ThePlaidApi/Models/WatchlistScreeningEntityUpdateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -21576,7 +22615,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningIndividualCreateResponse&gt; WatchlistScreeningIndividualCreate(WatchlistScreeningIndividualCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningIndividualCreateResponse&gt; WatchlistScreeningIndividualCreate(WatchlistScreeningIndividualCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21599,10 +22638,21 @@ Create a new Watchlist Screening to check your customer against watchlists defin
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningIndividualCreate(body);
+    var response = await client.WatchlistScreeningIndividualCreate(
+        new WatchlistScreeningIndividualCreateOperationRequest
+        {
+            Body = new WatchlistScreeningIndividualCreateRequest
+            {
+                SearchTerms = new WatchlistScreeningRequestSearchTerms
+                {
+                    WatchlistProgramId = "some example string",
+                    LegalName = "some example string",
+                },
+            },
+        });
     // TODO: Handle 'response' of type WatchlistScreeningIndividualCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -21611,14 +22661,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningIndividualCreateRequest](Models/WatchlistScreeningIndividualCreateRequest.cs)</code> | - |
+<code>[WatchlistScreeningIndividualCreateOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningIndividualCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -21628,9 +22676,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningIndividualCreateResponse](Models/WatchlistScreeningIndividualCreateResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningIndividualCreateResponse](src/ThePlaidApi/Models/WatchlistScreeningIndividualCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -21641,7 +22689,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningIndividualGetResponse&gt; WatchlistScreeningIndividualGet(WatchlistScreeningIndividualGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningIndividualGetResponse&gt; WatchlistScreeningIndividualGet(WatchlistScreeningIndividualGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21664,10 +22712,13 @@ Retrieve a previously created individual watchlist screening
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningIndividualGet(body);
+    var response = await client.WatchlistScreeningIndividualGet(new WatchlistScreeningIndividualGetOperationRequest
+    {
+        Body = new WatchlistScreeningIndividualGetRequest { WatchlistScreeningId = "some example string" },
+    });
     // TODO: Handle 'response' of type WatchlistScreeningIndividualGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -21676,14 +22727,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningIndividualGetRequest](Models/WatchlistScreeningIndividualGetRequest.cs)</code> | - |
+<code>[WatchlistScreeningIndividualGetOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningIndividualGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -21693,9 +22742,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningIndividualGetResponse](Models/WatchlistScreeningIndividualGetResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningIndividualGetResponse](src/ThePlaidApi/Models/WatchlistScreeningIndividualGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -21706,7 +22755,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningIndividualHistoryListResponse&gt; WatchlistScreeningIndividualHistoryList(WatchlistScreeningIndividualHistoryListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningIndividualHistoryListResponse&gt; WatchlistScreeningIndividualHistoryList(WatchlistScreeningIndividualHistoryListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21729,10 +22778,14 @@ List all changes to the individual watchlist screening in reverse-chronological 
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningIndividualHistoryList(body);
+    var response = await client.WatchlistScreeningIndividualHistoryList(
+        new WatchlistScreeningIndividualHistoryListOperationRequest
+        {
+            Body = new WatchlistScreeningIndividualHistoryListRequest { WatchlistScreeningId = "some example string" },
+        });
     // TODO: Handle 'response' of type WatchlistScreeningIndividualHistoryListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -21741,14 +22794,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningIndividualHistoryListRequest](Models/WatchlistScreeningIndividualHistoryListRequest.cs)</code> | - |
+<code>[WatchlistScreeningIndividualHistoryListOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningIndividualHistoryListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -21758,9 +22809,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningIndividualHistoryListResponse](Models/WatchlistScreeningIndividualHistoryListResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningIndividualHistoryListResponse](src/ThePlaidApi/Models/WatchlistScreeningIndividualHistoryListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -21771,7 +22822,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningIndividualHitListResponse&gt; WatchlistScreeningIndividualHitList(WatchlistScreeningIndividualHitListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningIndividualHitListResponse&gt; WatchlistScreeningIndividualHitList(WatchlistScreeningIndividualHitListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21794,10 +22845,14 @@ List all hits found by Plaid for a particular individual watchlist screening.
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningIndividualHitList(body);
+    var response = await client.WatchlistScreeningIndividualHitList(
+        new WatchlistScreeningIndividualHitListOperationRequest
+        {
+            Body = new WatchlistScreeningIndividualHitListRequest { WatchlistScreeningId = "some example string" },
+        });
     // TODO: Handle 'response' of type WatchlistScreeningIndividualHitListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -21806,14 +22861,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningIndividualHitListRequest](Models/WatchlistScreeningIndividualHitListRequest.cs)</code> | - |
+<code>[WatchlistScreeningIndividualHitListOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningIndividualHitListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -21823,9 +22876,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningIndividualHitListResponse](Models/WatchlistScreeningIndividualHitListResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningIndividualHitListResponse](src/ThePlaidApi/Models/WatchlistScreeningIndividualHitListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -21836,7 +22889,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningIndividualListResponse&gt; WatchlistScreeningIndividualList(WatchlistScreeningIndividualListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningIndividualListResponse&gt; WatchlistScreeningIndividualList(WatchlistScreeningIndividualListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21859,10 +22912,13 @@ List previously created watchlist screenings for individuals
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningIndividualList(body);
+    var response = await client.WatchlistScreeningIndividualList(new WatchlistScreeningIndividualListOperationRequest
+    {
+        Body = new WatchlistScreeningIndividualListRequest { WatchlistProgramId = "some example string" },
+    });
     // TODO: Handle 'response' of type WatchlistScreeningIndividualListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -21871,14 +22927,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningIndividualListRequest](Models/WatchlistScreeningIndividualListRequest.cs)</code> | - |
+<code>[WatchlistScreeningIndividualListOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningIndividualListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -21888,9 +22942,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningIndividualListResponse](Models/WatchlistScreeningIndividualListResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningIndividualListResponse](src/ThePlaidApi/Models/WatchlistScreeningIndividualListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -21901,7 +22955,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningIndividualProgramGetResponse&gt; WatchlistScreeningIndividualProgramGet(WatchlistScreeningIndividualProgramGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningIndividualProgramGetResponse&gt; WatchlistScreeningIndividualProgramGet(WatchlistScreeningIndividualProgramGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21924,10 +22978,14 @@ Get an individual watchlist screening program
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningIndividualProgramGet(body);
+    var response = await client.WatchlistScreeningIndividualProgramGet(
+        new WatchlistScreeningIndividualProgramGetOperationRequest
+        {
+            Body = new WatchlistScreeningIndividualProgramGetRequest { WatchlistProgramId = "some example string" },
+        });
     // TODO: Handle 'response' of type WatchlistScreeningIndividualProgramGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -21936,14 +22994,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningIndividualProgramGetRequest](Models/WatchlistScreeningIndividualProgramGetRequest.cs)</code> | - |
+<code>[WatchlistScreeningIndividualProgramGetOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningIndividualProgramGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -21953,9 +23009,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningIndividualProgramGetResponse](Models/WatchlistScreeningIndividualProgramGetResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningIndividualProgramGetResponse](src/ThePlaidApi/Models/WatchlistScreeningIndividualProgramGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -21966,7 +23022,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningIndividualProgramListResponse&gt; WatchlistScreeningIndividualProgramList(WatchlistScreeningIndividualProgramListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningIndividualProgramListResponse&gt; WatchlistScreeningIndividualProgramList(WatchlistScreeningIndividualProgramListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -21989,10 +23045,14 @@ List all individual watchlist screening programs
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningIndividualProgramList(body);
+    var response = await client.WatchlistScreeningIndividualProgramList(
+        new WatchlistScreeningIndividualProgramListOperationRequest
+        {
+            Body = new WatchlistScreeningIndividualProgramListRequest(),
+        });
     // TODO: Handle 'response' of type WatchlistScreeningIndividualProgramListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -22001,14 +23061,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningIndividualProgramListRequest](Models/WatchlistScreeningIndividualProgramListRequest.cs)</code> | - |
+<code>[WatchlistScreeningIndividualProgramListOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningIndividualProgramListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -22018,9 +23076,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningIndividualProgramListResponse](Models/WatchlistScreeningIndividualProgramListResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningIndividualProgramListResponse](src/ThePlaidApi/Models/WatchlistScreeningIndividualProgramListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -22031,7 +23089,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningIndividualReviewCreateResponse&gt; WatchlistScreeningIndividualReviewCreate(WatchlistScreeningIndividualReviewCreateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningIndividualReviewCreateResponse&gt; WatchlistScreeningIndividualReviewCreate(WatchlistScreeningIndividualReviewCreateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -22054,10 +23112,19 @@ Create a review for the individual watchlist screening. Reviews are compliance r
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningIndividualReviewCreate(body);
+    var response = await client.WatchlistScreeningIndividualReviewCreate(
+        new WatchlistScreeningIndividualReviewCreateOperationRequest
+        {
+            Body = new WatchlistScreeningIndividualReviewCreateRequest
+            {
+                ConfirmedHits = ["some example string"],
+                DismissedHits = ["some example string"],
+                WatchlistScreeningId = "some example string",
+            },
+        });
     // TODO: Handle 'response' of type WatchlistScreeningIndividualReviewCreateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -22066,14 +23133,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningIndividualReviewCreateRequest](Models/WatchlistScreeningIndividualReviewCreateRequest.cs)</code> | - |
+<code>[WatchlistScreeningIndividualReviewCreateOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningIndividualReviewCreateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -22083,9 +23148,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningIndividualReviewCreateResponse](Models/WatchlistScreeningIndividualReviewCreateResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningIndividualReviewCreateResponse](src/ThePlaidApi/Models/WatchlistScreeningIndividualReviewCreateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -22096,7 +23161,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningIndividualReviewListResponse&gt; WatchlistScreeningIndividualReviewList(WatchlistScreeningIndividualReviewListRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningIndividualReviewListResponse&gt; WatchlistScreeningIndividualReviewList(WatchlistScreeningIndividualReviewListOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -22119,10 +23184,14 @@ List all reviews for the individual watchlist screening.
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningIndividualReviewList(body);
+    var response = await client.WatchlistScreeningIndividualReviewList(
+        new WatchlistScreeningIndividualReviewListOperationRequest
+        {
+            Body = new WatchlistScreeningIndividualReviewListRequest { WatchlistScreeningId = "some example string" },
+        });
     // TODO: Handle 'response' of type WatchlistScreeningIndividualReviewListResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -22131,14 +23200,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningIndividualReviewListRequest](Models/WatchlistScreeningIndividualReviewListRequest.cs)</code> | - |
+<code>[WatchlistScreeningIndividualReviewListOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningIndividualReviewListOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -22148,9 +23215,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningIndividualReviewListResponse](Models/WatchlistScreeningIndividualReviewListResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningIndividualReviewListResponse](src/ThePlaidApi/Models/WatchlistScreeningIndividualReviewListResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -22161,7 +23228,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WatchlistScreeningIndividualUpdateResponse&gt; WatchlistScreeningIndividualUpdate(WatchlistScreeningIndividualUpdateRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WatchlistScreeningIndividualUpdateResponse&gt; WatchlistScreeningIndividualUpdate(WatchlistScreeningIndividualUpdateOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -22184,10 +23251,14 @@ Update a specific individual watchlist screening. This endpoint can be used to a
 ```csharp
 try
 {
-    var response = await client.WatchlistScreeningIndividualUpdate(body);
+    var response = await client.WatchlistScreeningIndividualUpdate(
+        new WatchlistScreeningIndividualUpdateOperationRequest
+        {
+            Body = new WatchlistScreeningIndividualUpdateRequest { WatchlistScreeningId = "some example string" },
+        });
     // TODO: Handle 'response' of type WatchlistScreeningIndividualUpdateResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -22196,14 +23267,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WatchlistScreeningIndividualUpdateRequest](Models/WatchlistScreeningIndividualUpdateRequest.cs)</code> | - |
+<code>[WatchlistScreeningIndividualUpdateOperationRequest](src/ThePlaidApi/Requests/WatchlistScreeningIndividualUpdateOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -22213,9 +23282,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WatchlistScreeningIndividualUpdateResponse](Models/WatchlistScreeningIndividualUpdateResponse.cs)</code>
+**OnSuccess**: <code>[WatchlistScreeningIndividualUpdateResponse](src/ThePlaidApi/Models/WatchlistScreeningIndividualUpdateResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
@@ -22226,7 +23295,7 @@ catch (SdkException<RawError> ex)
 </details>
 
 <details>
-<summary><code>Task&lt;WebhookVerificationKeyGetResponse&gt; WebhookVerificationKeyGet(WebhookVerificationKeyGetRequest body, RequestOptions? requestOptions = null, CancellationToken ct = default);</code></summary>
+<summary><code>Task&lt;WebhookVerificationKeyGetResponse&gt; WebhookVerificationKeyGet(WebhookVerificationKeyGetOperationRequest request, RequestOptions? requestOptions = null, CancellationToken cancellationToken = default);</code></summary>
 
 <dl>
 <dd>
@@ -22251,10 +23320,13 @@ The `/webhook_verification_key/get` endpoint provides a JSON Web Key (JWK) that 
 ```csharp
 try
 {
-    var response = await client.WebhookVerificationKeyGet(body);
+    var response = await client.WebhookVerificationKeyGet(new WebhookVerificationKeyGetOperationRequest
+    {
+        Body = new WebhookVerificationKeyGetRequest { KeyId = "some example string" },
+    });
     // TODO: Handle 'response' of type WebhookVerificationKeyGetResponse
 }
-catch (SdkException<RawError> ex)
+catch (ApiException<RawError> ex)
 {
     // TODO: Handle 'ex.Error' of type RawError
 }
@@ -22263,14 +23335,12 @@ catch (SdkException<RawError> ex)
 </dd>
 </dl>
 
-### Parameters
+### Request
 
 <dl>
 <dd>
 
-| Name | Type | Description |
-| --- | --- | --- |
-| <code>body</code> | <code>[WebhookVerificationKeyGetRequest](Models/WebhookVerificationKeyGetRequest.cs)</code> | - |
+<code>[WebhookVerificationKeyGetOperationRequest](src/ThePlaidApi/Requests/WebhookVerificationKeyGetOperationRequest.cs)</code>
 
 </dd>
 </dl>
@@ -22280,9 +23350,9 @@ catch (SdkException<RawError> ex)
 <dl>
 <dd>
 
-**OnSuccess**: <code>[WebhookVerificationKeyGetResponse](Models/WebhookVerificationKeyGetResponse.cs)</code>
+**OnSuccess**: <code>[WebhookVerificationKeyGetResponse](src/ThePlaidApi/Models/WebhookVerificationKeyGetResponse.cs)</code>
 
-**OnError**: <code>[SdkException](Core/Exceptions/SdkException.cs)&lt;[RawError](Core/ErrorResponse/RawError.cs)&gt;</code>
+**OnError**: <code>[ApiException](src/ThePlaidApi/Core/Exceptions/ApiException.cs)&lt;[RawError](src/ThePlaidApi/Core/ErrorResponse/RawError.cs)&gt;</code>
 
 </dd>
 </dl>
